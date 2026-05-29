@@ -1,0 +1,1622 @@
+---
+title: "Probabilidade e Estatística"
+subtitle: "Introdução e Estatística Descritiva"
+author: "Prof. Dr. Alessandro JQ Sarnaglia"
+lang: "pt"
+format:
+  revealjs:
+    width: 1280
+    height: 720
+    min-scale: 0.1
+    fig-width: 5.5
+    fig-height: 5.5
+    theme: [custom.scss]
+    css: fonts.css
+    toc: true
+    toc-depth: 2
+    toc-expand: 2
+    number-sections: true
+    number-depth: 2
+    footer: "[Tópicos 🔙](../index.html) | [Sumário 📋](intro.html#/TOC)"
+    menu:
+      useTextContentForMissingTitles: false
+editor: source
+filters:
+  - parse-latex
+---
+
+```{r}
+library(xtable)
+library(gt)
+library(gtsummary)
+tab_op <- function(tbl){
+  tab_options(data = tbl,
+              table.font.size = "100%",
+              table.border.top.color="#000000",
+              table.border.bottom.color = "#000000",
+              table.border.top.width = "1px",
+              table.border.bottom.width = "1px",
+              column_labels.border.top.color="#000000",
+              column_labels.border.bottom.color="#000000",
+              column_labels.border.top.width = "1px",
+              column_labels.border.bottom.width = "1px",
+              row_group.border.top.color = "#000000",
+              row_group.border.bottom.color = "#000000",
+              row_group.border.top.width = "1px",
+              row_group.border.bottom.width = "1px",
+              table_body.border.top.color = "#000000",
+              table_body.border.bottom.color = "#000000",
+              table_body.border.top.width = "1px",
+              table_body.border.bottom.width = "1px",
+              summary_row.border.color = "#000000",
+              summary_row.border.width = "1px",
+              table_body.hlines.color = "#000000",
+              table_body.hlines.width = "1px")
+}
+```
+
+# Programa e avaliações
+
+##  {.unnumbered .unlisted}
+
+### Programa
+
+::: incremental
+1.  Introdução e estatística descritiva;
+2.  Probabilidade de eventos;
+3.  Variáveis aleatórias;
+4.  Inferência estatística.
+:::
+
+::: fragment
+::: {.callout-note icon="false"}
+## Bibliografia
+
+📚 Devore, J. L., & Cordeiro, M. T. A. (2012). Probabilidade e estatística: para engenharia e ciências. São Paulo: Cengage Learning;
+
+📚 Morettin, P. A., & Bussab, W. O. (2013). Estatística básica. São Paulo: Saraiva.
+:::
+:::
+
+##  {.unnumbered .unlisted}
+
+### Avaliações
+
+::: incremental
+1.  Avaliação 1 $\Rightarrow$ Unidades 1 e 2;
+2.  Avaliação 2 $\Rightarrow$ Unidade 3;
+3.  Avaliação 3 $\Rightarrow$ Unidade 4.
+:::
+
+::: fragment
+[**Importante:** datas serão definidas em conjunto com a turma.]{style="color:red;"}
+:::
+
+::: fragment
+**Contatos e sala:**
+
+-   📧 alessandro.sarnaglia\@ufes.br;
+-   ☎️ (27) 4009-2822;
+-   🖥️ Sala 305 - Bloco B do IC1.
+:::
+
+# Introdução
+
+## Contextualização
+
+**O que é Estatística?** Campo da ciência que se dedica a coleta e análise de dados.
+
+**Importância:** A Estatística é particularmente interessante nas seguintes situações:
+
+::: incremental
+-   Descrição de características importantes de qualquer tipo de variável;
+-   Extração de informações/padrões em grande quantidade de dados;
+-   Tomada de decisões em situações que apresentem variação/incerteza;
+:::
+
+##  {.unnumbered .unlisted}
+
+### Exemplo
+
+Uma tarefa é executada várias vezes em um mesmo computador e os tempos de execução são registrados. Nesse caso, a Estatística pode ajudar a:
+
+::: incremental
+-   Avaliar um tempo típico que a tarefa leva para ser executada e mensurar a variabilidade das observações com respeito a esse valor;
+-   Identificar possíveis padrões sugeridos pela amostra;
+-   Fazer afirmações gerais sobre o fenômeno que dá origem aos dados, a partir de uma amostra;
+-   Realizar previsões com base em dados históricos.
+:::
+
+##  {.unnumbered .unlisted .smaller}
+
+### Exemplo - II
+
+Veja abaixo 15 réplicas do tempo necessário para ordenar $n$ observações, com: (esquerda) $n=100000$ fixo; (direita) $n=100000r$ para a réplica $r$.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+#| label: fig-ex1
+#| fig-width: 4.5
+#| fig-asp: .8
+#| fig-align: center
+#| fig-cap: "Tempo de ordenação de uma amostra"
+#| fig-subcap: 
+#|   - "$n$ fixo"
+#|   - "$n$ crescente"
+#| layout-ncol: 2
+R <- 15; tpause <- 0
+n1 <- rep(100000, R)
+n2 <- 100000*(1:R)
+t1 <- t2 <- NULL
+for(i in 1:R){
+  am1 <- runif(n1[i]); am2 <- runif(n2[i])
+  Sys.sleep(tpause)
+  t0_1 <- proc.time()[3]
+  aux <- sort(am1)
+  tf_1 <- proc.time()[3]
+  Sys.sleep(tpause)
+  t0_2 <- proc.time()[3]
+  aux <- sort(am2)
+  tf_2 <- proc.time()[3]
+  t1[i] <- tf_1 - t0_1
+  t2[i] <- tf_2 - t0_2
+}
+par(mar = c(3, 3, .5, .5))
+plot(t1, pch=19, xlab='', ylab='', ylim=range(t1, t2))
+mtext(text = 'Réplica', side = 1, line = 2); mtext(text = 'Tempo', side = 2, line = 2)
+plot(t2, pch=19, xlab='', ylab='', ylim=range(t1, t2))
+mtext(text = 'Réplica', side = 1, line = 2); mtext(text = 'Tempo', side = 2, line = 2)
+```
+
+##  {.unnumbered .unlisted .smaller}
+
+### Exemplo - III
+
+::: fragment
+A [Fig @fig-ex1-1] nos mostra que:
+
+::: incremental
+-   o tempo de execução tende a apresentar valores em torno de uma quantidade fixa;
+-   além do valor de "tendência central", pode ser de interesse quantificar a variabilidade em torno desse valor.
+:::
+:::
+
+::: fragment
+Já a [Fig @fig-ex1-2] sugere que:
+
+::: incremental
+-   não há "estacionariedade", não fazendo sentido falar em um único valor de tendência central!
+-   aparentemente há comportamento linear, o que permitiria a previsão de valores não observados.
+:::
+:::
+
+## Processo estatístico
+
+![Ilustração do processo estatístico](figs/etapas_est_estat.png){#fig-campos fig-align="center"}
+
+# Estatística Descritiva
+
+## Conceitos básicos
+
+**População:** é o conjunto de todos indivíduos (Unidades Experimentais - *UE*) que se tem interesse de investigar.
+
+**Censo:** processo de observação de toda a população;
+
+Fatores que podem impedir a realização de um censo:
+
+::: incremental
+-   Alto custo;
+-   Demanda muito tempo;
+-   Observação pode danificar os indivíduos;
+-   População de tamanho infinito ou desconhecido.
+:::
+
+## Conceitos básicos - II {.unnumbered .unlisted}
+
+Devido aos obstáculos de se realizar um censo, uma alternativa consiste de observar uma parcela da população.
+
+. . .
+
+**Amostra:** qualquer parcela de indivíduos da população.
+
+. . .
+
+[*Importante!*]{style="color:red;"} Para podermos extrapolar os resultados da amostra para a população, necessitamos que a amostra seja [representativa]{.underline}, isto é, que represente bem a população.
+
+. . .
+
+**Amostragem:** campo de estudo de técnicas de coleta de amostras representativas.
+
+## Conceitos básicos - III {.unnumbered .unlisted}
+
+**Amostragem probabilística:** qualquer técnica de seleção amostral que garanta que as probabilidades de inclusão de cada elemento são maiores que zero e conhecidas.
+
+. . .
+
+Conceitualmente, a **Amostragem Aleatória Simples** (AAS) é o plano de amostragem probabilística mais básico.
+
+. . .
+
+A AAS consiste da seleção aleatória de $n$ (tamanho amostral) elementos uma lista de todos elementos da população (*marco amostral*).
+
+. . .
+
+**Dificuldade:** em muitos casos, a obtenção do marco amostral é inviável.
+
+## Conceitos básicos - IV {.unnumbered .unlisted}
+
+Em geral, não há interesse nos indivíduos em si, mas em características, numéricas ou não dos mesmos.
+
+::: fragment
+**Variável:** característica numérica ou não compartilhada por todos indivíduos da população.
+:::
+
+```{r fig}
+```
+
+::: columns
+::: {.column width="40%"}
+::: fragment
+![](figs/variaveis.png){fig-align="center"}
+:::
+:::
+
+::: {.column width="60%"}
+::: fragment
+As variáveis são classificadas pelos valores que podem apresentar.
+
+**Exemplo:** "Profissão" e "Renda" apresentam valores de essência completamente diferentes.
+:::
+:::
+:::
+
+## Tipos de variáveis
+
+A classificação de variáveis é muito importante, pois auxilia na escolha dos métodos de Estatística Descritiva apropriados.
+
+. . .
+
+Por exemplo, não faz sentido falar em soma e produto de variáveis não numéricas. Assim, medidas como a média não podem ser calculadas para esse tipo de variáveis.
+
+. . .
+
+Vejamos as definições dos diferentes tipos de variáveis.
+
+## Tipos de variáveis - II {.unnumbered .unlisted}
+
+### Variáveis qualitativas (ou categóricas)
+
+Apresentam valores [não numéricos]{.underline} (também chamadas de categorias). Se dividem em:
+
+::: incremental
+-   Ordinais $\Rightarrow$ quando os possíveis categorias admitem algum tipo de ordenação;
+-   Nominais $\Rightarrow$ quando não há uma estrutura de ordenação natural das categorias.
+:::
+
+## Tipos de variáveis - III {.unnumbered .unlisted}
+
+### Variáveis quantitativas (ou numéricas)
+
+Apresentam valores [numéricos]{.underline}. Se dividem em:
+
+::: incremental
+-   Discretas $\Rightarrow$ quando os possíveis valores formam um conjunto [enumerável]{.underline};
+-   Contínuas $\Rightarrow$ quando os possíveis valores formam um conjunto [não enumerável]{.underline};
+:::
+
+##  {.unnumbered .unlisted .smaller}
+
+**Exemplo:** Uma comparação de algoritmos para ordenação de um conjunto de dados produziu o seguinte banco de dados:
+
+```{=latex}
+\begin{table}\centering
+\begin{tabular}{cccc}
+Algoritmo & Tamanho Amostral & Núcleos & Tempo \\ \hline
+ A         & Pequeno $(n = 10^2)$ & 4       & $<\text{0,01}$ \\
+ B         & Pequeno $(n = 10^2)$ & 4       & $\text{0,01}$  \\
+ A         & Interm. $(n = 10^3)$ & 4       & $<\text{0,01}$ \\
+ B         & Interm. $(n = 10^3)$ & 4       & $\text{0,79}$  \\
+ A         & Grande $(n = 10^4)$  & 4       & $<\text{0,01}$ \\
+ B         & Grande $(n = 10^4)$  & 4       & $\text{51,00}$ \\
+ A         & Pequeno $(n = 10^2)$ & 8       & $<\text{0,01}$ \\
+ B         & Pequeno $(n = 10^2)$ & 8       & $<\text{0,01}$ \\
+\end{tabular}
+\end{table}
+```
+::: fragment
+Tipos das variáveis: Algoritmo (nominal); Tamanho amostral (ordinal ou discreta); Núcleos (discreta); e Tempo (contínua).
+:::
+
+## Distribuições de frequências
+
+Muitas vezes, a quantidade de dados faz com que seja difícil enxergar comportamentos/padrões dos mesmos.
+
+. . .
+
+Uma ferramenta muito útil é a distribuição de frequências.
+
+. . .
+
+A distribuição de frequências:
+
+::: incremental
+-   associa os valores da variável com a frequência com que foram observados na amostra;
+-   permite evidenciar quais valores ocorrem com maior (ou menor) frequência;
+-   evidencia características da variável como: simetria; multimodalidade; etc.
+:::
+
+##  {.unnumbered .unlisted .smaller}
+
+### Distribuição de frequências absolutas
+
+::: panel-tabset
+## Definição
+
+Seja $x_1\ldots, x_n$ uma amostra de tamanho $n$ de uma variável $X$. Sejam $x_1^*, \ldots, x_k^*$ os $k$ valores distintos da amostra, onde, normalmente $k\leq n$.
+
+**Frequência (absoluta):** é o número de repetições $n_i$ apresentado pelo valor $x_i^*$ na amostra, com $i = 1, \ldots, k$.
+
+::: columns
+::: {.column width="65%"}
+A distribuição de frequências absoluta de $X$ é definida pela tabela ao lado.
+
+::: fragment
+Quando possível, os valores distintos devem ser apresentados em ordem crescente, isto é, $x_1^* \leq \ldots \leq x_k^*$.
+:::
+:::
+
+::: {.column width="35%"}
+::: table-with-total-row
+```{=latex}
+\begin{table}\centering
+\begin{tabular}{cc}
+Variável       & Frequência   \\ \hline
+$x_1^*$        &$n_1$         \\
+$\vdots$       &$\vdots$      \\
+$x_k^*$        &$n_k$         \\
+\textbf{Total} & $\sum_in_i$  \\
+\end{tabular}
+\end{table}
+```
+:::
+:::
+:::
+
+## Exemplo - Dados
+
+```{r}
+set.seed(54321)
+library(dplyr)
+library(knitr)
+library(kableExtra)
+library(DT)
+dia_util <- c(rep("Sim", 50), rep("Não", 20))
+aS <- round(rpois(n = 50, lambda = 8^2)/8)
+aN <- rpois(n = 20, lambda = 1)
+atendimentos <- c(aS, aN)
+df <- data.frame("Dia Útil" = dia_util, "Atendimentos" = factor(atendimentos, levels = 0:max(atendimentos)))
+df %>%
+  datatable(colnames = c("Dia Útil", "Atendimentos"), rownames = FALSE, class = 'nowrap',
+            options = list(lengthChange=FALSE, pageLength=5,
+                           language=list(url='//cdn.datatables.net/plug-ins/2.0.2/i18n/pt-BR.json')))
+```
+
+## Exemplo - Distribuições
+
+::: columns
+::: {.column width="55%"}
+::: fragment
+```{r}
+kable(data.frame(names(table(df[,1])), as.numeric(table(df[,1]))),
+      row.names = F, col.names=c('Dia Útil', 'Frequência'))
+```
+:::
+
+<p>
+
+</p>
+
+::: fragment
+```{r, render=TRUE}
+df0 <- data.frame(Frequencia = 'Frequência', Atendimentos = factor(df$Atendimentos, levels = 0:max(atendimentos)))
+tbl <- tbl_summary(data = df0, by = Atendimentos, missing = "no",
+                   label = list(Atendimentos ~ "Atendimentos"),
+                   statistic = all_categorical() ~ "{n}",
+                   type = list(Atendimentos ~ "categorical"))
+tbl <- modify_header(x = tbl, label ~ "**Atendimentos**", all_stat_cols() ~ "**{level}**")
+tbl <- modify_table_styling(tbl, columns = everything(), text_format = "indent",
+                            undo_text_format = TRUE)
+tbl <- modify_table_styling(tbl, columns = everything(), align = "center")
+tbl <- modify_footnote(tbl, all_stat_cols() ~ NA)
+# tbl <- modify_spanning_header(tbl, all_stat_cols() ~ "**Atendimentos**")
+tbl <- remove_row_type(tbl, Frequencia, type = "header")
+# # show_header_names(tbl)
+tbl %>% bold_levels() %>% bold_labels() %>% as_gt() %>%
+  # cols_width(label ~ "180px", all_stat_cols() ~ "50px") %>%
+  tab_op()
+```
+:::
+:::
+
+::: {.column width="45%"}
+::: fragment
+```{r, render=TRUE}
+tbl <- tbl_summary(data = df, by = Atendimentos, missing = "no",
+                   label = list(Dia.Útil ~ "", Atendimentos ~ "Atendimentos"),
+                   statistic = all_categorical() ~ "{n}",
+                   type = list(Dia.Útil ~ "categorical", Atendimentos ~ "categorical"))
+tbl <- modify_header(x = tbl, label = "**Dia Útil**", all_stat_cols() ~ "**{level}**")
+tbl <- modify_table_styling(tbl, columns = everything(), text_format = "indent",
+                            undo_text_format = TRUE)
+tbl <- modify_table_styling(tbl, columns = everything(), align = "center")
+tbl <- modify_footnote(tbl, all_stat_cols() ~ NA)
+tbl <- modify_spanning_header(tbl, all_stat_cols() ~ "**Atendimentos**")
+tbl <- remove_row_type(tbl, Dia.Útil, type = "header")
+# show_header_names(tbl)
+tbl %>% bold_levels() %>% bold_labels() %>% as_gt() %>%
+  # cols_width(label ~ px(130), all_stat_cols() ~ px(50)) %>%
+  tab_op()
+```
+:::
+:::
+:::
+:::
+
+##  {.unnumbered .unlisted}
+
+### Distribuição de frequências relativas
+
+::: panel-tabset
+## [Definição]{style="font-size:80%"}
+
+::: {style="font-size:80%"}
+Na última tabela, vimos que o número de ocorrências nos subgrupos `Dia Útil = Não` e `Dia Útil = Sim` são diferentes.
+
+::: fragment
+[**Importante:**]{style="color: red;"} Nesses casos, a comparação entre subgrupos é comprometida.
+:::
+
+::: fragment
+Nesse caso, devemos usar as frequências relativas: $$
+f_i = \frac{n_i}{n},
+$$ em que $n_i$ é a frequência (absoluta) do $i$-ésimo valor e $n$ é o tamanho da amostra.
+:::
+
+::: fragment
+[**Observação:**]{style="color: blue;"} As frequências relativas podem ser apresentadas em percentual.
+:::
+:::
+
+## [Exemplo anterior]{style="font-size:80%"}
+
+::: {style="font-size:70%"}
+::: columns
+::: {.column width="45%"}
+```{r, render=TRUE}
+#| tbl-cap: Frequências absolutas
+tbl <- tbl_summary(data = df, by = Atendimentos, missing = "no",
+                   label = list(Dia.Útil ~ "", Atendimentos ~ "Atendimentos"),
+                   statistic = all_categorical() ~ "{n}",
+                   type = list(Dia.Útil ~ "categorical", Atendimentos ~ "categorical"))
+tbl <- modify_header(x = tbl, label = "**Dia Útil**", all_stat_cols() ~ "**{level}**")
+tbl <- modify_table_styling(tbl, columns = everything(), text_format = "indent",
+                            undo_text_format = TRUE)
+tbl <- modify_table_styling(tbl, columns = everything(), align = "center")
+tbl <- modify_footnote(tbl, all_stat_cols() ~ NA)
+tbl <- modify_spanning_header(tbl, all_stat_cols() ~ "**Atendimentos**")
+tbl <- remove_row_type(tbl, Dia.Útil, type = "header")
+# show_header_names(tbl)
+tbl %>% bold_levels() %>% bold_labels() %>% as_gt() %>%
+  # cols_width(label ~ px(130), all_stat_cols() ~ px(50)) %>%
+  tab_op()
+```
+:::
+
+::: {.column width="55%"}
+```{r, render=TRUE}
+#| tbl-cap: Frequências relativas (%)
+tbl <- tbl_summary(data = df, by = Atendimentos, missing = "no",
+                   label = list(Dia.Útil ~ "", Atendimentos ~ "Atendimentos"),
+                   statistic = all_categorical() ~ "{p}", percent = "row",
+                   digits = all_categorical() ~ 0,
+                   type = list(Dia.Útil ~ "categorical", Atendimentos ~ "categorical"))
+tbl <- modify_header(x = tbl, label = "**Dia Útil**", all_stat_cols() ~ "**{level}**")
+tbl <- modify_table_styling(tbl, columns = everything(), text_format = "indent",
+                            undo_text_format = TRUE)
+tbl <- modify_table_styling(tbl, columns = everything(), align = "center")
+tbl <- modify_footnote(tbl, all_stat_cols() ~ NA)
+tbl <- modify_spanning_header(tbl, all_stat_cols() ~ "**Atendimentos**")
+tbl <- remove_row_type(tbl, Dia.Útil, type = "header")
+# show_header_names(tbl)
+tbl %>% bold_levels() %>% bold_labels() %>% as_gt() %>%
+  # cols_width(vars(label) ~ px(500), starts_with("stat") ~ px(100)) %>%
+  tab_op()
+```
+:::
+:::
+
+Algumas observações importantes:
+
+::: incremental
+-   Note que os totais da distribuição de frequências relativas correspondem a 100%;
+-   Isso significa [distribuição dos atendimentos por dia útil]{style="color:red;"};
+-   Caso necessário, poderíamos calcular os percentuais por coluna. Nesse caso, teríamos a [distribuição do dia útil por atendimentos]{style="color:red;"}.
+:::
+:::
+:::
+
+##  {.unnumbered .unlisted}
+
+### Distribuição de frequências intervalares
+
+Nos casos em que temos pouca (ou nenhuma) repetição de valores, a distribuição de frequências não traz informação relevante.
+
+::: fragment
+Normalmente, esse fenômeno ocorre em variáveis quantitativas contínuas, mas também pode ocorrer nas discretas.
+:::
+
+::: fragment
+[**Alternativa:**]{style="color: blue;"} Considerar a frequência de **faixas** de valores, em vez dos valores propriamente ditos.
+:::
+
+##  {.unnumbered .unlisted}
+
+### Distribuição de frequências intervalares - II
+
+[**O que são?**]{style="color: blue;"} As faixas são subintervalos, cuja união compreende todos valores observados da variável em questão e cuja as interseções 2 a 2 são vazias.
+
+::: fragment
+**Observações:**
+
+1.  A definição acima garante que todos valores observados pertençam **a uma e apenas uma** faixa;
+2.  As faixas também podem ser denominadas de **classes**.
+:::
+
+##  {.unnumbered .unlisted .smaller}
+
+### Distribuição de frequências intervalares - III
+
+[**Construção:**]{style="color: blue;"} Dada uma amostra $x_1, \ldots, x_n$ de tamanho $n$, para a construção de $k$ faixas $I_1, \ldots, I_k$, devemos:
+
+::: incremental
+1.  escolher $a_0 < a_k$, tais que $a_0 \leq x_1, \ldots, x_n \leq a_k$ [(intervalo abrangendo todos os dados)]{style="color: red;"};
+2.  determinar $a_1 < \ldots < a_{k-1} \in (a_0, a_k)$ [(limites das faixas)]{style="color: red;"};
+3.  tomar $$I_1 = [a_0, a_1] \ \ \text{e} \ \ I_j = (a_{j-1}, a_j], \ \ j = 2, \ldots, k.$$
+:::
+
+![](figs/construcao_classes_f6.png){fig-align="center"}
+
+##  {.unnumbered .unlisted .smaller}
+
+### Distribuição de frequências intervalares - III
+
+[**Construção:**]{style="color: blue;"} Dada uma amostra $x_1, \ldots, x_n$ de tamanho $n$, para a construção de $k$ faixas $I_1, \ldots, I_k$, devemos:
+
+1.  escolher $a_0 < a_k$, tais que $a_0 \leq x_1, \ldots, x_n \leq a_k$ [(intervalo abrangendo todos os dados)]{style="color: red;"};
+2.  determinar $a_1 < \ldots < a_{k-1} \in (a_0, a_k)$ [(limites das faixas)]{style="color: red;"};
+3.  tomar $$I_1 = [a_0, a_1] \ \ \text{e} \ \ I_j = (a_{j-1}, a_j], \ \ j = 2, \ldots, k.$$
+
+![](figs/construcao_classes_f5.png){fig-align="center"}
+
+##  {.unnumbered .unlisted .smaller}
+
+### Distribuição de frequências intervalares - III
+
+[**Construção:**]{style="color: blue;"} Dada uma amostra $x_1, \ldots, x_n$ de tamanho $n$, para a construção de $k$ faixas $I_1, \ldots, I_k$, devemos:
+
+1.  escolher $a_0 < a_k$, tais que $a_0 \leq x_1, \ldots, x_n \leq a_k$ [(intervalo abrangendo todos os dados)]{style="color: red;"};
+2.  determinar $a_1 < \ldots < a_{k-1} \in (a_0, a_k)$ [(limites das faixas)]{style="color: red;"};
+3.  tomar $$I_1 = [a_0, a_1] \ \ \text{e} \ \ I_j = (a_{j-1}, a_j], \ \ j = 2, \ldots, k.$$
+
+![](figs/construcao_classes_f4.png){fig-align="center"}
+
+##  {.unnumbered .unlisted .smaller}
+
+### Distribuição de frequências intervalares - III
+
+[**Construção:**]{style="color: blue;"} Dada uma amostra $x_1, \ldots, x_n$ de tamanho $n$, para a construção de $k$ faixas $I_1, \ldots, I_k$, devemos:
+
+1.  escolher $a_0 < a_k$, tais que $a_0 \leq x_1, \ldots, x_n \leq a_k$ [(intervalo abrangendo todos os dados)]{style="color: red;"};
+2.  determinar $a_1 < \ldots < a_{k-1} \in (a_0, a_k)$ [(limites das faixas)]{style="color: red;"};
+3.  tomar $$I_1 = [a_0, a_1] \ \ \text{e} \ \ I_j = (a_{j-1}, a_j], \ \ j = 2, \ldots, k.$$
+
+![](figs/construcao_classes_f3.png){fig-align="center"}
+
+##  {.unnumbered .unlisted .smaller}
+
+### Distribuição de frequências intervalares - III
+
+[**Construção:**]{style="color: blue;"} Dada uma amostra $x_1, \ldots, x_n$ de tamanho $n$, para a construção de $k$ faixas $I_1, \ldots, I_k$, devemos:
+
+1.  escolher $a_0 < a_k$, tais que $a_0 \leq x_1, \ldots, x_n \leq a_k$ [(intervalo abrangendo todos os dados)]{style="color: red;"};
+2.  determinar $a_1 < \ldots < a_{k-1} \in (a_0, a_k)$ [(limites das faixas)]{style="color: red;"};
+3.  tomar $$I_1 = [a_0, a_1] \ \ \text{e} \ \ I_j = (a_{j-1}, a_j], \ \ j = 2, \ldots, k.$$
+
+![](figs/construcao_classes_f2.png){fig-align="center"}
+
+##  {.unnumbered .unlisted .smaller}
+
+### Distribuição de frequências intervalares - III
+
+[**Construção:**]{style="color: blue;"} Dada uma amostra $x_1, \ldots, x_n$ de tamanho $n$, para a construção de $k$ faixas $I_1, \ldots, I_k$, devemos:
+
+1.  escolher $a_0 < a_k$, tais que $a_0 \leq x_1, \ldots, x_n \leq a_k$ [(intervalo abrangendo todos os dados)]{style="color: red;"};
+2.  determinar $a_1 < \ldots < a_{k-1} \in (a_0, a_k)$ [(limites das faixas)]{style="color: red;"};
+3.  tomar $$I_1 = [a_0, a_1] \ \ \text{e} \ \ I_j = (a_{j-1}, a_j], \ \ j = 2, \ldots, k.$$
+
+![](figs/construcao_classes_f1.png){fig-align="center"}
+
+##  {.unnumbered .unlisted .smaller}
+
+### Distribuição de frequências intervalares - IV
+
+[**Observações:**]{style="color:blue;"}
+
+::: incremental
+1.  Note que $$\bigcup_{j=1}^kI_j = [a_0, a_k] \ \ \ \text{e} \ \ \ I_j\cap I_l = \emptyset, \ \forall i,j = 1,\ldots,k;$$
+2.  Sempre que possível, utilizar amplitudes iguais! Isto é, para $k$ fixo, fazer $h=\frac{a_k-a_0}{k}$ e $$I_1 = [a_0, a_0+h], \ \ I_2 = [a_0+h, a_0+2h], \ \ \ldots, \ \ I_1 = [a_0 + (k-1)h, a_0+kh];$$
+3.  Para o cálculo acima, precisamos do número de faixas $k$, Sturges (1926) sugere tomar $k = 1 + \text{3,322}\log_{10}(n)$, em que $n$ é o tamanho da amostra.
+:::
+
+::: fragment
+::: {.callout-note icon="false"}
+## Bibliografia
+
+📚 Sturges, H. A. (1926). The choice of a class interval. *Journal of the american statistical association*, 21(153), 65-66.
+:::
+:::
+
+##  {.unnumbered .unlisted .smaller}
+
+### Distribuição de frequências intervalares - V
+
+Há casos que o fenômeno impõe a necessidade de escolha de faixas desiguais.
+
+::: fragment
+[**Problema:**]{style="color:red;"} Nesses casos, a amplitude da faixa tem influencia na sua frequência. [Por exemplo, faixas muito grandes podem apresentar frequência muito alta, não pela região ter pontos muito frequentes, mas pelo fato de a região ser maior]{.fragment}
+:::
+
+::: fragment
+[**Alternativa:**]{style="color:blue;"} Utilizar a [densidade]{.underline} de frequência relativa. [A densidade da $j$-ésima faixa é definida por $$d_i = \frac{f_i}{h_i},$$em que $h_i = a_i-a_{i-1}$ é a amplitude da referida faixa.]{.fragment}
+:::
+
+::: fragment
+**Observação:** A densidade pode ser interpretada como a quantidade de frequência relativa por unidade da variável na respectiva faixa.
+:::
+
+##  {.unnumbered .unlisted .smaller}
+
+### Exemplo
+
+Exemplo de uma distribuição de frequências intervalar de dados fictícios:
+
+{{< include tab_exemplo.html >}}
+
+::: fragment
+[**Observação:**]{style="color: blue;"} A mesma frequência relativa 0,2 da faixa $(1,2]$:
+:::
+
+::: incremental
+-   corresponde a 0,05 por unidade de renda ($d_3 = \text{0,05}$) em $(2,6]$, ou seja, [fica menos concentrada nessa faixa]{style="color: red;"};
+-   corresponde a 0,025 por unidade de renda ($d_4 = \text{0,025}$) em $(6,14]$, ou seja, [fica **ainda** menos concentrada nessa faixa]{style="color: red;"};
+:::
+
+##  {.unnumbered .unlisted .smaller}
+
+### Gráficos - Variáveis Quantitativas
+
+::: panel-tabset
+## Gráfico de Barras
+
+No caso de distribuições [não intervalares]{.underline}, utilizamos o gráficos de barras (verticais), também de chamado de colunas.
+
+[**Construção:**]{style="color: blue;"}
+
+::: incremental
+1.  Desenhamos o plano cartesiano;
+2.  No eixo horizontal são posicionados os valores da variável;
+3.  A distribuição é representada por retângulos com alturas dadas pelas frequências relativas, posicionados sobre os respectivos valores.
+:::
+
+::: fragment
+[**Observações:**]{style="color: blue;"}
+:::
+
+::: incremental
+1.  Os retângulos devem ter bases iguais e devem ser separados por distâncias iguais.
+2.  Devemos apresentar Valores intermediários com frequência zero.
+3.  Pode ser utilizado para qualitativas ordinais [(para nominais usamos o gráfico de setores, ou de pizza)]{style="color:red; "}
+:::
+
+## Histograma
+
+No caso de distribuições [intervalares]{.underline}, utilizamos o histograma.
+
+[**Construção:**]{style="color: blue;"}
+
+::: incremental
+1.  Desenhamos o plano cartesiano;
+2.  No eixo horizontal são posicionadas as faixas de valores da variável;
+3.  A distribuição é representada por retângulos com alturas dadas pelas densidades, posicionados sobre as respectivas faixas.
+:::
+
+::: fragment
+[**Observações:**]{style="color: blue;"}
+:::
+
+::: incremental
+1.  Parecido com o gráfico de barras, mas os retângulos se tocam [(para ressaltar a continuidade)]{style="color:red;"};
+2.  Área total dos gráficos (soma das áreas dos retângulos é sempre 1).
+:::
+:::
+
+##  {.unnumbered .unlisted .smaller}
+
+### Exemplo - Distribuição Não Intervalar
+
+::: columns
+::: {.column width="50%"}
+```{r, render=TRUE}
+barplot(prop.table(table(factor(atendimentos, levels = 0:max(atendimentos)))),
+        ylab="Freq. relativa", xlab="Atendimentos")
+```
+:::
+
+::: {.column width="50%"}
+```{r, render=TRUE}
+barplot(prop.table(table('Dia Útil' = df[,1],
+                         Atendimentos = factor(atendimentos, levels = 0:max(atendimentos))), margin = 1),
+        ylab="Freq. relativa", xlab="Atendimentos", beside=TRUE, col=c('blue', 'red'))
+legend('top', legend = c("Não", "Sim"), horiz = TRUE, fill = c('blue', 'red'))
+```
+:::
+:::
+
+##  {.unnumbered .unlisted .smaller}
+
+### Exemplo - Distribuição Intervalar
+
+::: columns
+::: {.column width="50%"}
+```{r, render=TRUE, fig.width=6, fig.height=4}
+
+brs <- c(0, 1, 2, 6, 14)
+frs <- c(.4, .2, .2, .2)
+dss <- frs/diff(brs)
+
+plot(0, type='n', xlim=range(brs), ylim=c(0,max(frs, dss)), xlab='Renda',
+     ylab='Frequência', frame.plot=F, axes=T)
+rect(xleft = brs[-5], ybottom = 0, xright = brs[-1], ytop = frs, col = 'gray')
+```
+:::
+
+::: {.fragment .column width="50%"}
+```{r, render=TRUE, fig.width=6, fig.height=4}
+
+brs <- c(0, 1, 2, 6, 14)
+frs <- c(.4, .2, .2, .2)
+dss <- frs/diff(brs)
+
+plot(0, type='n', xlim=range(brs), ylim=c(0,max(frs, dss)), xlab='Renda', ylab='Densidade',
+     frame.plot=F, axes=T)
+rect(xleft = brs[-5], ybottom = 0, xright = brs[-1], ytop = dss, col = 'gray')
+```
+:::
+:::
+
+##  {.unnumbered .unlisted .smaller}
+
+### Exemplo - Distribuição Intervalar
+
+```{r, render=TRUE, fig.width=6, fig.height=4}
+
+brs <- c(0, 1, 2, 6, 14)
+frs <- c(.4, .2, .2, .2)
+dss <- frs/diff(brs)
+
+plot(0, type='n', xlim=range(brs), ylim=c(0,max(frs, dss)), xlab='Renda', ylab='Densidade',
+     frame.plot=F, axes=T)
+rect(xleft = brs[-5], ybottom = 0, xright = brs[-1], ytop = dss, col = 'gray')
+```
+
+##  {.unnumbered .unlisted .smaller}
+
+### Exemplo - Distribuição Intervalar
+
+```{r, render=TRUE, fig.width=6, fig.height=4}
+
+brs <- c(0, 1, 2, 6, 14)
+frs <- c(.4, .2, .2, .2)
+dss <- frs/diff(brs)
+
+plot(0, type='n', xlim=range(brs), ylim=c(0,max(frs, dss)), xlab='Renda', ylab='Densidade',
+     frame.plot=F, axes=T)
+rect(xleft = brs[-5], ybottom = 0, xright = brs[-1], ytop = dss, col = 'gray')
+rect(xleft = c(1.5, 2), ybottom = 0, xright = c(2, 3), ytop = dss[2:3], col = 'orange', border = NA)
+lines(x=c(1.5, 1.5), y = c(0, dss[2]), lty='dotted')
+lines(x=c(3, 3), y = c(0, dss[3]), lty='dotted')
+lines(x=c(1.5, 2, 2, 1.5), y = c(dss[2], dss[2], 0, 0))
+lines(x=c(3, 2, 2, 3), y = c(0, 0, dss[3], dss[3]))
+```
+
+##  {.unnumbered .unlisted .smaller}
+
+### Exemplo - Distribuição Intervalar
+
+```{r, render=TRUE, fig.width=6, fig.height=4}
+
+brs <- c(0, 1, 2, 6, 14)
+frs <- c(.4, .2, .2, .2)
+dss <- frs/diff(brs)
+
+plot(0, type='n', xlim=range(brs), ylim=c(0,max(frs, dss)), xlab='Renda', ylab='Densidade',
+     frame.plot=F, axes=T)
+rect(xleft = brs[-5], ybottom = 0, xright = brs[-1], ytop = dss, col = 'gray')
+rect(xleft = c(1.5, 2), ybottom = 0, xright = c(2, 3), ytop = dss[2:3], col = 'orange', border = NA)
+lines(x=c(1.5, 1.5), y = c(0, dss[2]), lty='dotted')
+lines(x=c(3, 3), y = c(0, dss[3]), lty='dotted')
+lines(x=c(1.5, 2, 2, 1.5), y = c(dss[2], dss[2], 0, 0))
+lines(x=c(3, 2, 2, 3), y = c(0, 0, dss[3], dss[3]))
+arrows(x0 = 6, y0 = .2, x1 = 2.2, y1 = .025, length = .07)
+text(x = 6, y = .2, labels = "Frequência estimada em (1.5, 3]", pos=4)
+```
+
+## Medidas Descritivas
+
+Muitas vezes, desejamos evidenciar algumas características dos dados por meio de medidas numéricas.
+
+::: {.fragment fragment-index="1"}
+Dada uma amostra $x_1, \ldots, x_n$, utilizar uma função $t(x_1, \ldots, x_n)$ para quantificar algum comportamento dos dados.
+:::
+
+::: {.fragment fragment-index="2"}
+As principais características são:
+:::
+
+<ul>
+  <li class=fragment fragment-index="3">tendência central da variável $\Rightarrow$ [Exemplos: média, mediana e moda;]{style="color:red; "}</li>
+  <li class=fragment fragment-index="4">dispersão da variável $\Rightarrow$ [Exemplos: variância e desvio-padrão.]{style="color:red; "}</li>
+</ul>
+
+##  {.unnumbered .unlisted}
+
+### Medidas de Tendência Central
+
+Buscam indicar um valor "típico" ou "representativo" dos dados em questão;
+
+::: {.fragment fragment-index="1"}
+O que seria valor "típico"?
+:::
+
+<ul>
+  <li class=fragment fragment-index="2">ponto de equilíbrio dos dados $\Rightarrow$ [média (aritmética);]{style="color:red; "}</li>
+  <li class=fragment fragment-index="3">ponto central dos dados $\Rightarrow$ [mediana;]{style="color:red; "}</li>
+  <li class=fragment fragment-index="4">ponto de alta frequência $\Rightarrow$ [moda;]{style="color:red; "}</li>
+</ul>
+
+
+##  {.unnumbered .unlisted .smaller}
+
+### Média (Aritmética)
+
+Para uma [amostra]{.underline} $x_1, \ldots, x_n$ de tamanho $n$, a média (aritmética) amostral é definida por $$\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i.$$
+
+::: {.fragment fragment-index="1"}
+
+[**Observação:**]{style="color:blue; "} Se $x_1, \ldots, x_n$ se trata de uma população, em vez de $\bar{x}$, denota-se a média (populacional) por $\mu$.
+
+::: 
+
+::: {.columns .v-center-container}
+::: {.column width="68%"}
+
+[Para uma distribuição de frequências não intervalar]{.fragment fragment-index="2"} [[como a do lado]{.fragment fragment-index="3"}]{.fragment .highlight-current-red fragment-index="3"}[, podemos utilizar uma das seguintes expressões:]{.fragment fragment-index="4"}
+
+::: {.fragment fragment-index="4"}
+$$
+\bar{x} = \frac{1}{n}\sum_{i=1}^k x_i^*n_i = \sum_{i=1}^k x_i^*f_i.
+$$
+:::
+
+::: {.fragment fragment-index="5"}
+[**Observação:**]{style="color:blue; "} O termo intermediário é a média ponderada com pesos $n_i$.
+:::
+:::
+
+::: {.column width="32%"}
+::: {.fragment fragment-index="3"}
+::: {.table-with-total-row .fragment .highlight-current-red fragment-index="3" style="font-size:70%; "}
+```{=latex}
+\begin{table}\centering
+\begin{tabular}{ccc}
+Variável       & $n_i$         & $f_i$        \\ \hline
+$x_1^*$        & $n_1$         & $f_1$        \\
+$\vdots$       & $\vdots$      & $\vdots$     \\
+$x_k^*$        & $n_k$         & $f_k$        \\
+\textbf{Total} & $\sum_in_i=n$ & $\sum_if_i=1$\\
+\end{tabular}
+\end{table}
+```
+:::
+:::
+:::
+:::
+
+##  {.unnumbered .unlisted}
+
+### Média (Aritmética)
+
+![](figs/ilustracao_media_pto_equilibrio_f1.png)
+
+##  {.unnumbered .unlisted}
+
+### Média (Aritmética)
+
+![](figs/ilustracao_media_pto_equilibrio_f2.png)
+
+##  {.unnumbered .unlisted}
+
+### Média (Aritmética)
+
+![](figs/ilustracao_media_pto_equilibrio_f3.png)
+
+##  {.unnumbered .unlisted}
+
+### Média (Aritmética)
+
+![](figs/ilustracao_media_pto_equilibrio_f4.png)
+
+##  {.unnumbered .unlisted}
+
+### Média (Aritmética)
+
+E se os dados estivessem representados apenas por meio de distribuições intervalares? [[Nesse caso não temos mais acesso as "observações originais"!]{.fragment fragment-index="1"}]{.fragment .highlight-current-red fragment-index="1"}
+
+::: fragment
+[**Alternativa:**]{style="color:blue; "} Substituir todas observações de uma faixa pelo seu respectivo ponto médio.
+:::
+
+::: fragment
+**Definição:** Dada a $i$-ésima faixa $(a_{i-1}, a_i]$, o seu ponto médio é definido por $x_i^{(m)} = \frac{a_{i-1} + a_i}{2}$ e média é aproximada por $$\bar{x} \approx \frac{1}{n}\sum_{i=1}^kx_i^{(m)}n_i = \sum_{i=1}^kx_i^{(m)}f_i.$$
+:::
+
+##  {.unnumbered .unlisted}
+
+### Média (Aritmética)
+
+::: {.fragment fragment-index="3"}
+Pela tabela abaixo vemos que $\sum_ix_i^{(m)} = 165$. [Logo, a média é aproximada por $\bar{x} \approx \frac{165}{50} = \text{3,3}$.]{.fragment fragment-index="4"}
+:::
+
+{{< include tab_exemplo_cont1.html >}}
+
+##  {.unnumbered .unlisted}
+
+### Média (Aritmética)
+
+Algumas observações sobre a média:
+
+::: incremental
+-   em certo sentido, $\bar{x}$ (amostral) "tende" a apresentar valores próximos de $\mu$ (populacional) e a "precisão" aumenta com o aumento de $n$;
+-   só é calculada em variáveis quantitativas;
+-   no caso intervalar $\downarrow k \Rightarrow$ piora a aproximação da média;
+-   não recomendada em dados assimétricos;
+-   é muito sensível a valores discrepantes;
+:::
+
+##  {.unnumbered .unlisted .smaller}
+
+### Mediana
+
+[**Importante:**]{style="color:red; "} Observações discrepantes tendem a se posicionar em um dos extremos da amostra, próximos dos valores mínimo e/ou máximo.
+
+::: fragment
+
+[**Ideia:**]{style="color:blue; "} Assim, podemos construir uma medida de tendência central que utilize o(s) valor(es) que ocupa(m) a(s) posição(ões) central(is).
+
+:::
+
+::: fragment
+
+**Definição:** Dada uma amostra $x_1, \ldots, x_n$ de tamanho $n$, a mediana (amostral) é denotada por $\tilde{x}$ e definida por
+$$\tilde{x} = \begin{cases}
+x_{\left(\frac{n+1}{2}\right)}, & \text{se } n \text{ é ímpar;}\\
+\frac{x_{\left(\frac{n}{2}\right)} + x_{\left(\frac{n}{2}+1\right)}}{2}, & \text{se } n \text{ é par;}\\
+\end{cases}
+$$
+em que $x_{(1)} \leq \cdots \leq x_{(n)}$ representam as observações ordenadas em ordem crescente.
+
+::: 
+
+::: fragment
+
+[**Observações:**]{style="color:blue; "} 
+
+::: incremental
+-   Se os dados são observações de toda a população, então a mediana é denotada por $\tilde{\mu}$, em vez de $\tilde{x}$;
+-   50% dos valores da amostra são inferiores e 50% são superiores a mediana;
+
+:::
+
+:::
+
+##  {.unnumbered .unlisted}
+
+### Mediana
+
+**Exemplo:** Um exame para detectar deficiência de ferro foi realizado em uma amostra de $n=12$ gestantes e forneceu os seguintes dados:
+
+<div style="text-align: center;">15,2&nbsp;&nbsp; 9,3&nbsp;&nbsp; 7,6&nbsp;&nbsp; 11,9&nbsp;&nbsp; 10,4&nbsp;&nbsp; 9,7&nbsp;&nbsp; 20,4&nbsp;&nbsp; 9,4&nbsp;&nbsp; 11,5&nbsp;&nbsp; 16,2&nbsp;&nbsp; 9,4&nbsp;&nbsp; 8,3</div>
+
+Colocando em ordem crescente, obtemos:
+
+<div style="text-align: center;">7,6&nbsp;&nbsp; 8,3&nbsp;&nbsp; 9,3&nbsp;&nbsp; 9,4&nbsp;&nbsp; 9,4&nbsp;&nbsp; 9,7&nbsp;&nbsp; 10,4&nbsp;&nbsp; 11,5&nbsp;&nbsp; 11,9&nbsp;&nbsp; 15,2&nbsp;&nbsp; 16,2&nbsp;&nbsp; 20,4</div>
+
+Como $n=12$, há duas posições centrais: $\frac{n}{2} = 6$ e $\frac{n}{2} + 1 = 7$.
+
+Assim, a mediana é dada por
+$$\tilde{x} = \frac{x_{(6)} + x_{(7)}}{2} = \frac{9\text{,}7 + 10\text{,}4}{2} = 10\text{,}05.$$
+
+##  {.unnumbered .unlisted}
+
+### Mediana
+
+**Exemplo:** Abaixo é apresentada uma ilustração de $\bar{x}$ e $\tilde{x}$ para o conjunto de dados:
+
+![](figs/mediana_exemplo_f3.png)
+
+##  {.unnumbered .unlisted}
+
+### Mediana
+
+**Exemplo:** Abaixo é apresentada uma ilustração de $\bar{x}$ e $\tilde{x}$ para o conjunto de dados:
+
+![](figs/mediana_exemplo_f2.png)
+
+
+##  {.unnumbered .unlisted}
+
+### Mediana
+
+**Exemplo:** Abaixo é apresentada uma ilustração de $\bar{x}$ e $\tilde{x}$ para o conjunto de dados:
+
+![](figs/mediana_exemplo_f1.png)
+
+::: fragment
+
+[**Observação:**]{style="color:blue; "} em comparação com a média, a mediana é muito menos afetada por observações discrepantes (15,2, 16,2 e 20,4).
+
+:::
+
+
+##  {.unnumbered .unlisted}
+
+### Mediana
+
+**Pergunta:** como aproximar $\tilde{x}$ quando os dados estão apresentados na forma de distribuição intervalar?
+
+::: fragment
+
+[**Ideia:**]{style="color: blue; "} Nesse caso, devemos aproximar o valor de $\tilde{x}$ (ou $\tilde{\mu}$) como o valor que separa os 50% valores inferiores dos 50% valores superiores dos dados.
+
+:::
+
+:::: columns
+
+::: {.column width="60%"}
+
+:::
+
+::: {.column width="40%"}
+
+:::
+
+::::
+
+##  {.unnumbered .unlisted}
+
+### Mediana
+
+**Pergunta:** como aproximar $\tilde{x}$ quando os dados estão apresentados na forma de distribuição intervalar?
+
+[**Ideia:**]{style="color: blue; "} Nesse caso, devemos aproximar o valor de $\tilde{x}$ (ou $\tilde{\mu}$) como o valor que separa os 50% valores inferiores dos 50% valores superiores dos dados.
+
+:::: columns
+
+::: {.column width="60%"}
+
+![](figs/aproximacao_mediana_f1.png)
+
+:::
+
+::: {.column width="40%"}
+
+:::
+
+::::
+
+
+##  {.unnumbered .unlisted}
+
+### Mediana
+
+**Pergunta:** como aproximar $\tilde{x}$ quando os dados estão apresentados na forma de distribuição intervalar?
+
+[**Ideia:**]{style="color: blue; "} Nesse caso, devemos aproximar o valor de $\tilde{x}$ (ou $\tilde{\mu}$) como o valor que separa os 50% valores inferiores dos 50% valores superiores dos dados.
+
+:::: columns
+
+::: {.column width="60%"}
+
+![](figs/aproximacao_mediana_f2.png)
+
+:::
+
+::: {.column width="40%"}
+
+:::
+
+::::
+
+##  {.unnumbered .unlisted}
+
+### Mediana
+
+**Pergunta:** como aproximar $\tilde{x}$ quando os dados estão apresentados na forma de distribuição intervalar?
+
+[**Ideia:**]{style="color: blue; "} Nesse caso, devemos aproximar o valor de $\tilde{x}$ (ou $\tilde{\mu}$) como o valor que separa os 50% valores inferiores dos 50% valores superiores dos dados.
+
+:::: columns
+
+::: {.column width="60%"}
+
+![](figs/aproximacao_mediana_f3.png)
+
+:::
+
+::: {.column width="40%"}
+
+:::
+
+::::
+
+
+##  {.unnumbered .unlisted}
+
+### Mediana
+
+**Pergunta:** como aproximar $\tilde{x}$ quando os dados estão apresentados na forma de distribuição intervalar?
+
+[**Ideia:**]{style="color: blue; "} Nesse caso, devemos aproximar o valor de $\tilde{x}$ (ou $\tilde{\mu}$) como o valor que separa os 50% valores inferiores dos 50% valores superiores dos dados.
+
+::: {.column width="60%"}
+
+![](figs/aproximacao_mediana_f4.png)
+
+:::
+
+::: {.column width="40%"}
+
+:::
+
+::::
+
+
+##  {.unnumbered .unlisted}
+
+### Mediana
+
+**Pergunta:** como aproximar $\tilde{x}$ quando os dados estão apresentados na forma de distribuição intervalar?
+
+[**Ideia:**]{style="color: blue; "} Nesse caso, devemos aproximar o valor de $\tilde{x}$ (ou $\tilde{\mu}$) como o valor que separa os 50% valores inferiores dos 50% valores superiores dos dados.
+
+:::: columns
+
+::: {.column width="60%"}
+
+![](figs/aproximacao_mediana_f5.png)
+
+:::
+
+::: {.column width="40%"}
+
+:::
+
+::::
+
+
+##  {.unnumbered .unlisted}
+
+### Mediana
+
+**Pergunta:** como aproximar $\tilde{x}$ quando os dados estão apresentados na forma de distribuição intervalar?
+
+[**Ideia:**]{style="color: blue; "} Nesse caso, devemos aproximar o valor de $\tilde{x}$ (ou $\tilde{\mu}$) como o valor que separa os 50% valores inferiores dos 50% valores superiores dos dados.
+
+:::: columns
+
+::: {.column width="60%"}
+
+![](figs/aproximacao_mediana_f6.png)
+
+:::
+
+::: {.column width="40%"}
+
+:::
+
+::::
+
+
+##  {.unnumbered .unlisted}
+
+### Mediana
+
+**Pergunta:** como aproximar $\tilde{x}$ quando os dados estão apresentados na forma de distribuição intervalar?
+
+[**Ideia:**]{style="color: blue; "} Nesse caso, devemos aproximar o valor de $\tilde{x}$ (ou $\tilde{\mu}$) como o valor que separa os 50% valores inferiores dos 50% valores superiores dos dados.
+
+:::: columns
+
+::: {.column width="60%"}
+
+![](figs/aproximacao_mediana_f7.png)
+
+:::
+
+::: {.column width="40%"}
+
+:::
+
+::::
+
+##  {.unnumbered .unlisted}
+
+### Mediana
+
+**Pergunta:** como aproximar $\tilde{x}$ quando os dados estão apresentados na forma de distribuição intervalar?
+
+[**Ideia:**]{style="color: blue; "} Nesse caso, devemos aproximar o valor de $\tilde{x}$ (ou $\tilde{\mu}$) como o valor que separa os 50% valores inferiores dos 50% valores superiores dos dados.
+
+:::: columns
+
+::: {.column width="60%"}
+
+![](figs/aproximacao_mediana_f8.png)
+
+:::
+
+::: {.column width="40%"}
+
+::: {.fragment}
+
+Logo,
+
+:::
+<div style="font-size:85%;">
+```{=latex}
+\begin{align*}
+\class{fragment}{0\text{,}1} &\class{fragment}{= 0\text{,}5 - 0\text{,}4 \approx 0\text{,}2 (\tilde{x} - 1)}\\
+&\class{fragment}{\Rightarrow \tilde{x} \approx 1 + \frac{0\text{,}5 - 0\text{,}4}{0\text{,}2}}\\
+&\class{fragment}{\Rightarrow \tilde{x} \approx 1\text{,}5.}
+\end{align*}
+```
+</div>
+
+:::
+
+::::
+
+##  {.unnumbered .unlisted}
+
+### Mediana
+
+**Pergunta:** como aproximar $\tilde{x}$ quando os dados estão apresentados na forma de distribuição intervalar?
+
+[**Ideia:**]{style="color: blue; "} Nesse caso, devemos aproximar o valor de $\tilde{x}$ (ou $\tilde{\mu}$) como o valor que separa os 50% valores inferiores dos 50% valores superiores dos dados.
+
+:::: columns
+
+::: {.column width="60%"}
+
+![](figs/aproximacao_mediana_f9.png)
+
+:::
+
+::: {.column width="40%"}
+
+:::
+
+::::
+
+##  {.unnumbered .unlisted}
+
+### Mediana
+
+De uma maneira geral, a fórmula para a aproximação da mediana pode ser escrita como
+$$\tilde{x} \approx a_{l-1} + \frac{0\text{,}5-F_{l-1}}{d_l},$$
+em que $(a_{l-1},a_l]$ é o intervalo que contém a mediana, $d_l$ é a sua densidade e $F_{l-1} = f_1+\cdots+f_{l-1}$ é a frequência relativa acumulada até o intervalo imediatamente anterior.
+
+::: fragment
+
+[**Observação:**]{style="color:blue;"} Se a mediana ocorre no primeiro intervalo ($l=1$), então definimos $F_{l-1} = F_0 = 0$.
+
+:::
+
+##  {.unnumbered .unlisted}
+
+### Mediana
+
+Algumas observações sobre a mediana:
+
+::: incremental
+-   ao contrário da média, não possui interpretação física;
+-   depende apenas do(s) valor(es) na(s) posição(ões) central(is);
+-   sofre menos influência de dados discrepantes;
+-   pode ser usada em variáveis qualitativas ordinais
+:::
+
+##  {.unnumbered .unlisted}
+
+### Moda
+
+[**Problema:**]{style="color:red; "} No caso em que a distribuição da variável possui mais de um ponto de alta frequência, tanto a média quanto a mediana podem apontar valores que distoam da maioria dos dados.
+
+::: fragment
+
+Nesses casos, podemos utilizar a [moda]{.underline}.
+
+:::
+
+::: fragment
+
+**Definição:** A moda é o valor de mais alta frequência no conjunto de dados. Vamos denotar uma moda amostral por $\breve{x}$ e populacional por $\breve{\mu}$.
+
+:::
+
+::: fragment
+
+[**Observação:**]{style="color:blue; "} Um conjunto de dados pode ser: amodal; unimodal; bimodal; trimodal; $\ldots$
+
+:::
+
+##  {.unnumbered .unlisted}
+
+### Moda
+
+[**Problema:**]{style="color:red; "} Em alguns casos (variáveis contínuas, por exemplo) há pouca ou nenhuma repetição de valores. Assim, ou a distribuição é amodal ou pode não fornecer um valor representativo.
+
+::: fragment
+
+[**Alternativa:**]{style="color:blue; "} Utilizar a faixa de maior densidade, ou [faixa modal]{.underline}.
+
+:::
+
+::: fragment
+
+**Aproximação:** Assim, a moda pode ser aproximada pelo ponto médio da faixa modal
+
+:::
+
+##  {.unnumbered .unlisted}
+
+### Moda
+
+![](figs/aproximacao_moda_f1.png)
+
+##  {.unnumbered .unlisted}
+
+### Moda
+
+![](figs/aproximacao_moda_f2.png)
+
+
+##  {.unnumbered .unlisted}
+
+### Moda
+
+A moda de um conjunto de dados:
+
+::: incremental
+-   em certo sentido, representa o(s) valor(es) mais provável(eis);
+-   é muito indicada em distribuições multimodais;
+-   não é afetada por dados atípicos;
+-   pode ser usada em qualquer tipo de variável.
+:::
+
+##  {.unnumbered .unlisted}
+
+### Variância
+
+O uso de medidas de tendência central para representar a localização dos dados pode ocultar informações relevantes.
+
+##  {.unnumbered .unlisted}
+
+### Variância
+
+O uso de medidas de tendência central para representar a localização dos dados pode ocultar informações relevantes.
+
+![](figs/media_nao_traz_todas_info_f1.png)
+
+##  {.unnumbered .unlisted}
+
+### Variância
+
+O uso de medidas de tendência central para representar a localização dos dados pode ocultar informações relevantes.
+
+![](figs/media_nao_traz_todas_info_f2.png)
+
+##  {.unnumbered .unlisted}
+
+### Variância
+
+[**Exemplo:**]{style="color:blue; "} A média não nos fala nada sobre a dispersão (variabilidade) dos dados.
+
+##  {.unnumbered .unlisted}
+
+### Variância
+
+[**Exemplo:**]{style="color:blue; "} A média não nos fala nada sobre a dispersão (variabilidade) dos dados.
+
+![](figs/media_nao_traz_info_da_dispersao_f1.png)
+
+##  {.unnumbered .unlisted}
+
+### Variância
+
+[**Exemplo:**]{style="color:blue; "} A média não nos fala nada sobre a dispersão (variabilidade) dos dados.
+
+![](figs/media_nao_traz_info_da_dispersao_f2.png)
+
+##  {.unnumbered .unlisted}
+
+### Variância
+
+[**Ideia:**]{style="color:blue; "} Medir quanto as observações se desviam "em média" de alguma medida de tendência central de referência [(por exemplo, a média dos dados).]{.fragment style="color:red; "}
+
+##  {.unnumbered .unlisted}
+
+### Variância
+
+[**Ideia:**]{style="color:blue; "} Medir quanto as observações se desviam "em média" de alguma medida de tendência central de referência (por exemplo, a média dos dados).
+
+![](figs/ilustracao_variancia_f4.png)
+
+##  {.unnumbered .unlisted}
+
+### Variância
+
+[**Ideia:**]{style="color:blue; "} Medir quanto as observações se desviam "em média" de alguma medida de tendência central de referência (por exemplo, a média dos dados).
+
+![](figs/ilustracao_variancia_f3.png)
+
+##  {.unnumbered .unlisted}
+
+### Variância
+
+[**Ideia:**]{style="color:blue; "} Medir quanto as observações se desviam "em média" de alguma medida de tendência central de referência (por exemplo, a média dos dados).
+
+![](figs/ilustracao_variancia_f2.png)
+
+##  {.unnumbered .unlisted}
+
+### Variância
+
+[**Ideia:**]{style="color:blue; "} Medir quanto as observações se desviam "em média" de alguma medida de tendência central de referência (por exemplo, a média dos dados).
+
+![](figs/ilustracao_variancia_f1.png)
+
+##  {.unnumbered .unlisted .smaller}
+
+### Variância
+
+Seja $d_i = x_i - \bar{x}$ o desvio entre a $i$-ésima observação e a média da amostra, $i = 1, \ldots, n$.
+
+::: fragment
+
+Note que $\bar{d} = \frac{1}{n} \sum_{i=1}^d d_i$ sempre resultará em $\bar{d} = 0$. [Os desvios positivos são cancelados pelos negativos.]{.fragment style="color:red; "}
+
+:::
+
+::: fragment
+
+Uma opção é considerar apenas a magnitude, não levando em conta o sentido dos desvios. [Podemos tomar $|d_i|$ ou $d_i^2$, por exemplo.]{.fragment style="color:red; "}
+
+:::
+
+::: fragment
+
+**Definição:** As variâncias populacional e amostral são definidas, respectivamente, por
+$$\sigma^2 = \frac{1}{n} \sum_{i=1}^n d_i^2 = \frac{1}{n} \sum_{i=1}^n (x_i - \bar{x})^2 \class{fragment}{= \frac{\sum_ix_i^2 - n\bar{x}^2}{n}}$$
+e
+$$s^2 = \frac{1}{n-1} \sum_{i=1}^n d_i^2 = \frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2 \class{fragment}{= \frac{\sum_ix_i^2 - n\bar{x}^2}{n-1}.}$$
+
+:::
+
+##  {.unnumbered .unlisted}
+
+### Variância
+
+![](figs/ilustracao_variancia_f1.png)
+
+
+:::fragment
+
+No exemplo acima, supondo que estamos lidando com amostras, temos que:
+
+::: incremental
+
+-   nos dados azuis: $\sum_i d_i^2 = 3\text{,}5 \Rightarrow s^2 = \frac{3\text{,}5}{6-1} = 0\text{,}7;$
+-   nos dados vermelhos: $\sum_i d_i^2 = 14 \Rightarrow s^2 = \frac{14}{6-1} = 2\text{,}8;$
+:::
+
+:::
+
+##  {.unnumbered .unlisted .smaller}
+
+### Variância
+
+Para dados apresentados em distribuição de frequência não intervalar, as variâncias populacional e amostral são calculadas, respectivamente, como
+$$\sigma^2 = \frac{1}{n} \sum_{i=1}^k n_i(x_i^* - \bar{x})^2 = \frac{\sum_in_ix_i^{*2} - n\bar{x}^2}{n}$$
+e
+$$s^2 = \frac{1}{n-1} \sum_{i=1}^k n_i(x_i^* - \bar{x})^2 = \frac{\sum_in_ix_i^{*2} - n\bar{x}^2}{n-1}.$$
+
+##  {.unnumbered .unlisted .smaller}
+
+### Variância
+
+Se os dados estão apresentados em distribuição intervalar, então fazemos as seguintes aproximações:
+$$\sigma^2 \approx \frac{1}{n} \sum_{i=1}^k n_i(x_i^{(m)} - \bar{x})^2 = \frac{\sum_in_ix_i^{(m)2} - n\bar{x}^2}{n}$$
+e
+$$s^2 \approx \frac{1}{n-1} \sum_{i=1}^k n_i(x_i^{(m)} - \bar{x})^2 = \frac{\sum_in_ix_i^{(m)2} - n\bar{x}^2}{n-1},$$
+em que $x_i^{(m)} = \frac{a_{i-1} + a_i}{2}$ é o ponto médio da $i$-ésima faixa $(a_{i-1}, a_i]$.
+
+
+##  {.unnumbered .unlisted .smaller}
+
+### Desvio-padrão
+
+[**Problema:**]{style="color:red; "} A variância é expressa na unidade de medida dos dados ao quadrado.
+
+::: fragment
+
+Por exemplo: dados em $m$, variância em $m^2$.
+
+:::
+
+::: fragment
+
+Para contornar esse problema, definimos o desvio-padrão [(raiz quadrada da variância)]{style="color:blue; "}.
+
+:::
+
+::: fragment
+
+**Definição:** Os desvios-padrão populacional e amostral são definidos, respectivamente, por
+$$\sigma = \sqrt{\sigma^2} \ \ \ \ \ \text{e} \ \ \ \ \ s = \sqrt{s^2}.$$
+
+:::
+
+::: fragment
+
+No exemplo anterior, temos $s = \sqrt{0\text{,}7} = 0\text{,}837$ ([azul]{style="color:blue;"}) e $s = \sqrt{2\text{,}8} = 1\text{,}774$ ([vermelho]{style="color:red;"}).
+
+:::
+
+::: fragment
+
+[**Importante:**]{style="color:blue; "} Se $y_i = ax_i$, $i=1, \ldots, n$, então
+
+::: incremental
+
+-   as variâncias satisfazem $\sigma^2_y =  a^2\sigma^2_x$ e $s^2_y =  a^2s^2_x$;
+-   e os desvios-padrão satisfazem $\sigma_y =  a\sigma_x$ e $s_y =  as_x$.
+
+:::
+
+:::
+
+::: {.fragment style="color:red;"}
+Isso foi exatamente o que aconteceu na amostra do exemplo!!
+:::
+
+# FIM {.unnumbered .unlisted}

@@ -1,0 +1,22 @@
+---
+title: "Probabilidade e Estatística"
+author: "Prof. Dr. Alessandro JQ Sarnaglia"
+lang: "pt"
+format:
+  html:
+    theme: [custom.scss]
+    css: fonts.css
+    menu:
+      useTextContentForMissingTitles: false
+editor: source
+---
+
+## Tópicos
+
+1.    [Introdução e Estatística Descritiva](U1_introducao/intro.html)
+
+2.    [Probabilidade de Eventos](U2_probabilidade/probabilidade.html)
+
+3.    [Variáveis Aleatórias](U3_variaveis-aleatorias/variaveis-aleatorias.html)
+
+4.    [Inferência](U4_inferencia/inferencia.html)
