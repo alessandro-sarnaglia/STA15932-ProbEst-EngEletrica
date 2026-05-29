@@ -1,0 +1,62 @@
+\documentclass[]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm, amsmath, amsfonts}
+\usepackage{blkarray}
+\usepackage{bigstrut}
+\usepackage{graphicx}
+
+\newcommand{\avaliacao}{3}
+\newcommand{\disciplina}{Probabilidade e Estatística}
+\newcommand{\semestre}{2024/1}
+
+
+\theoremstyle{definition}
+\newtheorem{ex}{Exercício}
+
+\renewcommand{\SS}{\mathcal{S}}
+
+\begin{document}
+\thispagestyle{empty}
+\begin{center}
+\Large{\avaliacao ª Avaliação de \disciplina\ - \semestre}
+
+\large{Prof. Dr. Alessandro José Queiroz Sarnaglia}
+\end{center}
+
+\begin{ex}
+Sejam $X_1, X_2, \ldots , X_{81}$ os pesos líquidos reais de 81 sacos de fertilizantes de 40 kg selecionados aleatoriamente.
+\begin{enumerate}
+	\item Se o peso esperado de cada saco for de fato 40 e a desvio-padrão 1,5, calcule $P(39\text{,}75 < \bar{X} < 40\text{,}25)$ (aproximadamente), usando o TLC; \textbf{Resp.:} 0,8664.
+	\item Se o peso esperado for 39,8 kg, e não 40 kg, de modo que em média os sacos tenham peso médio um pouco abaixo do anunciado, calcule $P(39\text{,}75 < \bar{X} < 40\text{,}25)$. \textbf{Resp.:} 0.6144
+\end{enumerate}
+\end{ex}
+
+
+\begin{ex}
+Seja $X_1, X_2, \ldots, X_n$ uma amostra aleatória de uma distribuição de Rayleigh com fdp
+$$
+f(x;\theta) = \frac{x}{\theta}\exp\left\{-\frac{x^2}{2\theta}\right\}, \ \ x > 0, \ \ \theta>0.
+$$
+\begin{enumerate}
+	\item Encontre $E(X^2)$; \textbf{Resp.:} $E(X^2) = 2\theta$.
+	\item Use o item acima para construir um estimador não viciado de $\theta$ com base em $\sum_iX_i^2$; \textbf{Resp.:} $\hat\theta = \frac{1}{2n}\sum_i X_i^2$, pois $E(\hat\theta) = \frac{1}{2n}\sum_i E(X_i^2) = \frac{1}{2n}\sum_i 2\theta = \frac{2n}{2n} \theta = \theta$.
+	\item Estime $\theta$ a partir das $n = 10$ observações a seguir sobre a força vibratória de uma palheta de turbina sob condições especificadas:
+	\begin{center}
+	\begin{tabular}{ccccc}
+		16& 10& 14& 19&	4\\
+		9 & 6 & 13& 6 &10\\
+	\end{tabular}
+	\end{center}
+	\textbf{Resp.:} $\hat\theta = 67.55$.
+\end{enumerate}
+\end{ex}
+
+
+\begin{ex}
+Em um experimento designado para medir o tempo adequado de exposição visual de um inspetor, a ﬁm de realizar uma atividade com luz reduzida, o tempo médio da amostra para $n = 9$ inspetores foi 6,32 s e o desvio padrão da amostra 1,65 s. Assumiu-se anteriormente que o tempo de adaptação médio foi de pelo menos 7 s. Assumindo que o tempo de adaptação seja normalmente distribuído, os dados contradizem o ponto de vista anterior? Use o teste $t$ com $\alpha = 0\text{,}01$. \textbf{Resp.:} Deseja-se testar $H_0 : \mu \geq 7 \times \mu < 7$. Temos $t_{\text{obs}} = \frac{6\text{,}32 - 7}{1\text{,}65/3} = -1\text{,}255$. Agora, $t_{(8; 0\text{,}01)} = 2\text{,}896$. Não rejeitamos $H_0$, pois $t_{\text{obs}} = -1\text{,}255 \not> 2\text{,}896 = t_{(8; 0\text{,}01)}$.
+\end{ex}
+
+
+\end{document}

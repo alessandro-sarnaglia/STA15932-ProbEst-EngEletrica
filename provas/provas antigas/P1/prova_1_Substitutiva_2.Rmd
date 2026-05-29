@@ -1,0 +1,109 @@
+---
+title: ""
+author: ""
+date: ""
+geometry: "left=1.5cm,right=1.5cm,top=1.25cm,bottom=1.5cm"
+output: pdf_document
+header-includes:
+  - \pagenumbering{gobble}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{=latex}
+\begin{center}
+{\LARGE Prova 1 - Probabilidade e Estatística - Substitutiva 2}
+\end{center}
+\vspace{.25cm}
+
+Nome:
+
+Matrícula:
+\vspace{.25cm}
+```
+
+```{=latex}
+%\the\parskip
+\setlength{\parskip}{3pt plus2pt minus1mm}
+```
+
+**Exercício 1:** Uma variável foi observada e os dados forneceram o seguinte histograma:
+
+```{r q1, echo=FALSE, fig.height=2.2, fig.width=3}
+n_i <- c(30, 50, 18, 2)
+f_i <- n_i/sum(n_i)
+brs <- c(0, 2, 6, 12, 20)
+d_i <- f_i/diff(brs)
+par(mar=c(3,3,1,1), cex.axis=.7, mgp = c(3,.5,0))
+plot(0, type='n', xlim=range(brs), ylim=c(0, 1.2*max(d_i)), xlab='', ylab='', main='', xaxt="n")
+rect(xleft = brs[-length(brs)], xright = brs[-1], ybottom = 0, ytop = d_i, col = 'gray')
+mtext(side = 2, text = 'Densidade', line = 1.5)
+mtext(side = 1, text = 'Variável', line = 1.5)
+axis(side=1, at=brs, labels = T)
+text(x = (brs[-1] + brs[-length(brs)])/2, y = d_i, labels = d_i, pos = 3, cex=.7)
+```
+
+Responda: 
+
+1. A frequência relativa do intervalo (`r brs[1]`, `r brs[3]`] é:
+
+(a) `r sum(d_i[1:2])`; (b) `r mean(d_i[1:2])`; (c) `r diff(range(brs[1:3]))`; (d) `r sum(d_i[1:2]*diff(brs[1:3]))` <!-- Correta d -->
+
+2. A frequência relativa que observaríamos no intervalo (`r brs[3]-2`, `r brs[3]+4`] é estimada por:
+
+(a) `r mean(d_i[2:3])`; (b) `r sum(c(d_i[2]*2,d_i[3]*4))`; (c) `r mean(f_i[2:3])`; (d) `r 6*mean(d_i[2:3])` <!-- Correta b -->
+
+3. A média da variável é estimada por:
+
+(a) `r round(mean(d_i), 3)`; (b) `r diff(range(brs))/2`; (c) `r sum(f_i*(brs[-1] + brs[-length(brs)])/2)`; (d) `r sum(d_i*(brs[-1] + brs[-length(brs)])/2)` <!-- Correta c -->
+
+
+```{r q2, include=FALSE}
+n <- 8
+pr_lotes <- c(.7, .2, .1)
+pr_00_lotes <- c(1, (n-1)*(n-2)/(n*(n-1)), (n-2)*(n-3)/(n*(n-1)))
+pr_00 <- sum(pr_00_lotes*pr_lotes)
+pr_lotes_00 <- pr_00_lotes*pr_lotes/pr_00
+pr_10_lotes <- c(0, 2*(1)*(n-1)/(n*(n-1)), 2*(2)*(n-2)/(n*(n-1)))
+pr_10 <- sum(pr_10_lotes*pr_lotes)
+pr_lotes_10 <- pr_10_lotes*pr_lotes/pr_10
+```
+
+**Exercício 2:** Componentes são acondicionados em lotes de `r n`. Sabe-se que, desses lotes, `r 100*pr_lotes[1]`% não contém componentes defeituosos (Tipo 1), `r 100*pr_lotes[2]`% contém um componente defeituoso (Tipo 2) e `r 100*pr_lotes[3]`% contém dois componentes defeituosos (Tipo 3). Dois componentes de um lote são selecionados aleatoriamente sem reposição e testados. Responda:
+
+1. Para o lote do Tipo 3, a probabilidade de nenhum dos componentes testados ser defeituoso é:
+
+(a) `r pr_lotes[3]`; (b) `r round(pr_00_lotes[3], 4)`; (c) `r pr_lotes[3]*pr_lotes[3]`; (d) `r round(pr_00, 4)` <!-- Correta b -->
+
+2. Se nenhum dos componentes testados é defeituoso, a probabilidade do lote ser do Tipo 3 é de:
+
+(a) `r round(pr_lotes_00[3], 4)`; (b) `r 0.3333`; (c) `r round(pr_00_lotes[3], 4)`; (d) `r pr_lotes[3]` <!-- Correta a -->
+
+3. Para o lote do Tipo 3, a probabilidade de um dos componentes testados ser defeituoso é:
+
+(a) `r round(pr_10_lotes[3], 4)`; (b) `r pr_lotes[3]`; (c) `r pr_lotes[3]*pr_lotes[3]`; (d) `r round(pr_10, 4)` <!-- Correta a -->
+
+4. Se um dos componentes testados é defeituoso, a probabilidade do lote ser do Tipo 3 é de:
+
+(a) `r 0.3333`; (b) `r round(pr_10_lotes[3], 4)`; (c) `r pr_lotes[3]`; (d) `r round(pr_lotes_10[3], 4)` <!-- Correta d -->
+
+```{r q3, include=FALSE}
+nn <- 3
+pp <- 0.8
+```
+
+**Exercício 3:** Um sistema tem `r nn` componentes idênticos. A probabilidade de um componente não apresentar defeito em um dia é de `r pp`. Assuma independência dos componentes.
+
+1. A probabilidade de pelo menos um componente apresentar defeito é de:
+
+(a) `r pp^nn`; (b) `r 1-pp`; (c) `r (1-pp)^nn`; (d) `r 1-pp^nn` <!-- Correta d -->
+
+2. A probabilidade de pelo menos um componente não apresentar defeito é de:
+
+(a) `r pp`; (b) `r 1-(1-pp)^nn`; (c) `r (1-pp)^nn`; (d) `r pp^nn`  <!-- Correta b -->
+
+3. A probabilidade de exatamente um componente apresentar defeito é de:
+
+(a) `r 1-pp`; (b) `r (1-pp)*pp^(nn-1)`; (c) `r nn*(1-pp)*pp^(nn-1)`; (d) `r nn*pp*(1-pp)^(nn-1)` <!-- Correta c -->
