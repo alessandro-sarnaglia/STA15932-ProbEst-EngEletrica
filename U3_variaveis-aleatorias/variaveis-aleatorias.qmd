@@ -6013,6 +6013,75 @@ Sejam $X$ e $Y$ va's com variâncias $\sigma_X^2$ e $\sigma_Y^2$, respectivament
 
 ## 4.1 Covariância e Correlação {.unnumbered .unlisted}
 
+::: columns
+
+::: {.column #vcenter width=40%}
+
+::: {.callout-caution}
+## Observação
+
+O coeficiente de correlação está relacionado com o ângulo formado entre as variáveis centralizas pelas respectivas médias.
+:::
+
+<!-- Container principal com posição relativa -->
+::: {style="position: relative; width: 90%; height: 350px; margin: 0 auto;"}
+
+::: {.fragment .fade-in-then-out fragment-index=2}
+![](figs/Ilustracao_correlacao_R3_F1_S3.drawio.svg){style="display: block; width: 100%; height: 100%; position: absolute; top: 0; left: 0;"}
+:::
+
+::: {.fragment .fade-in-then-out fragment-index=3}
+![](figs/Ilustracao_correlacao_R3_F1_S2.drawio.svg){style="display: block; width: 100%; height: 100%; position: absolute; top: 0; left: 0;"}
+:::
+
+::: {.fragment .fade-in fragment-index=4}
+::: {.fragment .fade-out fragment-index=6}
+![](figs/Ilustracao_correlacao_R3_F1_S1.drawio.svg){style="display: block; width: 100%; height: 100%; position: absolute; top: 0; left: 0;"}
+:::
+:::
+
+::: {.fragment .fade-in-then-out fragment-index=6}
+![](figs/Ilustracao_correlacao_R3_F2_S3.drawio.svg){style="display: block; width: 100%; height: 100%; position: absolute; top: 0; left: 0;"}
+:::
+
+::: {.fragment .fade-in fragment-index=7}
+::: {.fragment .fade-out fragment-index=10}
+![](figs/Ilustracao_correlacao_R3_F2_S2.drawio.svg){style="display: block; width: 100%; height: 100%; position: absolute; top: 0; left: 0;"}
+:::
+:::
+
+::: {.fragment .fade-in fragment-index=10}
+![](figs/Ilustracao_correlacao_R3_F2_S1.drawio.svg){style="display: block; width: 100%; height: 100%; position: absolute; top: 0; left: 0;"}
+:::
+
+:::
+
+:::
+
+::: {.column #vcenter width=60%}
+
+::: {.fragment fragment-index=1}
+
+::: {style="border-style: solid; border-width: 3px; padding-bottom: 0px; padding-right: 12px; padding-left: 12px; font-size:70%;"}
+
+**Exemplo 27:** Para ilustrar esse fato, suponha $X$ e $Y$ va's com distribuição conjunta dada por $p(x,y) = \frac{1}{3}$, para $(x,y) = \{(0,3), (1,1), (2,2)\}$.
+
+[Represente os possíveis valores de $X$ e $Y$ pelos vetores tridimensionais]{.fragment fragment-index=2} [$\vec{X} = (0,1,2)$ [[(azul)]{.fragment .highlight-current-blue fragment-index=4}]{.fragment .highlight-current-blue fragment-index=3}]{.fragment fragment-index=3} [e $\vec{Y} = (3,1,2)$ [(vermelho)]{.fragment .highlight-current-red fragment-index=4}.]{.fragment fragment-index=4}
+
+[As médias de $X$ e $Y$ são $\mu_X = \frac{1}{3}[0+1+3] = 1$ e $\mu_Y = \frac{1}{3}[3+1+2] = 1$.]{.fragment fragment-index=5} [Os vetores centralizados são $(-1,0,1)$ [[(azul)]{.fragment .highlight-current-blue fragment-index=7}]{.fragment .highlight-current-blue fragment-index=6}]{.fragment fragment-index=6} [e $(1,-1,0)$ [(vermelho)]{.fragment .highlight-current-red fragment-index=7}.]{.fragment fragment-index=7} [Os desvios-padrão são $\sigma_X = \sigma_Y = \sqrt{\frac{2}{3}}$.]{.fragment fragment-index=8}
+
+[Por fim, a covariância é $\text{Cov}(X,Y) = \frac{1}{3}(-1+0+0) = -\frac{1}{3}$]{.fragment fragment-index=9} [e a correlação é $\rho = \cos\color{orange}\theta = \frac{\text{Cov}(X,Y)}{\sigma_X\sigma_Y} = \frac{-1/3}{2/3} = -\frac{1}{2}$.]{.fragment fragment-index=10} [Logo, $\color{orange}{\theta = \frac{2\pi}{3} = 120^{\circ}}$.]{.fragment fragment-index=11}
+
+:::
+
+:::
+
+:::
+
+:::
+
+## 4.1 Covariância e Correlação {.unnumbered .unlisted}
+
 ::: {.callout-warning}
 ## Propriedade
 
