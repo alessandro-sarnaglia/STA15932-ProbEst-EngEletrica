@@ -6050,8 +6050,12 @@ O coeficiente de correlação está relacionado com o ângulo formado entre as v
 :::
 :::
 
-::: {.fragment .fade-in fragment-index=10}
+::: {.fragment .fade-in-then-out fragment-index=10}
 ![](figs/Ilustracao_correlacao_R3_F2_S1.drawio.svg){style="display: block; width: 100%; height: 100%; position: absolute; top: 0; left: 0;"}
+:::
+
+::: {.fragment .fade-in-then-out fragment-index=11}
+![](figs/Ilustracao_correlacao_R3_F2_S0.drawio.svg){style="display: block; width: 100%; height: 100%; position: absolute; top: 0; left: 0;"}
 :::
 
 :::
