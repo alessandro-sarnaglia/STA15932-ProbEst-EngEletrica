@@ -936,14 +936,24 @@ P(X=0) + P(X=1) + P(X=2) + P(X=3) = \frac{1}{8} + \frac{3}{8} + \frac{3}{8} + \f
 <p><strong>Observações</strong></p>
 </div>
 <div class="callout-content">
-<ol type="1">
-<li class="fragment">Vimos que, se o modelo probabilístico é concebido sobre um espaço amostral <span class="math inline">\(\Omega\)</span> abstrato e <span class="math inline">\(X : \Omega \to \mathbb{R}\)</span>, então a fmp pode ser obtida por <span class="math display">\[p_X(x) = P(X = x) = P(A_x),\]</span> em que <span class="math inline">\(A_x = \{\omega \in \Omega : X(\omega) = x\}\)</span>. Isto é, a fmp de <span class="math inline">\(X\)</span> é <strong>induzida</strong> pela medida de probabilidade em <span class="math inline">\(\Omega\)</span>;</li>
-<li class="fragment">Muito frequentemente, a construção de um modelo probabilístico em <span class="math inline">\(\Omega\)</span> é muito complicada, o que dificultaria a determinação da fmp induzida.</li>
-<li class="fragment">Para contornar esse problema, levando em consideração o comportamento da vad em estudo, podemos especificar diretamente uma fmp para a vad, desde que atenda as propriedades já vistas:
+<ol>
+<li>
+Vimos que, se o modelo probabilístico é concebido sobre um espaço amostral <span class="math inline">\(\Omega\)</span> abstrato e <span class="math inline">\(X : \Omega \to \mathbb{R}\)</span>, então a fmp pode ser obtida por <span class="math display">\[p_X(x) = P(X = x) = P(A_x),\]</span> em que <span class="math inline">\(A_x = \{\omega \in \Omega : X(\omega) = x\}\)</span>. Isto é, a fmp de <span class="math inline">\(X\)</span> é <strong>induzida</strong> pela medida de probabilidade em <span class="math inline">\(\Omega\)</span>;
+</li>
+<li class="fragment">
+Muito frequentemente, a construção de um modelo probabilístico em <span class="math inline">\(\Omega\)</span> é muito complicada, o que dificultaria a determinação da fmp induzida.
+</li>
+<li class="fragment">
+Para contornar esse problema, levando em consideração o comportamento da vad em estudo, podemos especificar diretamente uma fmp para a vad, desde que atenda as propriedades já vistas:
 <ul>
-<li class="fragment"><span class="math inline">\(p_X(x) \geq 0\)</span>;</li>
-<li class="fragment"><span class="math inline">\(\sum_{x\in\text{Im}(X)} p_X(x) = 1\)</span>.</li>
-</ul></li>
+<li>
+<span class="math inline">\(p_X(x) \geq 0\)</span>;
+</li>
+<li>
+<span class="math inline">\(\sum_{x\in\text{Im}(X)} p_X(x) = 1\)</span>.
+</li>
+</ul>
+</li>
 </ol>
 </div>
 </div>
@@ -1272,10 +1282,16 @@ p_X(x;\theta) = \begin{cases}
 <p><strong>Observações</strong></p>
 </div>
 <div class="callout-content">
-<ol type="1">
-<li class="fragment">A fórmula para o cálculo de <span class="math inline">\(\mu\)</span> é muito similar àquela vista em estatística descritiva, no entanto, agora a fmp <span class="math inline">\(p_X(x;\theta)\)</span> toma o lugar da frequência relativa que teria sido efetivamente observada;</li>
-<li class="fragment">De maneira similar a estatística descritiva, <span class="math inline">\(\mu\)</span> é calculada como uma média <strong>ponderada</strong> com pesos dados por <span class="math inline">\(p_X(x;\theta)\)</span>;</li>
-<li class="fragment">Naturalmente, para famílias de fmp’s, pelo fato de <span class="math inline">\(p_X(x;\theta)\)</span> ser indexada por <span class="math inline">\(\theta\)</span>, a sua esperança também será função de <span class="math inline">\(\theta\)</span>.</li>
+<ol>
+<li>
+A fórmula para o cálculo de <span class="math inline">\(\mu\)</span> é muito similar àquela vista em estatística descritiva, no entanto, agora a fmp <span class="math inline">\(p_X(x;\theta)\)</span> toma o lugar da frequência relativa que teria sido efetivamente observada;
+</li>
+<li class="fragment">
+De maneira similar a estatística descritiva, <span class="math inline">\(\mu\)</span> é calculada como uma média <strong>ponderada</strong> com pesos dados por <span class="math inline">\(p_X(x;\theta)\)</span>;
+</li>
+<li class="fragment">
+Naturalmente, para famílias de fmp’s, pelo fato de <span class="math inline">\(p_X(x;\theta)\)</span> ser indexada por <span class="math inline">\(\theta\)</span>, a sua esperança também será função de <span class="math inline">\(\theta\)</span>.
+</li>
 </ol>
 </div>
 </div>
@@ -1293,10 +1309,16 @@ p_X(x;\theta) = \begin{cases}
 <p><strong>Observações</strong></p>
 </div>
 <div class="callout-content">
-<ol type="1">
-<li class="fragment">Quando está claro a que va <span class="math inline">\(X\)</span> a esperança se refere, usaremos <span class="math inline">\(\mu\)</span> em vez de <span class="math inline">\(\mu_X\)</span>;</li>
-<li class="fragment">No Exemplo 4, se hipotetizarmos uma população em que a vad <span class="math inline">\(X\)</span> com valores <span class="math inline">\(0, 1\)</span> e <span class="math inline">\(2\)</span> associados as frequências relativas <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>, <span class="math inline">\(1-\alpha-\beta\)</span>, respectivamente, então <span class="math inline">\(\mu = 2-2\alpha - \beta\)</span> será a média populacional. Por isso podemos nos referir a <span class="math inline">\(\mu\)</span> por média populacional ou teórica;</li>
-<li class="fragment">No Exemplo 4, tomando <span class="math inline">\(\theta = (\frac{1}{2}, \frac{1}{3})\)</span>, obtemos <span class="math inline">\(\mu = 2-2\frac{1}{2} - \frac{1}{3} = \frac{2}{3} \approx 0.67\)</span>, que não é um valor possível de <span class="math inline">\(X\)</span>. A palavra esperado deve ser interpretada com cautela porque uma pessoa não espera ver um valor de <span class="math inline">\(X = 0.67\)</span> quando um único estoque é selecionado.</li>
+<ol>
+<li>
+Quando está claro a que va <span class="math inline">\(X\)</span> a esperança se refere, usaremos <span class="math inline">\(\mu\)</span> em vez de <span class="math inline">\(\mu_X\)</span>;
+</li>
+<li class="fragment">
+No Exemplo 4, se hipotetizarmos uma população em que a vad <span class="math inline">\(X\)</span> com valores <span class="math inline">\(0, 1\)</span> e <span class="math inline">\(2\)</span> associados as frequências relativas <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>, <span class="math inline">\(1-\alpha-\beta\)</span>, respectivamente, então <span class="math inline">\(\mu = 2-2\alpha - \beta\)</span> será a média populacional. Por isso podemos nos referir a <span class="math inline">\(\mu\)</span> por média populacional ou teórica;
+</li>
+<li class="fragment">
+No Exemplo 4, tomando <span class="math inline">\(\theta = (\frac{1}{2}, \frac{1}{3})\)</span>, obtemos <span class="math inline">\(\mu = 2-2\frac{1}{2} - \frac{1}{3} = \frac{2}{3} \approx 0.67\)</span>, que não é um valor possível de <span class="math inline">\(X\)</span>. A palavra esperado deve ser interpretada com cautela porque uma pessoa não espera ver um valor de <span class="math inline">\(X = 0.67\)</span> quando um único estoque é selecionado.
+</li>
 </ol>
 </div>
 </div>
@@ -1511,21 +1533,23 @@ Total
 </section>
 <section id="esperança-e-variância-de-vads-9" class="slide level2 unnumbered unlisted">
 <h2>2.1 Esperança e variância de vad’s</h2>
-<div class="fragment">
 <div class="callout callout-warning no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <p><strong>Propriedades</strong></p>
 </div>
 <div class="callout-content">
-<ol type="1">
-<li class="fragment">Seja <span class="math inline">\(X\)</span> vad com fmp <span class="math inline">\(p_X(x)\)</span> e esperança <span class="math inline">\(\mu\)</span>. Então <span class="math display">\[\begin{align*}
+<ol>
+<li>
+Seja <span class="math inline">\(X\)</span> vad com fmp <span class="math inline">\(p_X(x)\)</span> e esperança <span class="math inline">\(\mu\)</span>. Então <span class="math display">\[\begin{align*}
 \sigma^2 &amp;= \textstyle \sum_{x}(x - \mu)^2\cdot p_X(x) = \sum_{x}(x^2 - 2\mu x + \mu^2)\cdot p_X(x)\\
 &amp;= \textstyle \sum_{x}x^2p_X(x) - 2\mu \sum_{x}x p_X(x) + \mu^2 \sum_{x}p_X(x) = E(X^2) - 2\mu\mu + \mu^2 = E(X^2) - \mu^2.
-\end{align*}\]</span></li>
-<li class="fragment">Seja <span class="math inline">\(X\)</span> vad com esperança <span class="math inline">\(\mu_X\)</span> e <span class="math inline">\(Y = aX+b\)</span>, com <span class="math inline">\(a, b\)</span> constantes, então <span class="math display">\[\sigma_{Y}^2 = \sigma_{aX+b}^2 = a^2 \sigma_X^2.\]</span></li>
+\end{align*}\]</span>
+</li>
+<li class="fragment">
+Seja <span class="math inline">\(X\)</span> vad com esperança <span class="math inline">\(\mu_X\)</span> e <span class="math inline">\(Y = aX+b\)</span>, com <span class="math inline">\(a, b\)</span> constantes, então <span class="math display">\[\sigma_{Y}^2 = \sigma_{aX+b}^2 = a^2 \sigma_X^2.\]</span>
+</li>
 </ol>
-</div>
 </div>
 </div>
 </div>
@@ -1536,10 +1560,14 @@ Total
 <p><strong>Observações</strong></p>
 </div>
 <div class="callout-content">
-<ul>
-<li class="fragment">A Propriedade 1 pode ser utilizada para facilmente se chegar a variância do exemplo anterior;</li>
-<li class="fragment">A Propriedade 2 mostra que a variância só é afetada por mudanças em <span class="math inline">\(a\)</span> (escala), e não em <span class="math inline">\(b\)</span> (locação).</li>
-</ul>
+<ol>
+<li>
+A Propriedade 1 pode ser utilizada para facilmente se chegar a variância do exemplo anterior;
+</li>
+<li class="fragment">
+A Propriedade 2 mostra que a variância só é afetada por mudanças em <span class="math inline">\(a\)</span> (escala), e não em <span class="math inline">\(b\)</span> (locação).
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -1671,9 +1699,13 @@ e
 <p><strong>Observações</strong></p>
 </div>
 <div class="callout-content">
-<ol type="1">
-<li class="fragment">No Exemplo 9, definimos como sucesso o aluno acertar a questão, mas esse não precisa ser o caso. A classificação do que será entendido como <strong>sucesso</strong> dependerá do problema em questão.</li>
-<li class="fragment">O experimento de Bernoulli pode ser utilizado para construção de vad’s mais complexas.</li>
+<ol>
+<li>
+No Exemplo 9, definimos como sucesso o aluno acertar a questão, mas esse não precisa ser o caso. A classificação do que será entendido como <strong>sucesso</strong> dependerá do problema em questão.
+</li>
+<li class="fragment">
+O experimento de Bernoulli pode ser utilizado para construção de vad’s mais complexas.
+</li>
 </ol>
 </div>
 </div>
@@ -2293,12 +2325,22 @@ e
 <p><strong>Observações</strong></p>
 </div>
 <div class="callout-content">
-<ol type="1">
-<li class="fragment">No Exemplo 12, temos que <span class="math inline">\(X \sim \text{BN}(k=3, p)\)</span>. Se <span class="math inline">\(p = 0.01\)</span>, por exemplo, teríamos <span class="math inline">\(\mu = E(X) = \frac{3}{0.01} = 300\)</span>, <span class="math inline">\(\sigma^2 = V(X) = 3\frac{0.99}{0.01^2} = 29700\)</span> e <span class="math inline">\(\sigma \approx 172.34\)</span>. Em média, são realizadas <span class="math inline">\(300\)</span> transações até a terceira falha com DP de <span class="math inline">\(172.34\)</span>. Além disso, <span class="math inline">\(P(X &gt; \mu) = P(X &gt; 300) \approx 0.4221\)</span>;</li>
-<li class="fragment">A distribuição BN também pode ser definida como a distribuição do número de fracassos (em vez de repetições) até o <span class="math inline">\(k\)</span>-ésimo sucesso. Nesse caso, sua fmp é <span class="math display">\[\textstyle p_X(x) = { x + k -1 \choose k-1 } (1-p)^{x} p^k, \ \ \ x = 0, 1, 2, \ldots,\]</span> e sua esperança e variância são, respectivamente, <span class="math inline">\(\mu = k\frac{(1-p)}{p}\)</span> e <span class="math inline">\(\sigma^2 = k\frac{(1-p)}{p^2}\)</span>;</li>
-<li class="fragment">Se <span class="math inline">\(X \sim \text{BN}(k = 1, p)\)</span>, dizemos que <span class="math inline">\(X\)</span> tem distribuição geométrica, cuja notação é <span class="math inline">\(X \sim \text{Geo}(p)\)</span>;</li>
-<li class="fragment">Se <span class="math inline">\(X \sim \text{BN}(k, p)\)</span>, então <span class="math inline">\(X = \sum_{j=1}^k X_j\)</span>, em que <span class="math inline">\(X_1,\ldots,X_k \sim \text{Geo}(p)\)</span> independentes.</li>
-<li class="fragment">Bin: repetições fixas e sucessos aleatórios; BN: sucessos fixos e repetições aleatórias.</li>
+<ol>
+<li>
+No Exemplo 12, temos que <span class="math inline">\(X \sim \text{BN}(k=3, p)\)</span>. Se <span class="math inline">\(p = 0.01\)</span>, por exemplo, teríamos <span class="math inline">\(\mu = E(X) = \frac{3}{0.01} = 300\)</span>, <span class="math inline">\(\sigma^2 = V(X) = 3\frac{0.99}{0.01^2} = 29700\)</span> e <span class="math inline">\(\sigma \approx 172.34\)</span>. Em média, são realizadas <span class="math inline">\(300\)</span> transações até a terceira falha com DP de <span class="math inline">\(172.34\)</span>. Além disso, <span class="math inline">\(P(X &gt; \mu) = P(X &gt; 300) \approx 0.4221\)</span>;
+</li>
+<li class="fragment">
+A distribuição BN também pode ser definida como a distribuição do número de fracassos (em vez de repetições) até o <span class="math inline">\(k\)</span>-ésimo sucesso. Nesse caso, sua fmp é <span class="math display">\[\textstyle p_X(x) = { x + k -1 \choose k-1 } (1-p)^{x} p^k, \ \ \ x = 0, 1, 2, \ldots,\]</span> e sua esperança e variância são, respectivamente, <span class="math inline">\(\mu = k\frac{(1-p)}{p}\)</span> e <span class="math inline">\(\sigma^2 = k\frac{(1-p)}{p^2}\)</span>;
+</li>
+<li class="fragment">
+Se <span class="math inline">\(X \sim \text{BN}(k = 1, p)\)</span>, dizemos que <span class="math inline">\(X\)</span> tem distribuição geométrica, cuja notação é <span class="math inline">\(X \sim \text{Geo}(p)\)</span>;
+</li>
+<li class="fragment">
+Se <span class="math inline">\(X \sim \text{BN}(k, p)\)</span>, então <span class="math inline">\(X = \sum_{j=1}^k X_j\)</span>, em que <span class="math inline">\(X_1,\ldots,X_k \sim \text{Geo}(p)\)</span> independentes.
+</li>
+<li class="fragment">
+Bin: repetições fixas e sucessos aleatórios; BN: sucessos fixos e repetições aleatórias.
+</li>
 </ol>
 </div>
 </div>
@@ -2900,9 +2942,13 @@ P(1 \leq X \leq 1.75) &amp;= {\textstyle P(\frac{1-\mu}{\sigma} \leq \frac{X-\mu
 <p><strong>Observações</strong></p>
 </div>
 <div class="callout-content">
-<ol type="1">
-<li class="fragment">Note que passamos de um problema de calcular as probabilidades com respeito a <span class="math inline">\(X \sim \text{N}(\mu, \sigma^2)\)</span>, com <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\sigma^2\)</span> quaisquer, para as probabilidades de uma <strong>normal padrão</strong> <span class="math inline">\(Z \sim \text{N}(0,1)\)</span>;</li>
-<li class="fragment">As probabilidades para <span class="math inline">\(Z \sim \text{N}(0,1)\)</span> também não tem solução analítica, mas métodos numéricos foram utilizados para computar e tabelar <span class="math inline">\(\Phi(z)\)</span> para diversos valores de <span class="math inline">\(z\)</span>.</li>
+<ol>
+<li>
+Note que passamos de um problema de calcular as probabilidades com respeito a <span class="math inline">\(X \sim \text{N}(\mu, \sigma^2)\)</span>, com <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\sigma^2\)</span> quaisquer, para as probabilidades de uma <strong>normal padrão</strong> <span class="math inline">\(Z \sim \text{N}(0,1)\)</span>;
+</li>
+<li class="fragment">
+As probabilidades para <span class="math inline">\(Z \sim \text{N}(0,1)\)</span> também não tem solução analítica, mas métodos numéricos foram utilizados para computar e tabelar <span class="math inline">\(\Phi(z)\)</span> para diversos valores de <span class="math inline">\(z\)</span>.
+</li>
 </ol>
 </div>
 </div>
@@ -3220,9 +3266,13 @@ e
 <p><strong>Observações</strong></p>
 </div>
 <div class="callout-content">
-<ol type="1">
-<li class="fragment">Em inferência, veremos um dos teoremas mais importantes para utilização em aplicações, o <strong>Teorema Central do Limite</strong> (TCL). Basicamente, o TCL afirma que, em grandes amostras, a média amostral tem distribuição aproximadamente normal.</li>
-<li class="fragment">Como a média amostral é soma de va’s dividida pelo tamanho da amostra, é natural, imaginar que, se uma va <span class="math inline">\(X\)</span> pode ser enxergada como soma de várias va’s, então a sua distribuição também será bem aproximada por uma normal. Esse é o caso da distribuição Binomial (soma de Bernoulli’s), por exemplo.</li>
+<ol>
+<li>
+Em inferência, veremos um dos teoremas mais importantes para utilização em aplicações, o <strong>Teorema Central do Limite</strong> (TCL). Basicamente, o TCL afirma que, em grandes amostras, a média amostral tem distribuição aproximadamente normal.
+</li>
+<li class="fragment">
+Como a média amostral é soma de va’s dividida pelo tamanho da amostra, é natural, imaginar que, se uma va <span class="math inline">\(X\)</span> pode ser enxergada como soma de várias va’s, então a sua distribuição também será bem aproximada por uma normal. Esse é o caso da distribuição Binomial (soma de Bernoulli’s), por exemplo.
+</li>
 </ol>
 </div>
 </div>
@@ -3241,12 +3291,22 @@ e
 <p><strong>Observações</strong></p>
 </div>
 <div class="callout-content">
-<ol type="1">
-<li class="fragment">Note que, no Exemplo 15, o cálculo do valor exato de <span class="math inline">\(P(X \leq 10)\)</span> envolveu o cálculo de 11 probabilidades da distribuição binomial, o que pode ser exaustivo se realizado sem auxílio computacional;</li>
-<li class="fragment">A alternativa que surge é utilizar <span class="math inline">\(Y \sim \text{N}(\mu, \sigma^2)\)</span> como aproximação para <span class="math inline">\(X \sim \text{Bin}(n,p)\)</span>;</li>
-<li class="fragment">Os parâmetros <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\sigma^2\)</span> da distribuição de <span class="math inline">\(Y\)</span> utilizada para a aproximação são <span class="math inline">\(\mu = \mu_X = np\)</span> e <span class="math inline">\(\sigma^2 = np(1-p)\)</span>, que são a média e a variância da <span class="math inline">\(X \sim \text{Bin}(n,p)\)</span>;</li>
-<li class="fragment">Tendo em vista que <span class="math inline">\(X\)</span> pode ser representada como soma de <span class="math inline">\(n\)</span> va’s <span class="math inline">\(\text{Ber}(p)\)</span>, o TCL garante que a aproximação do Item 2 fica melhor a medida que <span class="math inline">\(n\)</span> aumenta;</li>
-<li class="fragment">Para ilustração, os gráficos a seguir mostram a fmp de <span class="math inline">\(X \sim \text{Bin}(n,p)\)</span> com a fdp de <span class="math inline">\(Y \sim \text{N}(\mu = np, \sigma^2 = np(1-p))\)</span>, para <span class="math inline">\(p=0.05\)</span> e <span class="math inline">\(0.25\)</span>, e <span class="math inline">\(n = 5, 10, 50\)</span> e <span class="math inline">\(100\)</span>.</li>
+<ol>
+<li>
+Note que, no Exemplo 15, o cálculo do valor exato de <span class="math inline">\(P(X \leq 10)\)</span> envolveu o cálculo de 11 probabilidades da distribuição binomial, o que pode ser exaustivo se realizado sem auxílio computacional;
+</li>
+<li class="fragment">
+A alternativa que surge é utilizar <span class="math inline">\(Y \sim \text{N}(\mu, \sigma^2)\)</span> como aproximação para <span class="math inline">\(X \sim \text{Bin}(n,p)\)</span>;
+</li>
+<li class="fragment">
+Os parâmetros <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\sigma^2\)</span> da distribuição de <span class="math inline">\(Y\)</span> utilizada para a aproximação são <span class="math inline">\(\mu = \mu_X = np\)</span> e <span class="math inline">\(\sigma^2 = np(1-p)\)</span>, que são a média e a variância da <span class="math inline">\(X \sim \text{Bin}(n,p)\)</span>;
+</li>
+<li class="fragment">
+Tendo em vista que <span class="math inline">\(X\)</span> pode ser representada como soma de <span class="math inline">\(n\)</span> va’s <span class="math inline">\(\text{Ber}(p)\)</span>, o TCL garante que a aproximação do Item 2 fica melhor a medida que <span class="math inline">\(n\)</span> aumenta;
+</li>
+<li class="fragment">
+Para ilustração, os gráficos a seguir mostram a fmp de <span class="math inline">\(X \sim \text{Bin}(n,p)\)</span> com a fdp de <span class="math inline">\(Y \sim \text{N}(\mu = np, \sigma^2 = np(1-p))\)</span>, para <span class="math inline">\(p=0.05\)</span> e <span class="math inline">\(0.25\)</span>, e <span class="math inline">\(n = 5, 10, 50\)</span> e <span class="math inline">\(100\)</span>.
+</li>
 </ol>
 </div>
 </div>
@@ -3359,16 +3419,22 @@ e
 </div>
 </div>
 </div>
+<div class="fragment">
 <div class="callout callout-caution no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <p><strong>Observações</strong></p>
 </div>
 <div class="callout-content">
-<ol type="1">
-<li>É possível notar que a va normal tem fdp simétrica em torno de <span class="math inline">\(\mu\)</span> com formato de sino (a fdp <span class="math inline">\(f_X(x)\)</span> decresce conforme <span class="math inline">\(x\)</span> se afasta de <span class="math inline">\(\mu\)</span>).</li>
-<li>Em muitas situações práticas, a vac é positiva e possui assimetria. Uma família de fdp com essas características é a família <strong>gama</strong>.</li>
+<ol>
+<li>
+É possível notar que a va normal tem fdp simétrica em torno de <span class="math inline">\(\mu\)</span> com formato de sino (a fdp <span class="math inline">\(f_X(x)\)</span> decresce conforme <span class="math inline">\(x\)</span> se afasta de <span class="math inline">\(\mu\)</span>).
+</li>
+<li class="fragment">
+Em muitas situações práticas, a vac é positiva e possui assimetria. Uma família de fdp com essas características é a família <strong>gama</strong>.
+</li>
 </ol>
+</div>
 </div>
 </div>
 </div>
@@ -3422,8 +3488,9 @@ e
 <p><strong>Propriedades</strong></p>
 </div>
 <div class="callout-content">
-<ol type="1">
-<li class="fragment">Se <span class="math inline">\(X \sim \text{Gama}(\alpha, \beta)\)</span>, então
+<ol>
+<li>
+Se <span class="math inline">\(X \sim \text{Gama}(\alpha, \beta)\)</span>, então
 <table>
 <tbody><tr style="border-bottom:none;text-align:center;">
 <td>
@@ -3436,9 +3503,14 @@ e
 <span class="math inline">\(V(X) = \alpha\beta^2.\)</span>
 </td>
 </tr>
-</tbody></table></li>
-<li class="fragment">Se <span class="math inline">\(X \sim \text{Gama}(\alpha, \beta)\)</span>, então <span class="math inline">\(\frac{X}{\beta} \sim \text{Gama}(\alpha, 1)\)</span>, isto é, <span class="math inline">\(\frac{X}{\beta}\)</span> tem distribuição gama padrão com parâmetro de forma <span class="math inline">\(\alpha\)</span>.</li>
-<li class="fragment">Assim, os problemas de cálculos de probabilidades de uma <span class="math inline">\(\text{Gama}(\alpha, \beta)\)</span> podem ser transformados nos de uma <span class="math inline">\(\text{Gama}(\alpha, 1)\)</span> por meio da operação <span class="math inline">\(\frac{X}{\beta}\)</span>. A probabilidades de uma gama padrão para diferentes valores de <span class="math inline">\(\alpha\)</span> podem ser obtidas por métodos numéricos e seus valores tabelados.</li>
+</tbody></table>
+</li>
+<li class="fragment">
+Se <span class="math inline">\(X \sim \text{Gama}(\alpha, \beta)\)</span>, então <span class="math inline">\(\frac{X}{\beta} \sim \text{Gama}(\alpha, 1)\)</span>, isto é, <span class="math inline">\(\frac{X}{\beta}\)</span> tem distribuição gama padrão com parâmetro de forma <span class="math inline">\(\alpha\)</span>.
+</li>
+<li class="fragment">
+Assim, os problemas de cálculos de probabilidades de uma <span class="math inline">\(\text{Gama}(\alpha, \beta)\)</span> podem ser transformados nos de uma <span class="math inline">\(\text{Gama}(\alpha, 1)\)</span> por meio da operação <span class="math inline">\(\frac{X}{\beta}\)</span>. A probabilidades de uma gama padrão para diferentes valores de <span class="math inline">\(\alpha\)</span> podem ser obtidas por métodos numéricos e seus valores tabelados.
+</li>
 </ol>
 </div>
 </div>
@@ -3626,9 +3698,12 @@ Dizemos que <span class="math inline">\(X\)</span> tem distribuição exponencia
 <p><strong>Propriedades</strong></p>
 </div>
 <div class="callout-content">
-<ol type="1">
-<li class="fragment">A distribuição <span class="math inline">\(\text{Exp}(\lambda)\)</span> é um caso especial da <span class="math inline">\(\text{Gama}(\alpha, \beta)\)</span>, com <span class="math inline">\(\alpha = 1\)</span> e <span class="math inline">\(\beta = \frac{1}{\lambda}\)</span>;</li>
-<li class="fragment">Assim, pela esperança e variancia da distribuição gama, se <span class="math inline">\(X \sim \text{Exp}(\lambda)\)</span>, temos que
+<ol>
+<li>
+A distribuição <span class="math inline">\(\text{Exp}(\lambda)\)</span> é um caso especial da <span class="math inline">\(\text{Gama}(\alpha, \beta)\)</span>, com <span class="math inline">\(\alpha = 1\)</span> e <span class="math inline">\(\beta = \frac{1}{\lambda}\)</span>;
+</li>
+<li class="fragment">
+Assim, pela esperança e variancia da distribuição gama, se <span class="math inline">\(X \sim \text{Exp}(\lambda)\)</span>, temos que
 <table>
 <tbody><tr style="border-bottom:none;text-align:center;">
 <td>
@@ -3641,7 +3716,8 @@ e
 <span class="math inline">\(\sigma^2 = V(X) = \alpha\beta^2 = \frac{1}{\lambda^2}.\)</span>
 </td>
 </tr>
-</tbody></table></li>
+</tbody></table>
+</li>
 </ol>
 </div>
 </div>
@@ -3697,9 +3773,13 @@ Se <span class="math inline">\(X \sim \text{Exp}(\lambda)\)</span>, então sua f
 <p><strong>Observações</strong></p>
 </div>
 <div class="callout-content">
-<ol type="1">
-<li>A distribuição exponencial é muito utilizada para modelar o tempo de vida de componentes em geral;</li>
-<li>Uma propriedade importante da distribuição exponencial nessas aplicações é a <strong>falta de memória</strong>.</li>
+<ol>
+<li>
+A distribuição exponencial é muito utilizada para modelar o tempo de vida de componentes em geral;
+</li>
+<li class="fragment">
+Uma propriedade importante da distribuição exponencial nessas aplicações é a <strong>falta de memória</strong>.
+</li>
 </ol>
 </div>
 </div>
@@ -3913,17 +3993,23 @@ e
 <p><strong>Propriedades</strong></p>
 </div>
 <div class="callout-content">
-<ol type="1">
-<li class="fragment">Se <span class="math inline">\(X \sim \text{Weibull}(\alpha, \beta)\)</span> é possível mostrar que <span class="math inline">\(Y = (\frac{X}{\beta})^\alpha\)</span> satisfaz <span class="math inline">\(Y \sim \text{Exp}(1)\)</span>. De modo análogo, se <span class="math inline">\(Y \sim \text{Exp}(1)\)</span>, então <span class="math inline">\(X = \beta Y^{1/\alpha}\)</span> satisfaz <span class="math inline">\(X \sim \text{Weibull}(\alpha, \beta)\)</span>;</li>
-<li class="fragment">Se <span class="math inline">\(X \sim \text{Weibull}(\alpha, \beta)\)</span>, a fda de <span class="math inline">\(X\)</span> é
+<ol>
+<li>
+Se <span class="math inline">\(X \sim \text{Weibull}(\alpha, \beta)\)</span> é possível mostrar que <span class="math inline">\(Y = (\frac{X}{\beta})^\alpha\)</span> satisfaz <span class="math inline">\(Y \sim \text{Exp}(1)\)</span>. De modo análogo, se <span class="math inline">\(Y \sim \text{Exp}(1)\)</span>, então <span class="math inline">\(X = \beta Y^{1/\alpha}\)</span> satisfaz <span class="math inline">\(X \sim \text{Weibull}(\alpha, \beta)\)</span>;
+</li>
+<li class="fragment">
+Se <span class="math inline">\(X \sim \text{Weibull}(\alpha, \beta)\)</span>, a fda de <span class="math inline">\(X\)</span> é
 <table>
 <tbody><tr style="border-bottom:none;text-align:center;">
 <td>
 <span class="math inline">\(F_X(x) = 1- e^{-(\frac{x}{\beta})^{\alpha}}\)</span>;
 </td>
 </tr>
-</tbody></table></li>
-<li class="fragment">Se <span class="math inline">\(X \sim \text{Weibull}(1, \frac{1}{\lambda})\)</span>, isto é, <span class="math inline">\(\alpha = 1\)</span> e <span class="math inline">\(\beta = \frac{1}{\lambda}\)</span>, então <span class="math inline">\(X \sim \text{Exp}(\lambda)\)</span>.</li>
+</tbody></table>
+</li>
+<li class="fragment">
+Se <span class="math inline">\(X \sim \text{Weibull}(1, \frac{1}{\lambda})\)</span>, isto é, <span class="math inline">\(\alpha = 1\)</span> e <span class="math inline">\(\beta = \frac{1}{\lambda}\)</span>, então <span class="math inline">\(X \sim \text{Exp}(\lambda)\)</span>.
+</li>
 </ol>
 </div>
 </div>
@@ -4018,9 +4104,12 @@ A vac <span class="math inline">\(X\)</span> tem distribuição lognormal com pa
 <p><strong>Propriedades</strong></p>
 </div>
 <div class="callout-content">
-<ol type="1">
-<li class="fragment">É possível mostrar que, se <span class="math inline">\(X \sim \text{LogN}(\mu, \sigma^2)\)</span>, então <span class="math inline">\(Y = \ln(X)\)</span> satisfaz <span class="math inline">\(Y \sim \text{N}(\mu, \sigma^2)\)</span>;</li>
-<li class="fragment">Se <span class="math inline">\(X \sim \text{LogN}(\mu, \sigma^2)\)</span>, então
+<ol>
+<li>
+É possível mostrar que, se <span class="math inline">\(X \sim \text{LogN}(\mu, \sigma^2)\)</span>, então <span class="math inline">\(Y = \ln(X)\)</span> satisfaz <span class="math inline">\(Y \sim \text{N}(\mu, \sigma^2)\)</span>;
+</li>
+<li class="fragment">
+Se <span class="math inline">\(X \sim \text{LogN}(\mu, \sigma^2)\)</span>, então
 <table>
 <tbody><tr style="border-bottom:none;text-align:center;">
 <td>
@@ -4033,7 +4122,8 @@ e
 <span class="math inline">\(V(X) = e^{2\mu + \sigma^2}(e^{\sigma^2} - 1).\)</span>
 </td>
 </tr>
-</tbody></table></li>
+</tbody></table>
+</li>
 </ol>
 </div>
 </div>
@@ -4169,11 +4259,19 @@ e
 <p><strong>Observações</strong></p>
 </div>
 <div class="callout-content">
-<ol type="1">
-<li class="fragment">Note que <span class="math inline">\(\alpha=\beta\)</span> fornece fdp’s simétricas;</li>
-<li class="fragment">Se <span class="math inline">\(\alpha=\beta=1\)</span>, dizemos que <span class="math inline">\(X\)</span> tem distribuição uniforme em <span class="math inline">\((A,B)\)</span>, denotada por <span class="math inline">\(X \sim \text{U}(A,B)\)</span>;</li>
-<li class="fragment">Ao trocar o valor de <span class="math inline">\(\alpha\)</span> pelo de <span class="math inline">\(\beta\)</span> e o de <span class="math inline">\(\beta\)</span> pelo de <span class="math inline">\(\alpha\)</span>, a fdp é refletida em torno de <span class="math inline">\(\frac{A+B}{2}\)</span>;</li>
-<li class="fragment">O cálculo de probabilidades da distribuição Beta, em geral, requer o uso de métodos numéricos. Mas, para uma Beta padrão com <span class="math inline">\(\alpha, \beta \in \mathbb{N}\)</span>, é possível a sua obtenção analítica (<span class="math inline">\(\Gamma(n) = (n-1)!\)</span>, <span class="math inline">\(n \in \mathbb{N}\)</span>).</li>
+<ol>
+<li>
+Note que <span class="math inline">\(\alpha=\beta\)</span> fornece fdp’s simétricas;
+</li>
+<li class="fragment">
+Se <span class="math inline">\(\alpha=\beta=1\)</span>, dizemos que <span class="math inline">\(X\)</span> tem distribuição uniforme em <span class="math inline">\((A,B)\)</span>, denotada por <span class="math inline">\(X \sim \text{U}(A,B)\)</span>;
+</li>
+<li class="fragment">
+Ao trocar o valor de <span class="math inline">\(\alpha\)</span> pelo de <span class="math inline">\(\beta\)</span> e o de <span class="math inline">\(\beta\)</span> pelo de <span class="math inline">\(\alpha\)</span>, a fdp é refletida em torno de <span class="math inline">\(\frac{A+B}{2}\)</span>;
+</li>
+<li class="fragment">
+O cálculo de probabilidades da distribuição Beta, em geral, requer o uso de métodos numéricos. Mas, para uma Beta padrão com <span class="math inline">\(\alpha, \beta \in \mathbb{N}\)</span>, é possível a sua obtenção analítica (<span class="math inline">\(\Gamma(n) = (n-1)!\)</span>, <span class="math inline">\(n \in \mathbb{N}\)</span>).
+</li>
 </ol>
 </div>
 </div>
@@ -4745,10 +4843,16 @@ Para um vetor aleatório <span class="math inline">\((X, Y)\)</span> discreto, a
 <p><strong>Observações</strong></p>
 </div>
 <div class="callout-content">
-<ol type="1">
-<li>Pela fmpc, podemos obter probabilidades conjuntas para eventos de interesse;</li>
-<li>A fmp de apenas uma va é obtida da fmpc somando <span class="math inline">\(p(x,y)\)</span> em todos os valores da outra variável;</li>
-<li>Nesse contexto, essa fmp univariada é chamada de fmp <strong>marginal</strong>.</li>
+<ol>
+<li>
+Pela fmpc, podemos obter probabilidades conjuntas para eventos de interesse;
+</li>
+<li class="fragment">
+A fmp de apenas uma va é obtida da fmpc somando <span class="math inline">\(p(x,y)\)</span> em todos os valores da outra variável;
+</li>
+<li class="fragment">
+Nesse contexto, essa fmp univariada é chamada de fmp <strong>marginal</strong>.
+</li>
 </ol>
 </div>
 </div>
@@ -4889,8 +4993,8 @@ Para um vetor aleatório <span class="math inline">\((X, Y)\)</span> discreto, a
 <div class="callout-content">
 <p>Seja <span class="math inline">\((X,Y)\)</span> vetor aleatório discreto com fmpc <span class="math inline">\(p(x,y)\)</span>, então:</p>
 <ol type="1">
-<li><span class="math inline">\(p(x,y) \geq 0\)</span>, <span class="math inline">\(\forall\ x,y\)</span>;</li>
-<li><span class="math inline">\(\sum_{x \in \text{Im}(X)}\sum_{y \in \text{Im}(Y)} p(x,y) = 1\)</span>.</li>
+<li class="fragment"><span class="math inline">\(p(x,y) \geq 0\)</span>, <span class="math inline">\(\forall\ x,y\)</span>;</li>
+<li class="fragment"><span class="math inline">\(\sum_{x \in \text{Im}(X)}\sum_{y \in \text{Im}(Y)} p(x,y) = 1\)</span>.</li>
 </ol>
 </div>
 </div>
@@ -4902,9 +5006,13 @@ Para um vetor aleatório <span class="math inline">\((X, Y)\)</span> discreto, a
 <p><strong>Observações</strong></p>
 </div>
 <div class="callout-content">
-<ol type="1">
-<li class="fragment">A fmpc pode ser obtida da fdac e vice-versa. A fmpc <span class="math inline">\(p(x,y) = F(x,y) - F(x^-, y^-)\)</span>, que é a altura do salto de <span class="math inline">\(F(\cdot,\cdot)\)</span> em <span class="math inline">\((x,y)\)</span> e a fdac <span class="math inline">\(F(x,y)\)</span> é obtida por <span class="math inline">\(\sum_{s \leq x}\sum_{t \leq y}p(s,t)\)</span>;</li>
-<li class="fragment">Toda função que satisfaça as propriedades acima será denominada fmpc. Assim, podemos especificar diretamente a fmpc, contornando a necessidade de criar um modelo probabilístico em <span class="math inline">\(\Omega\)</span>.</li>
+<ol>
+<li>
+A fmpc pode ser obtida da fdac e vice-versa. A fmpc <span class="math inline">\(p(x,y) = F(x,y) - F(x^-, y^-)\)</span>, que é a altura do salto de <span class="math inline">\(F(\cdot,\cdot)\)</span> em <span class="math inline">\((x,y)\)</span> e a fdac <span class="math inline">\(F(x,y)\)</span> é obtida por <span class="math inline">\(\sum_{s \leq x}\sum_{t \leq y}p(s,t)\)</span>;
+</li>
+<li class="fragment">
+Toda função que satisfaça as propriedades acima será denominada fmpc. Assim, podemos especificar diretamente a fmpc, contornando a necessidade de criar um modelo probabilístico em <span class="math inline">\(\Omega\)</span>.
+</li>
 </ol>
 </div>
 </div>
@@ -4938,10 +5046,15 @@ Se a fdac <span class="math inline">\(F(x,y)\)</span> do vetor aleatório <span 
 <p><strong>Observações</strong></p>
 </div>
 <div class="callout-content">
-<ol type="1">
-<li class="fragment">A probabilidade de <span class="math inline">\((X,Y)\)</span> pertencer a uma região de <span class="math inline">\(\mathbb{R}^2\)</span> é a integral dupla de <span class="math inline">\(f(x,y)\)</span> nessa região. Por exemplo, <span class="math inline">\(P(a &lt; X \leq b, c &lt; Y \leq d) = \int_a^b\int_c^d f(x,y) dy dx\)</span>;</li>
-<li class="fragment">A fdpc pode ser obtida da fdac por derivação <span class="math inline">\(f(x,y) = \frac{\partial^2}{\partial x \partial y} F(x,y)\)</span>;</li>
-<li class="fragment">As fdp’s marginais são obtidas por integração da coordenada correspondente a outra variável:
+<ol>
+<li>
+A probabilidade de <span class="math inline">\((X,Y)\)</span> pertencer a uma região de <span class="math inline">\(\mathbb{R}^2\)</span> é a integral dupla de <span class="math inline">\(f(x,y)\)</span> nessa região. Por exemplo, <span class="math inline">\(P(a &lt; X \leq b, c &lt; Y \leq d) = \int_a^b\int_c^d f(x,y) dy dx\)</span>;
+</li>
+<li class="fragment">
+A fdpc pode ser obtida da fdac por derivação <span class="math inline">\(f(x,y) = \frac{\partial^2}{\partial x \partial y} F(x,y)\)</span>;
+</li>
+<li class="fragment">
+As fdp’s marginais são obtidas por integração da coordenada correspondente a outra variável:
 <table style="margin-left: auto; margin-right: auto;">
 <tbody><tr style="border-bottom:none">
 <td>
@@ -4954,7 +5067,8 @@ e
 <span class="math inline">\(f_Y(y) = \int_{-\infty}^\infty f(x,y) dx\)</span>.
 </td>
 </tr>
-</tbody></table></li>
+</tbody></table>
+</li>
 </ol>
 </div>
 </div>
@@ -5112,30 +5226,36 @@ A marginal de <span class="math inline">\(Y\)</span> é
 </div>
 </div>
 </div>
+<div class="fragment">
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <p><strong>Definições</strong></p>
 </div>
 <div class="callout-content">
-<ol type="1">
-<li>Seja <span class="math inline">\((X,Y)\)</span> vetor aleatório discreto com fmpc <span class="math inline">\(p(x,y)\)</span>, então a fmp condicional de <span class="math inline">\(Y\)</span> dado que <span class="math inline">\(X = x\)</span> é dada pela fmpc de <span class="math inline">\((X,Y)\)</span> dividida pela fmp marginal de <span class="math inline">\(X\)</span>:
+<ol>
+<li>
+Seja <span class="math inline">\((X,Y)\)</span> vetor aleatório discreto com fmpc <span class="math inline">\(p(x,y)\)</span>, então a fmp condicional de <span class="math inline">\(Y\)</span> dado que <span class="math inline">\(X = x\)</span> é dada pela fmpc de <span class="math inline">\((X,Y)\)</span> dividida pela fmp marginal de <span class="math inline">\(X\)</span>:
 <table style="margin-left: auto; margin-right: auto;">
 <tbody><tr style="border-bottom:none">
 <td>
 <span class="math inline">\(p_{Y|X}(y|x) = \frac{p(x,y)}{p_X(x)}\)</span>.
 </td>
 </tr>
-</tbody></table></li>
-<li>Seja <span class="math inline">\((X,Y)\)</span> vetor aleatório contínuo com fdpc <span class="math inline">\(f(x,y)\)</span>, então a fdp condicional de <span class="math inline">\(Y\)</span> dado que <span class="math inline">\(X = x\)</span> é dada pela fdpc de <span class="math inline">\((X,Y)\)</span> dividida pela fdp marginal de <span class="math inline">\(X\)</span>:
+</tbody></table>
+</li>
+<li class="fragment">
+Seja <span class="math inline">\((X,Y)\)</span> vetor aleatório contínuo com fdpc <span class="math inline">\(f(x,y)\)</span>, então a fdp condicional de <span class="math inline">\(Y\)</span> dado que <span class="math inline">\(X = x\)</span> é dada pela fdpc de <span class="math inline">\((X,Y)\)</span> dividida pela fdp marginal de <span class="math inline">\(X\)</span>:
 <table style="margin-left: auto; margin-right: auto;">
 <tbody><tr style="border-bottom:none">
 <td>
 <span class="math inline">\(f_{Y|X}(y|x) = \frac{f(x,y)}{f_X(x)}\)</span>.
 </td>
 </tr>
-</tbody></table></li>
+</tbody></table>
+</li>
 </ol>
+</div>
 </div>
 </div>
 </div>
@@ -5494,9 +5614,13 @@ Observe que <span class="math inline">\(f_{Y|X}(y|x)\)</span> é fdp em <span cl
 <p><strong>Definições</strong></p>
 </div>
 <div class="callout-content">
-<ol type="1">
-<li>Se <span class="math inline">\((X, Y)\)</span> é vetor aleatório discreto. Dizemos que as vad’s <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> são independentes se <span class="math display">\[p_{Y|X}(y|x) = p_Y(y),\ \forall\ y \ \ \ \text{ou} \ \ \ p_{X|Y}(x|y) = p_X(x),\ \forall\ x.\]</span></li>
-<li>Se <span class="math inline">\((X, Y)\)</span> é vetor aleatório contínuo. Dizemos que as vac’s <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> são independentes se <span class="math display">\[f_{Y|X}(y|x) = f_Y(y),\ \forall\ y \ \ \ \text{ou} \ \ \ f_{X|Y}(x|y) = f_X(x),\ \forall\ x.\]</span></li>
+<ol>
+<li>
+Se <span class="math inline">\((X, Y)\)</span> é vetor aleatório discreto. Dizemos que as vad’s <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> são independentes se <span class="math display">\[p_{Y|X}(y|x) = p_Y(y),\ \forall\ y \ \ \ \text{ou} \ \ \ p_{X|Y}(x|y) = p_X(x),\ \forall\ x.\]</span>
+</li>
+<li class="fragment">
+Se <span class="math inline">\((X, Y)\)</span> é vetor aleatório contínuo. Dizemos que as vac’s <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> são independentes se <span class="math display">\[f_{Y|X}(y|x) = f_Y(y),\ \forall\ y \ \ \ \text{ou} \ \ \ f_{X|Y}(x|y) = f_X(x),\ \forall\ x.\]</span>
+</li>
 </ol>
 </div>
 </div>
@@ -5511,9 +5635,13 @@ Observe que <span class="math inline">\(f_{Y|X}(y|x)\)</span> é fdp em <span cl
 <p><strong>Propriedades</strong></p>
 </div>
 <div class="callout-content">
-<ol type="1">
-<li>Duas vad’s <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> são independentes se, e somente, se <span class="math inline">\(p(x,y) = p_X(x)\cdot p_Y(y)\)</span>, para todo <span class="math inline">\(x,y\)</span>;</li>
-<li>Duas vac’s <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> são independentes se, e somente, se <span class="math inline">\(f(x,y) = f_X(x)\cdot f_Y(y)\)</span>, para todo <span class="math inline">\(x,y\)</span>.</li>
+<ol>
+<li>
+Duas vad’s <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> são independentes se, e somente, se <span class="math inline">\(p(x,y) = p_X(x)\cdot p_Y(y)\)</span>, para todo <span class="math inline">\(x,y\)</span>;
+</li>
+<li class="fragment">
+Duas vac’s <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> são independentes se, e somente, se <span class="math inline">\(f(x,y) = f_X(x)\cdot f_Y(y)\)</span>, para todo <span class="math inline">\(x,y\)</span>.
+</li>
 </ol>
 </div>
 </div>
@@ -5602,7 +5730,14 @@ Observe que <span class="math inline">\(f_{Y|X}(y|x)\)</span> é fdp em <span cl
 <p><strong>Definições</strong></p>
 </div>
 <div class="callout-content">
-<p>Se <span class="math inline">\(X_1, X_2,\ldots , X_n\)</span> são vad’s, a sua fmpc é a função <span class="math inline">\(n\)</span>-variada definida por <span class="math display">\[p(x_1, x_2, \ldots, x_n) = P(X_1 = x_1, X_2 = x_2, \ldots , X_n = x_n)\]</span> Se <span class="math inline">\(X_1, X_2,\ldots , X_n\)</span> são vac’s com fdac <span class="math inline">\(F(x_1, \ldots, x_n) = P(X_1 \leq x_1, \ldots, X_n \leq x_n)\)</span> a sua fdpc é a função <span class="math inline">\(n\)</span>-variada <span class="math inline">\(f(t_1, \ldots, t_n)\)</span> tal que <span class="math display">\[F(x_1, \ldots, x_n) = \int_{-\infty}^{x_1} \cdots \int_{-\infty}^{x_n} f(t_1, \ldots, t_n) dt_n \cdots dt_1.\]</span></p>
+<ol>
+<li>
+Se <span class="math inline">\(X_1, X_2,\ldots , X_n\)</span> são vad’s, a sua fmpc é a função <span class="math inline">\(n\)</span>-variada definida por <span class="math display">\[p(x_1, x_2, \ldots, x_n) = P(X_1 = x_1, X_2 = x_2, \ldots , X_n = x_n).\]</span>
+</li>
+<li class="fragment">
+Se <span class="math inline">\(X_1, X_2,\ldots , X_n\)</span> são vac’s com fdac <span class="math inline">\(F(x_1, \ldots, x_n) = P(X_1 \leq x_1, \ldots, X_n \leq x_n)\)</span> a sua fdpc é a função <span class="math inline">\(n\)</span>-variada <span class="math inline">\(f(t_1, \ldots, t_n)\)</span> tal que <span class="math display">\[F(x_1, \ldots, x_n) = \int_{-\infty}^{x_1} \cdots \int_{-\infty}^{x_n} f(t_1, \ldots, t_n) dt_n \cdots dt_1.\]</span>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -5616,9 +5751,12 @@ Observe que <span class="math inline">\(f_{Y|X}(y|x)\)</span> é fdp em <span cl
 <p><strong>Definições</strong></p>
 </div>
 <div class="callout-content">
-<ol type="1">
-<li>Um experimento <strong>Multinomial</strong> consiste de <span class="math inline">\(n\)</span> repetições independentes de um experimento com <span class="math inline">\(r\)</span> resultados possíveis, que denominamos de categorias.</li>
-<li>Em um experimento Multinomial, seja <span class="math inline">\(X_j\)</span> a quantidade das <span class="math inline">\(n\)</span> repetições que resultaram na categoria <span class="math inline">\(j\)</span>, <span class="math inline">\(j=1, \ldots, r\)</span>. Dizemos que o vetor aleatório <span class="math inline">\((X_1, \ldots, X_r)\)</span> tem distribuição <strong>Multinomial</strong> e sua fmpc é
+<ol>
+<li>
+Um experimento <strong>Multinomial</strong> consiste de <span class="math inline">\(n\)</span> repetições independentes de um experimento com <span class="math inline">\(r\)</span> resultados possíveis, que denominamos de categorias.
+</li>
+<li class="fragment">
+Em um experimento Multinomial, seja <span class="math inline">\(X_j\)</span> a quantidade das <span class="math inline">\(n\)</span> repetições que resultaram na categoria <span class="math inline">\(j\)</span>, <span class="math inline">\(j=1, \ldots, r\)</span>. Dizemos que o vetor aleatório <span class="math inline">\((X_1, \ldots, X_r)\)</span> tem distribuição <strong>Multinomial</strong> e sua fmpc é
 <table style="margin-left: auto; margin-right: auto;">
 <tbody><tr style="border-bottom:none">
 <td>
@@ -5626,7 +5764,8 @@ Observe que <span class="math inline">\(f_{Y|X}(y|x)\)</span> é fdp em <span cl
 </td>
 </tr>
 </tbody></table>
-em que <span class="math inline">\(p_j\)</span> é a probabilidade de uma repetição resultar na categoria <span class="math inline">\(j\)</span>, <span class="math inline">\(j=1, \ldots, r\)</span>. Notação <span class="math inline">\((X_1, \ldots, X_r) \sim \text{MultiNom}(n, p_1, \ldots, p_r)\)</span>.</li>
+em que <span class="math inline">\(p_j\)</span> é a probabilidade de uma repetição resultar na categoria <span class="math inline">\(j\)</span>, <span class="math inline">\(j=1, \ldots, r\)</span>. Notação <span class="math inline">\((X_1, \ldots, X_r) \sim \text{MultiNom}(n, p_1, \ldots, p_r)\)</span>.
+</li>
 </ol>
 </div>
 </div>
@@ -5762,11 +5901,19 @@ em que <span class="math inline">\(p_j\)</span> é a probabilidade de uma repeti
 <p><strong>Observações</strong></p>
 </div>
 <div class="callout-content">
-<ol type="1">
-<li class="fragment">A covariância é o coeficiente angular esperado da reta que passa pelos pontos <span class="math inline">\((\mu_X,\mu_Y)\)</span> e <span class="math inline">\((X,Y)\)</span>;</li>
-<li class="fragment"><span class="math inline">\(\text{Cov}(X,Y) \gg 0\)</span> indica relação <strong>linear</strong> positiva forte;</li>
-<li class="fragment"><span class="math inline">\(\text{Cov}(X,Y) \ll 0\)</span> indica relação <strong>linear</strong> negativa forte;</li>
-<li class="fragment"><span class="math inline">\(\text{Cov}(X,Y) \approx 0\)</span> indica ausência de relação <strong>linear</strong>.</li>
+<ol>
+<li>
+A covariância mede a direção esperada da relação linear entre as variáveis <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>;
+</li>
+<li class="fragment">
+<span class="math inline">\(\text{Cov}(X,Y) \gg 0\)</span> indica relação <strong>linear</strong> positiva forte;
+</li>
+<li class="fragment">
+<span class="math inline">\(\text{Cov}(X,Y) \ll 0\)</span> indica relação <strong>linear</strong> negativa forte;
+</li>
+<li class="fragment">
+<span class="math inline">\(\text{Cov}(X,Y) \approx 0\)</span> indica ausência de relação <strong>linear</strong>.
+</li>
 </ol>
 </div>
 </div>
@@ -5843,29 +5990,49 @@ Se <span class="math inline">\((X,Y)\)</span> é vetor aleatório, então
 </td>
 </tr>
 </tbody></table>
-<p><span class="fragment">É possível verificar que <span class="math inline">\(\mu_X = 5\)</span> e <span class="math inline">\(\mu_Y = \frac{20}{16}\)</span>.</span> <span class="fragment">Logo,</span></p>
-<table style="margin-left: auto; margin-right: auto;">
-<tbody><tr class="fragment" style="border-bottom:none">
-<td>
-<span class="math inline">\(\text{Cov}(X,Y) = E(XY) - \mu_X\mu_Y = \frac{100}{16} - 5\cdot\frac{20}{16} = 0.\)</span>
-</td>
-</tr>
-</tbody></table>
+<p><span class="fragment">É possível verificar que <span class="math inline">\(\mu_X = 5\)</span> e <span class="math inline">\(\mu_Y = \frac{20}{16}\)</span>.</span> <span class="fragment">Logo, <span class="math inline">\(\text{Cov}(X,Y) = E(XY) - \mu_X\mu_Y = \frac{100}{16} - 5\cdot\frac{20}{16} = 0.\)</span></span></p>
 </div>
-</section>
-<section id="covariância-e-correlação-5" class="slide level2 unnumbered unlisted">
-<h2>4.1 Covariância e Correlação</h2>
+<div class="fragment">
 <div class="callout callout-caution no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <p><strong>Observações</strong></p>
 </div>
 <div class="callout-content">
-<ol type="1">
-<li class="fragment">O Exemplo 23 mostra que, mesmo <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> sendo <span style="color:red"><strong>dependentes</strong></span>, podemos obter <span class="math inline">\(\text{Cov}(X,Y) = 0\)</span>. Por isso, <span class="math inline">\(\text{Cov}(X,Y) = 0\)</span> não significa independência, mas apenas indica a ausência de relação <span style="color:red"><strong>linear</strong></span>;</li>
-<li class="fragment">A covariância não é limitada, podendo assumir qualquer valor real. Assim, é difícil classificarmos o que seria uma covariância (positiva ou negativa) forte;</li>
-<li class="fragment">Uma medida mais apropriada seria o <strong>coeficiente de correlação</strong>.</li>
+<p>O Exemplo 23 mostra que, mesmo <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> sendo <span style="color:red"><strong>dependentes</strong></span>, podemos obter <span class="math inline">\(\text{Cov}(X,Y) = 0\)</span>. Por isso, <span class="math inline">\(\text{Cov}(X,Y) = 0\)</span> não significa independência, mas apenas indica a ausência de relação <span style="color:red"><strong>linear</strong></span>;</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="covariância-e-correlação-5" class="slide level2 unnumbered unlisted">
+<h2>4.1 Covariância e Correlação</h2>
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Propriedade</strong></p>
+</div>
+<div class="callout-content">
+<p>A covariância satisfaz <span class="math inline">\(-\sigma_X\sigma_Y \leq \text{Cov}(X,Y) \leq \sigma_X\sigma_Y\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-caution no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Observações</strong></p>
+</div>
+<div class="callout-content">
+<ol>
+<li>
+Embora a covariância seja limitada, esses limites dependem dos desvios-padrão associados, mudando caso a caso. Assim, é difícil classificarmos o que seria uma covariância (positiva ou negativa) forte;
+</li>
+<li class="fragment">
+Uma medida mais apropriada seria o <strong>coeficiente de correlação</strong>.
+</li>
 </ol>
+</div>
 </div>
 </div>
 </div>
@@ -5899,7 +6066,7 @@ Sejam <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</
 <p><strong>Observação</strong></p>
 </div>
 <div class="callout-content">
-<p>O coeficiente de correlação está relacionado com o ângulo formado entre as variáveis centralizas pelas respectivas médias.</p>
+<p>O coeficiente de correlação coincide com cosseno do ângulo formado entre as variáveis centralizas pelas respectivas médias.</p>
 </div>
 </div>
 </div>
@@ -6019,12 +6186,22 @@ Sejam <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</
 <p><strong>Propriedades</strong></p>
 </div>
 <div class="callout-content">
-<ol type="1">
-<li class="fragment">Se <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> são independentes, então <span class="math inline">\(\text{Cov}(X, Y) = 0\)</span> (e também <span class="math inline">\(\rho = 0\)</span>). Entretanto, como visto anteriormente, <span class="math inline">\(\text{Cov}(X, Y) = 0\)</span> não implica independência entre <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>;</li>
-<li class="fragment"><span class="math inline">\(\text{Cov}(X, X) = E[(X-\mu_X)(X-\mu_X)] = E[(X-\mu_X)^2] = V(X) = \sigma^2_X\)</span>;</li>
-<li class="fragment"><span class="math inline">\(\text{Cov}(X, Y) = \text{Cov}(Y, X)\)</span>;</li>
-<li class="fragment"><span class="math inline">\(\text{Cov}(\sum_{i=1}^n X_i, \sum_{j=1}^m Y_j) = \sum_{i=1}^n\sum_{j=1}^m\text{Cov}(X_i, Y_j)\)</span>;</li>
-<li class="fragment"><span class="math inline">\(V(\sum_{i=1}^n X_i) = \sum_{i=1}^n \sum_{j=1}^n \text{Cov}(X_i, X_j)\)</span>.</li>
+<ol>
+<li>
+Se <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> são independentes, então <span class="math inline">\(\text{Cov}(X, Y) = 0\)</span> (e também <span class="math inline">\(\rho = 0\)</span>). Entretanto, como visto anteriormente, <span class="math inline">\(\text{Cov}(X, Y) = 0\)</span> não implica independência entre <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>;
+</li>
+<li class="fragment">
+<span class="math inline">\(\text{Cov}(X, X) = E[(X-\mu_X)(X-\mu_X)] = E[(X-\mu_X)^2] = V(X) = \sigma^2_X\)</span>;
+</li>
+<li class="fragment">
+<span class="math inline">\(\text{Cov}(X, Y) = \text{Cov}(Y, X)\)</span>;
+</li>
+<li class="fragment">
+<span class="math inline">\(\text{Cov}(\sum_{i=1}^n X_i, \sum_{j=1}^m Y_j) = \sum_{i=1}^n\sum_{j=1}^m\text{Cov}(X_i, Y_j)\)</span>;
+</li>
+<li class="fragment">
+<span class="math inline">\(V(\sum_{i=1}^n X_i) = \sum_{i=1}^n \sum_{j=1}^n \text{Cov}(X_i, X_j)\)</span>.
+</li>
 </ol>
 </div>
 </div>

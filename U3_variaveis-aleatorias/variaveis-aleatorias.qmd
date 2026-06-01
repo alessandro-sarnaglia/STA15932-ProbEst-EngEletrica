@@ -948,17 +948,27 @@ Seja $F_X(x)$ fda de uma va $X$, então
 ::: {.callout-caution}
 ## Observações
 
-::: incremental
-
-1. Vimos que, se o modelo probabilístico é concebido sobre um espaço amostral $\Omega$ abstrato e $X : \Omega \to \mathbb{R}$, então a fmp pode ser obtida por
+<ol>
+  <li>
+  Vimos que, se o modelo probabilístico é concebido sobre um espaço amostral $\Omega$ abstrato e $X : \Omega \to \mathbb{R}$, então a fmp pode ser obtida por
 $$p_X(x) = P(X = x) = P(A_x),$$
 em que $A_x = \{\omega \in \Omega : X(\omega) = x\}$. Isto é, a fmp de $X$ é **induzida** pela medida de probabilidade em $\Omega$;
-2. Muito frequentemente, a construção de um modelo probabilístico em $\Omega$ é muito complicada, o que dificultaria a determinação da fmp induzida.
-3. Para contornar esse problema, levando em consideração o comportamento da vad em estudo, podemos especificar diretamente uma fmp para a vad, desde que atenda as propriedades já vistas:
-    + $p_X(x) \geq 0$;
-    + $\sum_{x\in\text{Im}(X)} p_X(x) = 1$.
-
-:::
+  </li>
+  <li class="fragment">
+  Muito frequentemente, a construção de um modelo probabilístico em $\Omega$ é muito complicada, o que dificultaria a determinação da fmp induzida.
+  </li>
+  <li class="fragment">
+  Para contornar esse problema, levando em consideração o comportamento da vad em estudo, podemos especificar diretamente uma fmp para a vad, desde que atenda as propriedades já vistas:
+    <ul>
+      <li>
+      $p_X(x) \geq 0$;
+      </li>
+      <li>
+      $\sum_{x\in\text{Im}(X)} p_X(x) = 1$.
+      </li>
+    </ul>
+  </li>
+</ol>
 
 :::
 
@@ -1239,13 +1249,17 @@ $$\mu = \mu_X = E(X) = \sum_{x\in\text{Im}(X)} x\cdot p_X(x;\theta).$$
 ::: {.callout-caution}
 ## Observações
 
-::: incremental
-
-1. A fórmula para o cálculo de $\mu$ é muito similar àquela vista em estatística descritiva, no entanto, agora a fmp $p_X(x;\theta)$ toma o lugar da frequência relativa que teria sido efetivamente observada;
-2. De maneira similar a estatística descritiva, $\mu$ é calculada como uma média **ponderada** com pesos dados por $p_X(x;\theta)$;
-3. Naturalmente, para famílias de fmp's, pelo fato de $p_X(x;\theta)$ ser indexada por $\theta$, a sua esperança também será função de $\theta$.
-
-:::
+<ol>
+  <li>
+    A fórmula para o cálculo de $\mu$ é muito similar àquela vista em estatística descritiva, no entanto, agora a fmp $p_X(x;\theta)$ toma o lugar da frequência relativa que teria sido efetivamente observada;
+  </li>
+  <li class="fragment">
+    De maneira similar a estatística descritiva, $\mu$ é calculada como uma média **ponderada** com pesos dados por $p_X(x;\theta)$;
+  </li>
+  <li class="fragment">
+    Naturalmente, para famílias de fmp's, pelo fato de $p_X(x;\theta)$ ser indexada por $\theta$, a sua esperança também será função de $\theta$.
+  </li>
+</ol>
 
 :::
 
@@ -1263,13 +1277,17 @@ Se $\alpha = \frac{1-\beta}{2}$, vemos que a fmp é simétrica em torno de $1$ e
 ::: {.callout-caution}
 ## Observações
 
-::: incremental
-
-1. Quando está claro a que va $X$ a esperança se refere, usaremos $\mu$ em vez de $\mu_X$;
-2. No Exemplo 4, se hipotetizarmos uma população em que a vad $X$ com valores $0, 1$ e $2$ associados as frequências relativas $\alpha$, $\beta$, $1-\alpha-\beta$, respectivamente, então $\mu = 2-2\alpha - \beta$ será a média populacional. Por isso podemos nos referir a $\mu$ por média populacional ou teórica;
-3. No Exemplo 4, tomando $\theta = (\frac{1}{2}, \frac{1}{3})$, obtemos $\mu = 2-2\frac{1}{2} - \frac{1}{3} = \frac{2}{3} \approx 0.67$, que não é um valor possível de $X$. A palavra esperado deve ser interpretada com cautela porque uma pessoa não espera ver um valor de $X = 0.67$ quando um único estoque é selecionado.
-
-:::
+<ol>
+  <li>
+    Quando está claro a que va $X$ a esperança se refere, usaremos $\mu$ em vez de $\mu_X$;
+  </li>
+  <li class="fragment">
+    No Exemplo 4, se hipotetizarmos uma população em que a vad $X$ com valores $0, 1$ e $2$ associados as frequências relativas $\alpha$, $\beta$, $1-\alpha-\beta$, respectivamente, então $\mu = 2-2\alpha - \beta$ será a média populacional. Por isso podemos nos referir a $\mu$ por média populacional ou teórica;
+  </li>
+  <li class="fragment">
+    No Exemplo 4, tomando $\theta = (\frac{1}{2}, \frac{1}{3})$, obtemos $\mu = 2-2\frac{1}{2} - \frac{1}{3} = \frac{2}{3} \approx 0.67$, que não é um valor possível de $X$. A palavra esperado deve ser interpretada com cautela porque uma pessoa não espera ver um valor de $X = 0.67$ quando um único estoque é selecionado.
+  </li>
+</ol>
 
 :::
 
@@ -1471,23 +1489,22 @@ O cálculo dos desvios quadráticos $(x-\mu)^2$ para obter $\sigma^2$ pode ser t
 
 ## 2.1 Esperança e variância de vad's {.unnumbered .unlisted}
 
-::: fragment
-
 ::: {.callout-warning}
 ## Propriedades
 
-::: incremental
-
-1. Seja $X$ vad com fmp $p_X(x)$ e esperança $\mu$. Então
+<ol>
+  <li>
+    Seja $X$ vad com fmp $p_X(x)$ e esperança $\mu$. Então
 $$\begin{align*}
 \sigma^2 &= \textstyle \sum_{x}(x - \mu)^2\cdot p_X(x) = \sum_{x}(x^2 - 2\mu x + \mu^2)\cdot p_X(x)\\
 &= \textstyle \sum_{x}x^2p_X(x) - 2\mu \sum_{x}x p_X(x) + \mu^2 \sum_{x}p_X(x) = E(X^2) - 2\mu\mu + \mu^2 = E(X^2) - \mu^2.
 \end{align*}$$
-2. Seja $X$ vad com esperança $\mu_X$ e $Y = aX+b$, com $a, b$ constantes, então
+  </li>
+  <li class="fragment">
+    Seja $X$ vad com esperança $\mu_X$ e $Y = aX+b$, com $a, b$ constantes, então
 $$\sigma_{Y}^2 = \sigma_{aX+b}^2 = a^2 \sigma_X^2.$$
-:::
-
-:::
+  </li>
+</ol>
 
 :::
 
@@ -1496,10 +1513,14 @@ $$\sigma_{Y}^2 = \sigma_{aX+b}^2 = a^2 \sigma_X^2.$$
 ::: {.callout-caution}
 ## Observações
 
-::: incremental
-- A Propriedade 1 pode ser utilizada para facilmente se chegar a variância do exemplo anterior;
-- A Propriedade 2 mostra que a variância só é afetada por mudanças em $a$ (escala), e não em $b$ (locação).
-:::
+<ol>
+  <li>
+    A Propriedade 1 pode ser utilizada para facilmente se chegar a variância do exemplo anterior;
+  </li>
+  <li class="fragment">
+    A Propriedade 2 mostra que a variância só é afetada por mudanças em $a$ (escala), e não em $b$ (locação).
+  </li>
+</ol>
 
 :::
 
@@ -1614,12 +1635,14 @@ Se $X \sim \text{Ber}(p)$, então
 ::: {.callout-caution}
 ## Observações
 
-::: incremental
-
-1. No Exemplo 9, definimos como sucesso o aluno acertar a questão, mas esse não precisa ser o caso. A classificação do que será entendido como **sucesso** dependerá do problema em questão.
-2. O experimento de Bernoulli pode ser utilizado para construção de vad's mais complexas.
-
-:::
+<ol>
+  <li>
+    No Exemplo 9, definimos como sucesso o aluno acertar a questão, mas esse não precisa ser o caso. A classificação do que será entendido como **sucesso** dependerá do problema em questão.
+  </li>
+  <li class="fragment">
+    O experimento de Bernoulli pode ser utilizado para construção de vad's mais complexas.
+  </li>
+</ol>
 
 :::
 
@@ -2049,17 +2072,25 @@ Se $X \sim \text{BN}(k,p)$, então
 ::: {.callout-caution}
 ## Observações
 
-::: incremental
-
-1. No Exemplo 12, temos que $X \sim \text{BN}(k=3, p)$. Se $p = 0.01$, por exemplo, teríamos $\mu = E(X) = \frac{3}{0.01} = 300$, $\sigma^2 = V(X) = 3\frac{0.99}{0.01^2} = 29700$ e $\sigma \approx 172.34$. Em média, são realizadas $300$ transações até a terceira falha com DP de $172.34$. Além disso, $P(X > \mu) = P(X > 300) \approx 0.4221$;
-2. A distribuição BN também pode ser definida como a distribuição do número de fracassos (em vez de repetições) até o $k$-ésimo sucesso. Nesse caso, sua fmp é
+<ol>
+  <li>
+    No Exemplo 12, temos que $X \sim \text{BN}(k=3, p)$. Se $p = 0.01$, por exemplo, teríamos $\mu = E(X) = \frac{3}{0.01} = 300$, $\sigma^2 = V(X) = 3\frac{0.99}{0.01^2} = 29700$ e $\sigma \approx 172.34$. Em média, são realizadas $300$ transações até a terceira falha com DP de $172.34$. Além disso, $P(X > \mu) = P(X > 300) \approx 0.4221$;
+  </li>
+  <li class="fragment">
+    A distribuição BN também pode ser definida como a distribuição do número de fracassos (em vez de repetições) até o $k$-ésimo sucesso. Nesse caso, sua fmp é
 $$\textstyle p_X(x) = { x + k -1 \choose k-1 } (1-p)^{x} p^k, \ \ \ x = 0, 1, 2, \ldots,$$
 e sua esperança e variância são, respectivamente, $\mu = k\frac{(1-p)}{p}$ e $\sigma^2 = k\frac{(1-p)}{p^2}$;
-3. Se $X \sim \text{BN}(k = 1, p)$, dizemos que $X$ tem distribuição geométrica, cuja notação é $X \sim \text{Geo}(p)$;
-4. Se $X \sim \text{BN}(k, p)$, então $X = \sum_{j=1}^k X_j$, em que $X_1,\ldots,X_k \sim \text{Geo}(p)$ independentes.
-5. Bin: repetições fixas e sucessos aleatórios; BN: sucessos fixos e repetições aleatórias.
-
-:::
+  </li>
+  <li class="fragment">
+    Se $X \sim \text{BN}(k = 1, p)$, dizemos que $X$ tem distribuição geométrica, cuja notação é $X \sim \text{Geo}(p)$;
+  </li>
+  <li class="fragment">
+    Se $X \sim \text{BN}(k, p)$, então $X = \sum_{j=1}^k X_j$, em que $X_1,\ldots,X_k \sim \text{Geo}(p)$ independentes.
+  </li>
+  <li class="fragment">
+    Bin: repetições fixas e sucessos aleatórios; BN: sucessos fixos e repetições aleatórias.
+  </li>
+</ol>
 
 :::
 
@@ -2758,12 +2789,14 @@ em que $\Phi(z) = P(Z \leq z)$ é uma notação especial para representar a fda 
 ::: {.callout-caution}
 ## Observações
 
-::: incremental
-
-1. Note que passamos de um problema de calcular as probabilidades com respeito a $X \sim \text{N}(\mu, \sigma^2)$, com $\mu$ e $\sigma^2$ quaisquer, para as probabilidades de uma **normal padrão** $Z \sim \text{N}(0,1)$;
-2. As probabilidades para $Z \sim \text{N}(0,1)$ também não tem solução analítica, mas métodos numéricos foram utilizados para computar e tabelar $\Phi(z)$ para diversos valores de $z$.
-
-:::
+<ol>
+  <li>
+    Note que passamos de um problema de calcular as probabilidades com respeito a $X \sim \text{N}(\mu, \sigma^2)$, com $\mu$ e $\sigma^2$ quaisquer, para as probabilidades de uma **normal padrão** $Z \sim \text{N}(0,1)$;
+  </li>
+  <li class="fragment">
+    As probabilidades para $Z \sim \text{N}(0,1)$ também não tem solução analítica, mas métodos numéricos foram utilizados para computar e tabelar $\Phi(z)$ para diversos valores de $z$.
+  </li>
+</ol>
 
 :::
 
@@ -3187,12 +3220,14 @@ No Exemplo 14, obtivemos $p_L = 0.6985$, $p_U = 0.7019$, $Q_{Z,p_L} = 0.52$ e $Q
 ::: {.callout-caution}
 ## Observações
 
-::: incremental
-
-1. Em inferência, veremos um dos teoremas mais importantes para utilização em aplicações, o **Teorema Central do Limite** (TCL). Basicamente, o TCL afirma que, em grandes amostras, a média amostral tem distribuição aproximadamente normal.
-2. Como a média amostral é soma de va's dividida pelo tamanho da amostra, é natural, imaginar que, se uma va $X$ pode ser enxergada como soma de várias va's, então a sua distribuição também será bem aproximada por uma normal. Esse é o caso da distribuição Binomial (soma de Bernoulli's), por exemplo.
-
-:::
+<ol>
+  <li>
+    Em inferência, veremos um dos teoremas mais importantes para utilização em aplicações, o **Teorema Central do Limite** (TCL). Basicamente, o TCL afirma que, em grandes amostras, a média amostral tem distribuição aproximadamente normal.
+  </li>
+  <li class="fragment">
+    Como a média amostral é soma de va's dividida pelo tamanho da amostra, é natural, imaginar que, se uma va $X$ pode ser enxergada como soma de várias va's, então a sua distribuição também será bem aproximada por uma normal. Esse é o caso da distribuição Binomial (soma de Bernoulli's), por exemplo.
+  </li>
+</ol>
 
 :::
 
@@ -3212,15 +3247,23 @@ $$\textstyle P(\frac{X}{n} \leq 0.2) = P(X \leq 10) = \sum_{x=0}^{10} p_X(x) = \
 ::: {.callout-caution}
 ## Observações
 
-::: incremental
-
-1. Note que, no Exemplo 15, o cálculo do valor exato de $P(X \leq 10)$ envolveu o cálculo de 11 probabilidades da distribuição binomial, o que pode ser exaustivo se realizado sem auxílio computacional;
-2. A alternativa que surge é utilizar $Y \sim \text{N}(\mu, \sigma^2)$ como aproximação para $X \sim \text{Bin}(n,p)$;
-3. Os parâmetros $\mu$ e $\sigma^2$ da distribuição de $Y$ utilizada para a aproximação são $\mu = \mu_X = np$ e $\sigma^2 = np(1-p)$, que são a média e a variância da $X \sim \text{Bin}(n,p)$;
-4. Tendo em vista que $X$ pode ser representada como soma de $n$ va's $\text{Ber}(p)$, o TCL garante que a aproximação do Item 2 fica melhor a medida que $n$ aumenta;
-5. Para ilustração, os gráficos a seguir mostram a fmp de $X \sim \text{Bin}(n,p)$ com a fdp de $Y \sim \text{N}(\mu = np, \sigma^2 = np(1-p))$, para $p=0.05$ e $0.25$, e $n = 5, 10, 50$ e $100$.
-
-:::
+<ol>
+  <li>
+    Note que, no Exemplo 15, o cálculo do valor exato de $P(X \leq 10)$ envolveu o cálculo de 11 probabilidades da distribuição binomial, o que pode ser exaustivo se realizado sem auxílio computacional;
+  </li>
+  <li class="fragment">
+    A alternativa que surge é utilizar $Y \sim \text{N}(\mu, \sigma^2)$ como aproximação para $X \sim \text{Bin}(n,p)$;
+  </li>
+  <li class="fragment">
+    Os parâmetros $\mu$ e $\sigma^2$ da distribuição de $Y$ utilizada para a aproximação são $\mu = \mu_X = np$ e $\sigma^2 = np(1-p)$, que são a média e a variância da $X \sim \text{Bin}(n,p)$;
+  </li>
+  <li class="fragment">
+    Tendo em vista que $X$ pode ser representada como soma de $n$ va's $\text{Ber}(p)$, o TCL garante que a aproximação do Item 2 fica melhor a medida que $n$ aumenta;
+  </li>
+  <li class="fragment">
+    Para ilustração, os gráficos a seguir mostram a fmp de $X \sim \text{Bin}(n,p)$ com a fdp de $Y \sim \text{N}(\mu = np, \sigma^2 = np(1-p))$, para $p=0.05$ e $0.25$, e $n = 5, 10, 50$ e $100$.
+  </li>
+</ol>
 
 :::
 
@@ -3537,11 +3580,22 @@ Considerando as condições do Exemplo 15 e utilizando $Y \sim \text{N}(12.5, 9.
 4. $P(X \geq 10)$.
 :::
 
+::: fragment
+
 ::: {.callout-caution}
 ## Observações
 
-1. É possível notar que a va normal tem fdp simétrica em torno de $\mu$ com formato de sino (a fdp $f_X(x)$ decresce conforme $x$ se afasta de $\mu$).
-2. Em muitas situações práticas, a vac é positiva e possui assimetria. Uma família de fdp com essas características é a família **gama**.
+<ol>
+  <li>
+    É possível notar que a va normal tem fdp simétrica em torno de $\mu$ com formato de sino (a fdp $f_X(x)$ decresce conforme $x$ se afasta de $\mu$).
+  </li>
+  <li class="fragment">
+    Em muitas situações práticas, a vac é positiva e possui assimetria. Uma família de fdp com essas características é a família **gama**.
+  </li>
+</ol>
+
+:::
+
 :::
 
 ## 3.2 Modelos probabilísticos contínuos {.unnumbered .unlisted}
@@ -3587,18 +3641,22 @@ Se $X \sim \text{Gama}(\alpha, 1)$, isto é, com parâmetro $\beta=1$, dizemos q
 ::: {.callout-warning}
 ## Propriedades
 
-::: incremental
-
-1. Se $X \sim \text{Gama}(\alpha, \beta)$, então
+<ol>
+  <li>
+    Se $X \sim \text{Gama}(\alpha, \beta)$, então
 <table>
   <tr style="border-bottom:none;text-align:center;">
     <td>$E(X) = \alpha\beta$</td> <td>e</td> <td>$V(X) = \alpha\beta^2.$</td>
   </tr>
 </table>
-2. Se $X \sim \text{Gama}(\alpha, \beta)$, então $\frac{X}{\beta} \sim \text{Gama}(\alpha, 1)$, isto é, $\frac{X}{\beta}$ tem distribuição gama padrão com parâmetro de forma $\alpha$.
-3. Assim, os problemas de cálculos de probabilidades de uma $\text{Gama}(\alpha, \beta)$ podem ser transformados nos de uma $\text{Gama}(\alpha, 1)$ por meio da operação $\frac{X}{\beta}$. A probabilidades de uma gama padrão para diferentes valores de $\alpha$ podem ser obtidas por métodos numéricos e seus valores tabelados.
-
-:::
+  </li>
+  <li class="fragment">
+    Se $X \sim \text{Gama}(\alpha, \beta)$, então $\frac{X}{\beta} \sim \text{Gama}(\alpha, 1)$, isto é, $\frac{X}{\beta}$ tem distribuição gama padrão com parâmetro de forma $\alpha$.
+  </li>
+  <li class="fragment">
+    Assim, os problemas de cálculos de probabilidades de uma $\text{Gama}(\alpha, \beta)$ podem ser transformados nos de uma $\text{Gama}(\alpha, 1)$ por meio da operação $\frac{X}{\beta}$. A probabilidades de uma gama padrão para diferentes valores de $\alpha$ podem ser obtidas por métodos numéricos e seus valores tabelados.
+  </li>
+</ol>
 
 :::
 
@@ -3828,17 +3886,19 @@ Dizemos que $X$ tem distribuição exponencial com taxa $\lambda$, denotada por 
 ::: {.callout-warning}
 ## Propriedades
 
-::: incremental
-
-1. A distribuição $\text{Exp}(\lambda)$ é um caso especial da $\text{Gama}(\alpha, \beta)$, com $\alpha = 1$ e $\beta = \frac{1}{\lambda}$;
-2. Assim, pela esperança e variancia da distribuição gama, se $X \sim \text{Exp}(\lambda)$, temos que
+<ol>
+  <li>
+    A distribuição $\text{Exp}(\lambda)$ é um caso especial da $\text{Gama}(\alpha, \beta)$, com $\alpha = 1$ e $\beta = \frac{1}{\lambda}$;
+  </li>
+  <li class="fragment">
+    Assim, pela esperança e variancia da distribuição gama, se $X \sim \text{Exp}(\lambda)$, temos que
 <table>
   <tr style="border-bottom:none;text-align:center;">
     <td>$\mu = E(X) = \alpha\beta = \frac{1}{\lambda}$</td> <td>e</td> <td>$\sigma^2 = V(X) = \alpha\beta^2 = \frac{1}{\lambda^2}.$</td>
   </tr>
 </table>
-
-:::
+  </li>
+</ol>
 
 :::
 
@@ -3917,8 +3977,15 @@ $$P(X > 10) = 1- P(X \leq 10) = 1 - F_X(10) = 1 - (1-e^{-0.2\cdot 10}) = e^{-2} 
 ::: {.callout-caution}
 ## Observações
 
-1. A distribuição exponencial é muito utilizada para modelar o tempo de vida de componentes em geral;
-2. Uma propriedade importante da distribuição exponencial nessas aplicações é a **falta de memória**.
+<ol>
+  <li>
+    A distribuição exponencial é muito utilizada para modelar o tempo de vida de componentes em geral;
+  </li>
+  <li class="fragment">
+    Uma propriedade importante da distribuição exponencial nessas aplicações é a **falta de memória**.
+  </li>
+</ol>
+
 :::
 
 ::: fragment
@@ -4143,18 +4210,22 @@ legend('topright',
 ::: {.callout-warning}
 ## Propriedades
 
-::: incremental
-
-1. Se $X \sim \text{Weibull}(\alpha, \beta)$ é possível mostrar que $Y = (\frac{X}{\beta})^\alpha$ satisfaz $Y \sim \text{Exp}(1)$. De modo análogo, se $Y \sim \text{Exp}(1)$, então $X = \beta Y^{1/\alpha}$ satisfaz $X \sim \text{Weibull}(\alpha, \beta)$;
-2. Se $X \sim \text{Weibull}(\alpha, \beta)$, a fda de $X$ é
+<ol>
+  <li>
+    Se $X \sim \text{Weibull}(\alpha, \beta)$ é possível mostrar que $Y = (\frac{X}{\beta})^\alpha$ satisfaz $Y \sim \text{Exp}(1)$. De modo análogo, se $Y \sim \text{Exp}(1)$, então $X = \beta Y^{1/\alpha}$ satisfaz $X \sim \text{Weibull}(\alpha, \beta)$;
+  </li>
+  <li class="fragment">
+    Se $X \sim \text{Weibull}(\alpha, \beta)$, a fda de $X$ é
 <table>
   <tr style="border-bottom:none;text-align:center;">
     <td>$F_X(x) = 1- e^{-(\frac{x}{\beta})^{\alpha}}$;</td>
   </tr>
 </table>
-3. Se $X \sim \text{Weibull}(1, \frac{1}{\lambda})$, isto é, $\alpha = 1$ e $\beta = \frac{1}{\lambda}$, então $X \sim \text{Exp}(\lambda)$.
-
-:::
+  </li>
+  <li class="fragment">
+    Se $X \sim \text{Weibull}(1, \frac{1}{\lambda})$, isto é, $\alpha = 1$ e $\beta = \frac{1}{\lambda}$, então $X \sim \text{Exp}(\lambda)$.
+  </li>
+</ol>
 
 :::
 
@@ -4258,17 +4329,19 @@ A vac $X$ tem distribuição lognormal com parâmetros $\mu$ e $\sigma^2$, denot
 ::: {.callout-warning}
 ## Propriedades
 
-::: incremental
-
-1. É possível mostrar que, se $X \sim \text{LogN}(\mu, \sigma^2)$, então $Y = \ln(X)$ satisfaz $Y \sim \text{N}(\mu, \sigma^2)$;
-2. Se $X \sim \text{LogN}(\mu, \sigma^2)$, então
+<ol>
+  <li>
+    É possível mostrar que, se $X \sim \text{LogN}(\mu, \sigma^2)$, então $Y = \ln(X)$ satisfaz $Y \sim \text{N}(\mu, \sigma^2)$;
+  </li>
+  <li class="fragment">
+    Se $X \sim \text{LogN}(\mu, \sigma^2)$, então
 <table>
   <tr style="border-bottom:none;text-align:center;">
     <td>$E(X) = e^{\mu + \frac{\sigma^2}{2}}$</td> <td>e</td> <td>$V(X) = e^{2\mu + \sigma^2}(e^{\sigma^2} - 1).$</td>
   </tr>
 </table>
-
-:::
+  </li>
+</ol>
 
 :::
 
@@ -4469,14 +4542,20 @@ legend('top',
 ::: {.callout-caution}
 ## Observações
 
-::: incremental 
-
-1. Note que $\alpha=\beta$ fornece fdp's simétricas;
-2. Se $\alpha=\beta=1$, dizemos que $X$ tem distribuição uniforme em $(A,B)$, denotada por $X \sim \text{U}(A,B)$;
-3. Ao trocar o valor de $\alpha$ pelo de $\beta$ e o de $\beta$ pelo de $\alpha$, a fdp é refletida em torno de $\frac{A+B}{2}$;
-4. O cálculo de probabilidades da distribuição Beta, em geral, requer o uso de métodos numéricos. Mas, para uma Beta padrão com $\alpha, \beta \in \mathbb{N}$, é possível a sua obtenção analítica ($\Gamma(n) = (n-1)!$, $n \in \mathbb{N}$).
-
-:::
+<ol>
+  <li>
+    Note que $\alpha=\beta$ fornece fdp's simétricas;
+  </li>
+  <li class="fragment">
+    Se $\alpha=\beta=1$, dizemos que $X$ tem distribuição uniforme em $(A,B)$, denotada por $X \sim \text{U}(A,B)$;
+  </li>
+  <li class="fragment">
+    Ao trocar o valor de $\alpha$ pelo de $\beta$ e o de $\beta$ pelo de $\alpha$, a fdp é refletida em torno de $\frac{A+B}{2}$;
+  </li>
+  <li class="fragment">
+    O cálculo de probabilidades da distribuição Beta, em geral, requer o uso de métodos numéricos. Mas, para uma Beta padrão com $\alpha, \beta \in \mathbb{N}$, é possível a sua obtenção analítica ($\Gamma(n) = (n-1)!$, $n \in \mathbb{N}$).
+  </li>
+</ol>
 
 :::
 
@@ -5258,9 +5337,17 @@ Pela fmpc, fica evidente que os valores de $X$ alteram o comportamento probabil�
 ::: {.callout-caution}
 ## Observações
 
-1. Pela fmpc, podemos obter probabilidades conjuntas para eventos de interesse;
-2. A fmp de apenas uma va é obtida da fmpc somando $p(x,y)$ em todos os valores da outra variável;
-3. Nesse contexto, essa fmp univariada é chamada de fmp **marginal**.
+<ol>
+  <li>
+    Pela fmpc, podemos obter probabilidades conjuntas para eventos de interesse;
+  </li>
+  <li class="fragment">
+    A fmp de apenas uma va é obtida da fmpc somando $p(x,y)$ em todos os valores da outra variável;
+  </li>
+  <li class="fragment">
+    Nesse contexto, essa fmp univariada é chamada de fmp **marginal**.
+  </li>
+</ol>
 
 :::
 
@@ -5328,8 +5415,13 @@ e
 
 Seja $(X,Y)$ vetor aleatório discreto com fmpc $p(x,y)$, então:
 
+::: incremental
+
 1. $p(x,y) \geq 0$, $\forall\ x,y$;
 2. $\sum_{x \in \text{Im}(X)}\sum_{y \in \text{Im}(Y)} p(x,y) = 1$.
+
+:::
+
 :::
 
 ::: fragment
@@ -5337,12 +5429,14 @@ Seja $(X,Y)$ vetor aleatório discreto com fmpc $p(x,y)$, então:
 ::: {.callout-caution}
 ## Observações
 
-::: incremental
-
-1. A fmpc pode ser obtida da fdac e vice-versa. A fmpc $p(x,y) = F(x,y) - F(x^-, y^-)$, que é a altura do salto de $F(\cdot,\cdot)$ em $(x,y)$ e a fdac $F(x,y)$ é obtida por $\sum_{s \leq x}\sum_{t \leq y}p(s,t)$;
-2. Toda função que satisfaça as propriedades acima será denominada fmpc. Assim, podemos especificar diretamente a fmpc, contornando a necessidade de criar um modelo probabilístico em $\Omega$.
-
-:::
+<ol>
+  <li>
+    A fmpc pode ser obtida da fdac e vice-versa. A fmpc $p(x,y) = F(x,y) - F(x^-, y^-)$, que é a altura do salto de $F(\cdot,\cdot)$ em $(x,y)$ e a fdac $F(x,y)$ é obtida por $\sum_{s \leq x}\sum_{t \leq y}p(s,t)$;
+  </li>
+  <li class="fragment">
+    Toda função que satisfaça as propriedades acima será denominada fmpc. Assim, podemos especificar diretamente a fmpc, contornando a necessidade de criar um modelo probabilístico em $\Omega$.
+  </li>
+</ol>
 
 :::
 
@@ -5367,17 +5461,22 @@ dizemos que $(x,y)$ é **vetor aleatório contínuo** e que $f(x,y)$ é a sua **
 ::: {.callout-caution}
 ## Observações
 
-::: incremental
-
-1. A probabilidade de $(X,Y)$ pertencer a uma região de $\mathbb{R}^2$ é a integral dupla de $f(x,y)$ nessa região. Por exemplo, $P(a < X \leq b, c < Y \leq d) = \int_a^b\int_c^d f(x,y) dy dx$;
-2. A fdpc pode ser obtida da fdac por derivação $f(x,y) = \frac{\partial^2}{\partial x \partial y} F(x,y)$;
-3. As fdp's marginais são obtidas por integração da coordenada correspondente a outra variável:
+<ol>
+  <li>
+    A probabilidade de $(X,Y)$ pertencer a uma região de $\mathbb{R}^2$ é a integral dupla de $f(x,y)$ nessa região. Por exemplo, $P(a < X \leq b, c < Y \leq d) = \int_a^b\int_c^d f(x,y) dy dx$;
+  </li>
+  <li class="fragment">
+    A fdpc pode ser obtida da fdac por derivação $f(x,y) = \frac{\partial^2}{\partial x \partial y} F(x,y)$;
+  </li>
+  <li class="fragment">
+    As fdp's marginais são obtidas por integração da coordenada correspondente a outra variável:
 <table style="margin-left: auto; margin-right: auto;">
   <tr style="border-bottom:none">
     <td>$f_X(x) = \int_{-\infty}^\infty f(x,y) dy$</td> <td>e</td> <td>$f_Y(y) = \int_{-\infty}^\infty f(x,y) dx$.</td>
   </tr>
 </table>
-:::
+  </li>
+</ol>
 
 :::
 
@@ -5507,21 +5606,32 @@ Qual seria a distribuição de $Z = 1-X-Y$, o peso dos amendoins?
 Da mesma forma que vimos em probabilidade de eventos, a distribuição conjunta de um vetor aleatório $(X,Y)$ nos permite estudar o efeito de uma coordenada na distribuição da outra.
 :::
 
+::: fragment
+
 ::: {.callout-note}
 ## Definições
 
-1. Seja $(X,Y)$ vetor aleatório discreto com fmpc $p(x,y)$, então a fmp condicional de $Y$ dado que $X = x$ é dada  pela fmpc de $(X,Y)$ dividida pela fmp marginal de $X$:
+<ol>
+  <li>
+    Seja $(X,Y)$ vetor aleatório discreto com fmpc $p(x,y)$, então a fmp condicional de $Y$ dado que $X = x$ é dada  pela fmpc de $(X,Y)$ dividida pela fmp marginal de $X$:
 <table style="margin-left: auto; margin-right: auto;">
   <tr style="border-bottom:none">
     <td>$p_{Y|X}(y|x) = \frac{p(x,y)}{p_X(x)}$.</td>
   </tr>
 </table>
-2. Seja $(X,Y)$ vetor aleatório contínuo com fdpc $f(x,y)$, então a fdp condicional de $Y$ dado que $X = x$ é dada pela fdpc de $(X,Y)$ dividida pela fdp marginal de $X$:
+  </li>
+  <li class="fragment">
+    Seja $(X,Y)$ vetor aleatório contínuo com fdpc $f(x,y)$, então a fdp condicional de $Y$ dado que $X = x$ é dada pela fdpc de $(X,Y)$ dividida pela fdp marginal de $X$:
 <table style="margin-left: auto; margin-right: auto;">
   <tr style="border-bottom:none">
     <td>$f_{Y|X}(y|x) = \frac{f(x,y)}{f_X(x)}$.</td>
   </tr>
 </table>
+  </li>
+</ol>
+
+:::
+
 :::
 
 ## 4. Vetores Aleatórios Bidimensionais {.unnumbered .unlisted}
@@ -5658,10 +5768,17 @@ As distribuições condicionais nos mostram como a distribuição de uma coorden
 ::: {.callout-note}
 ## Definições
 
-1. Se $(X, Y)$ é vetor aleatório discreto. Dizemos que as vad's $X$ e $Y$ são independentes se
+<ol>
+  <li>
+    Se $(X, Y)$ é vetor aleatório discreto. Dizemos que as vad's $X$ e $Y$ são independentes se
 $$p_{Y|X}(y|x) = p_Y(y),\ \forall\ y \ \ \ \text{ou} \ \ \ p_{X|Y}(x|y) = p_X(x),\ \forall\ x.$$
-2. Se $(X, Y)$ é vetor aleatório contínuo. Dizemos que as vac's $X$ e $Y$ são independentes se
+  </li>
+  <li class="fragment">
+    Se $(X, Y)$ é vetor aleatório contínuo. Dizemos que as vac's $X$ e $Y$ são independentes se
 $$f_{Y|X}(y|x) = f_Y(y),\ \forall\ y \ \ \ \text{ou} \ \ \ f_{X|Y}(x|y) = f_X(x),\ \forall\ x.$$
+  </li>
+</ol>
+
 :::
 
 :::
@@ -5671,8 +5788,14 @@ $$f_{Y|X}(y|x) = f_Y(y),\ \forall\ y \ \ \ \text{ou} \ \ \ f_{X|Y}(x|y) = f_X(x)
 ::: {.callout-warning}
 ## Propriedades
 
-1. Duas vad's $X$ e $Y$ são independentes se, e somente, se $p(x,y) = p_X(x)\cdot p_Y(y)$, para todo $x,y$;
-2. Duas vac's $X$ e $Y$ são independentes se, e somente, se $f(x,y) = f_X(x)\cdot f_Y(y)$, para todo $x,y$.
+<ol>
+  <li>
+    Duas vad's $X$ e $Y$ são independentes se, e somente, se $p(x,y) = p_X(x)\cdot p_Y(y)$, para todo $x,y$;
+  </li>
+  <li class="fragment">
+    Duas vac's $X$ e $Y$ são independentes se, e somente, se $f(x,y) = f_X(x)\cdot f_Y(y)$, para todo $x,y$.
+  </li>
+</ol>
 
 :::
 
@@ -5735,10 +5858,17 @@ Os conceitos vistos até o momento podem ser extendidos para casos com dimensão
 ::: {.callout-note}
 ## Definições
 
-Se $X_1, X_2,\ldots , X_n$ são vad's, a sua fmpc é a função $n$-variada definida por
-$$p(x_1, x_2, \ldots, x_n) = P(X_1 = x_1, X_2 = x_2, \ldots , X_n = x_n)$$
-Se $X_1, X_2,\ldots , X_n$ são vac's com fdac $F(x_1, \ldots, x_n) = P(X_1 \leq x_1, \ldots, X_n \leq x_n)$ a sua fdpc é a função $n$-variada $f(t_1, \ldots, t_n)$ tal que
+<ol>
+  <li>
+    Se $X_1, X_2,\ldots , X_n$ são vad's, a sua fmpc é a função $n$-variada definida por
+$$p(x_1, x_2, \ldots, x_n) = P(X_1 = x_1, X_2 = x_2, \ldots , X_n = x_n).$$
+  </li>
+  <li class="fragment">
+    Se $X_1, X_2,\ldots , X_n$ são vac's com fdac $F(x_1, \ldots, x_n) = P(X_1 \leq x_1, \ldots, X_n \leq x_n)$ a sua fdpc é a função $n$-variada $f(t_1, \ldots, t_n)$ tal que
 $$F(x_1, \ldots, x_n) = \int_{-\infty}^{x_1} \cdots \int_{-\infty}^{x_n} f(t_1, \ldots, t_n) dt_n \cdots dt_1.$$
+  </li>
+</ol>
+
 :::
 
 :::
@@ -5748,14 +5878,21 @@ $$F(x_1, \ldots, x_n) = \int_{-\infty}^{x_1} \cdots \int_{-\infty}^{x_n} f(t_1, 
 ::: {.callout-note}
 ## Definições
 
-1. Um experimento **Multinomial** consiste de $n$ repetições independentes de um experimento com $r$ resultados possíveis, que denominamos de categorias.
-2. Em um experimento Multinomial, seja $X_j$ a quantidade das $n$ repetições que resultaram na categoria $j$, $j=1, \ldots, r$. Dizemos que o vetor aleatório $(X_1, \ldots, X_r)$ tem distribuição **Multinomial** e sua fmpc é
+<ol>
+  <li>
+    Um experimento **Multinomial** consiste de $n$ repetições independentes de um experimento com $r$ resultados possíveis, que denominamos de categorias.
+  </li>
+  <li class="fragment">
+    Em um experimento Multinomial, seja $X_j$ a quantidade das $n$ repetições que resultaram na categoria $j$, $j=1, \ldots, r$. Dizemos que o vetor aleatório $(X_1, \ldots, X_r)$ tem distribuição **Multinomial** e sua fmpc é
 <table style="margin-left: auto; margin-right: auto;">
   <tr style="border-bottom:none">
     <td> $p(x_1, \ldots, x_r) = \frac{n!}{x_1!\cdots x_r!}p_1^{x_1} \cdots p_r^{x_r}, \ \ \ x_j = 0,1,\ldots,n, \ \ \ x_1+\cdots+x_r = n,$ </td>
   </tr>
 </table>
 em que $p_j$ é a probabilidade de uma repetição resultar na categoria $j$, $j=1, \ldots, r$. Notação $(X_1, \ldots, X_r) \sim \text{MultiNom}(n, p_1, \ldots, p_r)$.
+  </li>
+</ol>
+
 :::
 
 ::: fragment
@@ -5855,14 +5992,20 @@ $$\text{Cov}(X,Y) = E[(X-\mu_X)(Y-\mu_Y)].$$
 ::: {.callout-caution}
 ## Observações
 
-::: incremental
-
-1. A covariância é o coeficiente angular esperado da reta que passa pelos pontos $(\mu_X,\mu_Y)$ e $(X,Y)$;
-2. $\text{Cov}(X,Y) \gg 0$ indica relação **linear** positiva forte;
-3. $\text{Cov}(X,Y) \ll 0$ indica relação **linear** negativa forte;
-4. $\text{Cov}(X,Y) \approx 0$ indica ausência de relação **linear**.
-
-:::
+<ol>
+  <li>
+    A covariância mede a direção esperada da relação linear entre as variáveis $X$ e $Y$;
+  </li>
+  <li class="fragment">
+    $\text{Cov}(X,Y) \gg 0$ indica relação **linear** positiva forte;
+  </li>
+  <li class="fragment">
+    $\text{Cov}(X,Y) \ll 0$ indica relação **linear** negativa forte;
+  </li>
+  <li class="fragment">
+    $\text{Cov}(X,Y) \approx 0$ indica ausência de relação **linear**.
+  </li>
+</ol>
 
 :::
 
@@ -5971,26 +6114,43 @@ Se $(X,Y)$ é vetor aleatório, então
   </tr>
 </table>
 
-[É possível verificar que $\mu_X = 5$ e $\mu_Y = \frac{20}{16}$.]{.fragment} [Logo,]{.fragment}
+[É possível verificar que $\mu_X = 5$ e $\mu_Y = \frac{20}{16}$.]{.fragment} [Logo, $\text{Cov}(X,Y) = E(XY) - \mu_X\mu_Y = \frac{100}{16} - 5\cdot\frac{20}{16} = 0.$]{.fragment}
 
-<table style="margin-left: auto; margin-right: auto;">
-  <tr class="fragment" style="border-bottom:none">
-    <td> $\text{Cov}(X,Y) = E(XY) - \mu_X\mu_Y = \frac{100}{16} - 5\cdot\frac{20}{16} = 0.$ </td>
-  </tr>
-</table>
+:::
+
+::: fragment
+
+::: {.callout-caution}
+## Observações
+
+O Exemplo 23 mostra que, mesmo $X$ e $Y$ sendo [**dependentes**]{style="color:red"}, podemos obter $\text{Cov}(X,Y) = 0$. Por isso, $\text{Cov}(X,Y) = 0$ não significa independência, mas apenas indica a ausência de relação [**linear**]{style="color:red"};
+
+:::
 
 :::
 
 ## 4.1 Covariância e Correlação {.unnumbered .unlisted}
 
+::: {.callout-warning}
+## Propriedade
+
+A covariância satisfaz $-\sigma_X\sigma_Y \leq \text{Cov}(X,Y) \leq \sigma_X\sigma_Y$.
+
+:::
+
+::: fragment
+
 ::: {.callout-caution}
 ## Observações
 
-::: incremental
-
-1. O Exemplo 23 mostra que, mesmo $X$ e $Y$ sendo [**dependentes**]{style="color:red"}, podemos obter $\text{Cov}(X,Y) = 0$. Por isso, $\text{Cov}(X,Y) = 0$ não significa independência, mas apenas indica a ausência de relação [**linear**]{style="color:red"};
-2. A covariância não é limitada, podendo assumir qualquer valor real. Assim, é difícil classificarmos o que seria uma covariância (positiva ou negativa) forte;
-3. Uma medida mais apropriada seria o **coeficiente de correlação**.
+<ol>
+  <li>
+    Embora a covariância seja limitada, esses limites dependem dos desvios-padrão associados, mudando caso a caso. Assim, é difícil classificarmos o que seria uma covariância (positiva ou negativa) forte;
+  </li>
+  <li class="fragment">
+    Uma medida mais apropriada seria o **coeficiente de correlação**.
+  </li>
+</ol>
 
 :::
 
@@ -6020,7 +6180,7 @@ Sejam $X$ e $Y$ va's com variâncias $\sigma_X^2$ e $\sigma_Y^2$, respectivament
 ::: {.callout-caution}
 ## Observação
 
-O coeficiente de correlação está relacionado com o ângulo formado entre as variáveis centralizas pelas respectivas médias.
+O coeficiente de correlação coincide com cosseno do ângulo formado entre as variáveis centralizas pelas respectivas médias.
 :::
 
 <!-- Container principal com posição relativa -->
@@ -6139,14 +6299,23 @@ Para fins descritivos, a relação será descrita como:
 ::: {.callout-warning}
 ## Propriedades
 
-::: incremental
-
-1. Se $X$ e $Y$ são independentes, então $\text{Cov}(X, Y) = 0$ (e também $\rho = 0$). Entretanto, como visto anteriormente, $\text{Cov}(X, Y) = 0$ não implica independência entre $X$ e $Y$;
-2. $\text{Cov}(X, X) = E[(X-\mu_X)(X-\mu_X)] = E[(X-\mu_X)^2] = V(X) = \sigma^2_X$;
-3. $\text{Cov}(X, Y) = \text{Cov}(Y, X)$;
-4. $\text{Cov}(\sum_{i=1}^n X_i, \sum_{j=1}^m Y_j) = \sum_{i=1}^n\sum_{j=1}^m\text{Cov}(X_i, Y_j)$;
-5. $V(\sum_{i=1}^n X_i) = \sum_{i=1}^n \sum_{j=1}^n \text{Cov}(X_i, X_j)$.
-:::
+<ol>
+  <li>
+    Se $X$ e $Y$ são independentes, então $\text{Cov}(X, Y) = 0$ (e também $\rho = 0$). Entretanto, como visto anteriormente, $\text{Cov}(X, Y) = 0$ não implica independência entre $X$ e $Y$;
+  </li>
+  <li class="fragment">
+    $\text{Cov}(X, X) = E[(X-\mu_X)(X-\mu_X)] = E[(X-\mu_X)^2] = V(X) = \sigma^2_X$;
+  </li>
+  <li class="fragment">
+    $\text{Cov}(X, Y) = \text{Cov}(Y, X)$;
+  </li>
+  <li class="fragment">
+    $\text{Cov}(\sum_{i=1}^n X_i, \sum_{j=1}^m Y_j) = \sum_{i=1}^n\sum_{j=1}^m\text{Cov}(X_i, Y_j)$;
+  </li>
+  <li class="fragment">
+    $V(\sum_{i=1}^n X_i) = \sum_{i=1}^n \sum_{j=1}^n \text{Cov}(X_i, X_j)$.
+  </li>
+</ol>
 
 :::
 
