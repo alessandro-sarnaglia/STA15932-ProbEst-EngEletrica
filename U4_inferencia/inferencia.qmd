@@ -1366,6 +1366,590 @@ Determine EMV do parâmetro $\theta$ se a população $X$ tem fdp $f(x)=\frac{\t
 
 ## Estimação Intervalar
 
+::: {.callout-caution}
+## Observações
+
+<ol>
+  <li>
+    Mesmo que o estimador tenha boas características, é possível que a estimativa fornecida seja muito diferente do parâmetro;
+  </li>
+  <li class="fragment">
+    Esse erro amostral pode ser muito grande caso o estimador tenha alta variabilidade;
+  </li>
+  <li class="fragment">
+    **Idéia:** utilizar estimador intervalar para associar a estimativa pontual com a precisão correspondente.
+  </li>
+</ol>
+
+:::
+
+::: {.callout-note .fragment}
+## Definição
+
+Um Intervalo de Confiança (IC) para $\theta$ com coeficiente de confiança $\gamma$ é qualquer intervalo $[L;U]$, com $L = L(X_1, \ldots, X_n)$ e $U = U(X_1, \ldots, X_n)$, tal que
+<table>
+  <tr style="border-bottom:none;text-align:center;">
+    <td> $P([L,U] \supset \{\theta\}) = P(L < \theta < U) = \gamma$. </td>
+  </tr>
+</table>
+
+:::
+
+## 2.3 Estimação Intervalar {.unnumbered .unlisted} 
+
+::: {.callout-caution}
+## Observações
+
+<ol>
+  <li>
+    O intervalo é aleatório e o parâmetro é fixo (mas desconhecido).
+  </li>
+  <li class="fragment">
+    Assim, $\gamma$ **não** é a probabilidade do parâmetro pertencer ao intervalo, mas a probabilidade (pré-coleta) de o intervalo conter o verdadeiro parâmetro.
+  </li>
+  <li class="fragment">
+    Se o experimento de coleta fosse repetido várias vezes, e em cada réplica fosse construído o IC com o mesmo coeficiente de confiança $\gamma$, então 100$\gamma$\% desses IC conteriam o verdadeiro valor de $\theta$.
+  </li>
+  <li class="fragment">
+    Em resumo, após coletar uma amostra não saberemos se o intervalo calculado cobrirá o parâmetro. Entretanto, a construção do intervalo garante que isso ocorre em 100$\gamma$\% das vezes.
+  </li>
+  <li class="fragment">
+    Em alguns casos, os limites do intervalo são escritos em termos de um estimator $\hat\theta$ de $\theta$, isto é $L = L(\hat\theta)$ e $U = U(\hat\theta)$.
+  </li>
+  <li class="fragment">
+    Utilizamos como notação $\text{IC}(\theta; \gamma) = [L,U]$.
+  </li>
+</ol>
+
+:::
+
+## 2.3 Estimação Intervalar {.unnumbered .unlisted} 
+
+```{r}
+#| fig-width: 8
+#| fig-height: 5
+#| fig-align: center
+#| echo: false
+
+# 1. Configurações da Simulação de Monte Carlo
+set.seed(12345)              # Garante que a simulação gere os mesmos dados sempre
+n_amostras <- 40            # Número de réplicas (intervalos)
+n_obs <- 30                 # Tamanho de cada amostra aleatória
+theta_verdadeiro <- 5       # Parâmetro genérico theta real
+sigma_pop <- 2              # Desvio padrão populacional presumido
+conf_level <- 0.95          # Nível de confiança (95%)
+
+# Valor crítico z para 95% de confiança
+z_critico <- qnorm(1 - (1 - conf_level) / 2)
+
+# Vetores para armazenar os resultados da simulação
+medias <- numeric(n_amostras)
+li <- numeric(n_amostras)
+ls <- numeric(n_amostras)
+
+# Executando a simulação de Monte Carlo
+for (i in 1:n_amostras) {
+  # Gera uma amostra aleatória da população
+  dados_amostra <- rnorm(n = n_obs, mean = theta_verdadeiro, sd = sigma_pop)
+  
+  # Calcula a média amostral
+  medias[i] <- mean(dados_amostra)
+  
+  # Margem de erro do IC
+  erro <- z_critico * (sigma_pop / sqrt(n_obs))
+  
+  # Limites inferior e superior
+  li[i] <- medias[i] - erro
+  ls[i] <- medias[i] + erro
+}
+
+amostras <- 1:n_amostras
+
+# 2. Construção do gráfico de forma dinâmica
+# Definimos os limites de Y dinamicamente com base nos intervalos gerados
+ylim_inf <- floor(min(li))
+ylim_sup <- ceiling(max(ls))
+
+plot(
+  x = amostras, 
+  y = medias, 
+  type = "n",             # Não plota os pontos centrais
+  ylim = c(ylim_inf, ylim_sup), 
+  xlim = c(-1, (n_amostras + 1)),
+  xlab = "", 
+  ylab = "", 
+  axes = FALSE,           # Remove eixos para customização idêntica ao original
+  cex.lab = 1.3
+)
+
+mtext(text = bquote("Amostra"~(n==.(n_obs)*";"~gamma==.(conf_level))), side = 1, line = 3, cex = 1.5)
+
+# 3. Customização dos eixos
+axis(1, at = seq(0, n_amostras, by = 5), labels = seq(0, n_amostras, by = 5), cex.axis = 1.3)
+axis(2, at = ylim_inf:ylim_sup, labels = ylim_inf:ylim_sup, las = 1, cex.axis = 1.3)
+box() # Borda externa
+
+# 4. Linha de referência do parâmetro real (Modificado para theta)
+abline(h = theta_verdadeiro, lty = 3, col = "black")
+text(x = -1.5, y = theta_verdadeiro, labels = expression(theta), pos = 3, cex = 1.1)
+
+# 5. Desenho das barras dos Intervalos de Confiança obtidos via Monte Carlo
+arrows(
+  x0 = amostras, y0 = li, 
+  x1 = amostras, y1 = ls, 
+  code = 3,               # Setas em ambas as direções
+  angle = 90,             # Transforma a ponta da seta em um limitador plano
+  length = 0.05,          # Comprimento do limitador horizontal
+  col = "black"
+)
+```
+
+
+## 2.3 Estimação Intervalar {.unnumbered .unlisted} 
+
+```{r}
+#| fig-width: 8
+#| fig-height: 5
+#| fig-align: center
+#| echo: false
+
+# 1. Configurações da Simulação de Monte Carlo
+set.seed(12345)              # Garante que a simulação gere os mesmos dados sempre
+n_amostras <- 40            # Número de réplicas (intervalos)
+n_obs <- 30                # Tamanho de cada amostra aleatória
+theta_verdadeiro <- 5       # Parâmetro genérico theta real
+sigma_pop <- 2              # Desvio padrão populacional presumido
+conf_level <- 0.9          # Nível de confiança (95%)
+
+# Valor crítico z para 95% de confiança
+z_critico <- qnorm(1 - (1 - conf_level) / 2)
+
+# Vetores para armazenar os resultados da simulação
+medias <- numeric(n_amostras)
+li <- numeric(n_amostras)
+ls <- numeric(n_amostras)
+
+# Executando a simulação de Monte Carlo
+for (i in 1:n_amostras) {
+  # Gera uma amostra aleatória da população
+  dados_amostra <- rnorm(n = n_obs, mean = theta_verdadeiro, sd = sigma_pop)
+  
+  # Calcula a média amostral
+  medias[i] <- mean(dados_amostra)
+  
+  # Margem de erro do IC
+  erro <- z_critico * (sigma_pop / sqrt(n_obs))
+  
+  # Limites inferior e superior
+  li[i] <- medias[i] - erro
+  ls[i] <- medias[i] + erro
+}
+
+amostras <- 1:n_amostras
+
+# 2. Construção do gráfico de forma dinâmica
+# Definimos os limites de Y dinamicamente com base nos intervalos gerados
+ylim_inf <- floor(min(li))
+ylim_sup <- ceiling(max(ls))
+
+plot(
+  x = amostras, 
+  y = medias, 
+  type = "n",             # Não plota os pontos centrais
+  ylim = c(ylim_inf, ylim_sup), 
+  xlim = c(-1, (n_amostras + 1)),
+  xlab = "", 
+  ylab = "", 
+  axes = FALSE,           # Remove eixos para customização idêntica ao original
+  cex.lab = 1.3
+)
+
+mtext(text = bquote("Amostra"~(n==.(n_obs)*";"~gamma==.(conf_level))), side = 1, line = 3, cex = 1.5)
+
+# 3. Customização dos eixos
+axis(1, at = seq(0, n_amostras, by = 5), labels = seq(0, n_amostras, by = 5), cex.axis = 1.3)
+axis(2, at = ylim_inf:ylim_sup, labels = ylim_inf:ylim_sup, las = 1, cex.axis = 1.3)
+box() # Borda externa
+
+# 4. Linha de referência do parâmetro real (Modificado para theta)
+abline(h = theta_verdadeiro, lty = 3, col = "black")
+text(x = -1.5, y = theta_verdadeiro, labels = expression(theta), pos = 3, cex = 1.1)
+
+# 5. Desenho das barras dos Intervalos de Confiança obtidos via Monte Carlo
+arrows(
+  x0 = amostras, y0 = li, 
+  x1 = amostras, y1 = ls, 
+  code = 3,               # Setas em ambas as direções
+  angle = 90,             # Transforma a ponta da seta em um limitador plano
+  length = 0.05,          # Comprimento do limitador horizontal
+  col = "black"
+)
+```
+
+
+
+## 2.3 Estimação Intervalar {.unnumbered .unlisted} 
+
+```{r}
+#| fig-width: 8
+#| fig-height: 5
+#| fig-align: center
+#| echo: false
+
+# 1. Configurações da Simulação de Monte Carlo
+set.seed(12345)              # Garante que a simulação gere os mesmos dados sempre
+n_amostras <- 40            # Número de réplicas (intervalos)
+n_obs <- 400                 # Tamanho de cada amostra aleatória
+theta_verdadeiro <- 5       # Parâmetro genérico theta real
+sigma_pop <- 2              # Desvio padrão populacional presumido
+conf_level <- 0.9           # Nível de confiança (95%)
+
+# Valor crítico z para 95% de confiança
+z_critico <- qnorm(1 - (1 - conf_level) / 2)
+
+# Vetores para armazenar os resultados da simulação
+medias <- numeric(n_amostras)
+li <- numeric(n_amostras)
+ls <- numeric(n_amostras)
+
+# Executando a simulação de Monte Carlo
+for (i in 1:n_amostras) {
+  # Gera uma amostra aleatória da população
+  dados_amostra <- rnorm(n = n_obs, mean = theta_verdadeiro, sd = sigma_pop)
+  
+  # Calcula a média amostral
+  medias[i] <- mean(dados_amostra)
+  
+  # Margem de erro do IC
+  erro <- z_critico * (sigma_pop / sqrt(n_obs))
+  
+  # Limites inferior e superior
+  li[i] <- medias[i] - erro
+  ls[i] <- medias[i] + erro
+}
+
+amostras <- 1:n_amostras
+
+# 2. Construção do gráfico de forma dinâmica
+# Definimos os limites de Y dinamicamente com base nos intervalos gerados
+ylim_inf <- floor(min(li))
+ylim_sup <- ceiling(max(ls))
+
+plot(
+  x = amostras, 
+  y = medias, 
+  type = "n",             # Não plota os pontos centrais
+  ylim = c(ylim_inf, ylim_sup), 
+  xlim = c(-1, (n_amostras + 1)),
+  xlab = "", 
+  ylab = "", 
+  axes = FALSE,           # Remove eixos para customização idêntica ao original
+  cex.lab = 1.3
+)
+
+mtext(text = bquote("Amostra"~(n==.(n_obs)*";"~gamma==.(conf_level))), side = 1, line = 3, cex = 1.5)
+
+# 3. Customização dos eixos
+axis(1, at = seq(0, n_amostras, by = 5), labels = seq(0, n_amostras, by = 5), cex.axis = 1.3)
+axis(2, at = ylim_inf:ylim_sup, labels = ylim_inf:ylim_sup, las = 1, cex.axis = 1.3)
+box() # Borda externa
+
+# 4. Linha de referência do parâmetro real (Modificado para theta)
+abline(h = theta_verdadeiro, lty = 3, col = "black")
+text(x = -1.5, y = theta_verdadeiro, labels = expression(theta), pos = 3, cex = 1.1)
+
+# 5. Desenho das barras dos Intervalos de Confiança obtidos via Monte Carlo
+arrows(
+  x0 = amostras, y0 = li, 
+  x1 = amostras, y1 = ls, 
+  code = 3,               # Setas em ambas as direções
+  angle = 90,             # Transforma a ponta da seta em um limitador plano
+  length = 0.05,          # Comprimento do limitador horizontal
+  col = "black"
+)
+```
+
+## {.unnumbered .unlisted .smaller} 
+
+###  Exemplo 8: IC para $\mu$ ($\sigma^2$ conhecida) {.unnumbered .unlisted}
+
+Encontremos um IC para $\mu$ em função de $\bar{X}$, assumindo $\sigma$ conhecido. Seja $z_{\frac{\gamma}{2}}$ o número tal que $P\left(-z_{\frac{\gamma}{2}} < Z < z_{\frac{\gamma}{2}}\right) = \gamma$, onde $Z \sim N(0,1)$. De fato, pelo TCL:
+
+$$
+\begin{aligned}
+\gamma &= P\left(-z_{\frac{\gamma}{2}} < Z < z_{\frac{\gamma}{2}}\right) \approx P\left(-z_{\frac{\gamma}{2}} < Z_n < z_{\frac{\gamma}{2}}\right) \\
+&= P\left(-z_{\frac{\gamma}{2}} < \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} < z_{\frac{\gamma}{2}}\right) = P\left(-z_{\frac{\gamma}{2}}\frac{\sigma}{\sqrt{n}} < \bar{X} - \mu < z_{\frac{\gamma}{2}}\frac{\sigma}{\sqrt{n}}\right) \\
+&= P\left(\bar{X} - z_{\frac{\gamma}{2}}\frac{\sigma}{\sqrt{n}} < \mu < \bar{X} + z_{\frac{\gamma}{2}}\frac{\sigma}{\sqrt{n}}\right)
+\end{aligned}
+$$
+
+Logo um IC para $\mu$ com coeficiente de confiança $\gamma$ é dado por:
+
+$$
+\text{IC}(\mu; \gamma) = \left[ \bar{X} - z_{\frac{\gamma}{2}}\frac{\sigma}{\sqrt{n}} \; ; \; \bar{X} + z_{\frac{\gamma}{2}}\frac{\sigma}{\sqrt{n}} \right].
+$$
+
+## {.unnumbered .unlisted .smaller} 
+
+###  Exemplo 8 (cont.) {.unnumbered .unlisted}
+
+Uma máquina estava regulada para encher pacotes de café com peso médio de $500\text{g}$ e variância de $196\text{g}^2$. Uma a.a. de $49$ pacotes forneceu média de $485\text{g}$. O que podemos dizer sobre a verdadeira média com confiança de $95\%$?
+
+Temos que $\bar{x} = 485$, $n = 49$, $\sigma^2 = 196$ e $\gamma = 0.95$. Primeiramente, $z_{\frac{\gamma}{2}} = z_{0.475} = 1.96$. Logo,
+
+$$
+IC(\mu; 0.95) = \left[ 485 - 1.96 \times \frac{14}{7}; \; 485 + 1.96 \times \frac{14}{7} \right] = [481.08; 488.92].
+$$
+
+Com confiança de $95\%$ podemos afirmar que a máquina está desregulada.
+
+
+
+## 2.3 Estimação Intervalar {.unnumbered .unlisted} 
+
+::: {.callout-caution}
+## Observações
+
+<ol>
+  <li>
+    No exemplo anterior, supomos que a desregulagem afeta apenas a média com que os pacotes são preenchidos.
+  </li>
+  <li class="fragment">
+    Em outras palavras, a variância populacional não foi alterada com a desregulagem da máquina e pôde ser tratada como conhecida.
+  </li>
+  <li class="fragment">
+    No entanto, parece ser irrazoável admitir que a desregulagem afeta apenas o volume médio dos pacotes, mas não a variabilidade com que eles são preenchidos.
+  </li>
+</ol>
+
+:::
+
+::: {.callout-important .fragment}
+## Problema
+
+E se $\sigma^2$ for desconhecida?
+:::
+
+
+## 2.3 Estimação Intervalar {.unnumbered .unlisted} 
+
+::: {.callout-caution}
+## Observações
+
+<ol>
+  <li>
+    Já vimos que $S^2$ é estimador consistente de $\sigma^2$.
+  </li>
+  <li class="fragment">
+    Essa é a justificativa teórica para garantir que, para $n$ **suficientemente grande**, a estimativa fornecida por $S^2$ seria próxima do valor verdadeiro de $\sigma^2$.
+  </li>
+  <li class="fragment">
+    Nesse caso, no IC anterior, podemos aproximar o valor desconhecido de $\sigma^2$ por $S^2$. 
+  </li>
+  <li class="fragment">
+    Isso fornece o seguinte IC aproximado
+    $$
+\text{IC}(\mu; \gamma) = \left[ \bar{X} - z_{\frac{\gamma}{2}}\frac{S}{\sqrt{n}} \; ; \; \bar{X} + z_{\frac{\gamma}{2}}\frac{S}{\sqrt{n}} \right].
+$$
+  </li>
+  <li class="fragment">
+    Nesse caso, temos duas aproximações envolvidas na construção do IC: a aproximação da distribuição de $\bar{X}$ pela normal (TCL); e a substituição de $\sigma^2$ por $S^2$.
+  </li>
+</ol>
+
+:::
+
+## 2.3 Estimação Intervalar {.unnumbered .unlisted} 
+
+::: {.callout-caution}
+## Observações
+
+<ol>
+  <li>
+    Se a população for normal a distribuição de $Z_n = \frac{\bar{X}-\mu}{\sigma/\sqrt{n}}$ não é aproximada, mas exatamante normal, independente do tamanho da amostra $n$.
+  </li>
+  <li class="fragment">
+    No entanto, ainda que haja normalidade da população, ao aproximar $\sigma^2$ por $S^2$, se o tamanho amostral não for grande o suficiente, a variabilidade extra de $S^2$ não pode ser negligenciada. 
+  </li>
+  <li class="fragment">
+    Mesmo com população normal, em pequenas amostras, $T = \frac{\bar{X} - \mu}{S/\sqrt{n}}$ não será normal-padrão.
+  </li>
+</ol>
+
+:::
+
+::: {.callout-warning .fragment}
+## Propriedade
+
+Se a população tem distribuição normal com média $\mu$, é possível mostrar que:
+$$
+T = \frac{\bar{X} - \mu}{S/\sqrt{n}} \sim t_{n-1},
+$$
+onde $T \sim t_\nu$ indica que a v.a. $T$ segue uma distribuição $t$-Student com $\nu$ graus de liberdade (g.l.).
+:::
+
+
+## 2.3 Estimação Intervalar {.unnumbered .unlisted} 
+
+::: columns
+
+::: {.column #vcenter width=30%}
+
+::: {.callout-caution}
+## Observações
+
+<ol>
+  <li>
+    Assim como a normal-padrão, os valores da $t_\nu$ são tabelados.
+  </li>
+  <li class="fragment" data-fragment-index="2">
+    O livro texto apresenta duas tabelas.
+  </li>
+  <li class="fragment" data-fragment-index="3">
+    A primeira apresenta os quantis em função do g.l. e da probabilidade caudal.
+  </li>
+  <li class="fragment" data-fragment-index="7">
+    A segunda utiliza o g.l. e o quantil para fornecer as probabilidades caudais.
+  </li>
+</ol>
+
+:::
+
+:::
+
+::: {.column #vcenter width=70%}
+
+::: {.r-stack}
+
+::: {.fragment .fade-in fragment-index=3}
+::: {.fragment .fade-out fragment-index=4}
+![](figs/fig_tabela_tstudent_quantis_F01.drawio.png){width="100%"}
+:::
+:::
+
+::: {.fragment .fade-in fragment-index=4}
+::: {.fragment .fade-out fragment-index=5}
+![](figs/fig_tabela_tstudent_quantis_F02.drawio.png){width="100%"}
+:::
+:::
+
+::: {.fragment .fade-in fragment-index=5}
+::: {.fragment .fade-out fragment-index=6}
+![](figs/fig_tabela_tstudent_quantis_F03.drawio.png){width="100%"}
+:::
+:::
+
+::: {.fragment .fade-in fragment-index=6}
+::: {.fragment .fade-out fragment-index=7}
+![](figs/fig_tabela_tstudent_quantis_F04.drawio.png){width="100%"}
+:::
+:::
+
+::: {.fragment .fade-in fragment-index=7}
+::: {.fragment .fade-out fragment-index=8}
+![](figs/fig_tabela_tstudent_probabilidades_F01.drawio.png){width="100%"}
+:::
+:::
+
+::: {.fragment .fade-in fragment-index=8}
+::: {.fragment .fade-out fragment-index=9}
+![](figs/fig_tabela_tstudent_probabilidades_F02.drawio.png){width="100%"}
+:::
+:::
+
+::: {.fragment .fade-in fragment-index=9}
+::: {.fragment .fade-out fragment-index=10}
+![](figs/fig_tabela_tstudent_probabilidades_F03.drawio.png){width="100%"}
+:::
+:::
+
+::: {.fragment .fade-in fragment-index=10}
+![](figs/fig_tabela_tstudent_probabilidades_F04.drawio.png){width="100%"}
+:::
+
+
+:::
+
+:::
+
+:::
+
+## {.unnumbered .unlisted .smaller} 
+
+###  Exemplo 9: IC para $\mu$ ($\sigma^2$ desconhecida e pop. normal) {.unnumbered .unlisted}
+
+::: columns
+
+::: {.column #vcenter width=65%}
+
+Utilizando o resultado anterior, encontremos um IC para $\mu$ em função de $\bar{X}$ e $S$. Seja $t_{\alpha,\ \nu}$ o número tal que $P(T > t_{\alpha,\ \nu}) = \alpha$, onde $T \sim t_{\nu}$. Daí,
+$$
+\begin{aligned}
+\gamma &= P(-t_{\alpha,\ \nu} < T < t_{\alpha,\ \nu}) = P\left(-t_{\alpha,\ \nu} < \frac{\bar{X} - \mu}{S/\sqrt{n}} < t_{\alpha,\ \nu}\right) \\
+&= P\left(\bar{X} - t_{\alpha,\ \nu} \frac{S}{\sqrt{n}} < \mu < \bar{X} + t_{\alpha,\ \nu} \frac{S}{\sqrt{n}}\right),
+\end{aligned}
+$$
+em que $\alpha = \frac{1-\gamma}{2}$ e $\nu = n-1$.
+
+::: 
+
+::: {.column #vcenter width=35%}
+
+::: {style="position: relative; height: 250px;"}
+
+::: {.fragment .fade-in fragment-index=2 style="position: absolute; top: 0; left: 0; width: 100%;"}
+::: {.fragment .fade-out fragment-index=5 style="position: absolute; top: 0; left: 0; width: 100%;"}
+```{r, echo=FALSE, fig.height=4, fig.width=5}
+xx <- seq(from = -4, to = 4, by = 0.001)
+alp <- 0.1; df <- 9
+ff <- dt(x = xx, df = df)
+tt <- qt(p = 1-alp, df = df)
+xx1 <- xx[xx > tt]
+ff1 <- ff[xx > tt]
+par(mar = c(3,3,1,1))
+plot(xx, ff, type="l", xlab="", ylab="")
+abline(h = 0, col="darkgray")
+polygon(x = c(min(xx1), xx1, max(xx1)), c(0, ff1, 0), col = "lightblue")
+text(x = 1.9, y = 0.015, labels = bquote(italic("\u03B1")),
+     adj = c(0,0)
+     )
+text(x = -2.6, y = 0.3, labels = bquote(italic(t)[italic("\u03B1")*","~nu]),
+     pos = 2, cex = 1.5
+     )
+points(tt, 0, pch=19)
+arrows(x0 = -2.6, y0 = 0.3, x1 = tt, y1 = 0, length = 0.1)
+mtext(text = "Densidade", side = 2, line = 2.2)
+mtext(text = expression(italic(T)), side = 1, line = 2.2)
+```
+:::
+:::
+
+::: {.fragment .fade-in fragment-index=5 style="position: absolute; top: 0; left: 0; width: 100%;"}
+::: {.fragment .fade-out fragment-index=7 style="position: absolute; top: 0; left: 0; width: 100%;"}
+```{r, echo=FALSE, fig.height=4, fig.width=5}
+xx <- seq(from = -4, to = 4, by = 0.001)
+ff <- dt(x = xx, df = 9)
+plot(xx, ff, type="l")
+```
+:::
+:::
+
+:::
+
+::: 
+
+::: 
+
+::: {.fragment .fade-in fragment-index=4}
+
+Logo quando $\sigma^2$ é desconhecida e o tamanho amostral não é grande, se os dados vierem de uma v.a. normal, um IC para $\mu$ com coeficiente de confiança $\gamma$ é dado por
+
+$$
+IC(\mu;\; \gamma) = \left[ \bar{X} - t_{\alpha,\ \nu} \frac{S}{\sqrt{n}} \; ; \; \bar{X} + t_{\alpha,\ \nu} \frac{S}{\sqrt{n}} \right].
+$$
+
+:::
+
 # Testes de Hipóteses
 
 ## Teste para $\mu$
@@ -1373,14 +1957,14 @@ Determine EMV do parâmetro $\theta$ se a população $X$ tem fdp $f(x)=\frac{\t
 ## $p$-valor 
 
 ::: {.callout-caution}
-## Observaçãos
+## Observação
 
 Relatar o resultado de um teste de hipóteses simplesmente dizendo se a hipótese nula foi rejeitada ao nível de significância especificado pode ser inadequado, pois não mensura a quantidade de evidência obtida da amostra e impõe o mesmo nível de significância a todos os tomadores de decisão.
 :::
 
 ::: {style="border-style: solid; border-width: 3px; padding-bottom: 0px; padding-right: 12px; padding-left: 12px; font-size:70%;"}
 
-**Exemplo 8:** O tempo médio de alivio das dores do medicamento mais vendido no mercado é de 10 min. Uma empresa desenvolveu um medicamento e colocou a venda afirmando que um teste estatístico rejeitou $H_0 : \mu \geq 10$ em favor de $H_1 : \mu < 10$ ao nível de 0.1.
+**Exemplo 10:** O tempo médio de alivio das dores do medicamento mais vendido no mercado é de 10 min. Uma empresa desenvolveu um medicamento e colocou a venda afirmando que um teste estatístico rejeitou $H_0 : \mu \geq 10$ em favor de $H_1 : \mu < 10$ ao nível de 0.1.
 
 ::: 
 
@@ -1392,7 +1976,7 @@ Uma pessoa que costuma comprar o medicamento mais vendido pode optar por nível 
 
 ## {.unnumbered .unlisted .smaller} 
 
-###  Exemplo 8 (cont.) {.unnumbered .unlisted} 
+###  Exemplo 10 (cont.) {.unnumbered .unlisted} 
 
 ::: columns
 
@@ -1444,7 +2028,7 @@ text(x = -4.5, y=0.4, labels = bquote(Rejeitar~italic(H)[0]), pos = 4)
 
 ## {.unnumbered .unlisted .smaller} 
 
-###  Exemplo 8 (cont.) {.unnumbered .unlisted} 
+###  Exemplo 10 (cont.) {.unnumbered .unlisted} 
 
 ::: columns
 
@@ -1493,7 +2077,7 @@ text(x = -4.5, y=0.4, labels = bquote(Rejeitar~italic(H)[0]), pos = 4)
 
 ## {.unnumbered .unlisted .smaller} 
 
-###  Exemplo 8 (cont.) {.unnumbered .unlisted} 
+###  Exemplo 10 (cont.) {.unnumbered .unlisted} 
 
 ::: columns
 
