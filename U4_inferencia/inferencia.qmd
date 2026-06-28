@@ -1698,7 +1698,7 @@ Uma máquina estava regulada para encher pacotes de café com peso médio de $50
 Temos que $\bar{x} = 485$, $n = 49$, $\sigma^2 = 196$ e $\gamma = 0.95$. Primeiramente, $z_{\frac{\gamma}{2}} = z_{0.475} = 1.96$. Logo,
 
 $$
-IC(\mu; 0.95) = \left[ 485 - 1.96 \times \frac{14}{7}; \; 485 + 1.96 \times \frac{14}{7} \right] = [481.08; 488.92].
+\text{IC}(\mu; 0.95) = \left[ 485 - 1.96 \times \frac{14}{7}; \; 485 + 1.96 \times \frac{14}{7} \right] = [481.08; 488.92].
 $$
 
 Com confiança de $95\%$ podemos afirmar que a máquina está desregulada.
@@ -1880,25 +1880,25 @@ onde $T \sim t_\nu$ indica que a v.a. $T$ segue uma distribuição $t$-Student c
 
 ::: columns
 
-::: {.column #vcenter width=65%}
+::: {.column #vcenter width=67%}
 
-Utilizando o resultado anterior, encontremos um IC para $\mu$ em função de $\bar{X}$ e $S$. Seja $t_{\alpha,\ \nu}$ o número tal que $P(T > t_{\alpha,\ \nu}) = \alpha$, onde $T \sim t_{\nu}$. Daí,
+Utilizando o resultado anterior, encontremos um IC para $\mu$ em função de $\bar{X}$ e $S$. [Seja $t_{\alpha,\ \nu}$ o valor tal que $P(T > t_{\alpha,\ \nu}) = \alpha$, onde $T \sim t_{\nu}$.]{.fragment fragment-index=2} [Daí,
 $$
 \begin{aligned}
 \gamma &= P(-t_{\alpha,\ \nu} < T < t_{\alpha,\ \nu}) = P\left(-t_{\alpha,\ \nu} < \frac{\bar{X} - \mu}{S/\sqrt{n}} < t_{\alpha,\ \nu}\right) \\
 &= P\left(\bar{X} - t_{\alpha,\ \nu} \frac{S}{\sqrt{n}} < \mu < \bar{X} + t_{\alpha,\ \nu} \frac{S}{\sqrt{n}}\right),
 \end{aligned}
-$$
-em que $\alpha = \frac{1-\gamma}{2}$ e $\nu = n-1$.
+$$]{.fragment fragment-index=3}
+[em que $\alpha = \frac{1-\gamma}{2}$ e $\nu = n-1$.]{.fragment fragment-index=4}
 
 ::: 
 
-::: {.column #vcenter width=35%}
+::: {.column #vcenter width=33%}
 
 ::: {style="position: relative; height: 250px;"}
 
 ::: {.fragment .fade-in fragment-index=2 style="position: absolute; top: 0; left: 0; width: 100%;"}
-::: {.fragment .fade-out fragment-index=5 style="position: absolute; top: 0; left: 0; width: 100%;"}
+::: {.fragment .fade-out fragment-index=4 style="position: absolute; top: 0; left: 0; width: 100%;"}
 ```{r, echo=FALSE, fig.height=4, fig.width=5}
 xx <- seq(from = -4, to = 4, by = 0.001)
 alp <- 0.1; df <- 9
@@ -1908,16 +1908,32 @@ xx1 <- xx[xx > tt]
 ff1 <- ff[xx > tt]
 par(mar = c(3,3,1,1))
 plot(xx, ff, type="l", xlab="", ylab="")
-abline(h = 0, col="darkgray")
 polygon(x = c(min(xx1), xx1, max(xx1)), c(0, ff1, 0), col = "lightblue")
-text(x = 1.9, y = 0.015, labels = bquote(italic("\u03B1")),
-     adj = c(0,0)
-     )
-text(x = -2.6, y = 0.3, labels = bquote(italic(t)[italic("\u03B1")*","~nu]),
-     pos = 2, cex = 1.5
-     )
+text(x = 1.9, y = 0.015, labels = bquote(italic("\u03B1")),adj = c(0,0))
+text(x = -2, y = 0.15, labels = bquote(italic(t)[italic("\u03B1")*","~nu]),pos = 2,cex = 1.5)
+arrows(x0 = -2, y0 = 0.15, x1 = tt, y1 = 0, length = 0.1)
+abline(h = 0, col="darkgray")
 points(tt, 0, pch=19)
-arrows(x0 = -2.6, y0 = 0.3, x1 = tt, y1 = 0, length = 0.1)
+mtext(text = "Densidade", side = 2, line = 2.2)
+mtext(text = expression(italic(T)), side = 1, line = 2.2)
+```
+:::
+:::
+
+::: {.fragment .fade-in fragment-index=4 style="position: absolute; top: 0; left: 0; width: 100%;"}
+::: {.fragment .fade-out fragment-index=5 style="position: absolute; top: 0; left: 0; width: 100%;"}
+```{r, echo=FALSE, fig.height=4, fig.width=5}
+xx <- seq(from = -4, to = 4, by = 0.001)
+alp <- 0.1; df <- 9
+ff <- dt(x = xx, df = df)
+tt <- qt(p = 1-alp, df = df)
+xx2 <- xx[xx >= -tt & xx <= tt]
+ff2 <- ff[xx >= -tt & xx <= tt]
+par(mar = c(3,3,1,1))
+plot(xx, ff, type="l", xlab="", ylab="")
+polygon(x = c(min(xx2), xx2, max(xx2)), c(0, ff2, 0), col = "lightgreen")
+text(x = 0, y = 0.1, labels = bquote(italic("\u03B3")))
+abline(h = 0, col="darkgray")
 mtext(text = "Densidade", side = 2, line = 2.2)
 mtext(text = expression(italic(T)), side = 1, line = 2.2)
 ```
@@ -1925,14 +1941,27 @@ mtext(text = expression(italic(T)), side = 1, line = 2.2)
 :::
 
 ::: {.fragment .fade-in fragment-index=5 style="position: absolute; top: 0; left: 0; width: 100%;"}
-::: {.fragment .fade-out fragment-index=7 style="position: absolute; top: 0; left: 0; width: 100%;"}
 ```{r, echo=FALSE, fig.height=4, fig.width=5}
 xx <- seq(from = -4, to = 4, by = 0.001)
-ff <- dt(x = xx, df = 9)
-plot(xx, ff, type="l")
+alp <- 0.1; df <- 9
+ff <- dt(x = xx, df = df)
+tt <- qt(p = 1-alp, df = df)
+xx2 <- xx[xx >= -tt & xx <= tt]
+ff2 <- ff[xx >= -tt & xx <= tt]
+par(mar = c(3,3,1,1))
+plot(xx, ff, type="l", xlab="", ylab="")
+polygon(x = c(min(xx2), xx2, max(xx2)), c(0, ff2, 0), col = "lightgreen")
+text(x = 0, y = 0.1, labels = bquote(italic("\u03B3")))
+polygon(x = c(min(xx1), xx1, max(xx1)), c(0, ff1, 0), col = "lightblue")
+text(x = 1.9, y = 0.025, labels = bquote(frac(1 - italic("\u03B3"), 2)),adj = c(0.5,0.5), cex=.7)
+text(x = -2, y = 0.15, labels = bquote(italic(t)[frac(1 - italic("\u03B3"), 2)*","~n-1]),pos = 2,cex = 1.5)
+arrows(x0 = -2, y0 = 0.15, x1 = tt, y1 = 0, length = 0.1)
+abline(h = 0, col="darkgray")
+points(tt, 0, pch=19)
+mtext(text = "Densidade", side = 2, line = 2.2)
+mtext(text = expression(italic(T)), side = 1, line = 2.2)
 ```
 :::
-:::
 
 :::
 
@@ -1940,15 +1969,238 @@ plot(xx, ff, type="l")
 
 ::: 
 
-::: {.fragment .fade-in fragment-index=4}
+::: {.fragment .fade-in fragment-index=6}
 
 Logo quando $\sigma^2$ é desconhecida e o tamanho amostral não é grande, se os dados vierem de uma v.a. normal, um IC para $\mu$ com coeficiente de confiança $\gamma$ é dado por
 
 $$
-IC(\mu;\; \gamma) = \left[ \bar{X} - t_{\alpha,\ \nu} \frac{S}{\sqrt{n}} \; ; \; \bar{X} + t_{\alpha,\ \nu} \frac{S}{\sqrt{n}} \right].
+\text{IC}(\mu;\; \gamma) = \left[ \bar{X} - t_{\alpha,\ \nu} \frac{S}{\sqrt{n}} \; ; \; \bar{X} + t_{\alpha,\ \nu} \frac{S}{\sqrt{n}} \right].
 $$
 
 :::
+
+## {.unnumbered .unlisted .smaller} 
+
+###  Exemplo 8 (cont.) {.unnumbered .unlisted}
+
+Continuando o exemplo dos sacos de café, suponha que:
+
+- em vez de $49$, apenas $9$ sacos tivessem sido coletados;
+- os pesos dos sacos de café seguem uma distribuição normal;
+- há suspeita de que a variância também possa ter sido alterada;
+- como $\sigma^2$ é desconhecida, a variância amostral foi calculada e também forneceu $S^2 = 196$ ($S = 14$).
+
+::: columns
+
+::: {.column #vcenter width=65%}
+
+[Como $\sigma^2$ é desconhecida e $n$ é pequeno ($n < 30$), não é razoável recorrer a consistência de $S^2$. Mas, pela normalidade da população, utilizamos a $t$-Student com $\nu = n-1 = 8$ graus de liberdade.]{.fragment fragment-index=2}
+
+[Para uma confiança de $\gamma = 0\text{,}95$, temos $\frac{1-\gamma}{2} = 0\text{,}025$]{.fragment fragment-index=3} [e $t_{\alpha,\ \nu} = t_{\frac{1-\gamma}{2},\ n-1} = t_{0\text{,}025,\ 8} = 2\text{,}306$.]{.fragment fragment-index=4}
+
+:::
+
+::: {.column #vcenter width=35%}
+
+::: {style="position: relative; height: 250px;"}
+
+::: {.fragment .fade-in fragment-index=2}
+::: {.fragment .fade-out fragment-index=4}
+![](figs/fig_tabela_tstudent_exemplo8_F01.drawio.png){style="position: absolute; top: 0; left: 0; width: 100%;"}
+:::
+:::
+
+::: {.fragment .fade-in fragment-index=4}
+![](figs/fig_tabela_tstudent_exemplo8_F02.drawio.png){style="position: absolute; top: 0; left: 0; width: 100%;"}
+:::
+
+:::
+
+:::
+
+:::
+
+## {.unnumbered .unlisted .smaller} 
+
+###  Exemplo 8 (cont.) {.unnumbered .unlisted}
+
+Logo,
+$$
+\begin{aligned}
+\text{IC}(\mu; \gamma) &= \left[ \bar{X} - t_{\alpha,\ \nu} \frac{S}{\sqrt{n}} \; ; \; \bar{X} + t_{\alpha,\ \nu} \frac{S}{\sqrt{n}} \right]\\
+&= \left[ 485 - 2\text{,}306 \times \frac{15}{3}; \; 485 + 2\text{,}306 \times \frac{15}{3} \right]\\
+&= [474\text{,}24;\ 495\text{,}76]
+\end{aligned}
+$$
+
+Comparando com o IC anterior ($n = 49$ e $\sigma^2 = 196$ conhecida), onde $[481\text{,}08;\ 488\text{,}92]$, percebemos que a amplitude do intervalo aumentou consideravelmente.
+
+Esse aumento é reflexo do menor tamanho amostral e da variabilidade extra desencadeada pela aproximação de $\sigma^2$ por $S^2$.
+
+Entretanto, as conclusões obtidas não foram alteradas. Isto é, como o IC obtido não cobre o valor original de $\mu = 500$, com confiança de 95\%, podemos afirmar que a máquina se desregulou.
+
+## {.unnumbered .unlisted .smaller} 
+
+###  Exemplo 10 {.unnumbered .unlisted}
+
+Seja $X_1, \ldots, X_n$ uma aa de uma população $\text{Exp}(\lambda)$. Vimos que o EMV de $\lambda$ é $\hat\lambda = \frac{1}{\bar{X}}$. Vamos utilizar $\hat\lambda$ para criar dois IC para $\lambda$.
+
+No caso de grandes amostras, como $\hat\lambda$ depende de $\bar{X}$, podemos utilizar o TCL para aproximar a distribuição de $Z_n = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}}$ pela normal-padrão. Considerando que $\mu = \sigma = \frac{1}{\lambda}$, temos
+$$
+\begin{aligned}
+\gamma &\approx P\left(-z_{\frac{\gamma}{2}} < \frac{\bar{X} - 1/\lambda}{1/(\lambda\sqrt{n})} < z_{\frac{\gamma}{2}}\right) = P\left(-z_{\frac{\gamma}{2}}\frac{1}{\sqrt{n}} < \lambda\bar{X} - 1 < z_{\frac{\gamma}{2}}\frac{1}{\sqrt{n}}\right)\\
+&= P\left(\frac{1}{\bar{X}}\left[1-z_{\frac{\gamma}{2}}\frac{1}{\sqrt{n}}\right] < \lambda < \frac{1}{\bar{X}}\left[1+z_{\frac{\gamma}{2}}\frac{1}{\sqrt{n}}\right]\right) = P\left(\hat\lambda\left[1-z_{\frac{\gamma}{2}}\frac{1}{\sqrt{n}}\right] < \lambda < \hat\lambda\left[1+z_{\frac{\gamma}{2}}\frac{1}{\sqrt{n}}\right]\right)
+\end{aligned}
+$$
+Logo, um IC para $\lambda$ com confiança (aproximadamente) $\gamma$ é
+$$
+\text{IC}(\lambda, \gamma) = \left[ \hat\lambda\left(1-z_{\frac{\gamma}{2}}\frac{1}{\sqrt{n}}\right);\ \hat\lambda\left(1+z_{\frac{\gamma}{2}}\frac{1}{\sqrt{n}}\right) \right].
+$$
+
+## {.unnumbered .unlisted .smaller} 
+
+###  Exemplo 10 (cont.) {.unnumbered .unlisted}
+
+Em pequenas amostras, o TCL pode fornecer uma aproximação imprecisa. Nesse caso, podemos recorrer ao fato que $\sum_{i=1}^nX_i \sim \text{Gama}(n, \frac{1}{\lambda})$ e que $\sum_{i=1}^nX_i = n\bar{X} = \frac{n}{\hat\lambda}$. Além disso, das propriedades da distribuição Gama, podemos concluir que $\lambda \frac{n}{\hat\lambda} \sim \text{Gama}(n, 1)$, a distribuição gama-padrão.
+
+::: columns
+
+::: {.column #vcenter width=55%}
+
+[Definindo $g_{p,n}$ tal que $P(\text{Gama}(\alpha,1) \leq g_{p,\alpha}) = p$]{.fragment fragment-index=2}[, temos que]{.fragment fragment-index=3}
+
+<div style="display: flex; justify-content: center;">
+
+<table>
+    <tr class="fragment" data-fragment-index="3">
+      <td>$\gamma$</td>
+      <td>$=$</td>
+      <td>$P\left(g_{\frac{1-\gamma}{2},\ n} < \lambda \frac{n}{\hat\lambda} < g_{\frac{1+\gamma}{2},\ n}\right)$</td>
+    </tr>
+    <tr class="fragment" data-fragment-index="4" style="border-style: none;">
+      <td></td>
+      <td>$=$</td>
+      <td>$P\left(g_{\frac{1-\gamma}{2},\ n}\frac{\hat\lambda}{n} < \lambda < g_{\frac{1+\gamma}{2},\ n}\frac{\hat\lambda}{n}\right)$</td>
+    </tr>
+</table>
+
+</div>
+
+[Assim, outro IC para $\lambda$ com confiança $\gamma$ é
+$$
+\text{IC}(\lambda, \gamma) = \left[g_{\frac{1-\gamma}{2},\ n}\frac{\hat\lambda}{n};\ g_{\frac{1+\gamma}{2},\ n}\frac{\hat\lambda}{n}\right].
+$$]{.fragment fragment-index=5}
+
+:::
+
+::: {.column #vcenter width=45%}
+
+::: {style="position: relative; height: 400px;"}
+
+::: {.fragment .fade-in fragment-index=2 style="position: absolute; top: 0; left: 0; width: 100%;"}
+::: {.fragment .fade-out fragment-index=3 style="position: absolute; top: 0; left: 0; width: 100%;"}
+
+```{r, echo=FALSE, fig.height=4, fig.width=5, fig.align = 'center'}
+xx <- seq(from = 0, to = 30, by = 0.001)
+p <- 0.8; alp <- 9
+ff <- dgamma(x = xx, shape = alp, rate = 1)
+qq <- qgamma(p = p, shape = alp, rate = 1)
+xx1 <- xx[xx <= qq]
+ff1 <- ff[xx <= qq]
+par(mar = c(3,3,1,1))
+plot(xx, ff, type="l", xlab="", ylab="")
+polygon(x = c(min(xx1), xx1, max(xx1)), c(0, ff1, 0), col = "lightblue")
+text(x = 8, y = 0.05, labels = bquote(italic(p)))
+text(x = 25, y = 0.05, labels = bquote(italic(g)[italic(p)*","~italic("\u03B1")]), pos = 4,cex = 1.5)
+arrows(x0 = 25, y0 = 0.05, x1 = qq, y1 = 0, length = 0.1)
+abline(h = 0, col="darkgray")
+points(qq, 0, pch=19)
+mtext(text = "Densidade", side = 2, line = 2.2)
+mtext(text = expression("Gama"*(italic("\u03B1")*","~1)), side = 1, line = 2.2)
+```
+
+:::
+:::
+
+::: {.fragment .fade-in fragment-index=3 style="position: absolute; top: 0; left: 0; width: 100%;"}
+
+```{r, echo=FALSE, fig.height=4, fig.width=5, fig.align = 'center'}
+xx <- seq(from = 0, to = 30, by = 0.001)
+p1 <- 0.1; p2 <- 0.9; alp <- 9
+ff <- dgamma(x = xx, shape = alp, rate = 1)
+qq1 <- qgamma(p = p1, shape = alp, rate = 1)
+qq2 <- qgamma(p = p2, shape = alp, rate = 1)
+xx1 <- xx[xx <= qq1]; ff1 <- ff[xx <= qq1]
+xx2 <- xx[xx >= qq2]; ff2 <- ff[xx >= qq2]
+xx3 <- xx[xx >= qq1 & xx <= qq2]; ff3 <- ff[xx >= qq1 & xx <= qq2]
+par(mar = c(3,3,1,1))
+plot(xx, ff, type="l", xlab="", ylab="")
+polygon(x = c(min(xx3), xx3, max(xx3)), c(0, ff3, 0), col = "lightgreen")
+polygon(x = c(min(xx1), xx1, max(xx1)), c(0, ff1, 0), col = "#FF7F7F")
+polygon(x = c(min(xx2), xx2, max(xx2)), c(0, ff2, 0), col = "lightblue")
+text(x = 2.5, y = 0.08, labels = bquote(italic(g)[frac(1-italic("\u03B3"),2)*","~italic(n)]), pos = 3,cex = 1.5)
+text(x = 23, y = 0.04, labels = bquote(italic(g)[frac(1+italic("\u03B3"),2)*","~italic(n)]), pos = 4,cex = 1.5)
+arrows(x0 = 2.5, y0 = 0.08, x1 = qq1, y1 = 0, length = 0.1)
+arrows(x0 = 23, y0 = 0.04, x1 = qq2, y1 = 0, length = 0.1)
+abline(h = 0, col="darkgray")
+points(qq1, 0, pch=19)
+points(qq2, 0, pch=19)
+mtext(text = "Densidade", side = 2, line = 2.2)
+mtext(text = expression("Gama"*(italic(n)*","~1)), side = 1, line = 2.2)
+legend("topright", legend = c(expression(italic("\u03B3")), expression((1-italic("\u03B3"))/2), expression((1-italic("\u03B3"))/2)), fill = c("lightgreen", "#FF7F7F", "lightblue"), bty = "n")
+```
+
+:::
+
+:::
+
+:::
+
+:::
+
+
+## {.unnumbered .unlisted .smaller} 
+
+###  Exemplo 10 (cont.) {.unnumbered .unlisted}
+
+::: columns
+
+::: {.column #vcenter width=60%}
+
+Determinado tipo de bomba de aquecimento tem distribuição $\text{Exp}(\lambda)$. Uma aa de $n = 9$ bombas produziu $\hat\lambda = 0\text{,}237$.
+
+[Para uma confiança $\gamma = 0\text{,}95$, temos o quantil da normal-padrão $z_{\frac{\gamma}{2}} = z_{0\text{,}475} = 1\text{,}96$]{.fragment fragment-index=2}[, e os da Gama]{.fragment fragment-index=3} [$g_{\frac{1-\gamma}{2},\ n} = g_{0\text{,}025,\ 9} \approx 4$ (valor exato `r format(round(qgamma(0.025, shape = 9, rate = 1), 3), decimal.mark = ",")`) e $g_{\frac{1+\gamma}{2},\ n} = g_{0\text{,}975,\ 9} \approx 15$ (valor exato `r format(round(qgamma(0.975, shape = 9, rate = 1), 3), decimal.mark = ",")`).]{.fragment fragment-index=4}
+
+:::
+
+::: {.column #vcenter width=40%}
+
+::: {style="position: relative; height: 300px;"}
+
+::: {.fragment .fade-in fragment-index=3}
+::: {.fragment .fade-out fragment-index=4}
+![](figs/fig_tabela_gamma_exemplo10_F01.drawio.png){style="position: absolute; top: 0; left: 0; width: 100%;"}
+:::
+:::
+
+::: {.fragment .fade-in fragment-index=4}
+![](figs/fig_tabela_gamma_exemplo10_F02.drawio.png){style="position: absolute; top: 0; left: 0; width: 100%;"}
+:::
+
+
+:::
+
+:::
+
+:::
+
+[Com confiança $\gamma = 0\text{,}95$, os IC aproximado pelo TCL e "exato" são dados, respectivamente, por
+$$
+\textstyle \text{IC}(0\text{,}95; \lambda) = \left[ \hat\lambda\left(1\pm z_{\frac{\gamma}{2}}\frac{1}{\sqrt{n}}\right)\right] = \left[0\text{,}237\left(1\pm \frac{1\text{,}96}{3}\right)\right] = [0\text{,}082;\ 0\text{,}392],
+$$]{.fragment fragment-index=5}
+[$$
+\textstyle \text{IC}(0\text{,}95; \lambda) = \left[g_{\frac{1-\gamma}{2},\ n}\frac{\hat\lambda}{n};\ g_{\frac{1+\gamma}{2},\ n}\frac{\hat\lambda}{n}\right] = \left[4\frac{0\text{,}237}{9};\ 15\frac{0\text{,}237}{9}\right] = [0\text{,}105;\ 0\text{,}395].
+$$]{.fragment fragment-index=6}
 
 # Testes de Hipóteses
 
@@ -1964,7 +2216,7 @@ Relatar o resultado de um teste de hipóteses simplesmente dizendo se a hipótes
 
 ::: {style="border-style: solid; border-width: 3px; padding-bottom: 0px; padding-right: 12px; padding-left: 12px; font-size:70%;"}
 
-**Exemplo 10:** O tempo médio de alivio das dores do medicamento mais vendido no mercado é de 10 min. Uma empresa desenvolveu um medicamento e colocou a venda afirmando que um teste estatístico rejeitou $H_0 : \mu \geq 10$ em favor de $H_1 : \mu < 10$ ao nível de 0.1.
+**Exemplo 11:** O tempo médio de alivio das dores do medicamento mais vendido no mercado é de 10 min. Uma empresa desenvolveu um medicamento e colocou a venda afirmando que um teste estatístico rejeitou $H_0 : \mu \geq 10$ em favor de $H_1 : \mu < 10$ ao nível de 0.1.
 
 ::: 
 
@@ -1976,7 +2228,7 @@ Uma pessoa que costuma comprar o medicamento mais vendido pode optar por nível 
 
 ## {.unnumbered .unlisted .smaller} 
 
-###  Exemplo 10 (cont.) {.unnumbered .unlisted} 
+###  Exemplo 11 (cont.) {.unnumbered .unlisted} 
 
 ::: columns
 
@@ -2028,7 +2280,7 @@ text(x = -4.5, y=0.4, labels = bquote(Rejeitar~italic(H)[0]), pos = 4)
 
 ## {.unnumbered .unlisted .smaller} 
 
-###  Exemplo 10 (cont.) {.unnumbered .unlisted} 
+###  Exemplo 11 (cont.) {.unnumbered .unlisted} 
 
 ::: columns
 
@@ -2077,7 +2329,7 @@ text(x = -4.5, y=0.4, labels = bquote(Rejeitar~italic(H)[0]), pos = 4)
 
 ## {.unnumbered .unlisted .smaller} 
 
-###  Exemplo 10 (cont.) {.unnumbered .unlisted} 
+###  Exemplo 11 (cont.) {.unnumbered .unlisted} 
 
 ::: columns
 

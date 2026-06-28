@@ -6,8 +6,8 @@
 <script src="inferencia_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="inferencia_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="inferencia_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="inferencia_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.36">
+<link href="inferencia_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
 
   <meta name="author" content="Prof.&nbsp;Dr.&nbsp;Alessandro JQ Sarnaglia">
   <title>Probabilidade e Estatística</title>
@@ -17,9 +17,6 @@
   <link rel="stylesheet" href="inferencia_files/libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="inferencia_files/libs/revealjs/dist/reveal.css">
   <style>
-    /* Default styles provided by pandoc.
-    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -98,7 +95,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="inferencia_files/libs/revealjs/dist/theme/quarto-d3d5040e18be6e0ee3d0355d7b3a05df.css">
+  <link rel="stylesheet" href="inferencia_files/libs/revealjs/dist/theme/quarto-e34a86496f86bce26d8ba05cee7c0330.css">
   <link rel="stylesheet" href="fonts.css">
   <link rel="stylesheet" href="style.css">
   <link href="inferencia_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -528,7 +525,7 @@ Agora, derivando <span class="math inline">\(F_Y(y)\)</span>, obtemos
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>P[Med. Amost. ∈ (Med. Pop. ± 0.1)] ≈ 0.905</code></pre>
+<pre><code>P[Med. Amost. ∈ (Med. Pop. ± 0.1)] ≈ 0.897</code></pre>
 </div>
 </div>
 </div>
@@ -573,7 +570,7 @@ Agora, derivando <span class="math inline">\(F_Y(y)\)</span>, obtemos
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>P[Med. Amost. ∈ (Med. Pop. ± 0.1)] ≈ 0.982</code></pre>
+<pre><code>P[Med. Amost. ∈ (Med. Pop. ± 0.1)] ≈ 0.98</code></pre>
 </div>
 </div>
 </div>
@@ -1811,7 +1808,7 @@ Utilizamos como notação <span class="math inline">\(\text{IC}(\theta; \gamma) 
 <p>Uma máquina estava regulada para encher pacotes de café com peso médio de <span class="math inline">\(500\text{g}\)</span> e variância de <span class="math inline">\(196\text{g}^2\)</span>. Uma a.a. de <span class="math inline">\(49\)</span> pacotes forneceu média de <span class="math inline">\(485\text{g}\)</span>. O que podemos dizer sobre a verdadeira média com confiança de <span class="math inline">\(95\%\)</span>?</p>
 <p>Temos que <span class="math inline">\(\bar{x} = 485\)</span>, <span class="math inline">\(n = 49\)</span>, <span class="math inline">\(\sigma^2 = 196\)</span> e <span class="math inline">\(\gamma = 0.95\)</span>. Primeiramente, <span class="math inline">\(z_{\frac{\gamma}{2}} = z_{0.475} = 1.96\)</span>. Logo,</p>
 <p><span class="math display">\[
-IC(\mu; 0.95) = \left[ 485 - 1.96 \times \frac{14}{7}; \; 485 + 1.96 \times \frac{14}{7} \right] = [481.08; 488.92].
+\text{IC}(\mu; 0.95) = \left[ 485 - 1.96 \times \frac{14}{7}; \; 485 + 1.96 \times \frac{14}{7} \right] = [481.08; 488.92].
 \]</span></p>
 <p>Com confiança de <span class="math inline">\(95\%\)</span> podemos afirmar que a máquina está desregulada.</p>
 </section>
@@ -1992,17 +1989,17 @@ A segunda utiliza o g.l. e o quantil para fornecer as probabilidades caudais.
 <h2></h2>
 <h3 class="unnumbered unlisted" id="exemplo-9-ic-para-mu-sigma2-desconhecida-e-pop.-normal">Exemplo 9: IC para <span class="math inline">\(\mu\)</span> (<span class="math inline">\(\sigma^2\)</span> desconhecida e pop. normal)</h3>
 <div class="columns">
-<div id="vcenter" class="column" style="width:65%;">
-<p>Utilizando o resultado anterior, encontremos um IC para <span class="math inline">\(\mu\)</span> em função de <span class="math inline">\(\bar{X}\)</span> e <span class="math inline">\(S\)</span>. Seja <span class="math inline">\(t_{\alpha,\ \nu}\)</span> o número tal que <span class="math inline">\(P(T &gt; t_{\alpha,\ \nu}) = \alpha\)</span>, onde <span class="math inline">\(T \sim t_{\nu}\)</span>. Daí, <span class="math display">\[
+<div id="vcenter" class="column" style="width:67%;">
+<p>Utilizando o resultado anterior, encontremos um IC para <span class="math inline">\(\mu\)</span> em função de <span class="math inline">\(\bar{X}\)</span> e <span class="math inline">\(S\)</span>. <span class="fragment" data-fragment-index="2">Seja <span class="math inline">\(t_{\alpha,\ \nu}\)</span> o valor tal que <span class="math inline">\(P(T &gt; t_{\alpha,\ \nu}) = \alpha\)</span>, onde <span class="math inline">\(T \sim t_{\nu}\)</span>.</span> <span class="fragment" data-fragment-index="3">Daí, <span class="math display">\[
 \begin{aligned}
 \gamma &amp;= P(-t_{\alpha,\ \nu} &lt; T &lt; t_{\alpha,\ \nu}) = P\left(-t_{\alpha,\ \nu} &lt; \frac{\bar{X} - \mu}{S/\sqrt{n}} &lt; t_{\alpha,\ \nu}\right) \\
 &amp;= P\left(\bar{X} - t_{\alpha,\ \nu} \frac{S}{\sqrt{n}} &lt; \mu &lt; \bar{X} + t_{\alpha,\ \nu} \frac{S}{\sqrt{n}}\right),
 \end{aligned}
-\]</span> em que <span class="math inline">\(\alpha = \frac{1-\gamma}{2}\)</span> e <span class="math inline">\(\nu = n-1\)</span>.</p>
-</div><div id="vcenter" class="column" style="width:35%;">
+\]</span></span> <span class="fragment" data-fragment-index="4">em que <span class="math inline">\(\alpha = \frac{1-\gamma}{2}\)</span> e <span class="math inline">\(\nu = n-1\)</span>.</span></p>
+</div><div id="vcenter" class="column" style="width:33%;">
 <div style="position: relative; height: 250px;">
 <div class="fragment fade-in" data-fragment-index="2" style="position: absolute; top: 0; left: 0; width: 100%;">
-<div class="fragment fade-out" data-fragment-index="5" style="position: absolute; top: 0; left: 0; width: 100%;">
+<div class="fragment fade-out" data-fragment-index="4" style="position: absolute; top: 0; left: 0; width: 100%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -2014,8 +2011,8 @@ A segunda utiliza o g.l. e o quantil para fornecer as probabilidades caudais.
 </div>
 </div>
 </div>
-<div class="fragment fade-in" data-fragment-index="5" style="position: absolute; top: 0; left: 0; width: 100%;">
-<div class="fragment fade-out" data-fragment-index="7" style="position: absolute; top: 0; left: 0; width: 100%;">
+<div class="fragment fade-in" data-fragment-index="4" style="position: absolute; top: 0; left: 0; width: 100%;">
+<div class="fragment fade-out" data-fragment-index="5" style="position: absolute; top: 0; left: 0; width: 100%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -2027,14 +2024,168 @@ A segunda utiliza o g.l. e o quantil para fornecer as probabilidades caudais.
 </div>
 </div>
 </div>
+<div class="fragment fade-in" data-fragment-index="5" style="position: absolute; top: 0; left: 0; width: 100%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-15-1.png" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div></div>
-<div class="fragment fade-in" data-fragment-index="4">
+<div class="fragment fade-in" data-fragment-index="6">
 <p>Logo quando <span class="math inline">\(\sigma^2\)</span> é desconhecida e o tamanho amostral não é grande, se os dados vierem de uma v.a. normal, um IC para <span class="math inline">\(\mu\)</span> com coeficiente de confiança <span class="math inline">\(\gamma\)</span> é dado por</p>
 <p><span class="math display">\[
-IC(\mu;\; \gamma) = \left[ \bar{X} - t_{\alpha,\ \nu} \frac{S}{\sqrt{n}} \; ; \; \bar{X} + t_{\alpha,\ \nu} \frac{S}{\sqrt{n}} \right].
+\text{IC}(\mu;\; \gamma) = \left[ \bar{X} - t_{\alpha,\ \nu} \frac{S}{\sqrt{n}} \; ; \; \bar{X} + t_{\alpha,\ \nu} \frac{S}{\sqrt{n}} \right].
 \]</span></p>
 </div>
+</section>
+<section id="section-8" class="slide level2 unnumbered unlisted smaller">
+<h2></h2>
+<h3 class="unnumbered unlisted" id="exemplo-8-cont.-1">Exemplo 8 (cont.)</h3>
+<p>Continuando o exemplo dos sacos de café, suponha que:</p>
+<ul>
+<li>em vez de <span class="math inline">\(49\)</span>, apenas <span class="math inline">\(9\)</span> sacos tivessem sido coletados;</li>
+<li>os pesos dos sacos de café seguem uma distribuição normal;</li>
+<li>há suspeita de que a variância também possa ter sido alterada;</li>
+<li>como <span class="math inline">\(\sigma^2\)</span> é desconhecida, a variância amostral foi calculada e também forneceu <span class="math inline">\(S^2 = 196\)</span> (<span class="math inline">\(S = 14\)</span>).</li>
+</ul>
+<div class="columns">
+<div id="vcenter" class="column" style="width:65%;">
+<p><span class="fragment" data-fragment-index="2">Como <span class="math inline">\(\sigma^2\)</span> é desconhecida e <span class="math inline">\(n\)</span> é pequeno (<span class="math inline">\(n &lt; 30\)</span>), não é razoável recorrer a consistência de <span class="math inline">\(S^2\)</span>. Mas, pela normalidade da população, utilizamos a <span class="math inline">\(t\)</span>-Student com <span class="math inline">\(\nu = n-1 = 8\)</span> graus de liberdade.</span></p>
+<p><span class="fragment" data-fragment-index="3">Para uma confiança de <span class="math inline">\(\gamma = 0\text{,}95\)</span>, temos <span class="math inline">\(\frac{1-\gamma}{2} = 0\text{,}025\)</span></span> <span class="fragment" data-fragment-index="4">e <span class="math inline">\(t_{\alpha,\ \nu} = t_{\frac{1-\gamma}{2},\ n-1} = t_{0\text{,}025,\ 8} = 2\text{,}306\)</span>.</span></p>
+</div><div id="vcenter" class="column" style="width:35%;">
+<div style="position: relative; height: 250px;">
+<div class="fragment fade-in" data-fragment-index="2">
+<div class="fragment fade-out" data-fragment-index="4">
+<p><img data-src="figs/fig_tabela_tstudent_exemplo8_F01.drawio.png" style="position: absolute; top: 0; left: 0; width: 100%;"></p>
+</div>
+</div>
+<div class="fragment fade-in" data-fragment-index="4">
+<p><img data-src="figs/fig_tabela_tstudent_exemplo8_F02.drawio.png" style="position: absolute; top: 0; left: 0; width: 100%;"></p>
+</div>
+</div>
+</div></div>
+</section>
+<section id="section-9" class="slide level2 unnumbered unlisted smaller">
+<h2></h2>
+<h3 class="unnumbered unlisted" id="exemplo-8-cont.-2">Exemplo 8 (cont.)</h3>
+<p>Logo, <span class="math display">\[
+\begin{aligned}
+\text{IC}(\mu; \gamma) &amp;= \left[ \bar{X} - t_{\alpha,\ \nu} \frac{S}{\sqrt{n}} \; ; \; \bar{X} + t_{\alpha,\ \nu} \frac{S}{\sqrt{n}} \right]\\
+&amp;= \left[ 485 - 2\text{,}306 \times \frac{15}{3}; \; 485 + 2\text{,}306 \times \frac{15}{3} \right]\\
+&amp;= [474\text{,}24;\ 495\text{,}76]
+\end{aligned}
+\]</span></p>
+<p>Comparando com o IC anterior (<span class="math inline">\(n = 49\)</span> e <span class="math inline">\(\sigma^2 = 196\)</span> conhecida), onde <span class="math inline">\([481\text{,}08;\ 488\text{,}92]\)</span>, percebemos que a amplitude do intervalo aumentou consideravelmente.</p>
+<p>Esse aumento é reflexo do menor tamanho amostral e da variabilidade extra desencadeada pela aproximação de <span class="math inline">\(\sigma^2\)</span> por <span class="math inline">\(S^2\)</span>.</p>
+<p>Entretanto, as conclusões obtidas não foram alteradas. Isto é, como o IC obtido não cobre o valor original de <span class="math inline">\(\mu = 500\)</span>, com confiança de 95%, podemos afirmar que a máquina se desregulou.</p>
+</section>
+<section id="section-10" class="slide level2 unnumbered unlisted smaller">
+<h2></h2>
+<h3 class="unnumbered unlisted" id="exemplo-10">Exemplo 10</h3>
+<p>Seja <span class="math inline">\(X_1, \ldots, X_n\)</span> uma aa de uma população <span class="math inline">\(\text{Exp}(\lambda)\)</span>. Vimos que o EMV de <span class="math inline">\(\lambda\)</span> é <span class="math inline">\(\hat\lambda = \frac{1}{\bar{X}}\)</span>. Vamos utilizar <span class="math inline">\(\hat\lambda\)</span> para criar dois IC para <span class="math inline">\(\lambda\)</span>.</p>
+<p>No caso de grandes amostras, como <span class="math inline">\(\hat\lambda\)</span> depende de <span class="math inline">\(\bar{X}\)</span>, podemos utilizar o TCL para aproximar a distribuição de <span class="math inline">\(Z_n = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}}\)</span> pela normal-padrão. Considerando que <span class="math inline">\(\mu = \sigma = \frac{1}{\lambda}\)</span>, temos <span class="math display">\[
+\begin{aligned}
+\gamma &amp;\approx P\left(-z_{\frac{\gamma}{2}} &lt; \frac{\bar{X} - 1/\lambda}{1/(\lambda\sqrt{n})} &lt; z_{\frac{\gamma}{2}}\right) = P\left(-z_{\frac{\gamma}{2}}\frac{1}{\sqrt{n}} &lt; \lambda\bar{X} - 1 &lt; z_{\frac{\gamma}{2}}\frac{1}{\sqrt{n}}\right)\\
+&amp;= P\left(\frac{1}{\bar{X}}\left[1-z_{\frac{\gamma}{2}}\frac{1}{\sqrt{n}}\right] &lt; \lambda &lt; \frac{1}{\bar{X}}\left[1+z_{\frac{\gamma}{2}}\frac{1}{\sqrt{n}}\right]\right) = P\left(\hat\lambda\left[1-z_{\frac{\gamma}{2}}\frac{1}{\sqrt{n}}\right] &lt; \lambda &lt; \hat\lambda\left[1+z_{\frac{\gamma}{2}}\frac{1}{\sqrt{n}}\right]\right)
+\end{aligned}
+\]</span> Logo, um IC para <span class="math inline">\(\lambda\)</span> com confiança (aproximadamente) <span class="math inline">\(\gamma\)</span> é <span class="math display">\[
+\text{IC}(\lambda, \gamma) = \left[ \hat\lambda\left(1-z_{\frac{\gamma}{2}}\frac{1}{\sqrt{n}}\right);\ \hat\lambda\left(1+z_{\frac{\gamma}{2}}\frac{1}{\sqrt{n}}\right) \right].
+\]</span></p>
+</section>
+<section id="section-11" class="slide level2 unnumbered unlisted smaller">
+<h2></h2>
+<h3 class="unnumbered unlisted" id="exemplo-10-cont.">Exemplo 10 (cont.)</h3>
+<p>Em pequenas amostras, o TCL pode fornecer uma aproximação imprecisa. Nesse caso, podemos recorrer ao fato que <span class="math inline">\(\sum_{i=1}^nX_i \sim \text{Gama}(n, \frac{1}{\lambda})\)</span> e que <span class="math inline">\(\sum_{i=1}^nX_i = n\bar{X} = \frac{n}{\hat\lambda}\)</span>. Além disso, das propriedades da distribuição Gama, podemos concluir que <span class="math inline">\(\lambda \frac{n}{\hat\lambda} \sim \text{Gama}(n, 1)\)</span>, a distribuição gama-padrão.</p>
+<div class="columns">
+<div id="vcenter" class="column" style="width:55%;">
+<p><span class="fragment" data-fragment-index="2">Definindo <span class="math inline">\(g_{p,n}\)</span> tal que <span class="math inline">\(P(\text{Gama}(\alpha,1) \leq g_{p,\alpha}) = p\)</span></span><span class="fragment" data-fragment-index="3">, temos que</span></p>
+<div style="display: flex; justify-content: center;">
+<table>
+<tbody><tr class="fragment" data-fragment-index="3">
+<td>
+<span class="math inline">\(\gamma\)</span>
+</td>
+<td>
+<span class="math inline">\(=\)</span>
+</td>
+<td>
+<span class="math inline">\(P\left(g_{\frac{1-\gamma}{2},\ n} &lt; \lambda \frac{n}{\hat\lambda} &lt; g_{\frac{1+\gamma}{2},\ n}\right)\)</span>
+</td>
+</tr>
+<tr class="fragment" data-fragment-index="4" style="border-style: none;">
+<td>
+</td>
+<td>
+<span class="math inline">\(=\)</span>
+</td>
+<td>
+<span class="math inline">\(P\left(g_{\frac{1-\gamma}{2},\ n}\frac{\hat\lambda}{n} &lt; \lambda &lt; g_{\frac{1+\gamma}{2},\ n}\frac{\hat\lambda}{n}\right)\)</span>
+</td>
+</tr>
+</tbody></table>
+</div>
+<p><span class="fragment" data-fragment-index="5">Assim, outro IC para <span class="math inline">\(\lambda\)</span> com confiança <span class="math inline">\(\gamma\)</span> é <span class="math display">\[
+\text{IC}(\lambda, \gamma) = \left[g_{\frac{1-\gamma}{2},\ n}\frac{\hat\lambda}{n};\ g_{\frac{1+\gamma}{2},\ n}\frac{\hat\lambda}{n}\right].
+\]</span></span></p>
+</div><div id="vcenter" class="column" style="width:45%;">
+<div style="position: relative; height: 400px;">
+<div class="fragment fade-in" data-fragment-index="2" style="position: absolute; top: 0; left: 0; width: 100%;">
+<div class="fragment fade-out" data-fragment-index="3" style="position: absolute; top: 0; left: 0; width: 100%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-16-1.png" class="quarto-figure quarto-figure-center" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-in" data-fragment-index="3" style="position: absolute; top: 0; left: 0; width: 100%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-17-1.png" class="quarto-figure quarto-figure-center" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="section-12" class="slide level2 unnumbered unlisted smaller">
+<h2></h2>
+<h3 class="unnumbered unlisted" id="exemplo-10-cont.-1">Exemplo 10 (cont.)</h3>
+<div class="columns">
+<div id="vcenter" class="column" style="width:60%;">
+<p>Determinado tipo de bomba de aquecimento tem distribuição <span class="math inline">\(\text{Exp}(\lambda)\)</span>. Uma aa de <span class="math inline">\(n = 9\)</span> bombas produziu <span class="math inline">\(\hat\lambda = 0\text{,}237\)</span>.</p>
+<p><span class="fragment" data-fragment-index="2">Para uma confiança <span class="math inline">\(\gamma = 0\text{,}95\)</span>, temos o quantil da normal-padrão <span class="math inline">\(z_{\frac{\gamma}{2}} = z_{0\text{,}475} = 1\text{,}96\)</span></span><span class="fragment" data-fragment-index="3">, e os da Gama</span> <span class="fragment" data-fragment-index="4"><span class="math inline">\(g_{\frac{1-\gamma}{2},\ n} = g_{0\text{,}025,\ 9} \approx 4\)</span> (valor exato 4,115) e <span class="math inline">\(g_{\frac{1+\gamma}{2},\ n} = g_{0\text{,}975,\ 9} \approx 15\)</span> (valor exato 15,763).</span></p>
+</div><div id="vcenter" class="column" style="width:40%;">
+<div style="position: relative; height: 300px;">
+<div class="fragment fade-in" data-fragment-index="3">
+<div class="fragment fade-out" data-fragment-index="4">
+<p><img data-src="figs/fig_tabela_gamma_exemplo10_F01.drawio.png" style="position: absolute; top: 0; left: 0; width: 100%;"></p>
+</div>
+</div>
+<div class="fragment fade-in" data-fragment-index="4">
+<p><img data-src="figs/fig_tabela_gamma_exemplo10_F02.drawio.png" style="position: absolute; top: 0; left: 0; width: 100%;"></p>
+</div>
+</div>
+</div></div>
+<p><span class="fragment" data-fragment-index="5">Com confiança <span class="math inline">\(\gamma = 0\text{,}95\)</span>, os IC aproximado pelo TCL e “exato” são dados, respectivamente, por <span class="math display">\[
+\textstyle \text{IC}(0\text{,}95; \lambda) = \left[ \hat\lambda\left(1\pm z_{\frac{\gamma}{2}}\frac{1}{\sqrt{n}}\right)\right] = \left[0\text{,}237\left(1\pm \frac{1\text{,}96}{3}\right)\right] = [0\text{,}082;\ 0\text{,}392],
+\]</span></span> <span class="fragment" data-fragment-index="6"><span class="math display">\[
+\textstyle \text{IC}(0\text{,}95; \lambda) = \left[g_{\frac{1-\gamma}{2},\ n}\frac{\hat\lambda}{n};\ g_{\frac{1+\gamma}{2},\ n}\frac{\hat\lambda}{n}\right] = \left[4\frac{0\text{,}237}{9};\ 15\frac{0\text{,}237}{9}\right] = [0\text{,}105;\ 0\text{,}395].
+\]</span></span></p>
 </section></section>
 <section>
 <section id="testes-de-hipóteses" class="title-slide slide level1 center" data-number="3">
@@ -2057,7 +2208,7 @@ IC(\mu;\; \gamma) = \left[ \bar{X} - t_{\alpha,\ \nu} \frac{S}{\sqrt{n}} \; ; \;
 </div>
 </div>
 <div style="border-style: solid; border-width: 3px; padding-bottom: 0px; padding-right: 12px; padding-left: 12px; font-size:70%;">
-<p><strong>Exemplo 10:</strong> O tempo médio de alivio das dores do medicamento mais vendido no mercado é de 10 min. Uma empresa desenvolveu um medicamento e colocou a venda afirmando que um teste estatístico rejeitou <span class="math inline">\(H_0 : \mu \geq 10\)</span> em favor de <span class="math inline">\(H_1 : \mu &lt; 10\)</span> ao nível de 0.1.</p>
+<p><strong>Exemplo 11:</strong> O tempo médio de alivio das dores do medicamento mais vendido no mercado é de 10 min. Uma empresa desenvolveu um medicamento e colocou a venda afirmando que um teste estatístico rejeitou <span class="math inline">\(H_0 : \mu \geq 10\)</span> em favor de <span class="math inline">\(H_1 : \mu &lt; 10\)</span> ao nível de 0.1.</p>
 </div>
 <div class="callout callout-caution no-icon callout-titled callout-style-default">
 <div class="callout-body">
@@ -2070,9 +2221,9 @@ IC(\mu;\; \gamma) = \left[ \bar{X} - t_{\alpha,\ \nu} \frac{S}{\sqrt{n}} \; ; \;
 </div>
 </div>
 </section>
-<section id="section-8" class="slide level2 unnumbered unlisted smaller">
+<section id="section-13" class="slide level2 unnumbered unlisted smaller">
 <h2></h2>
-<h3 class="unnumbered unlisted" id="exemplo-10-cont.">Exemplo 10 (cont.)</h3>
+<h3 class="unnumbered unlisted" id="exemplo-11-cont.">Exemplo 11 (cont.)</h3>
 <div class="columns">
 <div id="vcenter" class="column" style="width:55%;">
 <p>Suponha que a empresa tenha feito o teste com <span class="math inline">\(n=49\)</span> e obteve <span class="math inline">\(\bar{x} = 9\)</span> e <span class="math inline">\(s^2 = 10.89\)</span>. A região crítica é da forma <span class="math inline">\(\text{RC} = \{\bar{X} &lt; x_c\}\)</span>, por meio da padronização podemos reescrevê-la como</p>
@@ -2091,7 +2242,7 @@ IC(\mu;\; \gamma) = \left[ \bar{X} - t_{\alpha,\ \nu} \frac{S}{\sqrt{n}} \; ; \;
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-15-1.png" width="528"></p>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-18-1.png" width="528"></p>
 </figure>
 </div>
 </div>
@@ -2099,9 +2250,9 @@ IC(\mu;\; \gamma) = \left[ \bar{X} - t_{\alpha,\ \nu} \frac{S}{\sqrt{n}} \; ; \;
 </div>
 </div></div>
 </section>
-<section id="section-9" class="slide level2 unnumbered unlisted smaller">
+<section id="section-14" class="slide level2 unnumbered unlisted smaller">
 <h2></h2>
-<h3 class="unnumbered unlisted" id="exemplo-10-cont.-1">Exemplo 10 (cont.)</h3>
+<h3 class="unnumbered unlisted" id="exemplo-11-cont.-1">Exemplo 11 (cont.)</h3>
 <div class="columns">
 <div id="vcenter" class="column" style="width:55%;">
 <p>Suponha que a empresa tenha feito o teste com <span class="math inline">\(n=49\)</span> e obteve <span class="math inline">\(\bar{x} = 9\)</span> e <span class="math inline">\(s^2 = 10.89\)</span>. A região crítica é da forma <span class="math inline">\(\text{RC} = \{\bar{X} &lt; x_c\}\)</span>, por meio da padronização podemos reescrevê-la como</p>
@@ -2119,16 +2270,16 @@ IC(\mu;\; \gamma) = \left[ \bar{X} - t_{\alpha,\ \nu} \frac{S}{\sqrt{n}} \; ; \;
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-16-1.png" width="528"></p>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-19-1.png" width="528"></p>
 </figure>
 </div>
 </div>
 </div>
 </div></div>
 </section>
-<section id="section-10" class="slide level2 unnumbered unlisted smaller">
+<section id="section-15" class="slide level2 unnumbered unlisted smaller">
 <h2></h2>
-<h3 class="unnumbered unlisted" id="exemplo-10-cont.-2">Exemplo 10 (cont.)</h3>
+<h3 class="unnumbered unlisted" id="exemplo-11-cont.-2">Exemplo 11 (cont.)</h3>
 <div class="columns">
 <div id="vcenter" class="column" style="width:55%;">
 <p>Suponha que a empresa tenha feito o teste com <span class="math inline">\(n=49\)</span> e obteve <span class="math inline">\(\bar{x} = 9\)</span> e <span class="math inline">\(s^2 = 10.89\)</span>. A região crítica é da forma <span class="math inline">\(\text{RC} = \{\bar{X} &lt; x_c\}\)</span>, por meio da padronização podemos reescrevê-la como</p>
@@ -2146,7 +2297,7 @@ IC(\mu;\; \gamma) = \left[ \bar{X} - t_{\alpha,\ \nu} \frac{S}{\sqrt{n}} \; ; \;
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-17-1.png" width="528"></p>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-20-1.png" width="528"></p>
 </figure>
 </div>
 </div>
@@ -2183,7 +2334,7 @@ IC(\mu;\; \gamma) = \left[ \bar{X} - t_{\alpha,\ \nu} \frac{S}{\sqrt{n}} \; ; \;
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-18-1.png" width="528"></p>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-21-1.png" width="528"></p>
 </figure>
 </div>
 </div>
@@ -2295,10 +2446,10 @@ em que <span class="math inline">\(F_T(\cdot)\)</span> é a fda da distribuiçã
 <p>3</p>
 <p>4</p>
 </div></div>
-<p><span class="math display">\[\begin{align*}
+<p><span class="math display">\[\begin{aligned}
 \Omega &amp;= \{(1,1), (1,2), \ldots, (4,4)\}\\
        &amp;= \{(x,y) : x,y = 1,\ldots,4\}.
-\end{align*}\]</span></p>
+\end{aligned}\]</span></p>
 </section>
 
 <section id="fim-1" class="title-slide slide level1 unnumbered unlisted center">
@@ -2524,42 +2675,80 @@ em que <span class="math inline">\(F_T(\cdot)\)</span> é a fda da distribuiçã
       });
     </script>
     
+
     <script>
+
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
       // slide changes (different for each slide format).
+
       (function () {
+
         // dispatch for htmlwidgets
+
         function fireSlideEnter() {
+
           const event = window.document.createEvent("Event");
+
           event.initEvent("slideenter", true, true);
+
           window.document.dispatchEvent(event);
+
         }
+
+    
 
         function fireSlideChanged(previousSlide, currentSlide) {
+
           fireSlideEnter();
 
+    
+
           // dispatch for shiny
+
           if (window.jQuery) {
+
             if (previousSlide) {
+
               window.jQuery(previousSlide).trigger("hidden");
+
             }
+
             if (currentSlide) {
+
               window.jQuery(currentSlide).trigger("shown");
+
             }
+
           }
+
         }
+
+    
 
         // hookup for slidy
+
         if (window.w3c_slidy) {
+
           window.w3c_slidy.add_observer(function (slide_num) {
+
             // slide_num starts at position 1
+
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
           });
+
         }
 
+    
+
       })();
+
     </script>
+
+    
 
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
