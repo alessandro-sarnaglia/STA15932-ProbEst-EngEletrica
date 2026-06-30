@@ -2204,6 +2204,34 @@ $$]{.fragment fragment-index=6}
 
 # Testes de Hipóteses
 
+Conceitos Iniciais
+
+Objetivo: Testar afirmações sobre parâmetros populacionais.
+
+::: {.callout-note}
+## Definição
+
+Seja $\theta$ um parâmetro populacional associado a uma v.a. $X$. Uma hipótese é qualquer afirmação feita com relação a $\theta$ que pode ser submetida a teste.
+:::
+
+::: {.callout-caution}
+## Observação
+Seja $\theta$ um parâmetro populacional. Exemplos mais usuais de hipóteses com respeito a $\theta$ são:
+
+- Simples: $\theta = \theta_0$;
+- Compostas:
+  + $\theta \geq \theta_0$ e $\theta > \theta_0$ (unilateral);
+  + $\theta \leq \theta_0$ e $\theta < \theta_0$ (unilateral); e
+  + $\theta \neq \theta_0$ (bilateral).
+:::
+
+
+
+
+
+
+
+
 ## Teste para $\mu$
 
 ## $p$-valor 
