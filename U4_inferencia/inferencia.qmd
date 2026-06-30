@@ -2028,7 +2028,7 @@ Logo,
 $$
 \begin{aligned}
 \text{IC}(\mu; \gamma) &= \left[ \bar{X} - t_{\alpha,\ \nu} \frac{S}{\sqrt{n}} \; ; \; \bar{X} + t_{\alpha,\ \nu} \frac{S}{\sqrt{n}} \right]\\
-&= \left[ 485 - 2\text{,}306 \times \frac{15}{3}; \; 485 + 2\text{,}306 \times \frac{15}{3} \right]\\
+&= \left[ 485 - 2\text{,}306 \times \frac{14}{3}; \; 485 + 2\text{,}306 \times \frac{14}{3} \right]\\
 &= [474\text{,}24;\ 495\text{,}76]
 \end{aligned}
 $$
@@ -2204,9 +2204,7 @@ $$]{.fragment fragment-index=6}
 
 # Testes de Hipóteses
 
-Conceitos Iniciais
-
-Objetivo: Testar afirmações sobre parâmetros populacionais.
+## 3 Testes de Hipóteses {.unnumbered .unlisted}
 
 ::: {.callout-note}
 ## Definição
@@ -2216,7 +2214,7 @@ Seja $\theta$ um parâmetro populacional associado a uma v.a. $X$. Uma hipótese
 
 ::: {.callout-caution}
 ## Observação
-Seja $\theta$ um parâmetro populacional. Exemplos mais usuais de hipóteses com respeito a $\theta$ são:
+Seja $\theta$ um parâmetro populacional. Os exemplos mais usuais de hipóteses com respeito a $\theta$ são:
 
 - Simples: $\theta = \theta_0$;
 - Compostas:
@@ -2226,9 +2224,83 @@ Seja $\theta$ um parâmetro populacional. Exemplos mais usuais de hipóteses com
 :::
 
 
+## 3 Testes de Hipóteses {.unnumbered .unlisted}
+
+::: {.callout-note}
+## Definição
+
+Para realizar um teste de hipóteses estatístico devemos estabelecer corretamente as hipóteses:
+
+- Nula: é aquela que será submetida a teste. Pode ser, ou não, rejeitada; e
+- Alternativa: é aquela que é aceita quando rejeitamos $H_0$.
+
+:::
+
+::: {.callout-caution}
+## Observações
+
+- As hipóteses nula e alternativa serão denotadas por $H_0$ e $H_1$, respectivamente;
+- As hipóteses $H_0$ e $H_1$ devem ser escolhidas de modo que sejam mutuamente excludentes;
+- Geralmente, mas nem sempre, $H_1$ é escolhida como o complementar de $H_0$.
+
+:::
 
 
+::: {.callout-note}
+## Definição
 
+Um teste de hipóteses é o procedimento de tomada de decisão sobre rejeitar, ou não, $H_0$.
+:::
+
+## 3 Testes de Hipóteses {.unnumbered .unlisted}
+
+::: {.callout-important}
+## Problema
+
+Como construir um procedimento para testar entre $H_0$ e $H_1$?
+:::
+
+::: {.callout-caution}
+## Observações
+
+1. Iniciamos pela escolha de um estimador $\hat{\theta}$ do parâmetro $\theta$;
+2. A partir de $\hat{\theta}$, o próximo passo é estabelecer a Região Crítica (RC) do teste.
+
+:::
+
+::: {.callout-note}
+## Definição
+
+A região crítica de um teste de hipóteses é um conjunto de valores que, se fornecidos pelo estimador, levam à rejeição de $H_0$. Formalmente,
+$$
+\text{RC}_{H_0} = \{x : \text{se } \hat{\theta} = x, H_0 \text{ é rejeitada}\}.
+$$
+
+:::
+
+## 3 Testes de Hipóteses {.unnumbered .unlisted}
+
+::: {style="border-style: solid; border-width: 3px; padding-bottom: 0px; padding-right: 12px; padding-left: 12px; font-size:70%;"}
+
+**Exemplo 11:**  Suponha que desejamos testar $H_0 : \mu \geq \mu_0$. [Uma RC natural para rejeitar $H_0$ seria $RC_{H_0} = \{\bar{X} < x_c\}$.]{.fragment} [Isto é, valores muito pequenos de $\bar{X}$ suportam a rejeição de $H_0$.]{.fragment} [Determinada a forma da RC, resta determinar o **valor crítico** $x_c$, o limiar que delimita a RC.]{.fragment}
+
+:::
+
+::: {.callout-caution .fragment}
+## Observações
+
+1. Decidir entre rejeitar, ou não, $H_0$ pode acarretar em dois tipos de erros: o Erro tipo 1 (rejeitar $H_0$, quando $H_0$ é verdadeira); e o Erro tipo 2 (rejeitar $H_0$, quando $H_0$ é falsa);
+2. Como a decisão se baseia em um estimador, ela é aleatória e, portanto, podemos atribuir probabilidades a cada tipo de erro:
+  - $P(\text{Erro Tipo 1}) = P(\text{Rejeitar } H_0 \mid H_0 \text{ é verdadeira}) := \alpha(\theta)$;
+  - $P(\text{Erro Tipo 2}) = P(\text{Não Rejeitar } H_0 \mid H_0 \text{ é falsa}) := \beta(\theta)$.
+
+:::
+
+::: {.callout-note .fragment}
+## Definição
+
+As funções $\alpha(\theta)$ e $1 - \beta(\theta)$ são denominadas de tamanho e poder do teste.
+:::
 
 
 
@@ -2244,7 +2316,7 @@ Relatar o resultado de um teste de hipóteses simplesmente dizendo se a hipótes
 
 ::: {style="border-style: solid; border-width: 3px; padding-bottom: 0px; padding-right: 12px; padding-left: 12px; font-size:70%;"}
 
-**Exemplo 11:** O tempo médio de alivio das dores do medicamento mais vendido no mercado é de 10 min. Uma empresa desenvolveu um medicamento e colocou a venda afirmando que um teste estatístico rejeitou $H_0 : \mu \geq 10$ em favor de $H_1 : \mu < 10$ ao nível de 0.1.
+**Exemplo 12:** O tempo médio de alivio das dores do medicamento mais vendido no mercado é de 10 min. Uma empresa desenvolveu um medicamento e colocou a venda afirmando que um teste estatístico rejeitou $H_0 : \mu \geq 10$ em favor de $H_1 : \mu < 10$ ao nível de 0.1.
 
 ::: 
 
@@ -2256,7 +2328,7 @@ Uma pessoa que costuma comprar o medicamento mais vendido pode optar por nível 
 
 ## {.unnumbered .unlisted .smaller} 
 
-###  Exemplo 11 (cont.) {.unnumbered .unlisted} 
+###  Exemplo 12 (cont.) {.unnumbered .unlisted} 
 
 ::: columns
 
@@ -2308,7 +2380,7 @@ text(x = -4.5, y=0.4, labels = bquote(Rejeitar~italic(H)[0]), pos = 4)
 
 ## {.unnumbered .unlisted .smaller} 
 
-###  Exemplo 11 (cont.) {.unnumbered .unlisted} 
+###  Exemplo 12 (cont.) {.unnumbered .unlisted} 
 
 ::: columns
 
@@ -2357,7 +2429,7 @@ text(x = -4.5, y=0.4, labels = bquote(Rejeitar~italic(H)[0]), pos = 4)
 
 ## {.unnumbered .unlisted .smaller} 
 
-###  Exemplo 11 (cont.) {.unnumbered .unlisted} 
+###  Exemplo 12 (cont.) {.unnumbered .unlisted} 
 
 ::: columns
 

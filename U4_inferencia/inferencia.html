@@ -6,8 +6,8 @@
 <script src="inferencia_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="inferencia_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="inferencia_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="inferencia_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.36">
+<link href="inferencia_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
 
   <meta name="author" content="Prof.&nbsp;Dr.&nbsp;Alessandro JQ Sarnaglia">
   <title>Probabilidade e Estatística</title>
@@ -17,9 +17,6 @@
   <link rel="stylesheet" href="inferencia_files/libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="inferencia_files/libs/revealjs/dist/reveal.css">
   <style>
-    /* Default styles provided by pandoc.
-    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -98,7 +95,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="inferencia_files/libs/revealjs/dist/theme/quarto-d3d5040e18be6e0ee3d0355d7b3a05df.css">
+  <link rel="stylesheet" href="inferencia_files/libs/revealjs/dist/theme/quarto-e34a86496f86bce26d8ba05cee7c0330.css">
   <link rel="stylesheet" href="fonts.css">
   <link rel="stylesheet" href="style.css">
   <link href="inferencia_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -528,7 +525,7 @@ Agora, derivando <span class="math inline">\(F_Y(y)\)</span>, obtemos
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>P[Med. Amost. ∈ (Med. Pop. ± 0.1)] ≈ 0.905</code></pre>
+<pre><code>P[Med. Amost. ∈ (Med. Pop. ± 0.1)] ≈ 0.904</code></pre>
 </div>
 </div>
 </div>
@@ -573,7 +570,7 @@ Agora, derivando <span class="math inline">\(F_Y(y)\)</span>, obtemos
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>P[Med. Amost. ∈ (Med. Pop. ± 0.1)] ≈ 0.977</code></pre>
+<pre><code>P[Med. Amost. ∈ (Med. Pop. ± 0.1)] ≈ 0.973</code></pre>
 </div>
 </div>
 </div>
@@ -2080,7 +2077,7 @@ A segunda utiliza o g.l. e o quantil para fornecer as probabilidades caudais.
 <p>Logo, <span class="math display">\[
 \begin{aligned}
 \text{IC}(\mu; \gamma) &amp;= \left[ \bar{X} - t_{\alpha,\ \nu} \frac{S}{\sqrt{n}} \; ; \; \bar{X} + t_{\alpha,\ \nu} \frac{S}{\sqrt{n}} \right]\\
-&amp;= \left[ 485 - 2\text{,}306 \times \frac{15}{3}; \; 485 + 2\text{,}306 \times \frac{15}{3} \right]\\
+&amp;= \left[ 485 - 2\text{,}306 \times \frac{14}{3}; \; 485 + 2\text{,}306 \times \frac{14}{3} \right]\\
 &amp;= [474\text{,}24;\ 495\text{,}76]
 \end{aligned}
 \]</span></p>
@@ -2193,8 +2190,10 @@ A segunda utiliza o g.l. e o quantil para fornecer as probabilidades caudais.
 <section>
 <section id="testes-de-hipóteses" class="title-slide slide level1 center" data-number="3">
 <h1><span class="header-section-number">3</span> Testes de Hipóteses</h1>
-<p>Conceitos Iniciais</p>
-<p>Objetivo: Testar afirmações sobre parâmetros populacionais.</p>
+
+</section>
+<section id="testes-de-hipóteses-1" class="slide level2 unnumbered unlisted">
+<h2>3 Testes de Hipóteses</h2>
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -2211,7 +2210,7 @@ A segunda utiliza o g.l. e o quantil para fornecer as probabilidades caudais.
 <p><strong>Observação</strong></p>
 </div>
 <div class="callout-content">
-<p>Seja <span class="math inline">\(\theta\)</span> um parâmetro populacional. Exemplos mais usuais de hipóteses com respeito a <span class="math inline">\(\theta\)</span> são:</p>
+<p>Seja <span class="math inline">\(\theta\)</span> um parâmetro populacional. Os exemplos mais usuais de hipóteses com respeito a <span class="math inline">\(\theta\)</span> são:</p>
 <ul>
 <li>Simples: <span class="math inline">\(\theta = \theta_0\)</span>;</li>
 <li>Compostas:
@@ -2221,6 +2220,122 @@ A segunda utiliza o g.l. e o quantil para fornecer as probabilidades caudais.
 <li><span class="math inline">\(\theta \neq \theta_0\)</span> (bilateral).</li>
 </ul></li>
 </ul>
+</div>
+</div>
+</div>
+</section>
+<section id="testes-de-hipóteses-2" class="slide level2 unnumbered unlisted">
+<h2>3 Testes de Hipóteses</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Definição</strong></p>
+</div>
+<div class="callout-content">
+<p>Para realizar um teste de hipóteses estatístico devemos estabelecer corretamente as hipóteses:</p>
+<ul>
+<li>Nula: é aquela que será submetida a teste. Pode ser, ou não, rejeitada; e</li>
+<li>Alternativa: é aquela que é aceita quando rejeitamos <span class="math inline">\(H_0\)</span>.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-caution no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Observações</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>As hipóteses nula e alternativa serão denotadas por <span class="math inline">\(H_0\)</span> e <span class="math inline">\(H_1\)</span>, respectivamente;</li>
+<li>As hipóteses <span class="math inline">\(H_0\)</span> e <span class="math inline">\(H_1\)</span> devem ser escolhidas de modo que sejam mutuamente excludentes;</li>
+<li>Geralmente, mas nem sempre, <span class="math inline">\(H_1\)</span> é escolhida como o complementar de <span class="math inline">\(H_0\)</span>.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Definição</strong></p>
+</div>
+<div class="callout-content">
+<p>Um teste de hipóteses é o procedimento de tomada de decisão sobre rejeitar, ou não, <span class="math inline">\(H_0\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="testes-de-hipóteses-3" class="slide level2 unnumbered unlisted">
+<h2>3 Testes de Hipóteses</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Problema</strong></p>
+</div>
+<div class="callout-content">
+<p>Como construir um procedimento para testar entre <span class="math inline">\(H_0\)</span> e <span class="math inline">\(H_1\)</span>?</p>
+</div>
+</div>
+</div>
+<div class="callout callout-caution no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Observações</strong></p>
+</div>
+<div class="callout-content">
+<ol type="1">
+<li>Iniciamos pela escolha de um estimador <span class="math inline">\(\hat{\theta}\)</span> do parâmetro <span class="math inline">\(\theta\)</span>;</li>
+<li>A partir de <span class="math inline">\(\hat{\theta}\)</span>, o próximo passo é estabelecer a Região Crítica (RC) do teste.</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Definição</strong></p>
+</div>
+<div class="callout-content">
+<p>A região crítica de um teste de hipóteses é um conjunto de valores que, se fornecidos pelo estimador, levam à rejeição de <span class="math inline">\(H_0\)</span>. Formalmente, <span class="math display">\[
+\text{RC}_{H_0} = \{x : \text{se } \hat{\theta} = x, H_0 \text{ é rejeitada}\}.
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="testes-de-hipóteses-4" class="slide level2 unnumbered unlisted">
+<h2>3 Testes de Hipóteses</h2>
+<div style="border-style: solid; border-width: 3px; padding-bottom: 0px; padding-right: 12px; padding-left: 12px; font-size:70%;">
+<p><strong>Exemplo 11:</strong> Suponha que desejamos testar <span class="math inline">\(H_0 : \mu \geq \mu_0\)</span>. <span class="fragment">Uma RC natural para rejeitar <span class="math inline">\(H_0\)</span> seria <span class="math inline">\(RC_{H_0} = \{\bar{X} &lt; x_c\}\)</span>.</span> <span class="fragment">Isto é, valores muito pequenos de <span class="math inline">\(\bar{X}\)</span> suportam a rejeição de <span class="math inline">\(H_0\)</span>.</span> <span class="fragment">Determinada a forma da RC, resta determinar o <strong>valor crítico</strong> <span class="math inline">\(x_c\)</span>, o limiar que delimita a RC.</span></p>
+</div>
+<div class="fragment">
+<div class="callout callout-caution no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Observações</strong></p>
+</div>
+<div class="callout-content">
+<ol type="1">
+<li>Decidir entre rejeitar, ou não, <span class="math inline">\(H_0\)</span> pode acarretar em dois tipos de erros: o Erro tipo 1 (rejeitar <span class="math inline">\(H_0\)</span>, quando <span class="math inline">\(H_0\)</span> é verdadeira); e o Erro tipo 2 (rejeitar <span class="math inline">\(H_0\)</span>, quando <span class="math inline">\(H_0\)</span> é falsa);</li>
+<li>Como a decisão se baseia em um estimador, ela é aleatória e, portanto, podemos atribuir probabilidades a cada tipo de erro:</li>
+</ol>
+<ul>
+<li><span class="math inline">\(P(\text{Erro Tipo 1}) = P(\text{Rejeitar } H_0 \mid H_0 \text{ é verdadeira}) := \alpha(\theta)\)</span>;</li>
+<li><span class="math inline">\(P(\text{Erro Tipo 2}) = P(\text{Não Rejeitar } H_0 \mid H_0 \text{ é falsa}) := \beta(\theta)\)</span>.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Definição</strong></p>
+</div>
+<div class="callout-content">
+<p>As funções <span class="math inline">\(\alpha(\theta)\)</span> e <span class="math inline">\(1 - \beta(\theta)\)</span> são denominadas de tamanho e poder do teste.</p>
+</div>
 </div>
 </div>
 </div>
@@ -2241,7 +2356,7 @@ A segunda utiliza o g.l. e o quantil para fornecer as probabilidades caudais.
 </div>
 </div>
 <div style="border-style: solid; border-width: 3px; padding-bottom: 0px; padding-right: 12px; padding-left: 12px; font-size:70%;">
-<p><strong>Exemplo 11:</strong> O tempo médio de alivio das dores do medicamento mais vendido no mercado é de 10 min. Uma empresa desenvolveu um medicamento e colocou a venda afirmando que um teste estatístico rejeitou <span class="math inline">\(H_0 : \mu \geq 10\)</span> em favor de <span class="math inline">\(H_1 : \mu &lt; 10\)</span> ao nível de 0.1.</p>
+<p><strong>Exemplo 12:</strong> O tempo médio de alivio das dores do medicamento mais vendido no mercado é de 10 min. Uma empresa desenvolveu um medicamento e colocou a venda afirmando que um teste estatístico rejeitou <span class="math inline">\(H_0 : \mu \geq 10\)</span> em favor de <span class="math inline">\(H_1 : \mu &lt; 10\)</span> ao nível de 0.1.</p>
 </div>
 <div class="callout callout-caution no-icon callout-titled callout-style-default">
 <div class="callout-body">
@@ -2256,7 +2371,7 @@ A segunda utiliza o g.l. e o quantil para fornecer as probabilidades caudais.
 </section>
 <section id="section-13" class="slide level2 unnumbered unlisted smaller">
 <h2></h2>
-<h3 class="unnumbered unlisted" id="exemplo-11-cont.">Exemplo 11 (cont.)</h3>
+<h3 class="unnumbered unlisted" id="exemplo-12-cont.">Exemplo 12 (cont.)</h3>
 <div class="columns">
 <div id="vcenter" class="column" style="width:55%;">
 <p>Suponha que a empresa tenha feito o teste com <span class="math inline">\(n=49\)</span> e obteve <span class="math inline">\(\bar{x} = 9\)</span> e <span class="math inline">\(s^2 = 10.89\)</span>. A região crítica é da forma <span class="math inline">\(\text{RC} = \{\bar{X} &lt; x_c\}\)</span>, por meio da padronização podemos reescrevê-la como</p>
@@ -2285,7 +2400,7 @@ A segunda utiliza o g.l. e o quantil para fornecer as probabilidades caudais.
 </section>
 <section id="section-14" class="slide level2 unnumbered unlisted smaller">
 <h2></h2>
-<h3 class="unnumbered unlisted" id="exemplo-11-cont.-1">Exemplo 11 (cont.)</h3>
+<h3 class="unnumbered unlisted" id="exemplo-12-cont.-1">Exemplo 12 (cont.)</h3>
 <div class="columns">
 <div id="vcenter" class="column" style="width:55%;">
 <p>Suponha que a empresa tenha feito o teste com <span class="math inline">\(n=49\)</span> e obteve <span class="math inline">\(\bar{x} = 9\)</span> e <span class="math inline">\(s^2 = 10.89\)</span>. A região crítica é da forma <span class="math inline">\(\text{RC} = \{\bar{X} &lt; x_c\}\)</span>, por meio da padronização podemos reescrevê-la como</p>
@@ -2312,7 +2427,7 @@ A segunda utiliza o g.l. e o quantil para fornecer as probabilidades caudais.
 </section>
 <section id="section-15" class="slide level2 unnumbered unlisted smaller">
 <h2></h2>
-<h3 class="unnumbered unlisted" id="exemplo-11-cont.-2">Exemplo 11 (cont.)</h3>
+<h3 class="unnumbered unlisted" id="exemplo-12-cont.-2">Exemplo 12 (cont.)</h3>
 <div class="columns">
 <div id="vcenter" class="column" style="width:55%;">
 <p>Suponha que a empresa tenha feito o teste com <span class="math inline">\(n=49\)</span> e obteve <span class="math inline">\(\bar{x} = 9\)</span> e <span class="math inline">\(s^2 = 10.89\)</span>. A região crítica é da forma <span class="math inline">\(\text{RC} = \{\bar{X} &lt; x_c\}\)</span>, por meio da padronização podemos reescrevê-la como</p>
@@ -2479,10 +2594,10 @@ em que <span class="math inline">\(F_T(\cdot)\)</span> é a fda da distribuiçã
 <p>3</p>
 <p>4</p>
 </div></div>
-<p><span class="math display">\[\begin{align*}
+<p><span class="math display">\[\begin{aligned}
 \Omega &amp;= \{(1,1), (1,2), \ldots, (4,4)\}\\
        &amp;= \{(x,y) : x,y = 1,\ldots,4\}.
-\end{align*}\]</span></p>
+\end{aligned}\]</span></p>
 </section>
 
 <section id="fim-1" class="title-slide slide level1 unnumbered unlisted center">
@@ -2708,42 +2823,80 @@ em que <span class="math inline">\(F_T(\cdot)\)</span> é a fda da distribuiçã
       });
     </script>
     
+
     <script>
+
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
       // slide changes (different for each slide format).
+
       (function () {
+
         // dispatch for htmlwidgets
+
         function fireSlideEnter() {
+
           const event = window.document.createEvent("Event");
+
           event.initEvent("slideenter", true, true);
+
           window.document.dispatchEvent(event);
+
         }
+
+    
 
         function fireSlideChanged(previousSlide, currentSlide) {
+
           fireSlideEnter();
 
+    
+
           // dispatch for shiny
+
           if (window.jQuery) {
+
             if (previousSlide) {
+
               window.jQuery(previousSlide).trigger("hidden");
+
             }
+
             if (currentSlide) {
+
               window.jQuery(currentSlide).trigger("shown");
+
             }
+
           }
+
         }
+
+    
 
         // hookup for slidy
+
         if (window.w3c_slidy) {
+
           window.w3c_slidy.add_observer(function (slide_num) {
+
             // slide_num starts at position 1
+
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
           });
+
         }
 
+    
+
       })();
+
     </script>
+
+    
 
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
