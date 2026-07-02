@@ -2289,7 +2289,7 @@ $$
 ::: {.callout-caution .fragment}
 ## Observações
 
-1. Decidir entre rejeitar, ou não, $H_0$ pode acarretar em dois tipos de erros: o Erro tipo 1 (rejeitar $H_0$, quando $H_0$ é verdadeira); e o Erro tipo 2 (rejeitar $H_0$, quando $H_0$ é falsa);
+1. Decidir entre rejeitar, ou não, $H_0$ pode acarretar em dois tipos de erros: o Erro Tipo 1 (rejeitar $H_0$, quando $H_0$ é verdadeira); e o Erro Tipo 2 (não rejeitar $H_0$, quando $H_0$ é falsa);
 2. Como a decisão se baseia em um estimador, ela é aleatória e, portanto, podemos atribuir probabilidades a cada tipo de erro:
   - $P(\text{Erro Tipo 1}) = P(\text{Rejeitar } H_0 \mid H_0 \text{ é verdadeira}) := \alpha(\theta)$;
   - $P(\text{Erro Tipo 2}) = P(\text{Não Rejeitar } H_0 \mid H_0 \text{ é falsa}) := \beta(\theta)$.
@@ -2683,6 +2683,7 @@ arrows(x0 = 0, y0 = 0, x1 = 10, y1 = 0, length = 0.1, lwd = 1.5, code = 2)
 ## Observações
 
 Em linhas gerais, as etapas de um Teste de Hipóteses são:
+
 <ol>
   <li>
     Estabelecer $H_0$ e $H_1$;

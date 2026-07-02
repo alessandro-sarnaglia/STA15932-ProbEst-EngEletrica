@@ -6,8 +6,8 @@
 <script src="inferencia_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="inferencia_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="inferencia_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="inferencia_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.36">
+<link href="inferencia_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
 
   <meta name="author" content="Prof.&nbsp;Dr.&nbsp;Alessandro JQ Sarnaglia">
   <title>Probabilidade e Estatística</title>
@@ -17,9 +17,6 @@
   <link rel="stylesheet" href="inferencia_files/libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="inferencia_files/libs/revealjs/dist/reveal.css">
   <style>
-    /* Default styles provided by pandoc.
-    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -98,7 +95,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="inferencia_files/libs/revealjs/dist/theme/quarto-d3d5040e18be6e0ee3d0355d7b3a05df.css">
+  <link rel="stylesheet" href="inferencia_files/libs/revealjs/dist/theme/quarto-e34a86496f86bce26d8ba05cee7c0330.css">
   <link rel="stylesheet" href="fonts.css">
   <link rel="stylesheet" href="style.css">
   <link href="inferencia_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -528,7 +525,7 @@ Agora, derivando <span class="math inline">\(F_Y(y)\)</span>, obtemos
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>P[Med. Amost. ∈ (Med. Pop. ± 0.1)] ≈ 0.906</code></pre>
+<pre><code>P[Med. Amost. ∈ (Med. Pop. ± 0.1)] ≈ 0.904</code></pre>
 </div>
 </div>
 </div>
@@ -573,7 +570,7 @@ Agora, derivando <span class="math inline">\(F_Y(y)\)</span>, obtemos
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>P[Med. Amost. ∈ (Med. Pop. ± 0.1)] ≈ 0.976</code></pre>
+<pre><code>P[Med. Amost. ∈ (Med. Pop. ± 0.1)] ≈ 0.975</code></pre>
 </div>
 </div>
 </div>
@@ -2319,7 +2316,7 @@ A segunda utiliza o g.l. e o quantil para fornecer as probabilidades caudais.
 </div>
 <div class="callout-content">
 <ol type="1">
-<li>Decidir entre rejeitar, ou não, <span class="math inline">\(H_0\)</span> pode acarretar em dois tipos de erros: o Erro tipo 1 (rejeitar <span class="math inline">\(H_0\)</span>, quando <span class="math inline">\(H_0\)</span> é verdadeira); e o Erro tipo 2 (rejeitar <span class="math inline">\(H_0\)</span>, quando <span class="math inline">\(H_0\)</span> é falsa);</li>
+<li>Decidir entre rejeitar, ou não, <span class="math inline">\(H_0\)</span> pode acarretar em dois tipos de erros: o Erro Tipo 1 (rejeitar <span class="math inline">\(H_0\)</span>, quando <span class="math inline">\(H_0\)</span> é verdadeira); e o Erro Tipo 2 (não rejeitar <span class="math inline">\(H_0\)</span>, quando <span class="math inline">\(H_0\)</span> é falsa);</li>
 <li>Como a decisão se baseia em um estimador, ela é aleatória e, portanto, podemos atribuir probabilidades a cada tipo de erro:</li>
 </ol>
 <ul>
@@ -2585,7 +2582,7 @@ Depois de fixado o nível de significância e obtida a RC, se <span class="math 
 <p><strong>Observações</strong></p>
 </div>
 <div class="callout-content">
-Em linhas gerais, as etapas de um Teste de Hipóteses são:
+<p>Em linhas gerais, as etapas de um Teste de Hipóteses são:</p>
 <ol>
 <li>
 Estabelecer <span class="math inline">\(H_0\)</span> e <span class="math inline">\(H_1\)</span>;
@@ -3012,10 +3009,10 @@ em que <span class="math inline">\(F_T(\cdot)\)</span> é a fda da distribuiçã
 <p>3</p>
 <p>4</p>
 </div></div>
-<p><span class="math display">\[\begin{align*}
+<p><span class="math display">\[\begin{aligned}
 \Omega &amp;= \{(1,1), (1,2), \ldots, (4,4)\}\\
        &amp;= \{(x,y) : x,y = 1,\ldots,4\}.
-\end{align*}\]</span></p>
+\end{aligned}\]</span></p>
 </section>
 
 <section id="fim-1" class="title-slide slide level1 unnumbered unlisted center">
@@ -3241,42 +3238,80 @@ em que <span class="math inline">\(F_T(\cdot)\)</span> é a fda da distribuiçã
       });
     </script>
     
+
     <script>
+
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
       // slide changes (different for each slide format).
+
       (function () {
+
         // dispatch for htmlwidgets
+
         function fireSlideEnter() {
+
           const event = window.document.createEvent("Event");
+
           event.initEvent("slideenter", true, true);
+
           window.document.dispatchEvent(event);
+
         }
+
+    
 
         function fireSlideChanged(previousSlide, currentSlide) {
+
           fireSlideEnter();
 
+    
+
           // dispatch for shiny
+
           if (window.jQuery) {
+
             if (previousSlide) {
+
               window.jQuery(previousSlide).trigger("hidden");
+
             }
+
             if (currentSlide) {
+
               window.jQuery(currentSlide).trigger("shown");
+
             }
+
           }
+
         }
+
+    
 
         // hookup for slidy
+
         if (window.w3c_slidy) {
+
           window.w3c_slidy.add_observer(function (slide_num) {
+
             // slide_num starts at position 1
+
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
           });
+
         }
 
+    
+
       })();
+
     </script>
+
+    
 
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
