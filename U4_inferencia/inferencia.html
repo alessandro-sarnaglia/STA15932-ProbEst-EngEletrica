@@ -6,8 +6,8 @@
 <script src="inferencia_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="inferencia_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="inferencia_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="inferencia_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.25">
+<link href="inferencia_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.36">
 
   <meta name="author" content="Prof.&nbsp;Dr.&nbsp;Alessandro JQ Sarnaglia">
   <title>Probabilidade e Estatística</title>
@@ -17,6 +17,9 @@
   <link rel="stylesheet" href="inferencia_files/libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="inferencia_files/libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -95,7 +98,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="inferencia_files/libs/revealjs/dist/theme/quarto-e34a86496f86bce26d8ba05cee7c0330.css">
+  <link rel="stylesheet" href="inferencia_files/libs/revealjs/dist/theme/quarto-d3d5040e18be6e0ee3d0355d7b3a05df.css">
   <link rel="stylesheet" href="fonts.css">
   <link rel="stylesheet" href="style.css">
   <link href="inferencia_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -525,7 +528,7 @@ Agora, derivando <span class="math inline">\(F_Y(y)\)</span>, obtemos
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>P[Med. Amost. ∈ (Med. Pop. ± 0.1)] ≈ 0.904</code></pre>
+<pre><code>P[Med. Amost. ∈ (Med. Pop. ± 0.1)] ≈ 0.906</code></pre>
 </div>
 </div>
 </div>
@@ -570,7 +573,7 @@ Agora, derivando <span class="math inline">\(F_Y(y)\)</span>, obtemos
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>P[Med. Amost. ∈ (Med. Pop. ± 0.1)] ≈ 0.973</code></pre>
+<pre><code>P[Med. Amost. ∈ (Med. Pop. ± 0.1)] ≈ 0.976</code></pre>
 </div>
 </div>
 </div>
@@ -2284,7 +2287,7 @@ A segunda utiliza o g.l. e o quantil para fornecer as probabilidades caudais.
 </div>
 <div class="callout-content">
 <ol type="1">
-<li>Iniciamos pela escolha de um estimador <span class="math inline">\(\hat{\theta}\)</span> do parâmetro <span class="math inline">\(\theta\)</span>;</li>
+<li>Uma das formas consiste de escolher um estimador <span class="math inline">\(\hat{\theta}\)</span> do parâmetro <span class="math inline">\(\theta\)</span>;</li>
 <li>A partir de <span class="math inline">\(\hat{\theta}\)</span>, o próximo passo é estabelecer a Região Crítica (RC) do teste.</li>
 </ol>
 </div>
@@ -2296,8 +2299,8 @@ A segunda utiliza o g.l. e o quantil para fornecer as probabilidades caudais.
 <p><strong>Definição</strong></p>
 </div>
 <div class="callout-content">
-<p>A região crítica de um teste de hipóteses é um conjunto de valores que, se fornecidos pelo estimador, levam à rejeição de <span class="math inline">\(H_0\)</span>. Formalmente, <span class="math display">\[
-\text{RC}_{H_0} = \{x : \text{se } \hat{\theta} = x, H_0 \text{ é rejeitada}\}.
+<p>No contexto acima, a RC de um teste de hipóteses é um conjunto de valores que, se fornecidos pelo estimador, levam à rejeição de <span class="math inline">\(H_0\)</span>. Formalmente, <span class="math display">\[
+\text{RC} = \{x : \text{se } \hat{\theta} = x, H_0 \text{ é rejeitada}\}.
 \]</span></p>
 </div>
 </div>
@@ -2306,7 +2309,7 @@ A segunda utiliza o g.l. e o quantil para fornecer as probabilidades caudais.
 <section id="testes-de-hipóteses-4" class="slide level2 unnumbered unlisted">
 <h2>3 Testes de Hipóteses</h2>
 <div style="border-style: solid; border-width: 3px; padding-bottom: 0px; padding-right: 12px; padding-left: 12px; font-size:70%;">
-<p><strong>Exemplo 11:</strong> Suponha que desejamos testar <span class="math inline">\(H_0 : \mu \geq \mu_0\)</span>. <span class="fragment">Uma RC natural para rejeitar <span class="math inline">\(H_0\)</span> seria <span class="math inline">\(RC_{H_0} = \{\bar{X} &lt; x_c\}\)</span>.</span> <span class="fragment">Isto é, valores muito pequenos de <span class="math inline">\(\bar{X}\)</span> suportam a rejeição de <span class="math inline">\(H_0\)</span>.</span> <span class="fragment">Determinada a forma da RC, resta determinar o <strong>valor crítico</strong> <span class="math inline">\(x_c\)</span>, o limiar que delimita a RC.</span></p>
+<p><strong>Exemplo 11:</strong> Suponha que desejamos testar <span class="math inline">\(H_0 : \mu \geq \mu_0\)</span>. <span class="fragment">Uma RC natural para rejeitar <span class="math inline">\(H_0\)</span> seria <span class="math inline">\(RC = \{\bar{X} &lt; x_c\}\)</span>.</span> <span class="fragment">Isto é, valores muito pequenos de <span class="math inline">\(\bar{X}\)</span> suportam a rejeição de <span class="math inline">\(H_0\)</span>.</span> <span class="fragment">Determinada a forma da RC, resta determinar o <strong>valor crítico</strong> <span class="math inline">\(x_c\)</span>, o limiar que delimita a RC.</span></p>
 </div>
 <div class="fragment">
 <div class="callout callout-caution no-icon callout-titled callout-style-default">
@@ -2340,8 +2343,423 @@ A segunda utiliza o g.l. e o quantil para fornecer as probabilidades caudais.
 </div>
 </div>
 </section>
+<section id="section-13" class="slide level2 unnumbered unlisted smaller">
+<h2></h2>
+<h3 class="unnumbered unlisted" id="exemplo-12">Exemplo 12</h3>
+<p><strong>Contextualização:</strong> Uma indústria utiliza um parafuso que deve satisfazer determinadas especificações. Uma dessas é a resistência à tração <span class="math inline">\(X\)</span> (em <span class="math inline">\(\text{kg}/\text{m}^2\)</span>). Dependendo da localidade em que os parafusos são fabricados, <span class="math inline">\(X\)</span> pode ter diferentes distribuições. Suponha que apenas as localidades <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> produzam os parafusos. Se o parafuso vem:</p>
+<ul>
+<li>de <span class="math inline">\(A\)</span>, então <span class="math inline">\(E(X) = 145\)</span> e <span class="math inline">\(\sigma^2 = 12^2\)</span>;</li>
+<li>de <span class="math inline">\(B\)</span>, então <span class="math inline">\(E(X) = 155\)</span> e <span class="math inline">\(\sigma^2 = 18^2\)</span>.</li>
+</ul>
+<p><strong>Formulação do Teste:</strong> Um lote grande de parafusos será leiloado e a empresa deseja comprar esse lote somente se o mesmo vier da localidade <span class="math inline">\(B\)</span>. No dia do leilão, o leiloeiro divulgará a resistência à tração média de <span class="math inline">\(36\)</span> parafusos escolhidos desse lote. Podemos estabelecer as hipóteses nula e alternativa como sendo: <span class="math display">\[
+H_0 : \mu = 155, \sigma = 18 \quad \times \quad H_1 : \mu = 145, \sigma = 12.
+\]</span></p>
+<p>Se decidirmos rejeitar <span class="math inline">\(H_0\)</span> quando <span class="math inline">\(\bar{X} &lt; 150\)</span>, quais as probabilidades de cometermos os Erros Tipos 1 e 2?</p>
+</section>
+<section id="section-14" class="slide level2 unnumbered unlisted smaller">
+<h2></h2>
+<h3 class="unnumbered unlisted" id="exemplo-12-cont.">Exemplo 12 (cont.)</h3>
+<p>Como neste caso <span class="math inline">\(H_0\)</span> e <span class="math inline">\(H_1\)</span> são ambas hipóteses simples, as probabilidades de erro <span class="math inline">\(\alpha = \alpha(\mu = 155, \sigma = 18)\)</span> e <span class="math inline">\(\beta = \beta(\mu = 145, \sigma = 12)\)</span> são de fácil obtenção.</p>
+<div class="columns">
+<div id="vcenter" class="column fragment" style="width:47%;">
+<p>De um lado, a probabilidade do Erro Tipo 1 (tamanho do teste) é <span class="math display">\[
+\begin{aligned}
+\alpha &amp;= P(\text{Erro Tipo 1}) \\
+&amp;= P(\text{Rejeitar } H_0 \mid H_0 \text{ é verdadeira}) \\
+&amp;= P(\bar{X} &lt; 150 \mid \mu = 155, \sigma = 18) \\
+&amp;= P\left(\frac{\bar{X} - \mu}{\sigma/\sqrt{n}} &lt; \frac{150 - 155}{18/\sqrt{36}}\right) \\
+&amp;\approx P(Z &lt; -1\text{,}67) = 0\text{,}0475
+\end{aligned}
+\]</span></p>
+</div><div id="vcenter" class="column" style="width:6%;">
+
+</div><div id="vcenter" class="column fragment" style="width:47%;">
+<p>Por outro lado, a probabilidade do Erro Tipo 2 (<span class="math inline">\(1 -\)</span> poder do teste) é <span class="math display">\[
+\begin{aligned}
+\beta &amp;= P(\text{Erro Tipo 2}) \\
+&amp;= P(\text{Não Rejeitar } H_0 \mid H_0 \text{ é falsa}) \\
+&amp;= P(\bar{X} \geq 150 \mid \mu = 145, \sigma = 12) \\
+&amp;= P\left(\frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \geq \frac{150 - 145}{12/\sqrt{36}}\right) \\
+&amp;\approx P(Z \geq 2\text{,}5) = 0\text{,}0062
+\end{aligned}
+\]</span></p>
+</div></div>
+<div class="fragment">
+<p>Embora tenhamos fixado a RC e depois verificado <span class="math inline">\(\alpha\)</span> e <span class="math inline">\(\beta\)</span>, o usual é especificar um <span class="math inline">\(\alpha\)</span> tolerável e encontrar a RC cuja probabilidade de Erro Tipo 1 satisfaz esse valor.</p>
+</div>
+</section>
+<section id="section-15" class="slide level2 unnumbered unlisted smaller">
+<h2></h2>
+<h3 class="unnumbered unlisted" id="exemplo-12-cont.-1">Exemplo 12 (cont.)</h3>
+<p>Primeiramente, determinamos o formato da RC. <span class="fragment" data-fragment-index="2">Teremos evidências para rejeitar <span class="math inline">\(H_0 : \mu = 155\)</span> em favor de <span class="math inline">\(H_1 : \mu = 145\)</span> se <span class="math inline">\(\bar{X}\)</span> for “suficientemente” menor do que <span class="math inline">\(155\)</span>, isto é, se <span class="math inline">\(\bar{X} &lt; x_c\)</span>, para algum <span class="math inline">\(x_c &lt; 155\)</span>.</span></p>
+<div class="columns">
+<div id="vcenter" class="column fragment" data-fragment-index="3" style="width:65%;">
+<p>Especificada <span class="math inline">\(\text{RC} = \{\bar{X} &lt; x_c\}\)</span>, encontramos o “valor crítico” <span class="math inline">\(x_c\)</span> cuja probabilidade de Erro Tipo 1 não supere o nível tolerado <span class="math inline">\(\alpha\)</span>. Suponha <span class="math inline">\(\alpha = 0\text{,}1\)</span>. Daí, <span class="math display">\[
+\begin{aligned}
+\alpha &amp;= 0\text{,}1 = P(\text{Erro Tipo 1}) = P(\text{Rejeitar } H_0 \mid H_0 \text{ é verdadeira}) \\
+&amp;= P(\bar{X} &lt; x_c \mid \mu = 155, \sigma = 18) = \textstyle P\left(\frac{\bar{X} - \mu}{\sigma/\sqrt{n}} &lt; \frac{x_c - 155}{18/\sqrt{36}}\right) \\
+&amp;\approx \textstyle P\left(Z &lt; \frac{x_c - 155}{3}\right) = P(Z &lt; z),
+\end{aligned}
+\]</span> onde <span class="math inline">\(z = \frac{x_c - 155}{3}\)</span>. <span class="fragment" data-fragment-index="4">Logo, <span class="math inline">\(\frac{x_c - 155}{3} = z = -1\text{,}28 \implies x_c = 151\text{,}16\)</span>.</span></p>
+</div><div id="vcenter" class="column fragment" data-fragment-index="4" style="width:35%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-18-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+<div class="fragment" data-fragment-index="5">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Exercício</strong></p>
+</div>
+<div class="callout-content">
+<p>Encontre <span class="math inline">\(\beta\)</span> para a RC obtida acima.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="testes-de-hipóteses-5" class="slide level2 unnumbered unlisted">
+<h2>3 Testes de Hipóteses</h2>
+<div class="callout callout-caution no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Observações</strong></p>
+</div>
+<div class="callout-content">
+<ol>
+<li>
+No exemplo anterior, como <span class="math inline">\(H_0\)</span> e <span class="math inline">\(H_1\)</span> eram simples, as probabilidades de Erros Tipos 1 e 2 possuiam apenas um valor admissível e puderam ser calculadas de maneira exata;
+</li>
+<li class="fragment">
+No entanto, se uma das hipóteses é composta (<span class="math inline">\(H_0 : \theta \leq \theta_0\)</span>, por exemplo), a probabilidade do erro associado é uma função do verdadeiro valor do parâmetro;
+</li>
+<li class="fragment">
+Neste caso, optamos por ser conservadores, limitando o máximo das probabilidades de Erro Tipo 1.
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Definição</strong></p>
+</div>
+<div class="callout-content">
+<p>O <strong>nível de significância</strong> de um teste de hipóteses é definido como o valor máximo tolerado para a probabilidade do Erro Tipo 1. Mais precisamente, é o valor tolerado para <span class="math inline">\(\sup_{\theta} \alpha(\theta)\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Propriedade</strong></p>
+</div>
+<div class="callout-content">
+<p>Se o tamanho do teste <span class="math inline">\(\alpha(\theta)\)</span> for função monótona de <span class="math inline">\(\theta\)</span>, então <span class="math inline">\(\sup_{\theta} \alpha(\theta) = \alpha(\theta_0)\)</span> para qualquer dos formatos de hipótese nula a seguir: <span class="math inline">\(H_0 : \theta = \theta_0\)</span>; <span class="math inline">\(H_0 : \theta \leq \theta_0\)</span>; e <span class="math inline">\(H_0 : \theta \geq \theta_0\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="testes-de-hipóteses-6" class="slide level2 unnumbered unlisted">
+<h2>3 Testes de Hipóteses</h2>
+<div class="columns">
+<div id="vcenter" class="column" style="width:35%;">
+<div class="callout callout-caution no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Observações</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>
+Ao lado é ilustrado o tamanho <span class="math inline">\(\alpha(\theta)\)</span> de um teste com comportamento monótono;
+</li>
+<li class="fragment" data-fragment-index="3">
+Note que <span class="math inline">\(\alpha(\theta)\)</span> (área à direita de <span class="math inline">\(x_c\)</span>) cresce conforme o verdadeiro <span class="math inline">\(\theta\)</span> se aproxima do limite da hipótese nula (em <span class="math inline">\(\theta_0\)</span>);
+</li>
+<li class="fragment" data-fragment-index="4">
+O supremo é alcançado exatamente em <span class="math inline">\(\theta = \theta_0\)</span>.
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div><div id="vcenter" class="column" style="width:65%;">
+<div class="r-stack">
+<div class="fragment fade-in-then-out" data-fragment-index="1">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-19-1.png" class="quarto-figure quarto-figure-center" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-in-then-out" data-fragment-index="2">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-in" data-fragment-index="3">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-21-1.png" class="quarto-figure quarto-figure-center" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="testes-de-hipóteses-7" class="slide level2 unnumbered unlisted">
+<h2>3 Testes de Hipóteses</h2>
+<div class="callout callout-caution no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Observações</strong></p>
+</div>
+<div class="callout-content">
+<ol>
+<li>
+O teste de hipóteses é realizado pela construção de uma RC (critério para rejeitar <span class="math inline">\(H_0\)</span>) que satisfaça o nível de significância (<span class="math inline">\(\sup_\theta\alpha(\theta)\)</span>);
+</li>
+<li class="fragment" data-fragment-index="2">
+Como normalmente <span class="math inline">\(\sup_\theta\alpha(\theta) = \alpha(\theta_0)\)</span>, <span class="math inline">\(H_0\)</span> sempre deve conter o ponto limítrofe (<span class="math inline">\(\theta_0\)</span>);
+</li>
+<li class="fragment" data-fragment-index="3">
+O nível de significância pode ser interpretado como um trade-off entre <span class="math inline">\(\alpha\)</span> e <span class="math inline">\(\beta\)</span>, pois:
+<ul>
+<li>
+<span class="math inline">\(\uparrow \alpha(\theta) = P(\text{Erro Tipo 1}) \implies \downarrow \beta(\theta) = P(\text{Erro Tipo 2})\)</span>
+</li>
+<li>
+<span class="math inline">\(\downarrow \alpha(\theta) = P(\text{Erro Tipo 1}) \implies \uparrow \beta(\theta) = P(\text{Erro Tipo 2})\)</span>
+</li>
+</ul>
+</li>
+<li class="fragment" data-fragment-index="4">
+Se o custo do Erro Tipo 1 for mais alto que o do Erro Tipo 2, adotamos um nível de significância baixo;
+</li>
+<li class="fragment" data-fragment-index="5">
+Se o custo do Erro Tipo 1 for mais baixo que o do Erro Tipo 2, devemos adotar um nível de significância alto (para indiretamente diminuir <span class="math inline">\(\beta\)</span>);
+</li>
+<li class="fragment" data-fragment-index="6">
+Normalmente, só é possível reduzir <span class="math inline">\(\alpha(\theta)\)</span> e <span class="math inline">\(\beta(\theta)\)</span> simultaneamente aumentando o tamanho amostral;
+</li>
+<li class="fragment" data-fragment-index="7">
+Depois de fixado o nível de significância e obtida a RC, se <span class="math inline">\(H_1\)</span> é composta, <span class="math inline">\(\beta\)</span> não possui um valor único e deve ser tratada como função de <span class="math inline">\(\theta\)</span>.
+</li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="testes-de-hipóteses-8" class="slide level2 unnumbered unlisted">
+<h2>3 Testes de Hipóteses</h2>
+<div class="callout callout-caution no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Observações</strong></p>
+</div>
+<div class="callout-content">
+Em linhas gerais, as etapas de um Teste de Hipóteses são:
+<ol>
+<li>
+Estabelecer <span class="math inline">\(H_0\)</span> e <span class="math inline">\(H_1\)</span>;
+</li>
+<li class="fragment" data-fragment-index="2">
+Observar o comportamento de <span class="math inline">\(H_1\)</span> e determinar o “formato” apropriado da RC;
+</li>
+<li class="fragment" data-fragment-index="3">
+Fixar o nível de significância <span class="math inline">\(\sup_\theta\alpha(\theta)\)</span>;
+</li>
+<li class="fragment" data-fragment-index="4">
+Determinar a RC correspondente ao nível de significância estabelecido;
+</li>
+<li class="fragment" data-fragment-index="5">
+Verificar se a estimativa fornecida por <span class="math inline">\(\hat{\theta}\)</span> pertence à RC (o que nos leva a rejeitar <span class="math inline">\(H_0\)</span> ao nível de significância fixado). Se <span class="math inline">\(\hat{\theta}\)</span> não pertencer à RC, concluímos que a amostra não forneceu evidências suficientes para a rejeição de <span class="math inline">\(H_0\)</span>.
+</li>
+<li class="fragment" data-fragment-index="6">
+Por que não podemos dizer que “aceitamos” <span class="math inline">\(H_0\)</span>? <span class="fragment" data-fragment-index="7">Pois não sabemos a probabilidade de erro ao fazermos tal afirmação!</span>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</section>
 <section id="teste-para-mu" class="slide level2" data-number="3.1">
 <h2><span class="header-section-number">3.1</span> Teste para <span class="math inline">\(\mu\)</span></h2>
+<div class="callout callout-caution no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Observações</strong></p>
+</div>
+<div class="callout-content">
+<ol>
+<li>
+Um dos parâmetros de maior interesse prático é a média <span class="math inline">\(\mu\)</span> de uma população;
+</li>
+<li class="fragment" data-fragment-index="2">
+Podemos considerar as seguintes configurações clássicas de hipóteses a serem testadas:
+<ul>
+<li>
+<span class="math inline">\(H_0 : \mu \leq \mu_0 \quad \times \quad H_1 : \mu &gt; \mu_0\)</span> (Unilateral à direita)
+</li>
+<li>
+<span class="math inline">\(H_0 : \mu \geq \mu_0 \quad \times \quad H_1 : \mu &lt; \mu_0\)</span> (Unilateral à esquerda)
+</li>
+<li>
+<span class="math inline">\(H_0 : \mu = \mu_0 \quad \times \quad H_1 : \mu \neq \mu_0\)</span> (Bilateral)
+</li>
+</ul>
+</li>
+<li class="fragment" data-fragment-index="3">
+Nas hipóteses acima, <span class="math inline">\(\mu\)</span> representa o parâmetro populacional (desconhecido), enquanto <span class="math inline">\(\mu_0\)</span> representa um valor numérico de referência (conhecido)
+</li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="teste-para-mu-1" class="slide level2 unnumbered unlisted">
+<h2>3.1 Teste para <span class="math inline">\(\mu\)</span></h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="callout callout-caution no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Observações</strong></p>
+</div>
+<div class="callout-content">
+<strong>Caso 1:</strong> Suponha que desejamos testar as hipóteses: <span class="math display">\[H_0 : \mu \leq \mu_0 \quad \times \quad H_1 : \mu &gt; \mu_0\]</span>
+<ul>
+<li class="fragment" data-fragment-index="1">
+Podemos utilizar a média amostral <span class="math inline">\(\bar{X}\)</span> para construir a RC;
+</li>
+<li class="fragment" data-fragment-index="2">
+Perceba que, se <span class="math inline">\(\bar{X}\)</span> fornecer um valor muito maior que <span class="math inline">\(\mu_0\)</span>, teremos fortes evidências para rejeitar <span class="math inline">\(H_0\)</span> em favor de <span class="math inline">\(H_1\)</span>.
+</li>
+<li class="fragment" data-fragment-index="4">
+O valor crítico <span class="math inline">\(x_c\)</span> é o ponto que determina o que é muito maior do que <span class="math inline">\(\mu_0\)</span>.
+</li>
+<li class="fragment" data-fragment-index="6">
+Portanto, <span class="math inline">\(RC_{H_0} = \{\bar{X} &gt; x_c\}\)</span>;
+</li>
+<li class="fragment" data-fragment-index="7">
+Como determinar <span class="math inline">\(x_c\)</span>?
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="r-stack">
+<div class="fragment fade-in-then-out" data-fragment-index="2">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-22-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-in-then-out" data-fragment-index="3">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-23-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-in-then-out" data-fragment-index="4">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-24-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-in" data-fragment-index="5">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-25-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="teste-para-mu-2" class="slide level2 unnumbered unlisted">
+<h2>3.1 Teste para <span class="math inline">\(\mu\)</span></h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="callout callout-caution no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Observação</strong></p>
+</div>
+<div class="callout-content">
+<p>Fixemos o nível de significância em <span class="math inline">\(\alpha\)</span> <span class="fragment" data-fragment-index="1">e seja <span class="math inline">\(z_{\alpha}\)</span> o valor tal que <span class="math inline">\(P(Z &gt; z_{\alpha}) = \alpha\)</span>.</span> <span class="fragment" data-fragment-index="2">Pelo TCL, vem que <span class="math display">\[
+\begin{aligned}
+\alpha &amp;= \sup \alpha(\mu) = \alpha(\mu_0) = P(\text{Rejeitar } H_0 \mid \mu = \mu_0) \\
+&amp;= \textstyle P(\bar{X} &gt; x_c \mid \mu = \mu_0) = P\left( \frac{\bar{X} - \mu_0}{\sigma/\sqrt{n}} &gt; \frac{x_c - \mu_0}{\sigma/\sqrt{n}} \right) \\
+&amp;\approx \textstyle  P\left( Z &gt; \frac{x_c - \mu_0}{\sigma/\sqrt{n}} \right).
+\end{aligned}
+\]</span></span></p>
+<p><span class="fragment" data-fragment-index="3">Logo, <span class="math inline">\(\frac{x_c - \mu_0}{\sigma/\sqrt{n}} = z_{\alpha}\)</span>, isto é, <span class="math inline">\(x_c = \mu_0 + z_{\alpha} \frac{\sigma}{\sqrt{n}}\)</span>.</span> <span class="fragment" data-fragment-index="4">Assim, rejeitamos <span class="math inline">\(H_0\)</span> ao nível de significância <span class="math inline">\(\alpha\)</span> se <span class="math display">\[
+\textstyle \bar{X} &gt; \mu_0 + z_{\alpha} \frac{\sigma}{\sqrt{n}}.
+\]</span></span></p>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="fragment" data-fragment-index="1">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-26-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div></div>
 </section>
 <section id="p-valor" class="slide level2" data-number="3.2">
 <h2><span class="header-section-number">3.2</span> <span class="math inline">\(p\)</span>-valor</h2>
@@ -2356,7 +2774,7 @@ A segunda utiliza o g.l. e o quantil para fornecer as probabilidades caudais.
 </div>
 </div>
 <div style="border-style: solid; border-width: 3px; padding-bottom: 0px; padding-right: 12px; padding-left: 12px; font-size:70%;">
-<p><strong>Exemplo 12:</strong> O tempo médio de alivio das dores do medicamento mais vendido no mercado é de 10 min. Uma empresa desenvolveu um medicamento e colocou a venda afirmando que um teste estatístico rejeitou <span class="math inline">\(H_0 : \mu \geq 10\)</span> em favor de <span class="math inline">\(H_1 : \mu &lt; 10\)</span> ao nível de 0.1.</p>
+<p><strong>Exemplo 13:</strong> O tempo médio de alivio das dores do medicamento mais vendido no mercado é de 10 min. Uma empresa desenvolveu um medicamento e colocou a venda afirmando que um teste estatístico rejeitou <span class="math inline">\(H_0 : \mu \geq 10\)</span> em favor de <span class="math inline">\(H_1 : \mu &lt; 10\)</span> ao nível de 0.1.</p>
 </div>
 <div class="callout callout-caution no-icon callout-titled callout-style-default">
 <div class="callout-body">
@@ -2369,9 +2787,9 @@ A segunda utiliza o g.l. e o quantil para fornecer as probabilidades caudais.
 </div>
 </div>
 </section>
-<section id="section-13" class="slide level2 unnumbered unlisted smaller">
+<section id="section-16" class="slide level2 unnumbered unlisted smaller">
 <h2></h2>
-<h3 class="unnumbered unlisted" id="exemplo-12-cont.">Exemplo 12 (cont.)</h3>
+<h3 class="unnumbered unlisted" id="exemplo-13-cont.">Exemplo 13 (cont.)</h3>
 <div class="columns">
 <div id="vcenter" class="column" style="width:55%;">
 <p>Suponha que a empresa tenha feito o teste com <span class="math inline">\(n=49\)</span> e obteve <span class="math inline">\(\bar{x} = 9\)</span> e <span class="math inline">\(s^2 = 10.89\)</span>. A região crítica é da forma <span class="math inline">\(\text{RC} = \{\bar{X} &lt; x_c\}\)</span>, por meio da padronização podemos reescrevê-la como</p>
@@ -2390,7 +2808,7 @@ A segunda utiliza o g.l. e o quantil para fornecer as probabilidades caudais.
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-18-1.png" width="528"></p>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-27-1.png" width="528"></p>
 </figure>
 </div>
 </div>
@@ -2398,9 +2816,9 @@ A segunda utiliza o g.l. e o quantil para fornecer as probabilidades caudais.
 </div>
 </div></div>
 </section>
-<section id="section-14" class="slide level2 unnumbered unlisted smaller">
+<section id="section-17" class="slide level2 unnumbered unlisted smaller">
 <h2></h2>
-<h3 class="unnumbered unlisted" id="exemplo-12-cont.-1">Exemplo 12 (cont.)</h3>
+<h3 class="unnumbered unlisted" id="exemplo-13-cont.-1">Exemplo 13 (cont.)</h3>
 <div class="columns">
 <div id="vcenter" class="column" style="width:55%;">
 <p>Suponha que a empresa tenha feito o teste com <span class="math inline">\(n=49\)</span> e obteve <span class="math inline">\(\bar{x} = 9\)</span> e <span class="math inline">\(s^2 = 10.89\)</span>. A região crítica é da forma <span class="math inline">\(\text{RC} = \{\bar{X} &lt; x_c\}\)</span>, por meio da padronização podemos reescrevê-la como</p>
@@ -2418,16 +2836,16 @@ A segunda utiliza o g.l. e o quantil para fornecer as probabilidades caudais.
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-19-1.png" width="528"></p>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-28-1.png" width="528"></p>
 </figure>
 </div>
 </div>
 </div>
 </div></div>
 </section>
-<section id="section-15" class="slide level2 unnumbered unlisted smaller">
+<section id="section-18" class="slide level2 unnumbered unlisted smaller">
 <h2></h2>
-<h3 class="unnumbered unlisted" id="exemplo-12-cont.-2">Exemplo 12 (cont.)</h3>
+<h3 class="unnumbered unlisted" id="exemplo-13-cont.-2">Exemplo 13 (cont.)</h3>
 <div class="columns">
 <div id="vcenter" class="column" style="width:55%;">
 <p>Suponha que a empresa tenha feito o teste com <span class="math inline">\(n=49\)</span> e obteve <span class="math inline">\(\bar{x} = 9\)</span> e <span class="math inline">\(s^2 = 10.89\)</span>. A região crítica é da forma <span class="math inline">\(\text{RC} = \{\bar{X} &lt; x_c\}\)</span>, por meio da padronização podemos reescrevê-la como</p>
@@ -2445,7 +2863,7 @@ A segunda utiliza o g.l. e o quantil para fornecer as probabilidades caudais.
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-20-1.png" width="528"></p>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-29-1.png" width="528"></p>
 </figure>
 </div>
 </div>
@@ -2482,7 +2900,7 @@ A segunda utiliza o g.l. e o quantil para fornecer as probabilidades caudais.
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-21-1.png" width="528"></p>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-30-1.png" width="528"></p>
 </figure>
 </div>
 </div>
@@ -2594,10 +3012,10 @@ em que <span class="math inline">\(F_T(\cdot)\)</span> é a fda da distribuiçã
 <p>3</p>
 <p>4</p>
 </div></div>
-<p><span class="math display">\[\begin{aligned}
+<p><span class="math display">\[\begin{align*}
 \Omega &amp;= \{(1,1), (1,2), \ldots, (4,4)\}\\
        &amp;= \{(x,y) : x,y = 1,\ldots,4\}.
-\end{aligned}\]</span></p>
+\end{align*}\]</span></p>
 </section>
 
 <section id="fim-1" class="title-slide slide level1 unnumbered unlisted center">
@@ -2823,80 +3241,42 @@ em que <span class="math inline">\(F_T(\cdot)\)</span> é a fda da distribuiçã
       });
     </script>
     
-
     <script>
-
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-
       // slide changes (different for each slide format).
-
       (function () {
-
         // dispatch for htmlwidgets
-
         function fireSlideEnter() {
-
           const event = window.document.createEvent("Event");
-
           event.initEvent("slideenter", true, true);
-
           window.document.dispatchEvent(event);
-
         }
-
-    
 
         function fireSlideChanged(previousSlide, currentSlide) {
-
           fireSlideEnter();
 
-    
-
           // dispatch for shiny
-
           if (window.jQuery) {
-
             if (previousSlide) {
-
               window.jQuery(previousSlide).trigger("hidden");
-
             }
-
             if (currentSlide) {
-
               window.jQuery(currentSlide).trigger("shown");
-
             }
-
           }
-
         }
-
-    
 
         // hookup for slidy
-
         if (window.w3c_slidy) {
-
           window.w3c_slidy.add_observer(function (slide_num) {
-
             // slide_num starts at position 1
-
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-
           });
-
         }
 
-    
-
       })();
-
     </script>
-
-    
 
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {

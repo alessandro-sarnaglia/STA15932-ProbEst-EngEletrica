@@ -2263,7 +2263,7 @@ Como construir um procedimento para testar entre $H_0$ e $H_1$?
 ::: {.callout-caution}
 ## Observações
 
-1. Iniciamos pela escolha de um estimador $\hat{\theta}$ do parâmetro $\theta$;
+1. Uma das formas consiste de escolher um estimador $\hat{\theta}$ do parâmetro $\theta$;
 2. A partir de $\hat{\theta}$, o próximo passo é estabelecer a Região Crítica (RC) do teste.
 
 :::
@@ -2271,9 +2271,9 @@ Como construir um procedimento para testar entre $H_0$ e $H_1$?
 ::: {.callout-note}
 ## Definição
 
-A região crítica de um teste de hipóteses é um conjunto de valores que, se fornecidos pelo estimador, levam à rejeição de $H_0$. Formalmente,
+No contexto acima, a RC de um teste de hipóteses é um conjunto de valores que, se fornecidos pelo estimador, levam à rejeição de $H_0$. Formalmente,
 $$
-\text{RC}_{H_0} = \{x : \text{se } \hat{\theta} = x, H_0 \text{ é rejeitada}\}.
+\text{RC} = \{x : \text{se } \hat{\theta} = x, H_0 \text{ é rejeitada}\}.
 $$
 
 :::
@@ -2282,7 +2282,7 @@ $$
 
 ::: {style="border-style: solid; border-width: 3px; padding-bottom: 0px; padding-right: 12px; padding-left: 12px; font-size:70%;"}
 
-**Exemplo 11:**  Suponha que desejamos testar $H_0 : \mu \geq \mu_0$. [Uma RC natural para rejeitar $H_0$ seria $RC_{H_0} = \{\bar{X} < x_c\}$.]{.fragment} [Isto é, valores muito pequenos de $\bar{X}$ suportam a rejeição de $H_0$.]{.fragment} [Determinada a forma da RC, resta determinar o **valor crítico** $x_c$, o limiar que delimita a RC.]{.fragment}
+**Exemplo 11:**  Suponha que desejamos testar $H_0 : \mu \geq \mu_0$. [Uma RC natural para rejeitar $H_0$ seria $RC = \{\bar{X} < x_c\}$.]{.fragment} [Isto é, valores muito pequenos de $\bar{X}$ suportam a rejeição de $H_0$.]{.fragment} [Determinada a forma da RC, resta determinar o **valor crítico** $x_c$, o limiar que delimita a RC.]{.fragment}
 
 :::
 
@@ -2303,8 +2303,640 @@ As funções $\alpha(\theta)$ e $1 - \beta(\theta)$ são denominadas de tamanho 
 :::
 
 
+## {.unnumbered .unlisted .smaller} 
+
+###  Exemplo 12 {.unnumbered .unlisted}
+
+
+**Contextualização:** Uma indústria utiliza um parafuso que deve satisfazer determinadas especificações. Uma dessas é a resistência à tração $X$ (em $\text{kg}/\text{m}^2$). Dependendo da localidade em que os parafusos são fabricados, $X$ pode ter diferentes distribuições. Suponha que apenas as localidades $A$ e $B$ produzam os parafusos. Se o parafuso vem:
+
+- de $A$, então $E(X) = 145$ e $\sigma^2 = 12^2$;
+- de $B$, então $E(X) = 155$ e $\sigma^2 = 18^2$.
+
+**Formulação do Teste:** Um lote grande de parafusos será leiloado e a empresa deseja comprar esse lote somente se o mesmo vier da localidade $B$. No dia do leilão, o leiloeiro divulgará a resistência à tração média de $36$ parafusos escolhidos desse lote. Podemos estabelecer as hipóteses nula e alternativa como sendo:
+$$
+H_0 : \mu = 155, \sigma = 18 \quad \times \quad H_1 : \mu = 145, \sigma = 12.
+$$
+
+Se decidirmos rejeitar $H_0$ quando $\bar{X} < 150$, quais as probabilidades de cometermos os Erros Tipos 1 e 2?
+
+## {.unnumbered .unlisted .smaller} 
+
+###  Exemplo 12 (cont.) {.unnumbered .unlisted}
+
+Como neste caso $H_0$ e $H_1$ são ambas hipóteses simples, as probabilidades de erro $\alpha = \alpha(\mu = 155, \sigma = 18)$ e $\beta = \beta(\mu = 145, \sigma = 12)$ são de fácil obtenção.
+
+::: columns
+
+::: {.column #vcenter width=47% .fragment}
+
+De um lado, a probabilidade do Erro Tipo 1 (tamanho do teste) é
+$$
+\begin{aligned}
+\alpha &= P(\text{Erro Tipo 1}) \\
+&= P(\text{Rejeitar } H_0 \mid H_0 \text{ é verdadeira}) \\
+&= P(\bar{X} < 150 \mid \mu = 155, \sigma = 18) \\
+&= P\left(\frac{\bar{X} - \mu}{\sigma/\sqrt{n}} < \frac{150 - 155}{18/\sqrt{36}}\right) \\
+&\approx P(Z < -1\text{,}67) = 0\text{,}0475
+\end{aligned}
+$$
+
+:::
+
+::: {.column #vcenter width=6%}
+
+:::
+
+::: {.column #vcenter width=47% .fragment}
+
+Por outro lado, a probabilidade do Erro Tipo 2 ($1 -$ poder do teste) é
+$$
+\begin{aligned}
+\beta &= P(\text{Erro Tipo 2}) \\
+&= P(\text{Não Rejeitar } H_0 \mid H_0 \text{ é falsa}) \\
+&= P(\bar{X} \geq 150 \mid \mu = 145, \sigma = 12) \\
+&= P\left(\frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \geq \frac{150 - 145}{12/\sqrt{36}}\right) \\
+&\approx P(Z \geq 2\text{,}5) = 0\text{,}0062
+\end{aligned}
+$$
+
+:::
+
+:::
+
+:::{.fragment}
+
+Embora tenhamos fixado a RC e depois verificado $\alpha$ e $\beta$, o usual é especificar um $\alpha$ tolerável e encontrar a RC cuja probabilidade de Erro Tipo 1 satisfaz esse valor.
+
+:::
+
+## {.unnumbered .unlisted .smaller} 
+
+###  Exemplo 12 (cont.) {.unnumbered .unlisted}
+
+Primeiramente, determinamos o formato da RC. [Teremos evidências para rejeitar $H_0 : \mu = 155$ em favor de $H_1 : \mu = 145$ se $\bar{X}$ for "suficientemente" menor do que $155$, isto é, se $\bar{X} < x_c$, para algum $x_c < 155$.]{.fragment fragment-index=2}
+
+::: columns
+
+::: {.column #vcenter width=65% .fragment fragment-index=3}
+
+Especificada $\text{RC} = \{\bar{X} < x_c\}$, encontramos o "valor crítico" $x_c$ cuja probabilidade de Erro Tipo 1 não supere o nível tolerado $\alpha$. Suponha $\alpha = 0\text{,}1$. Daí,
+$$
+\begin{aligned}
+\alpha &= 0\text{,}1 = P(\text{Erro Tipo 1}) = P(\text{Rejeitar } H_0 \mid H_0 \text{ é verdadeira}) \\
+&= P(\bar{X} < x_c \mid \mu = 155, \sigma = 18) = \textstyle P\left(\frac{\bar{X} - \mu}{\sigma/\sqrt{n}} < \frac{x_c - 155}{18/\sqrt{36}}\right) \\
+&\approx \textstyle P\left(Z < \frac{x_c - 155}{3}\right) = P(Z < z),
+\end{aligned}
+$$
+onde $z = \frac{x_c - 155}{3}$. [Logo, $\frac{x_c - 155}{3} = z = -1\text{,}28 \implies x_c = 151\text{,}16$.]{.fragment fragment-index=4}
+
+:::
+
+::: {.column #vcenter width=35% .fragment fragment-index=4}
+
+```{r}
+#| fig-align: center
+#| fig-width: 7
+#| fig-height: 4
+#| echo: false
+
+# 1. Configurando os parâmetros da distribuição
+alpha <- 0.1
+z_critico <- qnorm(alpha) # Calcula o ponto crítico (-1.28)
+
+# Gerando o domínio para a curva normal padrão
+x <- seq(-3.5, 3.5, length = 500)
+y <- dnorm(x)
+
+# 2. Desenhando o gráfico base
+plot(
+  x, y, 
+  type = "l", 
+  lwd = 2.5, 
+  col = "black", 
+  axes = FALSE, 
+  xlab = "z", 
+  ylab = "", 
+  main = expression(paste("Região de Rejeição (Área ", alpha, " = 0.10 à Esquerda)"))
+)
+
+# Customização do eixo x incluindo o ponto z_critico
+axis(1, at = c(-3, -2, z_critico, 0, 1, 2, 3), 
+     labels = c("-3", "-2", "-1.28", "0", "1", "2", "3"), cex.axis = 1.1)
+
+# 3. Colorindo a região de rejeição (cauda esquerda)
+x_shading <- seq(-3.5, z_critico, length = 100)
+y_shading <- dnorm(x_shading)
+polygon(c(-3.5, x_shading, z_critico), c(0, y_shading, 0), col = rgb(0.23, 0.35, 0.60, 0.4), border = NA)
+
+# Linha vertical indicativa do z crítico
+abline(v = z_critico, lty = 2, col = "#3b5998", lwd = 1.5)
+
+# 4. Adicionando rótulo para a área alpha
+text(x = -2.1, y = 0.05, labels = expression(alpha == 0.10), col = "#3b5998", font = 2, cex = 1.2)
+
+# Linha de base horizontal
+abline(h = 0, col = "gray50")
+```
+
+:::
+
+:::
+
+::: {.callout-tip .fragment fragment-index=5}
+## Exercício
+
+Encontre $\beta$ para a RC obtida acima.
+:::
+
+
+
+## 3 Testes de Hipóteses {.unnumbered .unlisted}
+
+::: {.callout-caution}
+## Observações
+
+<ol>
+  <li>
+    No exemplo anterior, como $H_0$ e $H_1$ eram simples, as probabilidades de Erros Tipos 1 e 2 possuiam apenas um valor admissível e puderam ser calculadas de maneira exata;
+  </li>
+  <li class="fragment">
+    No entanto, se uma das hipóteses é composta ($H_0 : \theta \leq \theta_0$, por exemplo), a probabilidade do erro associado é uma função do verdadeiro valor do parâmetro;
+  </li>
+  <li class="fragment">
+    Neste caso, optamos por ser conservadores, limitando o máximo das probabilidades de Erro Tipo 1.
+  </li>
+</ol>
+:::
+
+::: {.callout-note .fragment}
+## Definição
+
+O **nível de significância** de um teste de hipóteses é definido como o valor máximo tolerado para a probabilidade do Erro Tipo 1. Mais precisamente, é o valor tolerado para $\sup_{\theta} \alpha(\theta)$.
+:::
+
+::: {.callout-warning .fragment}
+## Propriedade
+
+Se o tamanho do teste $\alpha(\theta)$ for função monótona de $\theta$, então $\sup_{\theta} \alpha(\theta) = \alpha(\theta_0)$ para qualquer dos formatos de hipótese nula a seguir: $H_0 : \theta = \theta_0$; $H_0 : \theta \leq \theta_0$; e $H_0 : \theta \geq \theta_0$.
+:::
+
+
+
+## 3 Testes de Hipóteses {.unnumbered .unlisted}
+
+::: columns
+
+::: {.column #vcenter width=35%}
+
+::: {.callout-caution}
+## Observações
+
+<ul>
+  <li>
+    Ao lado é ilustrado o tamanho $\alpha(\theta)$ de um teste com comportamento monótono;
+  </li>
+  <li class="fragment" data-fragment-index=3>
+    Note que $\alpha(\theta)$ (área à direita de $x_c$) cresce conforme o verdadeiro $\theta$ se aproxima do limite da hipótese nula (em $\theta_0$);
+  </li>
+  <li class="fragment" data-fragment-index=4>
+    O supremo é alcançado exatamente em $\theta = \theta_0$.
+  </li>
+</ul>
+:::
+
+:::
+
+::: {.column #vcenter width=65%}
+
+::: {.r-stack}
+
+::: {.fragment .fade-in-then-out data-fragment-index=1}
+
+```{r}
+#| fig-align: center
+#| fig-width: 8
+#| fig-height: 5.5
+#| echo: false
+par(mar = c(2, 1, 1, 1))
+plot(NULL, xlim = c(0, 10), ylim = c(-0.05, 0.45), axes = FALSE, xlab = "", ylab = "")
+segments(x0 = 3, y0 = -0.05, x1 = 3, y1 = 0.38, lwd = 1.2, col = "gray30")
+segments(x0 = 5.5, y0 = -0.05, x1 = 5.5, y1 = 0.38, lwd = 1.2, col = "gray30")
+segments(x0 = 7, y0 = -0.05, x1 = 7, y1 = 0.38, lty = 2, lwd = 1.2, col = "gray30")
+segments(x0 = 5.5, y0 = 0.405, x1 = 5.5, y1 = 0.425, lwd = 1.5)
+arrows(x0 = 5.5, y0 = 0.415, x1 = 0, y1 = 0.415, length = 0.1, code = 3, lwd = 1)
+arrows(x0 = 5.5, y0 = 0.415, x1 = 9.5, y1 = 0.415, length = 0.1, code = 3, lty = 2, lwd = 1)
+text(x = 3.0, y = 0.44, labels = expression(H[0]), cex = 1.4)
+text(x = 8.0, y = 0.44, labels = expression(H[1]), cex = 1.4)
+text(x = 3, y = -0.03, labels = expression(theta), cex = 1.3)
+text(x = 5.5, y = -0.03, labels = expression(theta[0]), cex = 1.3)
+text(x = 7, y = -0.03, labels = expression(x[c]), cex = 1.3)
+
+# Curva 1 (Valor sob H0 distante do limite)
+x_grid <- seq(0, 9.5, length.out = 1000)
+y1 <- dnorm(x_grid, mean = 3.0, sd = 1.5)
+x_sh1 <- seq(7, 9.5, length.out = 200)
+y_sh1 <- dnorm(x_sh1, mean = 3.0, sd = 1.5)
+polygon(c(7, x_sh1, 9.5), c(0, y_sh1, 0), col = rgb(0.2, 0.9, 0.2, 0.8), border = NA)
+lines(x_grid, y1, lwd = 2.5)
+
+arrows(x0 = 0, y0 = 0, x1 = 10, y1 = 0, length = 0.1, lwd = 1.5, code = 2)
+```
+
+:::
+
+::: {.fragment .fade-in-then-out data-fragment-index=2}
+
+```{r}
+#| fig-align: center
+#| fig-width: 8
+#| fig-height: 5.5
+#| echo: false
+par(mar = c(2, 1, 1, 1))
+plot(NULL, xlim = c(0, 10), ylim = c(-0.05, 0.45), axes = FALSE, xlab = "", ylab = "")
+segments(x0 = 4.25, y0 = -0.05, x1 = 4.25, y1 = 0.38, lwd = 1.2, col = "gray30")
+segments(x0 = 5.5, y0 = -0.05, x1 = 5.5, y1 = 0.38, lwd = 1.2, col = "gray30")
+segments(x0 = 7, y0 = -0.05, x1 = 7, y1 = 0.38, lty = 2, lwd = 1.2, col = "gray30")
+segments(x0 = 5.5, y0 = 0.405, x1 = 5.5, y1 = 0.425, lwd = 1.5)
+arrows(x0 = 5.5, y0 = 0.415, x1 = 0, y1 = 0.415, length = 0.1, code = 3, lwd = 1)
+arrows(x0 = 5.5, y0 = 0.415, x1 = 9.5, y1 = 0.415, length = 0.1, code = 3, lty = 2, lwd = 1)
+text(x = 3.0, y = 0.44, labels = expression(H[0]), cex = 1.4)
+text(x = 8.0, y = 0.44, labels = expression(H[1]), cex = 1.4)
+text(x = 5.5, y = -0.03, labels = expression(theta[0]), cex = 1.3)
+text(x = 4.25, y = -0.03, labels = expression(theta), cex = 1.3)
+text(x = 7, y = -0.03, labels = expression(x[c]), cex = 1.3)
+
+# Curvas 1 e 2 (Se aproximando do limite)
+x_grid <- seq(0, 9.5, length.out = 1000)
+y1 <- dnorm(x_grid, mean = 3.0, sd = 1.5)
+y2 <- dnorm(x_grid, mean = 4.25, sd = 1.5)
+
+x_sh1 <- seq(7, 9.5, length.out = 200)
+y_sh1 <- dnorm(x_sh1, mean = 3.0, sd = 1.5)
+polygon(c(7, x_sh1, 9.5), c(0, y_sh1, 0), col = rgb(0.2, 0.9, 0.2, 0.8), border = NA)
+
+y_sh2 <- dnorm(x_sh1, mean = 4.25, sd = 1.5)
+polygon(c(7, x_sh1, 9.5), c(0, y_sh2, 0), col = rgb(1, 0.85, 0.1, 0.6), border = NA)
+
+lines(x_grid, y1, lwd = 2.5)
+lines(x_grid, y2, lwd = 2.5)
+
+arrows(x0 = 0, y0 = 0, x1 = 10, y1 = 0, length = 0.1, lwd = 1.5, code = 2)
+```
+
+:::
+
+::: {.fragment .fade-in data-fragment-index=3}
+
+```{r}
+#| fig-align: center
+#| fig-width: 8
+#| fig-height: 5.5
+#| echo: false
+par(mar = c(2, 1, 1, 1))
+plot(NULL, xlim = c(0, 10), ylim = c(-0.05, 0.45), axes = FALSE, xlab = "", ylab = "")
+segments(x0 = 5.5, y0 = -0.05, x1 = 5.5, y1 = 0.38, lwd = 1.2, col = "gray30")
+segments(x0 = 7, y0 = -0.05, x1 = 7, y1 = 0.38, lty = 2, lwd = 1.2, col = "gray30")
+segments(x0 = 5.5, y0 = 0.405, x1 = 5.5, y1 = 0.425, lwd = 1.5)
+arrows(x0 = 5.5, y0 = 0.415, x1 = 0, y1 = 0.415, length = 0.1, code = 3, lwd = 1)
+arrows(x0 = 5.5, y0 = 0.415, x1 = 9.5, y1 = 0.415, length = 0.1, code = 3, lty = 2, lwd = 1)
+text(x = 3.0, y = 0.44, labels = expression(H[0]), cex = 1.4)
+text(x = 8.0, y = 0.44, labels = expression(H[1]), cex = 1.4)
+text(x = 5.5, y = -0.03, labels = expression(theta==theta[0]), cex = 1.3)
+text(x = 7, y = -0.03, labels = expression(x[c]), cex = 1.3)
+
+# Curvas 1, 2 e 3 (No limite theta_0)
+x_grid <- seq(0, 9.5, length.out = 1000)
+y1 <- dnorm(x_grid, mean = 3.0, sd = 1.5)
+y2 <- dnorm(x_grid, mean = 4.25, sd = 1.5)
+y3 <- dnorm(x_grid, mean = 5.5, sd = 1.5)
+
+x_sh1 <- seq(7, 9.5, length.out = 200)
+y_sh1 <- dnorm(x_sh1, mean = 3.0, sd = 1.5)
+polygon(c(7, x_sh1, 9.5), c(0, y_sh1, 0), col = rgb(0.2, 0.9, 0.2, 0.8), border = NA)
+
+y_sh2 <- dnorm(x_sh1, mean = 4.25, sd = 1.5)
+polygon(c(7, x_sh1, 9.5), c(0, y_sh2, 0), col = rgb(1, 0.85, 0.1, 0.6), border = NA)
+
+y_sh3 <- dnorm(x_sh1, mean = 5.5, sd = 1.5)
+polygon(c(7, x_sh1, 9.5), c(0, y_sh3, 0), col = rgb(0.9, 0.4, 0.4, 0.5), border = NA)
+
+lines(x_grid, y1, lwd = 2.5)
+lines(x_grid, y2, lwd = 2.5)
+lines(x_grid, y3, lwd = 2.5)
+
+arrows(x0 = 0, y0 = 0, x1 = 10, y1 = 0, length = 0.1, lwd = 1.5, code = 2)
+```
+
+:::
+
+:::
+
+:::
+
+:::
+
+
+## 3 Testes de Hipóteses {.unnumbered .unlisted}
+
+::: {.callout-caution}
+## Observações
+
+<ol>
+  <li>
+    O teste de hipóteses é realizado pela construção de uma RC (critério para rejeitar $H_0$) que satisfaça o nível de significância ($\sup_\theta\alpha(\theta)$);
+  </li>
+  <li class="fragment" data-fragment-index=2>
+    Como normalmente $\sup_\theta\alpha(\theta) = \alpha(\theta_0)$, $H_0$ sempre deve conter o ponto limítrofe ($\theta_0$);
+  </li>
+  <li class="fragment" data-fragment-index=3>
+    O nível de significância pode ser interpretado como um trade-off entre $\alpha$ e $\beta$, pois:
+    <ul>
+      <li>
+        $\uparrow \alpha(\theta) = P(\text{Erro Tipo 1}) \implies \downarrow \beta(\theta) = P(\text{Erro Tipo 2})$
+      </li>
+      <li>
+        $\downarrow \alpha(\theta) = P(\text{Erro Tipo 1}) \implies \uparrow \beta(\theta) = P(\text{Erro Tipo 2})$
+      </li>
+    </ul>
+  </li>
+  <li class="fragment" data-fragment-index=4>
+    Se o custo do Erro Tipo 1 for mais alto que o do Erro Tipo 2, adotamos um nível de significância baixo;
+  </li>
+  <li class="fragment" data-fragment-index=5>
+    Se o custo do Erro Tipo 1 for mais baixo que o do Erro Tipo 2, devemos adotar um nível de significância alto (para indiretamente diminuir $\beta$);
+  </li>
+  <li class="fragment" data-fragment-index=6>
+    Normalmente, só é possível reduzir $\alpha(\theta)$ e $\beta(\theta)$ simultaneamente aumentando o tamanho amostral;
+  </li>
+  <li class="fragment" data-fragment-index=7>
+    Depois de fixado o nível de significância e obtida a RC, se $H_1$ é composta, $\beta$ não possui um valor único e deve ser tratada como função de $\theta$.
+  </li>
+</ol>
+
+:::
+
+## 3 Testes de Hipóteses {.unnumbered .unlisted}
+
+
+::: {.callout-caution}
+## Observações
+
+Em linhas gerais, as etapas de um Teste de Hipóteses são:
+<ol>
+  <li>
+    Estabelecer $H_0$ e $H_1$;
+  </li>
+  <li class="fragment" data-fragment-index=2>
+    Observar o comportamento de $H_1$ e determinar o "formato" apropriado da RC;
+  </li>
+  <li class="fragment" data-fragment-index=3>
+    Fixar o nível de significância $\sup_\theta\alpha(\theta)$;
+  </li>
+  <li class="fragment" data-fragment-index=4>
+    Determinar a RC correspondente ao nível de significância estabelecido;
+  </li>
+  <li class="fragment" data-fragment-index=5>
+    Verificar se a estimativa fornecida por $\hat{\theta}$ pertence à RC (o que nos leva a rejeitar $H_0$ ao nível de significância fixado). Se $\hat{\theta}$ não pertencer à RC, concluímos que a amostra não forneceu evidências suficientes para a rejeição de $H_0$.
+  </li>
+  <li class="fragment" data-fragment-index=6>
+    Por que não podemos dizer que "aceitamos" $H_0$? [Pois não sabemos a probabilidade de erro ao fazermos tal afirmação!]{.fragment fragment-index=7}
+  </li>
+</ol>
+
+:::
 
 ## Teste para $\mu$
+
+::: {.callout-caution}
+## Observações
+
+<ol>
+  <li>
+    Um dos parâmetros de maior interesse prático é a média $\mu$ de uma população;
+  </li>
+  <li class="fragment" data-fragment-index=2>
+    Podemos considerar as seguintes configurações clássicas de hipóteses a serem testadas:
+    <ul>
+      <li>
+        $H_0 : \mu \leq \mu_0 \quad \times \quad H_1 : \mu > \mu_0$ (Unilateral à direita)
+      </li>
+      <li>
+        $H_0 : \mu \geq \mu_0 \quad \times \quad H_1 : \mu < \mu_0$ (Unilateral à esquerda)
+      </li>
+      <li>
+        $H_0 : \mu = \mu_0 \quad \times \quad H_1 : \mu \neq \mu_0$ (Bilateral)
+      </li>
+    </ul>
+  </li>
+  <li class="fragment" data-fragment-index=3>
+    Nas hipóteses acima, $\mu$ representa o parâmetro populacional (desconhecido), enquanto $\mu_0$ representa um valor numérico de referência (conhecido)
+  </li>
+</ol>
+
+:::
+
+## 3.1 Teste para $\mu$ {.unnumbered .unlisted}
+
+::: {.columns}
+
+::: {.column width="55%"}
+
+::: {.callout-caution}
+## Observações
+
+**Caso 1:** Suponha que desejamos testar as hipóteses:
+$$H_0 : \mu \leq \mu_0 \quad \times \quad H_1 : \mu > \mu_0$$
+<ul>
+  <li class="fragment" data-fragment-index=1>
+    Podemos utilizar a média amostral $\bar{X}$ para construir a RC;
+  </li>
+  <li class="fragment" data-fragment-index=2>
+    Perceba que, se $\bar{X}$ fornecer um valor muito maior que $\mu_0$, teremos fortes evidências para rejeitar $H_0$ em favor de $H_1$.
+  </li>
+  <li class="fragment" data-fragment-index=4>
+    O valor crítico $x_c$ é o ponto que determina o que é muito maior do que $\mu_0$.
+  </li>
+  <li class="fragment" data-fragment-index=6>
+    Portanto, $RC_{H_0} = \{\bar{X} > x_c\}$;
+  </li>
+  <li class="fragment" data-fragment-index=7>
+    Como determinar $x_c$?
+  </li>
+</ul>  
+
+:::
+
+:::
+
+::: {.column width="45%"}
+::: {.r-stack}
+
+::: {.fragment .fade-in-then-out data-fragment-index=2}
+
+```{r}
+#| fig-align: center
+#| fig-width: 6
+#| fig-height: 4.5
+#| echo: false
+plot_base <- function(show_xc = FALSE) {
+  par(mar = c(1.5, 1, 1.5, 1))
+  plot(NULL, xlim = c(0, 10), ylim = c(-0.5, 3.2), axes = FALSE, xlab = "", ylab = "")
+  arrows(x0 = 0.5, y0 = 0.5, x1 = 9.5, y1 = 0.5, length = 0.1, lwd = 1.5, code = 2)
+  segments(x0 = 0.5, y0 = 2.4, x1 = 9.5, y1 = 2.4, lwd = 1)
+  arrows(x0 = 0.5, y0 = 2.4, x1 = 0.3, y1 = 2.4, length = 0.08, code = 2)
+  arrows(x0 = 9.5, y0 = 2.4, x1 = 9.7, y1 = 2.4, length = 0.08, code = 2)
+  segments(x0 = 4, y0 = 2.3, x1 = 4, y1 = 2.5, lwd = 2)
+  segments(x0 = 4, y0 = 0.3, x1 = 4, y1 = 2.5, lty = 2, col = "gray40")
+  text(x = 4, y = -0.1, labels = expression(mu[0]), cex = 1.3)
+  text(x = 2.25, y = 2.8, labels = expression(H[0]), cex = 1.5)
+  segments(x0 = 4, y0 = 2.4, x1 = 9.5, y1 = 2.4, col = "white", lwd = 3)
+  segments(x0 = 4, y0 = 2.4, x1 = 9.5, y1 = 2.4, lty = 2, lwd = 1.5)
+  text(x = 6.75, y = 2.8, labels = expression(H[1]), cex = 1.5)
+  if (show_xc) {
+    segments(x0 = 6.5, y0 = 0.3, x1 = 6.5, y1 = 2.5, lty = 2, col = "gray40", lwd = 1.2)
+    text(x = 6.5, y = -0.1, labels = expression(x[c]), cex = 1.3)
+  }
+}
+# Passo 1: Ponto amostral próximo a mu_0 (Indício de aceitação de H_0)
+plot_base(show_xc = FALSE)
+points(x = 5.2, y = 0.5, pch = 19, cex = 1.8, col = "black")
+text(x = 5.2, y = 0.2, labels = expression(bar(x)), cex = 1.3)
+```
+
+:::
+
+::: {.fragment .fade-in-then-out data-fragment-index=3}
+
+```{r}
+#| fig-align: center
+#| fig-width: 6
+#| fig-height: 4.5
+#| echo: false
+# Passo 2: Ponto amostral distante de mu_0 (Forte indício de rejeição de H_0)
+plot_base(show_xc = FALSE)
+points(x = 8.2, y = 0.5, pch = 19, cex = 1.8, col = "black")
+text(x = 8.2, y = 0.2, labels = expression(bar(x)), cex = 1.3)
+```
+
+:::
+
+::: {.fragment .fade-in-then-out data-fragment-index=4}
+
+```{r}
+#| fig-align: center
+#| fig-width: 6
+#| fig-height: 4.5
+#| echo: false
+# Passo 3: Estabelecendo a fronteira da região de decisão x_c
+plot_base(show_xc = TRUE)
+```
+
+:::
+
+::: {.fragment .fade-in data-fragment-index=5}
+
+```{r}
+#| fig-align: center
+#| fig-width: 6
+#| fig-height: 4.5
+#| echo: false
+# Passo 4: Os dois cenários possíveis em relação a x_c
+plot_base(show_xc = TRUE)
+points(x = 5.2, y = 0.5, pch = 19, cex = 1.8, col = "black")
+text(x = 5.2, y = 0.2, labels = expression(bar(x)), cex = 1.3)
+points(x = 8.2, y = 0.5, pch = 19, cex = 1.8, col = "black")
+text(x = 8.2, y = 0.2, labels = expression(bar(x)), cex = 1.3)
+```
+
+:::
+
+:::
+:::
+:::
+
+
+## 3.1 Teste para $\mu$ {.unnumbered .unlisted}
+
+::: {.columns}
+
+::: {.column width="55%"}
+
+::: {.callout-caution}
+## Observação
+
+Fixemos o nível de significância em $\alpha$ [e seja $z_{\alpha}$ o valor tal que $P(Z > z_{\alpha}) = \alpha$.]{.fragment fragment-index=1} [Pelo TCL, vem que
+$$
+\begin{aligned}
+\alpha &= \sup \alpha(\mu) = \alpha(\mu_0) = P(\text{Rejeitar } H_0 \mid \mu = \mu_0) \\
+&= \textstyle P(\bar{X} > x_c \mid \mu = \mu_0) = P\left( \frac{\bar{X} - \mu_0}{\sigma/\sqrt{n}} > \frac{x_c - \mu_0}{\sigma/\sqrt{n}} \right) \\
+&\approx \textstyle  P\left( Z > \frac{x_c - \mu_0}{\sigma/\sqrt{n}} \right).
+\end{aligned}
+$$]{.fragment fragment-index=2}
+
+[Logo, $\frac{x_c - \mu_0}{\sigma/\sqrt{n}} = z_{\alpha}$, isto é, $x_c = \mu_0 + z_{\alpha} \frac{\sigma}{\sqrt{n}}$.]{.fragment fragment-index=3} [Assim, rejeitamos $H_0$ ao nível de significância $\alpha$ se
+$$
+\textstyle \bar{X} > \mu_0 + z_{\alpha} \frac{\sigma}{\sqrt{n}}.
+$$]{.fragment fragment-index=4}
+
+:::
+
+:::
+
+::: {.column width="45%"}
+
+::: {.fragment fragment-index=1}
+
+```{r}
+#| fig-align: center
+#| fig-width: 7
+#| fig-height: 4
+#| echo: false
+
+# 1. Configurando os parâmetros da distribuição
+alpha <- 0.05
+z_alpha <- qnorm(1 - alpha) # Calcula o ponto crítico (1.645)
+
+# Gerando o domínio para a curva normal padrão
+x <- seq(-3.5, 3.5, length = 500)
+y <- dnorm(x)
+
+# 2. Desenhando o gráfico base
+plot(
+  x, y, 
+  type = "l", 
+  lwd = 2.5, 
+  col = "black", 
+  axes = FALSE, 
+  xlab = "z", 
+  ylab = "", 
+  main = expression(paste("Região de Rejeição à Direita"))
+)
+
+# Customização do eixo x incluindo o ponto z_alpha
+axis(1, at = c(-3, -2, -1, 0, 1, z_alpha, 2, 3), 
+     labels = c("-3", "-2", "-1", "0", "1", expression(z[alpha]), "2", "3"), cex.axis = 1.1)
+
+# 3. Colorindo a região de rejeição (cauda superior)
+x_shading <- seq(z_alpha, 3.5, length = 100)
+y_shading <- dnorm(x_shading)
+polygon(c(z_alpha, x_shading, 3.5), c(0, y_shading, 0), col = rgb(0.23, 0.35, 0.60, 0.4), border = NA)
+
+# Linha vertical indicativa do z crítico
+abline(v = z_alpha, lty = 2, col = "#3b5998", lwd = 1.5)
+
+# 4. Adicionando rótulo para a área alpha
+text(x = z_alpha + 0.3, y = 0.03, labels = expression(alpha), col = "#3b5998", font = 2, cex = 1.2)
+
+# Linha de base horizontal
+abline(h = 0, col = "gray50")
+```
+
+:::
+
+:::
+
+:::
 
 ## $p$-valor 
 
@@ -2316,7 +2948,7 @@ Relatar o resultado de um teste de hipóteses simplesmente dizendo se a hipótes
 
 ::: {style="border-style: solid; border-width: 3px; padding-bottom: 0px; padding-right: 12px; padding-left: 12px; font-size:70%;"}
 
-**Exemplo 12:** O tempo médio de alivio das dores do medicamento mais vendido no mercado é de 10 min. Uma empresa desenvolveu um medicamento e colocou a venda afirmando que um teste estatístico rejeitou $H_0 : \mu \geq 10$ em favor de $H_1 : \mu < 10$ ao nível de 0.1.
+**Exemplo 13:** O tempo médio de alivio das dores do medicamento mais vendido no mercado é de 10 min. Uma empresa desenvolveu um medicamento e colocou a venda afirmando que um teste estatístico rejeitou $H_0 : \mu \geq 10$ em favor de $H_1 : \mu < 10$ ao nível de 0.1.
 
 ::: 
 
@@ -2328,7 +2960,7 @@ Uma pessoa que costuma comprar o medicamento mais vendido pode optar por nível 
 
 ## {.unnumbered .unlisted .smaller} 
 
-###  Exemplo 12 (cont.) {.unnumbered .unlisted} 
+###  Exemplo 13 (cont.) {.unnumbered .unlisted} 
 
 ::: columns
 
@@ -2380,7 +3012,7 @@ text(x = -4.5, y=0.4, labels = bquote(Rejeitar~italic(H)[0]), pos = 4)
 
 ## {.unnumbered .unlisted .smaller} 
 
-###  Exemplo 12 (cont.) {.unnumbered .unlisted} 
+###  Exemplo 13 (cont.) {.unnumbered .unlisted} 
 
 ::: columns
 
@@ -2429,7 +3061,7 @@ text(x = -4.5, y=0.4, labels = bquote(Rejeitar~italic(H)[0]), pos = 4)
 
 ## {.unnumbered .unlisted .smaller} 
 
-###  Exemplo 12 (cont.) {.unnumbered .unlisted} 
+###  Exemplo 13 (cont.) {.unnumbered .unlisted} 
 
 ::: columns
 
