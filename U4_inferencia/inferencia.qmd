@@ -3729,10 +3729,10 @@ Se $n$ for pequeno e a população não for normal, o TCL pode fornecer uma apro
 
 ::: {.fragment style="border-style: solid; border-width: 3px; padding-bottom: 0px; padding-right: 12px; padding-left: 12px; font-size:70%;"}
 
-**Exemplo 10 (cont.):** Vimos que $\frac{n\bar{X}}{\mu} \sim \text{Gama}(n, \frac{1}{\lambda})$ para população $\text{Exp}(\lambda)$. [Suponha que desejamos testar
+**Exemplo 10 (cont.):** Vimos que $\frac{n\bar{X}}{\mu} \sim \text{Gama}(n, 1)$ para população $\text{Exp}(\lambda)$. [Suponha que desejamos testar
 $$H_0 : \mu \leq \mu_0 \quad \times \quad H_1 : \mu > \mu_0.$$]{.fragment}
 
-[Teremos evidências para rejeitar $H_0$ se $\bar{X}$ fornecer um valor significativamente maior do que 4, o que induz à $\text{RC} = \{\bar{X} > x_c\}$.]{.fragment} [Agora, sendo $g_{p,n}$ tal que $P(\text{Gama}(n,1) \leq g_{p,n}) = p$, temos que
+[Teremos evidências para rejeitar $H_0$ se $\bar{X}$ fornecer um valor significativamente maior do que $\mu_0$, o que induz à $\text{RC} = \{\bar{X} > x_c\}$.]{.fragment} [Agora, sendo $g_{p,n}$ tal que $P(\text{Gama}(n,1) \leq g_{p,n}) = p$, temos que
 $$
 \textstyle \alpha = \sup_\mu\alpha(\mu) = \alpha(\mu_0) = P(\bar{X} > x_c | \mu = \mu_0) = P(\frac{n\bar{X}}{\mu_0} > \frac{nx_c}{\mu_0}) = P(\text{Gama}(n,1) > \frac{nx_c}{\mu_0}).
 $$]{.fragment}
