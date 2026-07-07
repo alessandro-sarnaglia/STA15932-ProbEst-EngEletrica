@@ -6,8 +6,8 @@
 <script src="inferencia_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="inferencia_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="inferencia_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="inferencia_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.25">
+<link href="inferencia_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.36">
 
   <meta name="author" content="Prof.&nbsp;Dr.&nbsp;Alessandro JQ Sarnaglia">
   <title>Probabilidade e Estatística</title>
@@ -17,6 +17,9 @@
   <link rel="stylesheet" href="inferencia_files/libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="inferencia_files/libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -95,7 +98,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="inferencia_files/libs/revealjs/dist/theme/quarto-e34a86496f86bce26d8ba05cee7c0330.css">
+  <link rel="stylesheet" href="inferencia_files/libs/revealjs/dist/theme/quarto-d3d5040e18be6e0ee3d0355d7b3a05df.css">
   <link rel="stylesheet" href="fonts.css">
   <link rel="stylesheet" href="style.css">
   <link href="inferencia_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -525,7 +528,7 @@ Agora, derivando <span class="math inline">\(F_Y(y)\)</span>, obtemos
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>P[Med. Amost. ∈ (Med. Pop. ± 0.1)] ≈ 0.904</code></pre>
+<pre><code>P[Med. Amost. ∈ (Med. Pop. ± 0.1)] ≈ 0.897</code></pre>
 </div>
 </div>
 </div>
@@ -570,7 +573,7 @@ Agora, derivando <span class="math inline">\(F_Y(y)\)</span>, obtemos
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>P[Med. Amost. ∈ (Med. Pop. ± 0.1)] ≈ 0.975</code></pre>
+<pre><code>P[Med. Amost. ∈ (Med. Pop. ± 0.1)] ≈ 0.961</code></pre>
 </div>
 </div>
 </div>
@@ -2104,7 +2107,7 @@ A segunda utiliza o g.l. e o quantil para fornecer as probabilidades caudais.
 <p>Em pequenas amostras, o TCL pode fornecer uma aproximação imprecisa. Nesse caso, podemos recorrer ao fato que <span class="math inline">\(\sum_{i=1}^nX_i \sim \text{Gama}(n, \frac{1}{\lambda})\)</span> e que <span class="math inline">\(\sum_{i=1}^nX_i = n\bar{X} = \frac{n}{\hat\lambda}\)</span>. Além disso, das propriedades da distribuição Gama, podemos concluir que <span class="math inline">\(\lambda \frac{n}{\hat\lambda} \sim \text{Gama}(n, 1)\)</span>, a distribuição gama-padrão.</p>
 <div class="columns">
 <div id="vcenter" class="column" style="width:55%;">
-<p><span class="fragment" data-fragment-index="2">Definindo <span class="math inline">\(g_{p,n}\)</span> tal que <span class="math inline">\(P(\text{Gama}(\alpha,1) \leq g_{p,\alpha}) = p\)</span></span><span class="fragment" data-fragment-index="3">, temos que</span></p>
+<p><span class="fragment" data-fragment-index="2">Definindo <span class="math inline">\(g_{p,\alpha}\)</span> tal que <span class="math inline">\(P(\text{Gama}(\alpha,1) \leq g_{p,\alpha}) = p\)</span></span><span class="fragment" data-fragment-index="3">, temos que</span></p>
 <div style="display: flex; justify-content: center;">
 <table>
 <tbody><tr class="fragment" data-fragment-index="3">
@@ -2409,7 +2412,7 @@ H_0 : \mu = 155, \sigma = 18 \quad \times \quad H_1 : \mu = 145, \sigma = 12.
 </div>
 </div>
 </div></div>
-<div class="fragment" data-fragment-index="5">
+<div class="fragment" data-fragment-index="5" style="font-size: 1.428571em;">
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -2663,7 +2666,7 @@ Perceba que, se <span class="math inline">\(\bar{X}\)</span> fornecer um valor m
 O valor crítico <span class="math inline">\(x_c\)</span> é o ponto que determina o que é muito maior do que <span class="math inline">\(\mu_0\)</span>.
 </li>
 <li class="fragment" data-fragment-index="6">
-Portanto, <span class="math inline">\(RC_{H_0} = \{\bar{X} &gt; x_c\}\)</span>;
+Portanto, <span class="math inline">\(\text{RC} = \{\bar{X} &gt; x_c\}\)</span>;
 </li>
 <li class="fragment" data-fragment-index="7">
 Como determinar <span class="math inline">\(x_c\)</span>?
@@ -2758,6 +2761,528 @@ Como determinar <span class="math inline">\(x_c\)</span>?
 </div>
 </div></div>
 </section>
+<section id="teste-para-mu-3" class="slide level2 unnumbered unlisted">
+<h2>3.1 Teste para <span class="math inline">\(\mu\)</span></h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="callout callout-caution no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Observações</strong></p>
+</div>
+<div class="callout-content">
+<strong>Caso 2:</strong> Suponha que desejamos testar as hipóteses: <span class="math display">\[H_0 : \mu \geq \mu_0 \quad \times \quad H_1 : \mu &lt; \mu_0\]</span>
+<ul>
+<li class="fragment" data-fragment-index="1">
+Podemos utilizar a média amostral <span class="math inline">\(\bar{X}\)</span> para construir a RC;
+</li>
+<li class="fragment" data-fragment-index="2">
+Perceba que, se <span class="math inline">\(\bar{X}\)</span> fornecer um valor muito menor que <span class="math inline">\(\mu_0\)</span>, teremos fortes evidências para rejeitar <span class="math inline">\(H_0\)</span> em favor de <span class="math inline">\(H_1\)</span>.
+</li>
+<li class="fragment" data-fragment-index="4">
+O valor crítico <span class="math inline">\(x_c\)</span> é o ponto que determina o que é muito menor do que <span class="math inline">\(\mu_0\)</span>.
+</li>
+<li class="fragment" data-fragment-index="6">
+Portanto, <span class="math inline">\(\text{RC} = \{\bar{X} &lt; x_c\}\)</span>;
+</li>
+<li class="fragment" data-fragment-index="7">
+Como determinar <span class="math inline">\(x_c\)</span>?
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="r-stack">
+<div class="fragment fade-in-then-out" data-fragment-index="2">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-27-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-in-then-out" data-fragment-index="3">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-28-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-in-then-out" data-fragment-index="4">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-29-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-in" data-fragment-index="5">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-30-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="teste-para-mu-4" class="slide level2 unnumbered unlisted">
+<h2>3.1 Teste para <span class="math inline">\(\mu\)</span></h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="callout callout-caution no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Observação</strong></p>
+</div>
+<div class="callout-content">
+<p>Para uma significância <span class="math inline">\(\alpha\)</span> <span class="fragment" data-fragment-index="1">e <span class="math inline">\(z_{\alpha}\)</span> tal que <span class="math inline">\(P(Z &gt; z_{\alpha}) = \alpha\)</span>,</span> <span class="fragment" data-fragment-index="2">temos <span class="math inline">\(P(Z &lt; -z_\alpha) = \alpha\)</span>.</span> <span class="fragment" data-fragment-index="3">Pelo TCL, vem que <span class="math display">\[\begin{aligned}
+\alpha &amp;= \sup \alpha(\mu) = \alpha(\mu_0) = P(\text{Rejeitar } H_0 \mid \mu = \mu_0) \\
+&amp;= \textstyle P(\bar{X} &lt; x_c \mid \mu = \mu_0) = P\left( \frac{\bar{X} - \mu_0}{\sigma/\sqrt{n}} &lt; \frac{x_c - \mu_0}{\sigma/\sqrt{n}} \right) \\
+&amp;\approx \textstyle  P\left( Z &lt; \frac{x_c - \mu_0}{\sigma/\sqrt{n}} \right).
+\end{aligned}
+\]</span></span></p>
+<p><span class="fragment" data-fragment-index="4">Logo, <span class="math inline">\(\frac{x_c - \mu_0}{\sigma/\sqrt{n}} = -z_{\alpha}\)</span>, isto é, <span class="math inline">\(x_c = \mu_0 - z_{\alpha} \frac{\sigma}{\sqrt{n}}\)</span>.</span> <span class="fragment" data-fragment-index="5">Assim, rejeitamos <span class="math inline">\(H_0\)</span> ao nível de significância <span class="math inline">\(\alpha\)</span> se <span class="math display">\[
+\textstyle \bar{X} &lt; \mu_0 - z_{\alpha} \frac{\sigma}{\sqrt{n}}.
+\]</span></span></p>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="r-stack">
+<div class="fragment fade-in-then-out" data-fragment-index="1">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-31-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-in" data-fragment-index="2">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-32-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="teste-para-mu-5" class="slide level2 unnumbered unlisted">
+<h2>3.1 Teste para <span class="math inline">\(\mu\)</span></h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="callout callout-caution no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Observações</strong></p>
+</div>
+<div class="callout-content">
+<strong>Caso 3:</strong> Suponha que desejamos testar as hipóteses: <span class="math display">\[H_0 : \mu = \mu_0 \quad \times \quad H_1 : \mu \neq \mu_0\]</span>
+<ul>
+<li class="fragment" data-fragment-index="1">
+Vamos utilizar a média amostral <span class="math inline">\(\bar{X}\)</span> para construir a RC;
+</li>
+<li class="fragment" data-fragment-index="2">
+Perceba que, se <span class="math inline">\(\bar{X}\)</span> fornecer um valor muito diferente (muito menor ou maior) que <span class="math inline">\(\mu_0\)</span>, teremos fortes evidências para rejeitar <span class="math inline">\(H_0\)</span> em favor de <span class="math inline">\(H_1\)</span>.
+</li>
+<li class="fragment" data-fragment-index="4">
+Os valores críticos <span class="math inline">\(x_{c_1}\)</span> e <span class="math inline">\(x_{c_2}\)</span> delimitam o que é muito menor ou maior do que <span class="math inline">\(\mu_0\)</span>.
+</li>
+<li class="fragment" data-fragment-index="6">
+Portanto, <span class="math inline">\(\text{RC} = \{(\bar{X} &lt; x_{c_1}) \cup (\bar{X} &gt; x_{c_2})\}\)</span>;
+</li>
+<li class="fragment" data-fragment-index="7">
+Como determinar <span class="math inline">\(x_{c_1}\)</span> e <span class="math inline">\(x_{c_2}\)</span>?
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="r-stack">
+<div class="fragment fade-in-then-out" data-fragment-index="2">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-33-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-in-then-out" data-fragment-index="3">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-34-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-in-then-out" data-fragment-index="4">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-35-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-in" data-fragment-index="5">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-36-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="teste-para-mu-6" class="slide level2 unnumbered unlisted">
+<h2>3.1 Teste para <span class="math inline">\(\mu\)</span></h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="callout callout-caution no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Observação</strong></p>
+</div>
+<div class="callout-content">
+<p>Com significância <span class="math inline">\(\alpha\)</span> <span class="fragment" data-fragment-index="1">e sendo <span class="math inline">\(z_{\alpha}\)</span> tal que <span class="math inline">\(P(Z &gt; z_{\alpha}) = \alpha\)</span>,</span> <span class="fragment" data-fragment-index="2">temos <span class="math inline">\(P(Z &lt; -z_\alpha) = \alpha\)</span>.</span> <span class="fragment" data-fragment-index="3">Do TCL, vem <span class="math display">\[\begin{aligned}
+\alpha &amp;= \sup \alpha(\mu) = \alpha(\mu_0) = P(\text{Rejeitar } H_0 \mid \mu = \mu_0) \\
+&amp;= \textstyle P\left[(\bar{X} &lt; x_{c_1}) \cup (\bar{X} &gt; x_{c_2}) \mid \mu = \mu_0 \right]\\
+&amp;= \textstyle P\left( \frac{\bar{X} - \mu_0}{\sigma/\sqrt{n}} &lt; \frac{x_{c_1} - \mu_0}{\sigma/\sqrt{n}} \right) + P\left( \frac{\bar{X} - \mu_0}{\sigma/\sqrt{n}} &gt; \frac{x_{c_2} - \mu_0}{\sigma/\sqrt{n}} \right) \\
+&amp;\approx \textstyle  P\left( Z &lt; \frac{x_{c_1} - \mu_0}{\sigma/\sqrt{n}} \right) + P\left( Z &gt; \frac{x_{c_2} - \mu_0}{\sigma/\sqrt{n}} \right).
+\end{aligned}
+\]</span></span> <span class="fragment" data-fragment-index="4">Dividindo <span class="math inline">\(\alpha\)</span> igualmente, vem <span class="math inline">\(\frac{x_{c_1} - \mu_0}{\sigma/\sqrt{n}} = -z_{\frac{\alpha}{2}}\)</span> e <span class="math inline">\(\frac{x_{c_2} - \mu_0}{\sigma/\sqrt{n}} = z_{\frac{\alpha}{2}}\)</span>.</span> <span class="fragment" data-fragment-index="5">Assim, rejeitamos <span class="math inline">\(H_0\)</span> ao nível <span class="math inline">\(\alpha\)</span> se <span class="math display">\[
+\textstyle \bar{X} &lt; x_{c_1} = \mu_0 - z_{\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}} \ \ \ \text{ou} \ \ \ \bar{X} &gt; x_{c_2} = \mu_0 + z_{\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}.
+\]</span></span></p>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<div class="r-stack">
+<div class="fragment fade-in-then-out" data-fragment-index="1">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-37-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-in" data-fragment-index="2">
+<div class="fragment fade-out" data-fragment-index="4">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-38-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-in" data-fragment-index="4">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-39-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="section-16" class="slide level2 unnumbered unlisted smaller">
+<h2></h2>
+<h3 class="unnumbered unlisted" id="exemplo-13">Exemplo 13</h3>
+<p><strong>Contextualização:</strong> Os sistemas de escapamento de uma aeronave funcionam devido a um propelente sólido. A taxa de queima é uma característica importante desse produto.</p>
+<p><span class="fragment" data-fragment-index="1">Suponha que:</span></p>
+<ul>
+<li class="fragment" data-fragment-index="1">
+as especificações exigem que a taxa de queima média seja de <span class="math inline">\(50 \text{ cm/s}\)</span>;
+</li>
+<li class="fragment" data-fragment-index="2">
+de experiências anteriores, o desvio-padrão dessa variável pode ser tomado como <span class="math inline">\(\sigma = 2 \text{ cm/s}\)</span>;
+</li>
+<li class="fragment" data-fragment-index="3">
+uma amostra de tamanho <span class="math inline">\(n = 25\)</span> forneceu taxa média de queima de <span class="math inline">\(\bar{x} = 51\text{,}3 \text{ cm/s}\)</span>.
+</li>
+</ul>
+<div class="fragment" data-fragment-index="4" style="font-size: 1.428571em;">
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Pergunta</strong></p>
+</div>
+<div class="callout-content">
+<p>Quais conclusões podem ser tiradas ao nível de significância de <span class="math inline">\(\alpha = 0\text{,}05\)</span>?</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="section-17" class="slide level2 unnumbered unlisted smaller">
+<h2></h2>
+<h3 class="unnumbered unlisted" id="exemplo-13-cont.">Exemplo 13 (cont.)</h3>
+<p><strong>Teste bilateral:</strong> O problema nos leva a formular o teste das seguintes hipóteses: <span class="math display">\[
+H_0 : \mu = 50 \quad \times \quad H_1 : \mu \neq 50.
+\]</span> <span class="fragment" data-fragment-index="1"><strong>Dados:</strong> Temos as seguintes informações: <span class="math inline">\(\bar{x} = 51\text{,}3\)</span>; <span class="math inline">\(\sigma = 2\)</span>; <span class="math inline">\(n = 25\)</span>; <span class="math inline">\(\alpha = 0\text{,}05\)</span>; e <span class="math inline">\(\mu_0 = 50\)</span>.</span></p>
+<p><span class="fragment" data-fragment-index="2"><strong>Solução:</strong> Como <span class="math inline">\(\alpha = 0\text{,}05\)</span> e o teste é bilateral, temos <span class="math inline">\(z_{\frac{\alpha}{2}} = z_{0\text{,}025} = 1\text{,}96\)</span>.</span> <span class="fragment" data-fragment-index="3">Por sua vez, os valores críticos são <span class="math display">\[
+\begin{aligned}
+x_{c_1} &amp;= \mu_0 - z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}} = 50 - 1\text{,}96\left(\frac{2}{\sqrt{25}}\right) = 50 - 1\text{,}96(0\text{,}4) = 49\text{,}216 \\
+x_{c_2} &amp;= \mu_0 + z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}} = 50 + 1\text{,}96\left(\frac{2}{\sqrt{25}}\right) = 50 + 1\text{,}96(0\text{,}4) = 50\text{,}784
+\end{aligned}
+\]</span></span></p>
+<p><span class="fragment" data-fragment-index="4"><strong>Decisão:</strong> Como <span class="math inline">\(\bar{x} = 51\text{,}3 &gt; x_{c_2} = 50\text{,}784\)</span>, rejeitamos <span class="math inline">\(H_0\)</span> ao nível de significância de <span class="math inline">\(5\%\)</span>.</span></p>
+</section>
+<section id="teste-para-mu-7" class="slide level2 unnumbered unlisted">
+<h2>3.1 Teste para <span class="math inline">\(\mu\)</span></h2>
+<table style="width: 100%; border-collapse: collapse; margin-top: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.05); font-size: 0.75em; border-radius: 8px; overflow: hidden;">
+<thead>
+<tr style="background-color: #3b5998; color: white; text-align: left;">
+<th style="padding: 12px 15px; border: 1px solid #ddd;">
+Hipótese Alternativa (<span class="math inline">\(H_1\)</span>)
+</th>
+<th style="padding: 12px 15px; border: 1px solid #ddd;">
+Região Crítica / Rejeitar <span class="math inline">\(H_0\)</span> se:
+</th>
+<th style="padding: 12px 15px; border: 1px solid #ddd;">
+Valor(es) Crítico(s)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background-color: #fcfcfc;">
+<td style="padding: 12px 15px; border: 1px solid #ddd;">
+<span class="math inline">\(H_1 : \mu &gt; \mu_0\)</span> (unilateral à direita)
+</td>
+<td style="padding: 12px 15px; border: 1px solid #ddd; color: #d9534f; font-weight: bold;">
+<span class="math inline">\(\bar{X} &gt; x_c\)</span>
+</td>
+<td style="padding: 12px 15px; border: 1px solid #ddd;">
+<span class="math inline">\(x_c = \mu_0 + z_{\alpha} \frac{\sigma}{\sqrt{n}}\)</span>
+</td>
+</tr>
+<tr style="background-color: #f4f6f9;">
+<td style="padding: 12px 15px; border: 1px solid #ddd;">
+<span class="math inline">\(H_1 : \mu &lt; \mu_0\)</span> (unilateral à esquerda)
+</td>
+<td style="padding: 12px 15px; border: 1px solid #ddd; color: #d9534f; font-weight: bold;">
+<span class="math inline">\(\bar{X} &lt; x_c\)</span>
+</td>
+<td style="padding: 12px 15px; border: 1px solid #ddd;">
+<span class="math inline">\(x_c = \mu_0 - z_{\alpha} \frac{\sigma}{\sqrt{n}}\)</span>
+</td>
+</tr>
+<tr style="background-color: #fcfcfc;">
+<td style="padding: 12px 15px; border: 1px solid #ddd;">
+<span class="math inline">\(H_1 : \mu \neq \mu_0\)</span> (bilateral)
+</td>
+<td style="padding: 12px 15px; border: 1px solid #ddd; color: #d9534f; font-weight: bold;">
+<span class="math inline">\(\bar{X} &lt; x_{c_1}\)</span> ou <span class="math inline">\(\bar{X} &gt; x_{c_2}\)</span>
+</td>
+<td style="padding: 12px 15px; border: 1px solid #ddd;">
+<span class="math inline">\(x_{c_1} = \mu_0 - z_{\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\)</span> <br> <span class="math inline">\(x_{c_2} = \mu_0 + z_{\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\)</span>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="teste-para-mu-8" class="slide level2 unnumbered unlisted">
+<h2>3.1 Teste para <span class="math inline">\(\mu\)</span></h2>
+<div class="callout callout-caution no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Observações</strong></p>
+</div>
+<div class="callout-content">
+<ol>
+<li>
+Os testes para <span class="math inline">\(\mu\)</span> se baseiam no TCL para aproximar a distribuição de <span class="math inline">\(\frac{\bar{X} - \mu}{\sigma/\sqrt{n}}\)</span> pela normal padrão. O que faz com que o nível de significância <span class="math inline">\(\alpha\)</span> seja aproximado no caso geral.
+</li>
+<li class="fragment">
+No caso geral, é necessário <span class="math inline">\(n\)</span> grande para uma aproximação satisfatória;
+</li>
+<li class="fragment">
+Se a população for normal, a aproximação do TCL não é necessária e o nível de significância é exato, independente do tamanho amostral;
+</li>
+<li class="fragment">
+Se <span class="math inline">\(\sigma^2\)</span> for desconhecida:
+<ul>
+<li class="fragment">
+e <span class="math inline">\(n\)</span> for suficientemente grande, podemos substituir <span class="math inline">\(\sigma^2\)</span> por <span class="math inline">\(S^2\)</span>, pois a consistência de <span class="math inline">\(S^2\)</span> garante que a incerteza adicional provocada pela aproximação é negligenciável em grandes amostras;
+</li>
+<li class="fragment">
+e <span class="math inline">\(n\)</span> for pequeno, a incerteza adicional em substituir <span class="math inline">\(\sigma^2\)</span> por <span class="math inline">\(S^2\)</span> não pode ser desprezada.
+</li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Problema</strong></p>
+</div>
+<div class="callout-content">
+<p>O que fazer se <span class="math inline">\(\sigma^2\)</span> for desconhecido e <span class="math inline">\(n\)</span> for pequeno?</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="teste-para-mu-9" class="slide level2 unnumbered unlisted">
+<h2>3.1 Teste para <span class="math inline">\(\mu\)</span></h2>
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Propriedade</strong></p>
+</div>
+<div class="callout-content">
+<p>Como visto em Intervalos de Confiança, se <span class="math inline">\(n\)</span> for pequeno e a <strong>população for normal</strong>, <span class="math inline">\(T = \frac{\bar{X} - \mu}{S/\sqrt{n}}\)</span> tem distribuição <span class="math inline">\(t_{n-1}\)</span>. Nesse caso, definindo novamente <span class="math inline">\(t_{\alpha,\ \nu}\)</span> como o valor tal que <span class="math inline">\(P(T &gt; t_{\alpha,\ \nu}) = \alpha\)</span> e seguindo os mesmos passos para <span class="math inline">\(\sigma^2\)</span> conhecida, obtemos as seguintes RC e valores críticos correspondentes.</p>
+</div>
+</div>
+</div>
+<table style="width: 100%; border-collapse: collapse; margin-top: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.05); font-size: 0.75em; border-radius: 8px; overflow: hidden;">
+<thead>
+<tr style="background-color: #3b5998; color: white; text-align: left;">
+<th style="padding: 12px 15px; border: 1px solid #ddd;">
+Hipótese Alternativa (<span class="math inline">\(H_1\)</span>)
+</th>
+<th style="padding: 12px 15px; border: 1px solid #ddd;">
+Região Crítica / Rejeitar <span class="math inline">\(H_0\)</span> se:
+</th>
+<th style="padding: 12px 15px; border: 1px solid #ddd;">
+Valor(es) Crítico(s)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background-color: #fcfcfc;">
+<td style="padding: 12px 15px; border: 1px solid #ddd;">
+<span class="math inline">\(H_1 : \mu &gt; \mu_0\)</span> (unilateral à direita)
+</td>
+<td style="padding: 12px 15px; border: 1px solid #ddd; color: #d9534f; font-weight: bold;">
+<span class="math inline">\(\bar{X} &gt; x_c\)</span>
+</td>
+<td style="padding: 12px 15px; border: 1px solid #ddd;">
+<span class="math inline">\(x_c = \mu_0 + t_{\alpha,\ n-1} \frac{\sigma}{\sqrt{n}}\)</span>
+</td>
+</tr>
+<tr style="background-color: #f4f6f9;">
+<td style="padding: 12px 15px; border: 1px solid #ddd;">
+<span class="math inline">\(H_1 : \mu &lt; \mu_0\)</span> (unilateral à esquerda)
+</td>
+<td style="padding: 12px 15px; border: 1px solid #ddd; color: #d9534f; font-weight: bold;">
+<span class="math inline">\(\bar{X} &lt; x_c\)</span>
+</td>
+<td style="padding: 12px 15px; border: 1px solid #ddd;">
+<span class="math inline">\(x_c = \mu_0 - t_{\alpha,\ n-1} \frac{\sigma}{\sqrt{n}}\)</span>
+</td>
+</tr>
+<tr style="background-color: #fcfcfc;">
+<td style="padding: 12px 15px; border: 1px solid #ddd;">
+<span class="math inline">\(H_1 : \mu \neq \mu_0\)</span> (bilateral)
+</td>
+<td style="padding: 12px 15px; border: 1px solid #ddd; color: #d9534f; font-weight: bold;">
+<span class="math inline">\(\bar{X} &lt; x_{c_1}\)</span> ou <span class="math inline">\(\bar{X} &gt; x_{c_2}\)</span>
+</td>
+<td style="padding: 12px 15px; border: 1px solid #ddd;">
+<span class="math inline">\(x_{c_1} = \mu_0 - t_{\frac{\alpha}{2},\ n-1} \frac{\sigma}{\sqrt{n}}\)</span> <br> <span class="math inline">\(x_{c_2} = \mu_0 + t_{\frac{\alpha}{2},\ n-1} \frac{\sigma}{\sqrt{n}}\)</span>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="teste-para-mu-10" class="slide level2 unnumbered unlisted">
+<h2>3.1 Teste para <span class="math inline">\(\mu\)</span></h2>
+
+<img data-src="figs/fig_tabela_tstudent_quantis_F01.drawio.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section id="teste-para-mu-11" class="slide level2 unnumbered unlisted">
+<h2>3.1 Teste para <span class="math inline">\(\mu\)</span></h2>
+<div class="callout callout-caution no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Observação</strong></p>
+</div>
+<div class="callout-content">
+<p>Se <span class="math inline">\(n\)</span> for pequeno e a população não for normal, o TCL pode fornecer uma aproximação imprecisa. Nesse caso, podemos optar por testes Bootstrap (não abordados aqui) ou testes exatos.</p>
+</div>
+</div>
+</div>
+<div class="fragment" style="border-style: solid; border-width: 3px; padding-bottom: 0px; padding-right: 12px; padding-left: 12px; font-size:70%;">
+<p><strong>Exemplo 10 (cont.):</strong> Vimos que <span class="math inline">\(\frac{n\bar{X}}{\mu} \sim \text{Gama}(n, \frac{1}{\lambda})\)</span> para população <span class="math inline">\(\text{Exp}(\lambda)\)</span>. <span class="fragment">Suponha que desejamos testar <span class="math display">\[H_0 : \mu \leq \mu_0 \quad \times \quad H_1 : \mu &gt; \mu_0.\]</span></span></p>
+<p><span class="fragment">Teremos evidências para rejeitar <span class="math inline">\(H_0\)</span> se <span class="math inline">\(\bar{X}\)</span> fornecer um valor significativamente maior do que 4, o que induz à <span class="math inline">\(\text{RC} = \{\bar{X} &gt; x_c\}\)</span>.</span> <span class="fragment">Agora, sendo <span class="math inline">\(g_{p,n}\)</span> tal que <span class="math inline">\(P(\text{Gama}(n,1) \leq g_{p,n}) = p\)</span>, temos que <span class="math display">\[
+\textstyle \alpha = \sup_\mu\alpha(\mu) = \alpha(\mu_0) = P(\bar{X} &gt; x_c | \mu = \mu_0) = P(\frac{n\bar{X}}{\mu_0} &gt; \frac{nx_c}{\mu_0}) = P(\text{Gama}(n,1) &gt; \frac{nx_c}{\mu_0}).
+\]</span></span></p>
+<p><span class="fragment">Isso implica em <span class="math inline">\(P(\text{Gama}(n,1) \leq \frac{nx_c}{\mu_0}) = 1-\alpha\)</span>, logo <span class="math inline">\(\frac{nx_c}{\mu_0} = g_{1-\alpha,n}\)</span>.</span> <span class="fragment">Assim, rejeitamos <span class="math inline">\(H_0\)</span> se <span class="math inline">\(\bar{X} &gt; x_c = \frac{\mu_0}{n}g_{1-\alpha,n}\)</span>.</span></p>
+</div>
+</section>
+<section id="section-18" class="slide level2 unnumbered unlisted smaller">
+<h2></h2>
+<h3 class="unnumbered unlisted" id="exemplo-10-cont.-2">Exemplo 10 (cont.)</h3>
+<p>No mesmo exemplo, vimos que uma aa de <span class="math inline">\(n = 9\)</span> bombas produziu <span class="math inline">\(\hat\lambda = 0\text{,}237\)</span>, o que equivale a <span class="math inline">\(\bar{X} = 1/\hat\lambda = 1/0\text{,}237 = 4\text{,}219\)</span>. <span class="fragment">Suponha que desejamos testar <span class="math display">\[H_0 : \mu \leq 4 \quad \times \quad H_1 : \mu &gt; 4.\]</span></span></p>
+<p><span class="fragment">Como discutido anteriormente, temos <span class="math inline">\(\text{RC} = \{\bar{X} &gt; x_c\}\)</span>, onde <span class="math inline">\(x_c = \frac{\mu_0}{n}g_{1-\alpha,n}\)</span>.</span></p>
+<p><span class="fragment">Com confiança <span class="math inline">\(\alpha = 0.05\)</span>, temos <span class="math inline">\(g_{1-\alpha,n} = g_{0\text{,}95,\ 9} \approx 14\)</span> (valor exato 14,435).</span> <span class="fragment">Logo, <span class="math display">\[
+x_c = \frac{\mu_0}{n}g_{1-\alpha,n} = \frac{4}{9}\cdot 14 = 6\text{,}222 \quad \text{(valor exato 6,416)}.
+\]</span></span></p>
+<p><span class="fragment">Como <span class="math inline">\(\bar{X} = 4\text{,}219 \not&gt; x_c = 6\text{,}222\)</span>, concluímos que os dados não trazem evidências suficientes para rejeitar <span class="math inline">\(H_0 : \mu \leq 4\)</span> ao nível de significância de <span class="math inline">\(\alpha = 0\text{,}05\)</span>.</span></p>
+<div class="fragment" style="font-size: 1.428571em;">
+<div class="callout callout-caution no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Observação</strong></p>
+</div>
+<div class="callout-content">
+<p>O desencadeamento lógico pode ser adaptado para testar hipóteses sobre o parâmetro <span class="math inline">\(\lambda\)</span> em vez de <span class="math inline">\(\mu\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
 <section id="p-valor" class="slide level2" data-number="3.2">
 <h2><span class="header-section-number">3.2</span> <span class="math inline">\(p\)</span>-valor</h2>
 <div class="callout callout-caution no-icon callout-titled callout-style-default">
@@ -2771,7 +3296,7 @@ Como determinar <span class="math inline">\(x_c\)</span>?
 </div>
 </div>
 <div style="border-style: solid; border-width: 3px; padding-bottom: 0px; padding-right: 12px; padding-left: 12px; font-size:70%;">
-<p><strong>Exemplo 13:</strong> O tempo médio de alivio das dores do medicamento mais vendido no mercado é de 10 min. Uma empresa desenvolveu um medicamento e colocou a venda afirmando que um teste estatístico rejeitou <span class="math inline">\(H_0 : \mu \geq 10\)</span> em favor de <span class="math inline">\(H_1 : \mu &lt; 10\)</span> ao nível de 0.1.</p>
+<p><strong>Exemplo 14:</strong> O tempo médio de alivio das dores do medicamento mais vendido no mercado é de 10 min. Uma empresa desenvolveu um medicamento e colocou a venda afirmando que um teste estatístico rejeitou <span class="math inline">\(H_0 : \mu \geq 10\)</span> em favor de <span class="math inline">\(H_1 : \mu &lt; 10\)</span> ao nível de 0.1.</p>
 </div>
 <div class="callout callout-caution no-icon callout-titled callout-style-default">
 <div class="callout-body">
@@ -2784,9 +3309,9 @@ Como determinar <span class="math inline">\(x_c\)</span>?
 </div>
 </div>
 </section>
-<section id="section-16" class="slide level2 unnumbered unlisted smaller">
+<section id="section-19" class="slide level2 unnumbered unlisted smaller">
 <h2></h2>
-<h3 class="unnumbered unlisted" id="exemplo-13-cont.">Exemplo 13 (cont.)</h3>
+<h3 class="unnumbered unlisted" id="exemplo-14-cont.">Exemplo 14 (cont.)</h3>
 <div class="columns">
 <div id="vcenter" class="column" style="width:55%;">
 <p>Suponha que a empresa tenha feito o teste com <span class="math inline">\(n=49\)</span> e obteve <span class="math inline">\(\bar{x} = 9\)</span> e <span class="math inline">\(s^2 = 10.89\)</span>. A região crítica é da forma <span class="math inline">\(\text{RC} = \{\bar{X} &lt; x_c\}\)</span>, por meio da padronização podemos reescrevê-la como</p>
@@ -2805,7 +3330,7 @@ Como determinar <span class="math inline">\(x_c\)</span>?
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-27-1.png" width="528"></p>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-40-1.png" width="528"></p>
 </figure>
 </div>
 </div>
@@ -2813,9 +3338,9 @@ Como determinar <span class="math inline">\(x_c\)</span>?
 </div>
 </div></div>
 </section>
-<section id="section-17" class="slide level2 unnumbered unlisted smaller">
+<section id="section-20" class="slide level2 unnumbered unlisted smaller">
 <h2></h2>
-<h3 class="unnumbered unlisted" id="exemplo-13-cont.-1">Exemplo 13 (cont.)</h3>
+<h3 class="unnumbered unlisted" id="exemplo-14-cont.-1">Exemplo 14 (cont.)</h3>
 <div class="columns">
 <div id="vcenter" class="column" style="width:55%;">
 <p>Suponha que a empresa tenha feito o teste com <span class="math inline">\(n=49\)</span> e obteve <span class="math inline">\(\bar{x} = 9\)</span> e <span class="math inline">\(s^2 = 10.89\)</span>. A região crítica é da forma <span class="math inline">\(\text{RC} = \{\bar{X} &lt; x_c\}\)</span>, por meio da padronização podemos reescrevê-la como</p>
@@ -2833,16 +3358,16 @@ Como determinar <span class="math inline">\(x_c\)</span>?
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-28-1.png" width="528"></p>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-41-1.png" width="528"></p>
 </figure>
 </div>
 </div>
 </div>
 </div></div>
 </section>
-<section id="section-18" class="slide level2 unnumbered unlisted smaller">
+<section id="section-21" class="slide level2 unnumbered unlisted smaller">
 <h2></h2>
-<h3 class="unnumbered unlisted" id="exemplo-13-cont.-2">Exemplo 13 (cont.)</h3>
+<h3 class="unnumbered unlisted" id="exemplo-14-cont.-2">Exemplo 14 (cont.)</h3>
 <div class="columns">
 <div id="vcenter" class="column" style="width:55%;">
 <p>Suponha que a empresa tenha feito o teste com <span class="math inline">\(n=49\)</span> e obteve <span class="math inline">\(\bar{x} = 9\)</span> e <span class="math inline">\(s^2 = 10.89\)</span>. A região crítica é da forma <span class="math inline">\(\text{RC} = \{\bar{X} &lt; x_c\}\)</span>, por meio da padronização podemos reescrevê-la como</p>
@@ -2860,7 +3385,7 @@ Como determinar <span class="math inline">\(x_c\)</span>?
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-29-1.png" width="528"></p>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-42-1.png" width="528"></p>
 </figure>
 </div>
 </div>
@@ -2897,7 +3422,7 @@ Como determinar <span class="math inline">\(x_c\)</span>?
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-30-1.png" width="528"></p>
+<p><img data-src="inferencia_files/figure-revealjs/unnamed-chunk-43-1.png" width="528"></p>
 </figure>
 </div>
 </div>
@@ -3009,10 +3534,10 @@ em que <span class="math inline">\(F_T(\cdot)\)</span> é a fda da distribuiçã
 <p>3</p>
 <p>4</p>
 </div></div>
-<p><span class="math display">\[\begin{aligned}
+<p><span class="math display">\[\begin{align*}
 \Omega &amp;= \{(1,1), (1,2), \ldots, (4,4)\}\\
        &amp;= \{(x,y) : x,y = 1,\ldots,4\}.
-\end{aligned}\]</span></p>
+\end{align*}\]</span></p>
 </section>
 
 <section id="fim-1" class="title-slide slide level1 unnumbered unlisted center">
@@ -3238,80 +3763,42 @@ em que <span class="math inline">\(F_T(\cdot)\)</span> é a fda da distribuiçã
       });
     </script>
     
-
     <script>
-
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-
       // slide changes (different for each slide format).
-
       (function () {
-
         // dispatch for htmlwidgets
-
         function fireSlideEnter() {
-
           const event = window.document.createEvent("Event");
-
           event.initEvent("slideenter", true, true);
-
           window.document.dispatchEvent(event);
-
         }
-
-    
 
         function fireSlideChanged(previousSlide, currentSlide) {
-
           fireSlideEnter();
 
-    
-
           // dispatch for shiny
-
           if (window.jQuery) {
-
             if (previousSlide) {
-
               window.jQuery(previousSlide).trigger("hidden");
-
             }
-
             if (currentSlide) {
-
               window.jQuery(currentSlide).trigger("shown");
-
             }
-
           }
-
         }
-
-    
 
         // hookup for slidy
-
         if (window.w3c_slidy) {
-
           window.w3c_slidy.add_observer(function (slide_num) {
-
             // slide_num starts at position 1
-
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-
           });
-
         }
 
-    
-
       })();
-
     </script>
-
-    
 
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {

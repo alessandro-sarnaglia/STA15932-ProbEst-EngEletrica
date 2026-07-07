@@ -2067,7 +2067,7 @@ Em pequenas amostras, o TCL pode fornecer uma aproximação imprecisa. Nesse cas
 
 ::: {.column #vcenter width=55%}
 
-[Definindo $g_{p,n}$ tal que $P(\text{Gama}(\alpha,1) \leq g_{p,\alpha}) = p$]{.fragment fragment-index=2}[, temos que]{.fragment fragment-index=3}
+[Definindo $g_{p,\alpha}$ tal que $P(\text{Gama}(\alpha,1) \leq g_{p,\alpha}) = p$]{.fragment fragment-index=2}[, temos que]{.fragment fragment-index=3}
 
 <div style="display: flex; justify-content: center;">
 
@@ -2443,7 +2443,7 @@ abline(h = 0, col = "gray50")
 
 :::
 
-::: {.callout-tip .fragment fragment-index=5}
+::: {.callout-tip .fragment fragment-index=5 style="font-size: 1.428571em;"}
 ## Exercício
 
 Encontre $\beta$ para a RC obtida acima.
@@ -2759,7 +2759,7 @@ $$H_0 : \mu \leq \mu_0 \quad \times \quad H_1 : \mu > \mu_0$$
     O valor crítico $x_c$ é o ponto que determina o que é muito maior do que $\mu_0$.
   </li>
   <li class="fragment" data-fragment-index=6>
-    Portanto, $RC_{H_0} = \{\bar{X} > x_c\}$;
+    Portanto, $\text{RC} = \{\bar{X} > x_c\}$;
   </li>
   <li class="fragment" data-fragment-index=7>
     Como determinar $x_c$?
@@ -2911,12 +2911,14 @@ plot(
   axes = FALSE, 
   xlab = "z", 
   ylab = "", 
-  main = expression(paste("Região de Rejeição à Direita"))
+  main = ""
 )
 
 # Customização do eixo x incluindo o ponto z_alpha
-axis(1, at = c(-3, -2, -1, 0, 1, z_alpha, 2, 3), 
-     labels = c("-3", "-2", "-1", "0", "1", expression(z[alpha]), "2", "3"), cex.axis = 1.1)
+axis(1, at = c(-3, -2, -1, 0, 1, 2, 3), 
+     labels = c("-3", "-2", "-1", "0", "1", "2", "3"), cex.axis = 1.1)
+axis(1, at = c(z_alpha), 
+     labels = c(expression(z[alpha])), cex.axis = 1, col.axis = "#3b5998", col = "#3b5998", col.ticks = "#3b5998")
 
 # 3. Colorindo a região de rejeição (cauda superior)
 x_shading <- seq(z_alpha, 3.5, length = 100)
@@ -2939,6 +2941,828 @@ abline(h = 0, col = "gray50")
 
 :::
 
+
+## 3.1 Teste para $\mu$ {.unnumbered .unlisted}
+
+::: {.columns}
+
+::: {.column width="55%"}
+
+::: {.callout-caution}
+## Observações
+
+**Caso 2:** Suponha que desejamos testar as hipóteses:
+$$H_0 : \mu \geq \mu_0 \quad \times \quad H_1 : \mu < \mu_0$$
+<ul>
+  <li class="fragment" data-fragment-index=1>
+    Podemos utilizar a média amostral $\bar{X}$ para construir a RC;
+  </li>
+  <li class="fragment" data-fragment-index=2>
+    Perceba que, se $\bar{X}$ fornecer um valor muito menor que $\mu_0$, teremos fortes evidências para rejeitar $H_0$ em favor de $H_1$.
+  </li>
+  <li class="fragment" data-fragment-index=4>
+    O valor crítico $x_c$ é o ponto que determina o que é muito menor do que $\mu_0$.
+  </li>
+  <li class="fragment" data-fragment-index=6>
+    Portanto, $\text{RC} = \{\bar{X} < x_c\}$;
+  </li>
+  <li class="fragment" data-fragment-index=7>
+    Como determinar $x_c$?
+  </li>
+</ul>  
+
+
+:::
+
+:::
+
+::: {.column width="45%"}
+
+::: {.r-stack}
+
+::: {.fragment .fade-in-then-out data-fragment-index=2}
+
+```{r}
+#| fig-align: center
+#| fig-width: 6
+#| fig-height: 4.5
+#| echo: false
+plot_base <- function(show_xc = FALSE) {
+  par(mar = c(1.5, 1, 1.5, 1))
+  plot(NULL, xlim = c(0, 10), ylim = c(-0.5, 3.2), axes = FALSE, xlab = "", ylab = "")
+  arrows(x0 = 0.5, y0 = 0.5, x1 = 9.5, y1 = 0.5, length = 0.1, lwd = 1.5, code = 2)
+  segments(x0 = 0.5, y0 = 2.4, x1 = 9.5, y1 = 2.4, lwd = 1)
+  
+  # H_1 fica à esquerda (tracejado), H_0 fica à direita (sólido)
+  segments(x0 = 0.5, y0 = 2.4, x1 = 4, y1 = 2.4, col = "white", lwd = 3)
+  segments(x0 = 0.5, y0 = 2.4, x1 = 4, y1 = 2.4, lty = 2, lwd = 1.5)
+  
+  arrows(x0 = 0.5, y0 = 2.4, x1 = 0.3, y1 = 2.4, length = 0.08, code = 2)
+  arrows(x0 = 9.5, y0 = 2.4, x1 = 9.7, y1 = 2.4, length = 0.08, code = 2)
+  segments(x0 = 4, y0 = 2.3, x1 = 4, y1 = 2.5, lwd = 2)
+  segments(x0 = 4, y0 = 0.3, x1 = 4, y1 = 2.5, lty = 2, col = "gray40")
+  
+  text(x = 4, y = -0.1, labels = expression(mu[0]), cex = 1.3)
+  text(x = 2.25, y = 2.8, labels = expression(H[1]), cex = 1.5)
+  text(x = 6.75, y = 2.8, labels = expression(H[0]), cex = 1.5)
+  
+  if (show_xc) {
+    segments(x0 = 1.8, y0 = 0.3, x1 = 1.8, y1 = 2.5, lty = 2, col = "gray40", lwd = 1.2)
+    text(x = 1.8, y = -0.1, labels = expression(x[c]), cex = 1.3)
+  }
+}
+# Passo 1: Ponto amostral próximo a mu_0 (Indício de não-rejeição de H_0)
+plot_base(show_xc = FALSE)
+points(x = 2.8, y = 0.5, pch = 19, cex = 1.8, col = "black")
+text(x = 2.8, y = 0.2, labels = expression(bar(x)), cex = 1.3)
+```
+
+:::
+
+::: {.fragment .fade-in-then-out data-fragment-index=3}
+
+```{r}
+#| fig-align: center
+#| fig-width: 6
+#| fig-height: 4.5
+#| echo: false
+# Passo 2: Ponto amostral distante de mu_0 (Forte indício de rejeição de H_0)
+plot_base(show_xc = FALSE)
+points(x = 1.0, y = 0.5, pch = 19, cex = 1.8, col = "black")
+text(x = 1.0, y = 0.2, labels = expression(bar(x)), cex = 1.3)
+```
+
+:::
+
+::: {.fragment .fade-in-then-out data-fragment-index=4}
+
+```{r}
+#| fig-align: center
+#| fig-width: 6
+#| fig-height: 4.5
+#| echo: false
+# Passo 3: Estabelecendo a fronteira da região de decisão x_c
+plot_base(show_xc = TRUE)
+
+```
+
+:::
+
+::: {.fragment .fade-in data-fragment-index=5}
+
+```{r}
+#| fig-align: center
+#| fig-width: 6
+#| fig-height: 4.5
+#| echo: false
+# Passo 4: Os dois cenários possíveis em relação a x_c
+plot_base(show_xc = TRUE)
+points(x = 2.8, y = 0.5, pch = 19, cex = 1.8, col = "black")
+text(x = 2.8, y = 0.2, labels = expression(bar(x)), cex = 1.3)
+points(x = 1.0, y = 0.5, pch = 19, cex = 1.8, col = "black")
+text(x = 1.0, y = 0.2, labels = expression(bar(x)), cex = 1.3)
+
+```
+
+:::
+
+:::
+:::
+:::
+
+## 3.1 Teste para $\mu$ {.unnumbered .unlisted}
+
+::: {.columns}
+
+::: {.column width="55%"}
+
+::: {.callout-caution}
+## Observação
+
+Para uma significância $\alpha$ [e $z_{\alpha}$ tal que $P(Z > z_{\alpha}) = \alpha$,]{.fragment fragment-index=1} [temos $P(Z < -z_\alpha) = \alpha$.]{.fragment fragment-index=2} [Pelo TCL, vem que
+$$\begin{aligned}
+\alpha &= \sup \alpha(\mu) = \alpha(\mu_0) = P(\text{Rejeitar } H_0 \mid \mu = \mu_0) \\
+&= \textstyle P(\bar{X} < x_c \mid \mu = \mu_0) = P\left( \frac{\bar{X} - \mu_0}{\sigma/\sqrt{n}} < \frac{x_c - \mu_0}{\sigma/\sqrt{n}} \right) \\
+&\approx \textstyle  P\left( Z < \frac{x_c - \mu_0}{\sigma/\sqrt{n}} \right).
+\end{aligned}
+$$]{.fragment fragment-index=3}
+
+[Logo, $\frac{x_c - \mu_0}{\sigma/\sqrt{n}} = -z_{\alpha}$, isto é, $x_c = \mu_0 - z_{\alpha} \frac{\sigma}{\sqrt{n}}$.]{.fragment fragment-index=4} [Assim, rejeitamos $H_0$ ao nível de significância $\alpha$ se
+$$
+\textstyle \bar{X} < \mu_0 - z_{\alpha} \frac{\sigma}{\sqrt{n}}.
+$$]{.fragment fragment-index=5}
+
+:::
+
+:::
+
+::: {.column width="45%"}
+
+::: {.r-stack}
+
+::: {.fragment .fade-in-then-out data-fragment-index=1}
+
+```{r}
+#| fig-align: center
+#| fig-width: 7
+#| fig-height: 4
+#| echo: false
+
+# 1. Configurando os parâmetros da distribuição
+alpha <- 0.05
+z_alpha <- qnorm(1 - alpha) # Calcula o ponto crítico (1.645)
+
+# Gerando o domínio para a curva normal padrão
+x <- seq(-3.5, 3.5, length = 500)
+y <- dnorm(x)
+
+# 2. Desenhando o gráfico base
+plot(
+  x, y, 
+  type = "l", 
+  lwd = 2.5, 
+  col = "black", 
+  axes = FALSE, 
+  xlab = "z", 
+  ylab = "", 
+  main = ""
+)
+
+# Customização do eixo x incluindo o ponto z_alpha
+axis(1, at = c(-3, -2, -1, 0, 1, 2, 3), 
+     labels = c("-3", "-2", "-1", "0", "1", "2", "3"), cex.axis = 1.1)
+axis(1, at = c(z_alpha), 
+     labels = c(expression(z[alpha])), cex.axis = 1, col.axis = "#3b5998", col = "#3b5998", col.ticks = "#3b5998")
+
+# 3. Colorindo a região de rejeição (cauda superior)
+x_shading <- seq(z_alpha, 3.5, length = 100)
+y_shading <- dnorm(x_shading)
+polygon(c(z_alpha, x_shading, 3.5), c(0, y_shading, 0), col = rgb(0.23, 0.35, 0.60, 0.4), border = NA)
+
+# Linha vertical indicativa do z crítico
+abline(v = z_alpha, lty = 2, col = "#3b5998", lwd = 1.5)
+
+# 4. Adicionando rótulo para a área alpha
+text(x = z_alpha + 0.3, y = 0.03, labels = expression(alpha), col = "#3b5998", font = 2, cex = 1.2)
+
+# Linha de base horizontal
+abline(h = 0, col = "gray50")
+```
+
+:::
+
+::: {.fragment .fade-in data-fragment-index=2}
+
+```{r}
+#| fig-align: center
+#| fig-width: 7
+#| fig-height: 4
+#| echo: false
+
+# 1. Configurando os parâmetros da distribuição
+alpha <- 0.05
+z_critico <- qnorm(alpha) # Calcula o ponto crítico (-1.645)
+
+# Gerando o domínio para a curva normal padrão
+x <- seq(-3.5, 3.5, length = 500)
+y <- dnorm(x)
+
+# 2. Desenhando o gráfico base (rejeição à esquerda)
+plot(
+  x, y, 
+  type = "l", 
+  lwd = 2.5, 
+  col = "black", 
+  axes = FALSE, 
+  xlab = "z", 
+  ylab = "", 
+  main = ""
+)
+
+# Customização do eixo x incluindo o ponto crítico negativo
+axis(1, at = c(-3, -2, -1, 0, 1, 2, 3), 
+     labels = c("-3", "-2", "-1", "0", "1", "2", "3"), cex.axis = 1.1)
+axis(1, at = c(z_critico), 
+     labels = c(expression(-z[alpha])), cex.axis = 1, col.axis = "#3b5998", col = "#3b5998", col.ticks = "#3b5998")
+
+# 3. Colorindo a região de rejeição (cauda inferior/esquerda)
+x_shading <- seq(-3.5, z_critico, length = 100)
+y_shading <- dnorm(x_shading)
+polygon(c(-3.5, x_shading, z_critico), c(0, y_shading, 0), col = rgb(0.23, 0.35, 0.60, 0.4), border = NA)
+
+# Linha vertical indicativa do z crítico
+abline(v = z_critico, lty = 2, col = "#3b5998", lwd = 1.5)
+
+# 4. Adicionando rótulo para a área alpha
+text(x = z_critico - 0.3, y = 0.03, labels = expression(alpha), col = "#3b5998", font = 2, cex = 1.2)
+
+# Linha de base horizontal
+abline(h = 0, col = "gray50")
+
+```
+
+:::
+
+:::
+
+:::
+
+:::
+
+## 3.1 Teste para $\mu$ {.unnumbered .unlisted}
+
+::: {.columns}
+
+::: {.column width="55%"}
+
+::: {.callout-caution}
+## Observações
+
+**Caso 3:** Suponha que desejamos testar as hipóteses:
+$$H_0 : \mu = \mu_0 \quad \times \quad H_1 : \mu \neq \mu_0$$
+<ul>
+  <li class="fragment" data-fragment-index=1>
+    Vamos utilizar a média amostral $\bar{X}$ para construir a RC;
+  </li>
+  <li class="fragment" data-fragment-index=2>
+    Perceba que, se $\bar{X}$ fornecer um valor muito diferente (muito menor ou maior) que $\mu_0$, teremos fortes evidências para rejeitar $H_0$ em favor de $H_1$.
+  </li>
+  <li class="fragment" data-fragment-index=4>
+    Os valores críticos $x_{c_1}$ e $x_{c_2}$ delimitam o que é muito menor ou maior do que $\mu_0$.
+  </li>
+  <li class="fragment" data-fragment-index=6>
+    Portanto, $\text{RC} = \{(\bar{X} < x_{c_1}) \cup (\bar{X} > x_{c_2})\}$;
+  </li>
+  <li class="fragment" data-fragment-index=7>
+    Como determinar $x_{c_1}$ e $x_{c_2}$?
+  </li>
+</ul>  
+
+
+:::
+
+:::
+
+::: {.column width="45%"}
+
+::: {.r-stack}
+
+::: {.fragment .fade-in-then-out data-fragment-index=2}
+
+```{r}
+#| fig-align: center
+#| fig-width: 6
+#| fig-height: 4.5
+#| echo: false
+plot_base <- function(show_xc = FALSE) {
+  par(mar = c(1.5, 1, 1.5, 1))
+  plot(NULL, xlim = c(0, 8), ylim = c(-0.5, 3.2), axes = FALSE, xlab = "", ylab = "")
+  arrows(x0 = 0.5, y0 = 0.5, x1 = 7.5, y1 = 0.5, length = 0.1, lwd = 1.5, code = 2)
+  # segments(x0 = 0.5, y0 = 2.4, x1 = 8.5, y1 = 2.4, lwd = 1)
+  
+  # H_1 fica à esquerda (tracejado), H_0 fica à direita (sólido)
+  segments(x0 = 0.5, y0 = 2.4, x1 = 4, y1 = 2.4, col = "white", lwd = 3)
+  segments(x0 = 0.5, y0 = 2.4, x1 = 4, y1 = 2.4, lty = 2, lwd = 1.5)
+  segments(x0 = 7.5, y0 = 2.4, x1 = 4, y1 = 2.4, lty = 2, lwd = 1.5)
+  
+  arrows(x0 = 0.5, y0 = 2.4, x1 = 0.3, y1 = 2.4, length = 0.08, code = 2)
+  arrows(x0 = 7.5, y0 = 2.4, x1 = 7.7, y1 = 2.4, length = 0.08, code = 2)
+  segments(x0 = 4, y0 = 2.3, x1 = 4, y1 = 2.5, lwd = 2)
+  segments(x0 = 4, y0 = 0.3, x1 = 4, y1 = 2.5, lty = 2, col = "gray40")
+  
+  text(x = 4, y = -0.1, labels = expression(mu[0]), cex = 1.3)
+  text(x = 2.25, y = 2.8, labels = expression(H[1]), cex = 1.5)
+  text(x = 5.75, y = 2.8, labels = expression(H[1]), cex = 1.5)
+  text(x = 4, y = 2.8, labels = expression(H[0]), cex = 1.3)
+  points(x = 4, y = 2.4, pch = 19, cex = 1.8, col = "black")
+  
+  if (show_xc) {
+    segments(x0 = 1.8, y0 = 0.3, x1 = 1.8, y1 = 2.5, lty = 2, col = "gray40", lwd = 1.2)
+    text(x = 1.8, y = -0.1, labels = expression(x[c[1]]), cex = 1.3)
+    segments(x0 = 6.2, y0 = 0.3, x1 = 6.2, y1 = 2.5, lty = 2, col = "gray40", lwd = 1.2)
+    text(x = 6.2, y = -0.1, labels = expression(x[c[2]]), cex = 1.3)
+  }
+}
+# Passo 1: Ponto amostral próximo a mu_0 (Indício de não-rejeição de H_0)
+plot_base(show_xc = FALSE)
+points(x = 2.8, y = 0.5, pch = 19, cex = 1.8, col = "black")
+text(x = 2.8, y = 0.2, labels = expression(bar(x)), cex = 1.3)
+points(x = 5.2, y = 0.5, pch = 19, cex = 1.8, col = "black")
+text(x = 5.2, y = 0.2, labels = expression(bar(x)), cex = 1.3)
+```
+
+:::
+
+::: {.fragment .fade-in-then-out data-fragment-index=3}
+
+```{r}
+#| fig-align: center
+#| fig-width: 6
+#| fig-height: 4.5
+#| echo: false
+# Passo 2: Ponto amostral distante de mu_0 (Forte indício de rejeição de H_0)
+plot_base(show_xc = FALSE)
+points(x = 1.0, y = 0.5, pch = 19, cex = 1.8, col = "black")
+text(x = 1.0, y = 0.2, labels = expression(bar(x)), cex = 1.3)
+points(x = 7.0, y = 0.5, pch = 19, cex = 1.8, col = "black")
+text(x = 7.0, y = 0.2, labels = expression(bar(x)), cex = 1.3)
+```
+
+:::
+
+::: {.fragment .fade-in-then-out data-fragment-index=4}
+
+```{r}
+#| fig-align: center
+#| fig-width: 6
+#| fig-height: 4.5
+#| echo: false
+# Passo 3: Estabelecendo a fronteira da região de decisão x_c
+plot_base(show_xc = TRUE)
+
+```
+
+:::
+
+::: {.fragment .fade-in data-fragment-index=5}
+
+```{r}
+#| fig-align: center
+#| fig-width: 6
+#| fig-height: 4.5
+#| echo: false
+# Passo 4: Os dois cenários possíveis em relação a x_c
+plot_base(show_xc = TRUE)
+points(x = 2.8, y = 0.5, pch = 19, cex = 1.8, col = "black")
+text(x = 2.8, y = 0.2, labels = expression(bar(x)), cex = 1.3)
+points(x = 1.0, y = 0.5, pch = 19, cex = 1.8, col = "black")
+text(x = 1.0, y = 0.2, labels = expression(bar(x)), cex = 1.3)
+
+points(x = 5.2, y = 0.5, pch = 19, cex = 1.8, col = "black")
+text(x = 5.2, y = 0.2, labels = expression(bar(x)), cex = 1.3)
+points(x = 7.0, y = 0.5, pch = 19, cex = 1.8, col = "black")
+text(x = 7.0, y = 0.2, labels = expression(bar(x)), cex = 1.3)
+```
+
+:::
+
+:::
+:::
+:::
+
+## 3.1 Teste para $\mu$ {.unnumbered .unlisted}
+
+::: {.columns}
+
+::: {.column width="60%"}
+
+::: {.callout-caution}
+## Observação
+
+Com significância $\alpha$ [e sendo $z_{\alpha}$ tal que $P(Z > z_{\alpha}) = \alpha$,]{.fragment fragment-index=1} [temos $P(Z < -z_\alpha) = \alpha$.]{.fragment fragment-index=2} [Do TCL, vem
+$$\begin{aligned}
+\alpha &= \sup \alpha(\mu) = \alpha(\mu_0) = P(\text{Rejeitar } H_0 \mid \mu = \mu_0) \\
+&= \textstyle P\left[(\bar{X} < x_{c_1}) \cup (\bar{X} > x_{c_2}) \mid \mu = \mu_0 \right]\\
+&= \textstyle P\left( \frac{\bar{X} - \mu_0}{\sigma/\sqrt{n}} < \frac{x_{c_1} - \mu_0}{\sigma/\sqrt{n}} \right) + P\left( \frac{\bar{X} - \mu_0}{\sigma/\sqrt{n}} > \frac{x_{c_2} - \mu_0}{\sigma/\sqrt{n}} \right) \\
+&\approx \textstyle  P\left( Z < \frac{x_{c_1} - \mu_0}{\sigma/\sqrt{n}} \right) + P\left( Z > \frac{x_{c_2} - \mu_0}{\sigma/\sqrt{n}} \right).
+\end{aligned}
+$$]{.fragment fragment-index=3}
+[Dividindo $\alpha$ igualmente, vem $\frac{x_{c_1} - \mu_0}{\sigma/\sqrt{n}} = -z_{\frac{\alpha}{2}}$ e $\frac{x_{c_2} - \mu_0}{\sigma/\sqrt{n}} = z_{\frac{\alpha}{2}}$.]{.fragment fragment-index=4} [Assim, rejeitamos $H_0$ ao nível $\alpha$ se
+$$
+\textstyle \bar{X} < x_{c_1} = \mu_0 - z_{\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}} \ \ \ \text{ou} \ \ \ \bar{X} > x_{c_2} = \mu_0 + z_{\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}.
+$$]{.fragment fragment-index=5}
+
+:::
+
+:::
+
+::: {.column width="40%"}
+
+::: {.r-stack}
+
+::: {.fragment .fade-in-then-out data-fragment-index=1}
+
+```{r}
+#| fig-align: center
+#| fig-width: 7
+#| fig-height: 4
+#| echo: false
+
+# 1. Configurando os parâmetros da distribuição
+alpha <- 0.1
+z_alpha <- qnorm(1 - alpha) # Calcula o ponto crítico (1.645)
+
+# Gerando o domínio para a curva normal padrão
+x <- seq(-3.5, 3.5, length = 500)
+y <- dnorm(x)
+
+# 2. Desenhando o gráfico base
+plot(
+  x, y, 
+  type = "l", 
+  lwd = 2.5, 
+  col = "black", 
+  axes = FALSE, 
+  xlab = "z", 
+  ylab = "", 
+  main = ""
+)
+
+# Customização do eixo x incluindo o ponto z_alpha
+axis(1, at = c(-3, -2, -1, 0, 1, 2, 3), 
+     labels = c("-3", "-2", "-1", "0", "1", "2", "3"), cex.axis = 1)
+axis(1, at = c(z_alpha), 
+     labels = c(expression(z[alpha])), cex.axis = 1, col.axis = "#3b5998", col = "#3b5998", col.ticks = "#3b5998")
+
+# 3. Colorindo a região de rejeição (cauda superior)
+x_shading <- seq(z_alpha, 3.5, length = 100)
+y_shading <- dnorm(x_shading)
+polygon(c(z_alpha, x_shading, 3.5), c(0, y_shading, 0), col = rgb(0.23, 0.35, 0.60, 0.4), border = NA)
+
+# Linha vertical indicativa do z crítico
+abline(v = z_alpha, lty = 2, col = "#3b5998", lwd = 1.5)
+
+# 4. Adicionando rótulo para a área alpha
+text(x = z_alpha + 0.3, y = 0.03, labels = expression(alpha), col = "#3b5998", font = 2, cex = 1.2)
+
+# Linha de base horizontal
+abline(h = 0, col = "gray50")
+```
+
+:::
+
+::: {.fragment .fade-in data-fragment-index=2}
+::: {.fragment .fade-out data-fragment-index=4}
+
+```{r}
+#| fig-align: center
+#| fig-width: 7
+#| fig-height: 4
+#| echo: false
+
+# 1. Configurando os parâmetros da distribuição
+alpha <- 0.1
+z_critico <- qnorm(alpha) # Calcula o ponto crítico (-1.645)
+
+# Gerando o domínio para a curva normal padrão
+x <- seq(-3.5, 3.5, length = 500)
+y <- dnorm(x)
+
+# 2. Desenhando o gráfico base (rejeição à esquerda)
+plot(
+  x, y, 
+  type = "l", 
+  lwd = 2.5, 
+  col = "black", 
+  axes = FALSE, 
+  xlab = "z", 
+  ylab = "", 
+  main = ""
+)
+
+# Customização do eixo x incluindo o ponto crítico negativo
+axis(1, at = c(-3, -2, -1, 0, 1, 2, 3), 
+     labels = c("-3", "-2", "-1", "0", "1", "2", "3"), cex.axis = 1)
+axis(1, at = c(z_critico), 
+     labels = c(expression(-z[alpha])), cex.axis = 1, col.axis = "#3b5998", col = "#3b5998", col.ticks = "#3b5998")
+
+# 3. Colorindo a região de rejeição (cauda inferior/esquerda)
+x_shading <- seq(-3.5, z_critico, length = 100)
+y_shading <- dnorm(x_shading)
+polygon(c(-3.5, x_shading, z_critico), c(0, y_shading, 0), col = rgb(0.23, 0.35, 0.60, 0.4), border = NA)
+
+# Linha vertical indicativa do z crítico
+abline(v = z_critico, lty = 2, col = "#3b5998", lwd = 1.5)
+
+# 4. Adicionando rótulo para a área alpha
+text(x = z_critico - 0.3, y = 0.03, labels = expression(alpha), col = "#3b5998", font = 2, cex = 1.2)
+
+# Linha de base horizontal
+abline(h = 0, col = "gray50")
+
+```
+
+:::
+:::
+
+
+::: {.fragment .fade-in data-fragment-index=4}
+
+```{r}
+#| fig-align: center
+#| fig-width: 7
+#| fig-height: 4
+#| echo: false
+
+# 1. Configurando os parâmetros da distribuição
+alpha <- 0.05
+z_critico <- qnorm(alpha) # Calcula o ponto crítico (-1.645)
+
+# Gerando o domínio para a curva normal padrão
+x <- seq(-3.5, 3.5, length = 500)
+y <- dnorm(x)
+
+# 2. Desenhando o gráfico base (rejeição à esquerda)
+plot(
+  x, y, 
+  type = "l", 
+  lwd = 2.5, 
+  col = "black", 
+  axes = FALSE, 
+  xlab = "z", 
+  ylab = "", 
+  main = ""
+)
+
+# Customização do eixo x incluindo o ponto crítico negativo
+axis(1, at = c(-3, -2, -1, 0, 1, 2, 3), 
+     labels = c("-3", "-2", "-1", "0", "1", "2", "3"), cex.axis = 1)
+axis(1, at = c(z_critico), 
+     labels = c(expression(-z[alpha/2])), cex.axis = 1, col.axis = "#3b5998", col = "#3b5998", col.ticks = "#3b5998")
+axis(1, at = c(-z_critico), 
+     labels = c(expression(z[alpha/2])), cex.axis = 1, col.axis = "#3b5998", col = "#3b5998", col.ticks = "#3b5998")
+
+# 3. Colorindo a região de rejeição (cauda inferior/esquerda)
+x_shading <- seq(-3.5, z_critico, length = 100)
+y_shading <- dnorm(x_shading)
+polygon(c(-3.5, x_shading, z_critico), c(0, y_shading, 0), col = rgb(0.23, 0.35, 0.60, 0.4), border = NA)
+
+x_shading <- seq(-z_critico, 3.5, length = 100)
+y_shading <- dnorm(x_shading)
+polygon(c(-z_critico, x_shading, 3.5), c(0, y_shading, 0), col = rgb(0.23, 0.35, 0.60, 0.4), border = NA)
+
+# Linha vertical indicativa do z crítico
+abline(v = z_critico, lty = 2, col = "#3b5998", lwd = 1.5)
+abline(v = -z_critico, lty = 2, col = "#3b5998", lwd = 1.5)
+
+# 4. Adicionando rótulo para a área alpha
+text(x = z_critico - 0.3, y = 0.03, labels = expression(alpha/2), col = "#3b5998", font = 2, cex = .8)
+text(x = -z_critico + 0.3, y = 0.03, labels = expression(alpha/2), col = "#3b5998", font = 2, cex = .8)
+
+# Linha de base horizontal
+abline(h = 0, col = "gray50")
+
+```
+
+:::
+
+:::
+
+:::
+
+:::
+
+
+## {.unnumbered .unlisted .smaller} 
+
+###  Exemplo 13 {.unnumbered .unlisted}
+
+**Contextualização:** Os sistemas de escapamento de uma aeronave funcionam devido a um propelente sólido. A taxa de queima é uma característica importante desse produto.
+
+[Suponha que:]{.fragment fragment-index=1}
+
+<ul>
+  <li class="fragment" data-fragment-index=1>
+    as especificações exigem que a taxa de queima média seja de $50 \text{ cm/s}$;
+  </li>
+  <li class="fragment" data-fragment-index=2>
+  de experiências anteriores, o desvio-padrão dessa variável pode ser tomado como $\sigma = 2 \text{ cm/s}$;
+  </li>
+  <li class="fragment" data-fragment-index=3>
+  uma amostra de tamanho $n = 25$ forneceu taxa média de queima de $\bar{x} = 51\text{,}3 \text{ cm/s}$.
+  </li>
+</ul>
+
+::: {.callout-important .fragment fragment-index=4 style="font-size: 1.428571em;"}
+## Pergunta
+
+Quais conclusões podem ser tiradas ao nível de significância de $\alpha = 0\text{,}05$?
+:::
+
+
+## {.unnumbered .unlisted .smaller} 
+
+###  Exemplo 13 (cont.) {.unnumbered .unlisted}
+
+**Teste bilateral:** O problema nos leva a formular o teste das seguintes hipóteses:
+$$
+H_0 : \mu = 50 \quad \times \quad H_1 : \mu \neq 50.
+$$
+[**Dados:** Temos as seguintes informações: $\bar{x} = 51\text{,}3$; $\sigma = 2$; $n = 25$; $\alpha = 0\text{,}05$; e $\mu_0 = 50$.]{.fragment fragment-index=1}
+
+[**Solução:** Como $\alpha = 0\text{,}05$ e o teste é bilateral, temos $z_{\frac{\alpha}{2}} = z_{0\text{,}025} = 1\text{,}96$.]{.fragment fragment-index=2} [Por sua vez, os valores críticos são
+$$
+\begin{aligned}
+x_{c_1} &= \mu_0 - z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}} = 50 - 1\text{,}96\left(\frac{2}{\sqrt{25}}\right) = 50 - 1\text{,}96(0\text{,}4) = 49\text{,}216 \\
+x_{c_2} &= \mu_0 + z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}} = 50 + 1\text{,}96\left(\frac{2}{\sqrt{25}}\right) = 50 + 1\text{,}96(0\text{,}4) = 50\text{,}784
+\end{aligned}
+$$]{.fragment fragment-index=3}
+
+[**Decisão:** Como $\bar{x} = 51\text{,}3 > x_{c_2} = 50\text{,}784$, rejeitamos $H_0$ ao nível de significância de $5\%$.]{.fragment fragment-index=4}
+
+## 3.1 Teste para $\mu$ {.unnumbered .unlisted}
+
+<table style="width: 100%; border-collapse: collapse; margin-top: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.05); font-size: 0.75em; border-radius: 8px; overflow: hidden;">
+  <thead>
+    <tr style="background-color: #3b5998; color: white; text-align: left;">
+      <th style="padding: 12px 15px; border: 1px solid #ddd;">Hipótese Alternativa ($H_1$)</th>
+      <th style="padding: 12px 15px; border: 1px solid #ddd;">Região Crítica / Rejeitar $H_0$ se:</th>
+      <th style="padding: 12px 15px; border: 1px solid #ddd;">Valor(es) Crítico(s)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background-color: #fcfcfc;">
+      <td style="padding: 12px 15px; border: 1px solid #ddd;">$H_1 : \mu > \mu_0$ (unilateral à direita)</td>
+      <td style="padding: 12px 15px; border: 1px solid #ddd; color: #d9534f; font-weight: bold;">$\bar{X} > x_c$</td>
+      <td style="padding: 12px 15px; border: 1px solid #ddd;">$x_c = \mu_0 + z_{\alpha} \frac{\sigma}{\sqrt{n}}$</td>
+    </tr>
+    <tr style="background-color: #f4f6f9;">
+      <td style="padding: 12px 15px; border: 1px solid #ddd;">$H_1 : \mu < \mu_0$ (unilateral à esquerda)</td>
+      <td style="padding: 12px 15px; border: 1px solid #ddd; color: #d9534f; font-weight: bold;">$\bar{X} < x_c$</td>
+      <td style="padding: 12px 15px; border: 1px solid #ddd;">$x_c = \mu_0 - z_{\alpha} \frac{\sigma}{\sqrt{n}}$</td>
+    </tr>
+    <tr style="background-color: #fcfcfc;">
+      <td style="padding: 12px 15px; border: 1px solid #ddd;">$H_1 : \mu \neq \mu_0$ (bilateral)</td>
+      <td style="padding: 12px 15px; border: 1px solid #ddd; color: #d9534f; font-weight: bold;">
+        $\bar{X} < x_{c_1}$ ou $\bar{X} > x_{c_2}$
+      </td>
+      <td style="padding: 12px 15px; border: 1px solid #ddd;">
+        $x_{c_1} = \mu_0 - z_{\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}$ <br>
+        $x_{c_2} = \mu_0 + z_{\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}$
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+## 3.1 Teste para $\mu$ {.unnumbered .unlisted}
+
+::: {.callout-caution}
+## Observações
+
+<ol>
+  <li>
+    Os testes para $\mu$ se baseiam no TCL para aproximar a distribuição de $\frac{\bar{X} - \mu}{\sigma/\sqrt{n}}$ pela normal padrão. O que faz com que o nível de significância $\alpha$ seja aproximado no caso geral.
+  </li>
+  <li class="fragment">
+    No caso geral, é necessário $n$ grande para uma aproximação satisfatória;
+  </li>
+  <li class="fragment">
+    Se a população for normal, a aproximação do TCL não é necessária e o nível de significância é exato, independente do tamanho amostral;
+  </li>
+  <li class="fragment">
+    Se $\sigma^2$ for desconhecida:
+    <ul>
+      <li class="fragment">
+        e $n$ for suficientemente grande, podemos substituir $\sigma^2$ por $S^2$, pois a consistência de $S^2$ garante que a incerteza adicional provocada pela aproximação é negligenciável em grandes amostras;
+      </li>
+      <li class="fragment">
+        e $n$ for pequeno, a incerteza adicional em substituir $\sigma^2$ por $S^2$ não pode ser desprezada.
+      </li>
+    </ul>
+  </li>
+</ol>
+
+:::
+
+::: {.callout-important .fragment}
+## Problema
+
+O que fazer se $\sigma^2$ for desconhecido e $n$ for pequeno?
+:::
+
+
+## 3.1 Teste para $\mu$ {.unnumbered .unlisted}
+
+::: {.callout-warning}
+## Propriedade
+
+Como visto em Intervalos de Confiança, se $n$ for pequeno e a **população for normal**, $T = \frac{\bar{X} - \mu}{S/\sqrt{n}}$ tem distribuição $t_{n-1}$. Nesse caso, definindo novamente $t_{\alpha,\ \nu}$ como o valor tal que $P(T > t_{\alpha,\ \nu}) = \alpha$ e seguindo os mesmos passos para $\sigma^2$ conhecida, obtemos as seguintes RC e valores críticos correspondentes.
+:::
+
+
+<table style="width: 100%; border-collapse: collapse; margin-top: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.05); font-size: 0.75em; border-radius: 8px; overflow: hidden;">
+  <thead>
+    <tr style="background-color: #3b5998; color: white; text-align: left;">
+      <th style="padding: 12px 15px; border: 1px solid #ddd;">Hipótese Alternativa ($H_1$)</th>
+      <th style="padding: 12px 15px; border: 1px solid #ddd;">Região Crítica / Rejeitar $H_0$ se:</th>
+      <th style="padding: 12px 15px; border: 1px solid #ddd;">Valor(es) Crítico(s)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background-color: #fcfcfc;">
+      <td style="padding: 12px 15px; border: 1px solid #ddd;">$H_1 : \mu > \mu_0$ (unilateral à direita)</td>
+      <td style="padding: 12px 15px; border: 1px solid #ddd; color: #d9534f; font-weight: bold;">$\bar{X} > x_c$</td>
+      <td style="padding: 12px 15px; border: 1px solid #ddd;">$x_c = \mu_0 + t_{\alpha,\ n-1} \frac{\sigma}{\sqrt{n}}$</td>
+    </tr>
+    <tr style="background-color: #f4f6f9;">
+      <td style="padding: 12px 15px; border: 1px solid #ddd;">$H_1 : \mu < \mu_0$ (unilateral à esquerda)</td>
+      <td style="padding: 12px 15px; border: 1px solid #ddd; color: #d9534f; font-weight: bold;">$\bar{X} < x_c$</td>
+      <td style="padding: 12px 15px; border: 1px solid #ddd;">$x_c = \mu_0 - t_{\alpha,\ n-1} \frac{\sigma}{\sqrt{n}}$</td>
+    </tr>
+    <tr style="background-color: #fcfcfc;">
+      <td style="padding: 12px 15px; border: 1px solid #ddd;">$H_1 : \mu \neq \mu_0$ (bilateral)</td>
+      <td style="padding: 12px 15px; border: 1px solid #ddd; color: #d9534f; font-weight: bold;">
+        $\bar{X} < x_{c_1}$ ou $\bar{X} > x_{c_2}$
+      </td>
+      <td style="padding: 12px 15px; border: 1px solid #ddd;">
+        $x_{c_1} = \mu_0 - t_{\frac{\alpha}{2},\ n-1} \frac{\sigma}{\sqrt{n}}$ <br>
+        $x_{c_2} = \mu_0 + t_{\frac{\alpha}{2},\ n-1} \frac{\sigma}{\sqrt{n}}$
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## 3.1 Teste para $\mu$ {.unnumbered .unlisted}
+
+
+![](figs/fig_tabela_tstudent_quantis_F01.drawio.png){width="100%" fig-align="center"}
+
+
+## 3.1 Teste para $\mu$ {.unnumbered .unlisted}
+
+::: {.callout-caution}
+## Observação
+
+Se $n$ for pequeno e a população não for normal, o TCL pode fornecer uma aproximação imprecisa. Nesse caso, podemos optar por testes Bootstrap (não abordados aqui) ou testes exatos.
+:::
+
+::: {.fragment style="border-style: solid; border-width: 3px; padding-bottom: 0px; padding-right: 12px; padding-left: 12px; font-size:70%;"}
+
+**Exemplo 10 (cont.):** Vimos que $\frac{n\bar{X}}{\mu} \sim \text{Gama}(n, \frac{1}{\lambda})$ para população $\text{Exp}(\lambda)$. [Suponha que desejamos testar
+$$H_0 : \mu \leq \mu_0 \quad \times \quad H_1 : \mu > \mu_0.$$]{.fragment}
+
+[Teremos evidências para rejeitar $H_0$ se $\bar{X}$ fornecer um valor significativamente maior do que 4, o que induz à $\text{RC} = \{\bar{X} > x_c\}$.]{.fragment} [Agora, sendo $g_{p,n}$ tal que $P(\text{Gama}(n,1) \leq g_{p,n}) = p$, temos que
+$$
+\textstyle \alpha = \sup_\mu\alpha(\mu) = \alpha(\mu_0) = P(\bar{X} > x_c | \mu = \mu_0) = P(\frac{n\bar{X}}{\mu_0} > \frac{nx_c}{\mu_0}) = P(\text{Gama}(n,1) > \frac{nx_c}{\mu_0}).
+$$]{.fragment}
+
+[Isso implica em $P(\text{Gama}(n,1) \leq \frac{nx_c}{\mu_0}) = 1-\alpha$, logo $\frac{nx_c}{\mu_0} = g_{1-\alpha,n}$.]{.fragment} [Assim, rejeitamos $H_0$ se $\bar{X} > x_c = \frac{\mu_0}{n}g_{1-\alpha,n}$.]{.fragment}
+
+::: 
+
+## {.unnumbered .unlisted .smaller} 
+
+###  Exemplo 10 (cont.) {.unnumbered .unlisted} 
+
+No mesmo exemplo, vimos que uma aa de $n = 9$ bombas produziu $\hat\lambda = 0\text{,}237$, o que equivale a $\bar{X} = 1/\hat\lambda = 1/0\text{,}237 = 4\text{,}219$. [Suponha que desejamos testar
+$$H_0 : \mu \leq 4 \quad \times \quad H_1 : \mu > 4.$$]{.fragment}
+
+[Como discutido anteriormente, temos $\text{RC} = \{\bar{X} > x_c\}$, onde $x_c = \frac{\mu_0}{n}g_{1-\alpha,n}$.]{.fragment}
+
+[Com confiança $\alpha = 0.05$, temos $g_{1-\alpha,n} = g_{0\text{,}95,\ 9} \approx 14$ (valor exato `r format(round(qgamma(p = .95, shape = 9, rate = 1), 3), decimal.mark = ",")`).]{.fragment} [Logo,
+$$
+x_c = \frac{\mu_0}{n}g_{1-\alpha,n} = \frac{4}{9}\cdot 14 = 6\text{,}222 \quad \text{(valor exato 6,416)}.
+$$]{.fragment}
+
+[Como $\bar{X} = 4\text{,}219 \not> x_c = 6\text{,}222$, concluímos que os dados não trazem evidências suficientes para rejeitar $H_0 : \mu \leq 4$ ao nível de significância de $\alpha = 0\text{,}05$.]{.fragment}
+
+::: {.callout-caution .fragment style="font-size: 1.428571em;"}
+## Observação
+
+O desencadeamento lógico pode ser adaptado para testar hipóteses sobre o parâmetro $\lambda$ em vez de $\mu$.
+:::
+
 ## $p$-valor 
 
 ::: {.callout-caution}
@@ -2949,7 +3773,7 @@ Relatar o resultado de um teste de hipóteses simplesmente dizendo se a hipótes
 
 ::: {style="border-style: solid; border-width: 3px; padding-bottom: 0px; padding-right: 12px; padding-left: 12px; font-size:70%;"}
 
-**Exemplo 13:** O tempo médio de alivio das dores do medicamento mais vendido no mercado é de 10 min. Uma empresa desenvolveu um medicamento e colocou a venda afirmando que um teste estatístico rejeitou $H_0 : \mu \geq 10$ em favor de $H_1 : \mu < 10$ ao nível de 0.1.
+**Exemplo 14:** O tempo médio de alivio das dores do medicamento mais vendido no mercado é de 10 min. Uma empresa desenvolveu um medicamento e colocou a venda afirmando que um teste estatístico rejeitou $H_0 : \mu \geq 10$ em favor de $H_1 : \mu < 10$ ao nível de 0.1.
 
 ::: 
 
@@ -2961,7 +3785,7 @@ Uma pessoa que costuma comprar o medicamento mais vendido pode optar por nível 
 
 ## {.unnumbered .unlisted .smaller} 
 
-###  Exemplo 13 (cont.) {.unnumbered .unlisted} 
+###  Exemplo 14 (cont.) {.unnumbered .unlisted} 
 
 ::: columns
 
@@ -3013,7 +3837,7 @@ text(x = -4.5, y=0.4, labels = bquote(Rejeitar~italic(H)[0]), pos = 4)
 
 ## {.unnumbered .unlisted .smaller} 
 
-###  Exemplo 13 (cont.) {.unnumbered .unlisted} 
+###  Exemplo 14 (cont.) {.unnumbered .unlisted} 
 
 ::: columns
 
@@ -3062,7 +3886,7 @@ text(x = -4.5, y=0.4, labels = bquote(Rejeitar~italic(H)[0]), pos = 4)
 
 ## {.unnumbered .unlisted .smaller} 
 
-###  Exemplo 13 (cont.) {.unnumbered .unlisted} 
+###  Exemplo 14 (cont.) {.unnumbered .unlisted} 
 
 ::: columns
 
